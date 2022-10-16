@@ -1,0 +1,109 @@
+@import '../../../variables.scss';
+@import '../../../mediaqueries.scss';
+
+:host ::ng-deep nb-layout-column {
+  padding: 0 !important;
+}
+
+:host ::ng-deep nb-layout-footer nav {
+  padding: 0 !important;
+}
+
+.shadow-sm {
+  background: linear-gradient(90deg, color(primary) 0%, color(primary-light) 35%, color(blue-primary) 100%);
+}
+
+:host ::ng-deep .sb-group {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease-in;
+  backface-visibility: hidden;
+  position: fixed;
+  opacity: 1;
+  text-align: left;
+  top: 130px;
+  z-index: 1;
+  animation: fadeInRight 1s ease-in-out;
+}
+
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+:host ::ng-deep .sb-group :hover {
+  transform: scale(1.1);
+}
+
+:host ::ng-deep .sb-wrapper {
+
+  @include tablet-sm {
+    display: none;
+    // font-size: 8px !important;
+  }
+
+  @include mobile-l {
+    display: none;
+    // font-size: 8px !important;
+  }
+}
+
+/* this style for arrow moving  */
+.icon {
+  position: fixed;
+  top: 80px;
+  left: -8px;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 60px;
+  cursor: pointer;
+  transform: rotate(-90deg);
+  display: none;
+  z-index: 2000;
+}
+
+.arrow {
+  position: absolute;
+  top: 25px;
+  width: 90%;
+  height: 10px;
+  background-color: #33a4ff;
+  animation: arrow 700ms linear infinite;
+}
+
+.arrow::after,
+.arrow::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 10px;
+  left: -8px;
+  background-color: #33a4ff;
+}
+
+.arrow::after {
+  top: -12px;
+  transform: rotate(135deg);
+}
+
+.arrow::before {
+  top: 12px;
+  transform: rotate(-135deg);
+}
+
+.cookies{
+  // height: 100px;
+  width: 100%;
+  background-color: #3C4146;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  
+}

@@ -1,0 +1,120 @@
+// @import '~@nebular/theme/styles/themes/dark';
+
+/* color  */
+:root {
+  /* --orange: #FFA55A !important; */
+  --primary: #3C7DB7 !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+p{
+  font-size: max(1em, 16px) !important;
+}
+
+.nb-theme-default nb-tabset .tab-link {
+  padding: 1rem !important;
+  color: #6c757d !important;
+  font-weight: bolder;
+}
+
+// to set all buttonsand headers with the same color 
+.nb-theme-default [nbButton].appearance-filled.status-success, .card-header,nb-card-header:not(.calendar-navigation, .headerNebular){
+  background-color:var(--primary) !important;
+}
+.btnBgPrimary{
+  background-color: var(--primary) !important;
+  text-transform: uppercase;
+  color: white !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  padding: 8px 0 !important;
+}
+
+.nb-theme-default [nbButton].appearance-filled.status-success:hover,nb-card-header,.btnBgPrimary:hover{
+  filter: brightness(90%);
+}
+
+.nb-theme-default a{
+  color: var(--primary);
+}
+
+.form-control{
+  color: #222b45 !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600 !important;
+  background-color: #f7f9fc !important;
+  border-radius: 7px !important;
+  padding: 1rem 1rem !important;
+}
+.form-control:focus {
+  border-color: var(--primary) !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+nb-layout-header nav{
+  height: 60px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.nb-theme-default nb-layout-header.fixed ~ .layout-container{
+  padding-top: 10px !important;
+}
+// .example-items-col
+.imperial, .metric {
+  padding: 0 !important;
+  margin-top:10px;
+}
+
+.nb-theme-default nb-card {
+  margin-bottom: 0;
+}
+
+// .layout-container .content .columns nb-layout-column{
+//   min-width: auto !important;
+// }
+// .nb-theme-default 
+// .nb-select-min-width .select-button{
+//   min-width: auto !important;
+// }
+.nb-theme-default nb-select.size-medium:not(.full-width){
+  min-width: -webkit-fill-available !important;
+}
+
+// .nb-form-field-max-width{
+//   max-width: inherit !important;
+// }
+.nb-theme-default p{
+  line-height: 1.8rem !important;
+}
+
+.designeButton{
+  position: relative !important;
+  background-color: white !important;
+  box-shadow: rgb(0 0 0 / 6%) 0px 0.0666667rem 0.2rem 0.0666667rem !important;
+  border-radius: 5px !important;
+}
+
+.designeButton:hover{
+  box-shadow: rgb(0 0 0 / 10%) 0px 0.933333rem 1.86667rem, rgb(0 0 0 / 7%) 0px 0.666667rem 0.666667rem !important;
+}
+
+// .nb-theme-default h1{
+//   padding-top: 20px;
+// }
+
+// @media screen and (max-width: 552px) {
+//   .flexMobile {
+//     display: flex;
+//     align-items: center!important;
+//     justify-content: center!important;
+//   }
+// }
+
+.nb-theme-default nb-select .select-button{
+  min-width: 120px !important;
+}

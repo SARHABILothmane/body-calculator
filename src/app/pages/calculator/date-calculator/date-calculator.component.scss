@@ -1,0 +1,22 @@
+@import '../../../../variables.scss';
+@media screen and (min-width: 552px) {
+    .widthSelectDate {
+       width: 30% !important;
+    }
+    // .marginTop{
+    //     margin-top: 20px;
+    // }
+}
+
+@media screen and (max-width: 552px) {
+    .widthSelectDate {
+        width: 90% !important;
+    }
+}
+
+em {
+    font-size: 22px;
+    color: color(blue-primary);
+    font-family: font(font-family-regular);
+    font-weight: bold;
+}
