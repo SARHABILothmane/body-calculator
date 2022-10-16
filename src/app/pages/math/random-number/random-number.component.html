@@ -5,7 +5,7 @@
         <h1 class="text-secondary text-center pb-3">Random Number Generator</h1>
       </div>
       <div class="row mb-3 d-flex flex-md-row-reverse">
-        <div class="col-md-5 mx-auto mb-5 border-shadow">
+        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
           <h6 class="text-secondary text-center">Result of Random Number Generator</h6>
           <h4 class="text-secondary text-center" *ngIf="generatedNumber != null">{{generatedNumber}} </h4>
         </div>
@@ -43,94 +43,98 @@
         </div>
         <span #target></span> -->
       </div>
-      <div class="col-md-5 mx-auto mb-5 border-shadow">
-        <h6 class="text-secondary text-center">Result of Random Number Generator</h6>
-        <div *ngFor="let e of generateNumbers">
-          {{e}}
-        </div>
-        <h4 class="text-secondary text-center" *ngIf="generatedN != null">{{generatedN}} </h4>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header text-white text-center font-weight-bold">Random Number Generator</div>
-          <div class="card-body example-items-col">
-            <form [formGroup]="calculeFormRandomN" (ngSubmit)="CalculateRandomNumber2()">
-              <small class="text-danger" *ngIf="submitted">{{error}}</small>
-              <div class="mb-4">
-                <label for="Lower Limit">Lower Limit</label>
-                <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                  placeholder="Lower Limit" formControlName="lowerLimit">
-                <small class="text-danger" *ngIf="submitted && formRandomN.lowerLimit.errors?.required">Lower
-                  Limit is
-                  required.
-                  !</small>
-              </div>
-              <div class="my-4">
-                <label for="Upper Limit">Upper Limit</label>
-                <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                  placeholder="Upper Limit" formControlName="upperLimit">
-                <small class="text-danger" *ngIf="submitted && formRandomN.upperLimit.errors?.required">Upper
-                  Limit is
-                  required.
-                  !</small>
-              </div>
-              <div class="my-4">
-                <label for="numbers generat">Numbre of numbers generat</label>
-                <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                  placeholder="Numbre of numbers generat" formControlName="genreteNumbers">
-                <small class="text-danger" *ngIf="submitted && formRandomN.genreteNumbers.errors?.required">Upper
-                  Limit is
-                  required.
-                  !</small>
-              </div>
-              <div class="radio d-flex d-flex justify-content-between border rounded border-shadow mx-5 p-2 mb-4">
-                <label for=" Allow duplication in results?">Allow duplication in results? :</label>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="duplication" id="duplication"
-                    formControlName="duplication" value="yes">
-                  <label class="form-check-label ml-2" for="duplication"> Yes</label>
+      <div class="row mb-3 d-flex flex-md-row-reverse">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">Random Number Generator</div>
+            <div class="card-body example-items-col">
+              <form [formGroup]="calculeFormRandomN" (ngSubmit)="CalculateRandomNumberComprehensive()">
+                <small class="text-danger" *ngIf="submitted">{{error}}</small>
+                <div class="mb-4">
+                  <label for="Lower Limit">Lower Limit</label>
+                  <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                    placeholder="Lower Limit" formControlName="lowerLimit">
+                  <small class="text-danger" *ngIf="submitted && formRandomN.lowerLimit.errors?.required">Lower
+                    Limit is
+                    required.
+                    !</small>
                 </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="duplication" id="duplication"
-                    formControlName="duplication" value="no">
-                  <label class="form-check-label ml-2" for="duplication"> No</label>
+                <div class="my-4">
+                  <label for="Upper Limit">Upper Limit</label>
+                  <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                    placeholder="Upper Limit" formControlName="upperLimit">
+                  <small class="text-danger" *ngIf="submitted && formRandomN.upperLimit.errors?.required">Upper
+                    Limit is
+                    required.
+                    !</small>
                 </div>
-              </div>
+                <div class="my-4">
+                  <label for="numbers generat">Numbre of numbers generat</label>
+                  <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                    placeholder="Numbre of numbers generat" formControlName="genreteNumbers" [(ngModel)]="t">
+                  <small class="text-danger" *ngIf="submitted && formRandomN.genreteNumbers.errors?.required">Upper
+                    Limit is
+                    required.
+                    !</small>
+                </div>
+                <div *ngIf="t > 1">
+                  <div class="radio d-flex d-flex justify-content-between border rounded border-shadow mx-5 p-2 mb-4">
+                    <label for=" Allow duplication in results?">Allow duplication in results? :</label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="duplication" id="duplication"
+                        formControlName="duplication" value="yes">
+                      <label class="form-check-label ml-2" for="duplication"> Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="duplication" id="duplication"
+                        formControlName="duplication" value="no">
+                      <label class="form-check-label ml-2" for="duplication"> No</label>
+                    </div>
+                  </div>
 
-              <div class="radio d-flex d-flex justify-content-between border rounded border-shadow mx-5 p-2 mb-4">
-                <label for="Sort the results?">Sort the results?</label>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sortNumber" id="sortResult" value="ascend"
-                    formControlName="sortNumber">
-                  <label class="form-check-label ml-2" for="sortResult">Ascend</label>
+                  <div class="radio d-flex d-flex justify-content-between border rounded border-shadow mx-5 p-2 mb-4">
+                    <label for="Sort the results?">Sort the results?</label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="sortNumber" id="sortResult" value="ascend"
+                        formControlName="sortNumber">
+                      <label class="form-check-label ml-2" for="sortResult">Ascend</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="sortNumber" id="sortResult" value="descend"
+                        formControlName="sortNumber">
+                      <label class="form-check-label ml-2" for="sortResult">Descend</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="sortNumber" id="sortResult" value="No"
+                        formControlName="sortNumber">
+                      <label class="form-check-label ml-2" for="sortResult">No</label>
+                    </div>
+                  </div>
+                  <div class="radio d-flex d-flex justify-content-between border rounded border-shadow mx-5 p-2 mb-4">
+                    <label for="Sort results?">Type of result to generate?</label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="typeNumber" id="typeResult"
+                        formControlName="typeNumber" value="integer">
+                      <label class="form-check-label ml-2" for="typeResult">Integer</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="typeNumber" id="typeResult"
+                        formControlName="typeNumber" value="decimal">
+                      <label class="form-check-label ml-2" for="typeResult">Decimal</label>
+                    </div>
+                  </div>
                 </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sortNumber" id="sortResult" value="descend"
-                    formControlName="sortNumber">
-                  <label class="form-check-label ml-2" for="sortResult">Descend</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sortNumber" id="sortResult" value="No"
-                    formControlName="sortNumber">
-                  <label class="form-check-label ml-2" for="sortResult">No</label>
-                </div>
-              </div>
-              <div class="radio d-flex d-flex justify-content-between border rounded border-shadow mx-5 p-2 mb-4">
-                <label for="Sort results?">Type of result to generate?</label>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="typeNumber" id="typeResult"
-                    formControlName="typeNumber" value="integer">
-                  <label class="form-check-label ml-2" for="typeResult">Integer</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="typeNumber" id="typeResult"
-                    formControlName="typeNumber" value="decimal">
-                  <label class="form-check-label ml-2" for="typeResult">Decimal</label>
-                </div>
-              </div>
-              <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
-            </form>
+                <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+              </form>
+            </div>
           </div>
+        </div>
+        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
+          <h6 class="text-secondary text-center">Result of Random Number Generator</h6>
+          <div *ngFor="let e of generateNumbers">
+            {{e}}
+          </div>
+          <h4 class="text-secondary text-center" *ngIf="generatedN != null">{{generatedN}} </h4>
         </div>
       </div>
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 24px;">Learn About Random Number

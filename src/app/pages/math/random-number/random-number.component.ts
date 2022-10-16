@@ -11,6 +11,8 @@ export class RandomNumberComponent implements OnInit {
   calculeFormRandomN!: UntypedFormGroup;
   generatedNumber!: number;
   generatedN!: number;
+  lenghtGenreteNumbers!: any;
+  t: number = 1;
   error!: string;
   submitted: boolean = false;
   generateNumbers: Array<number> = [];
@@ -23,13 +25,14 @@ export class RandomNumberComponent implements OnInit {
       lowerLimit: new UntypedFormControl("", [Validators.required]),
       upperLimit: new UntypedFormControl("", [Validators.required]),
       genreteNumbers: new UntypedFormControl(""),
-      duplication: new UntypedFormControl(""),
-      sortNumber: new UntypedFormControl(""),
-      typeNumber: new UntypedFormControl(""),
+      duplication: new UntypedFormControl("no"),
+      sortNumber: new UntypedFormControl("ascend"),
+      typeNumber: new UntypedFormControl("integer"),
     });
   }
 
   ngOnInit(): void {
+
   }
   get formRandomNumber() { return this.calculeFormRandomNum.controls; }
   get formRandomN() { return this.calculeFormRandomN.controls; }
@@ -52,99 +55,247 @@ export class RandomNumberComponent implements OnInit {
       this.error = "The lower limit value needs to be smaller than the upper limit value.";
     }
   }
-  public CalculateRandomNumber2() {
+  public CalculateRandomNumberComprehensive() {
+    this.generateNumbers = [];
     this.submitted = true;
-    if (this.calculeFormRandomN.valid) {
-      // if (this.calculeFormRandomN.value.upperLimit >= this.calculeFormRandomN.value.lowerLimit) {
-      //   this.error = '';
-      //   // find diff
-      //   let difference = this.calculeFormRandomN.value.lowerLimit - this.calculeFormRandomN.value.upperLimit;
-      //   // generate random number 
-      //   this.generatedN = Math.random();
-      //   // multiply with difference 
-      //   this.generatedN = Math.floor(this.generatedN * difference);
-      //   // add with min value 
-      //   this.generatedN = this.generatedN + this.calculeFormRandomN.value.upperLimit;
-      //   // this.generatedNumber = ( this.calculeFormRandomNum.value.upperLimit, this.calculeFormRandomNum.value.lowerLimit) => Math.floor(Math.random() * (this.calculeFormRandomNum.value.lowerLimit - this.calculeFormRandomNum.value.upperLimit)) + this.calculeFormRandomNum.value.upperLimit;
-      // }
-      // if (this.calculeFormRandomNum.value.upperLimit < this.calculeFormRandomNum.value.lowerLimit) {
-      //   this.error = "The lower limit value needs to be smaller than the upper limit value.";
-      // }
-      if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "integer") {
-        this.generateNumbers = Array.from({ length: this.calculeFormRandomN.value.upperLimit }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.genreteNumbers));
-        this.generateNumbers.sort(function (a, b) {
-          return a - b;
-        });
+    if (this.calculeFormRandomN.valid)
+      this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+    for (let i = 0; i < this.lenghtGenreteNumbers; i++) {
+      // check Type of result to generate if integer or decimal 
+      let numberGenerated: number;
+      if (this.calculeFormRandomN.value.typeNumber == "integer") {
+        numberGenerated = Math.floor(Math.random() * this.calculeFormRandomN.value.upperLimit);
+      } else {
+        numberGenerated = Math.random() * this.calculeFormRandomN.value.upperLimit;
       }
-      if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "decimal") {
-        this.generateNumbers = Array.from({ length: this.calculeFormRandomN.value.upperLimit }, () => Math.random() * this.calculeFormRandomN.value.genreteNumbers);
-        this.generateNumbers.sort(function (a, b) {
-          return a - b;
-        });
-      }
-      if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "integer") {
-        this.generateNumbers = Array.from({ length: this.calculeFormRandomN.value.upperLimit }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.genreteNumbers));
-      }
-      if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "decimal") {
-        this.generateNumbers = Array.from({ length: this.calculeFormRandomN.value.upperLimit }, () => Math.random() * this.calculeFormRandomN.value.genreteNumbers);
-      }
-      if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "integer") {
-        this.generateNumbers = Array.from({ length: this.calculeFormRandomN.value.upperLimit }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.genreteNumbers));
-        this.generateNumbers.sort(function (a, b) {
-          return b - a;
-        });
-      }
-      if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "decimal") {
-        this.generateNumbers = Array.from({ length: this.calculeFormRandomN.value.upperLimit }, () => Math.random() * this.calculeFormRandomN.value.genreteNumbers);
-        this.generateNumbers.sort(function (a, b) {
-          return b - a;
-        });
-      }
-      if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "integer") {
-        let nums: any = new Set();
-        while (nums.size < this.calculeFormRandomN.value.upperLimit) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
-        this.generateNumbers = Array.from(nums),
-          this.generateNumbers.sort(function (a, b) {
-            return a - b;
-          });
-      }
-      if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "decimal") {
-        let nums: any = new Set();
-        while (nums.size < this.calculeFormRandomN.value.upperLimit) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
-        this.generateNumbers = Array.from(nums),
-          this.generateNumbers.sort(function (a, b) {
-            return a - b;
-          });
-      }
-      if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "integer") {
-        let nums: any = new Set();
-        while (nums.size < this.calculeFormRandomN.value.upperLimit) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
-        this.generateNumbers = Array.from(nums),
-          this.generateNumbers.sort(function (a, b) {
-            return b - a;
-          });
-      }
-      if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "decimal") {
-        let nums: any = new Set();
-        while (nums.size < this.calculeFormRandomN.value.upperLimit) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
-        this.generateNumbers = Array.from(nums),
-          this.generateNumbers.sort(function (a, b) {
-            return b - a;
-          });
 
+      // check if Allow duplication in results 
+      if (this.calculeFormRandomN.value.duplication == 'no') {
+        let checkIfNumberInArray = this.generateNumbers.filter(x => x == numberGenerated);
+
+        if (checkIfNumberInArray.length == 0) {
+          this.generateNumbers.push(numberGenerated);
+        } else {
+          i--;
+        }
+      } else {
+        this.generateNumbers.push(numberGenerated);
       }
-      if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "integer") {
-        let nums: any = new Set();
-        while (nums.size < this.calculeFormRandomN.value.upperLimit) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
-        this.generateNumbers = nums,
-          this.generateNumbers;
-      }
-      if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "decimal") {
-        let nums: any = new Set();
-        while (nums.size < this.calculeFormRandomN.value.upperLimit) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
-        this.generateNumbers = Array.from(nums),
-          this.generateNumbers;
+    }
+
+    // check if ascend or desend or no
+    if (this.calculeFormRandomN.value.sortNumber != "No") {
+      if (this.calculeFormRandomN.value.sortNumber == "ascend") {
+        this.generateNumbers.sort(function (a, b) {
+          return a - b;
+        });
+      } else {
+        this.generateNumbers.sort(function (a, b) {
+          return b - a;
+        });
       }
     }
   }
+  // public CalculateRandomNumberComprehensivehh() {
+  //   this.submitted = true;
+  //   if (this.calculeFormRandomN.valid) {
+  //     if (this.t = 1) {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
+  //       this.generateNumbers = nums,
+  //         this.generateNumbers;
+  //     } else {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
+  //       this.generateNumbers = nums,
+  //         this.generateNumbers;
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers != '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.upperLimit));
+  //       this.generateNumbers.sort(function (a, b) {
+  //         return a - b;
+  //       });
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers === '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.upperLimit));
+  //       this.generateNumbers.sort(function (a, b) {
+  //         return a - b;
+  //       });
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers != '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.random() * this.calculeFormRandomN.value.upperLimit);
+  //       this.generateNumbers.sort(function (a, b) {
+  //         return a - b;
+  //       });
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers === '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.random() * this.calculeFormRandomN.value.upperLimit);
+  //       this.generateNumbers.sort(function (a, b) {
+  //         return a - b;
+  //       });
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers != '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.upperLimit));
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers === '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.upperLimit));
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers != '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.random() * this.calculeFormRandomN.value.upperLimit);
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers === '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.random() * this.calculeFormRandomN.value.upperLimit);
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers != '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.upperLimit));
+  //       this.generateNumbers.sort(function (a, b) {
+  //         return b - a;
+  //       });
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers === '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.floor(Math.random() * this.calculeFormRandomN.value.upperLimit));
+  //       this.generateNumbers.sort(function (a, b) {
+  //         return b - a;
+  //       });
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers != '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.random() * this.calculeFormRandomN.value.upperLimit);
+  //       this.generateNumbers.sort(function (a, b) {
+  //         return b - a;
+  //       });
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "yes" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers === '') {
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       this.generateNumbers = Array.from({ length: this.lenghtGenreteNumbers }, () => Math.random() * this.calculeFormRandomN.value.upperLimit);
+  //       this.generateNumbers.sort(function (a, b) {
+  //         return b - a;
+  //       });
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers != '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers.sort(function (a, b) {
+  //           return a - b;
+  //         });
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers === '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers.sort(function (a, b) {
+  //           return a - b;
+  //         });
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers != '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers.sort(function (a, b) {
+  //           return a - b;
+  //         });
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "ascend" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers === '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers.sort(function (a, b) {
+  //           return a - b;
+  //         });
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers != '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers.sort(function (a, b) {
+  //           return b - a;
+  //         });
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers === '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers.sort(function (a, b) {
+  //           return b - a;
+  //         });
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers != '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers.sort(function (a, b) {
+  //           return b - a;
+  //         });
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "descend" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers === '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers.sort(function (a, b) {
+  //           return b - a;
+  //         });
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers != '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
+  //       this.generateNumbers = nums,
+  //         this.generateNumbers;
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "integer" && this.lenghtGenreteNumbers === '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.floor(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1)); }
+  //       this.generateNumbers = nums,
+  //         this.generateNumbers;
+  //     }
+
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers != '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers;
+  //     }
+  //     if (this.calculeFormRandomN.value.duplication === "no" && this.calculeFormRandomN.value.sortNumber === "No" && this.calculeFormRandomN.value.typeNumber === "decimal" && this.lenghtGenreteNumbers === '') {
+  //       let nums: any = new Set();
+  //       this.lenghtGenreteNumbers = this.calculeFormRandomN.value.upperLimit;
+  //       while (nums.size < this.lenghtGenreteNumbers) { nums.add(Math.random() * (this.calculeFormRandomN.value.upperLimit - 1 + 1) + 1); }
+  //       this.generateNumbers = Array.from(nums),
+  //         this.generateNumbers;
+  //     }
+  //   }
+  // }
 }
