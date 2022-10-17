@@ -4,9 +4,9 @@
       <div class="row">
         <div class="col-12 px-0 mx-0">
           <h1 class="text-secondary text-center mb-3 px-2">Date calculator</h1>
-          <div class="flexMobile">
+          <!-- <div class="flexMobile">
             <app-banner *ngIf="envirement"></app-banner>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="row mb-4 d-flex justify-content-center">
@@ -139,10 +139,9 @@
             <app-banner *ngIf="envirement"></app-banner>
           </div> -->
           <div class="col-12 my-3 px-0" *ngIf="showResultAddOrSubtract">
-            <div class="border shadow bg-white p-4">
-              <div class="col-md-5 mx-auto px-0">
-                <input type="date" class="form-control my-3" name='result' value="{{ resultAddOrSubtract | date: 'yyyy-MM-dd'}}"
-                id="newdate">
+            <div class="border shadow bg-white p-2">
+              <div class="col-md-5 d-flex justify-content-center px-0">
+                <input type="date" class=" my-3" name='result' value="{{ resultAddOrSubtract | date: 'yyyy-MM-dd'}}" style="padding: 5px;">
               </div>
               <p>The result is: <em>{{resultAddOrSubtract | date:'fullDate'}}</em></p>
               <p>
