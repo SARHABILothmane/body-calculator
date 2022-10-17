@@ -25,7 +25,7 @@
                 <div>
                   <label for="Start date">Start date</label>
                   <input placeholder="Start date" class="form-control" formControlName="startDate"
-                    [nbDatepicker]="birthdayTimePicker">
+                    [nbDatepicker]="birthdayTimePicker" readonly>
                   <small class="text-danger" *ngIf="submitted && formDate.startDate.errors?.required">Start date is
                     required.
                     !</small>
@@ -34,7 +34,7 @@
                 <div>
                   <label class="mt-3" for="Date end">End date</label>
                   <input class="form-control" placeholder="End date" formControlName="dateEnd"
-                    [nbDatepicker]="todayTimePicker">
+                    [nbDatepicker]="todayTimePicker" readonly>
                   <small class="text-danger" *ngIf="submitted && formDate.dateEnd.errors?.required"> End date is
                     required.
                     !</small>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="col-md-5 col-8 pr-0">
                       <input class="form-control" placeholder="Start date" formControlName="addSubDate"
-                        [nbDatepicker]="addSubDateTimePicker">
+                        [nbDatepicker]="addSubDateTimePicker" readonly>
                       <nb-datepicker [startView]="'year'" #addSubDateTimePicker></nb-datepicker>
                     </div>
                   </div>
@@ -138,8 +138,12 @@
           <!-- <div class="col-12">
             <app-banner *ngIf="envirement"></app-banner>
           </div> -->
-          <div class="col-12 my-3" *ngIf="showResultAddOrSubtract">
+          <div class="col-12 my-3 px-0" *ngIf="showResultAddOrSubtract">
             <div class="border shadow bg-white p-4">
+              <div class="col-md-5 mx-auto px-0">
+                <input type="date" class="form-control my-3" name='result' value="{{ resultAddOrSubtract | date: 'yyyy-MM-dd'}}"
+                id="newdate">
+              </div>
               <p>The result is: <em>{{resultAddOrSubtract | date:'fullDate'}}</em></p>
               <p>
                 After add
