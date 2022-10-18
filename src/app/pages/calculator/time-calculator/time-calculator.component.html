@@ -1,15 +1,102 @@
 <nb-layout>
   <nb-layout-column style="display: flex;">
     <div class="container d-fle align-items-center justify-content-center">
-      <div class="row mb-5">
-        <div class="col-md-12">
-          <div class="text-center mb-5 pb-3 mt-4 pt-5">
-            <!-- <p class="text-uppercase mb-0 pres">Vous etes prêt à apprendre ?</p> -->
-            <h1 class="text-secondary text-center">Time Calculator</h1>
+      <div class="text-center mb-2  mt-4 ">
+        <!-- <p class="text-uppercase mb-0 pres">Vous etes prêt à apprendre ?</p> -->
+        <h1 class="text-secondary text-center">Time Calculator</h1>
+      </div>
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">
+              <h2 class="text-white">Time Calculator</h2>
+            </div>
+            <div class="card-body example-items-col">
+              <form [formGroup]="calculeAddOrSubTime" (ngSubmit)="AddOrSubTime(target)">
+                <div class="row my-2">
+                  <label for="Start date">Start time</label>
+                  <input placeholder="Start Time" class="form-control" formControlName="startTime"
+                    [nbDatepicker]="startTimePicker" readonly>
+                  <nb-datepicker [startView]="'year'" #startTimePicker></nb-datepicker>
+                </div>
+               
+                <div class="row my-3" style="flex-direction: row-reverse;">
+                  <div class="col-3 pl-2 pr-2"> <label for="Date end">Second</label>
+                    <input class="form-control" type="number" placeholder="second" formControlName="second">
+                  </div>
+                  <div class="col-3 pl-2 pr-2"><label for="Date end">Minute</label>
+                    <input class="form-control" type="number" placeholder="minute" formControlName="minute">
+                  </div>
+                  <div class="col-3 pl-2 pr-2"><label for="Date end">Hour</label>
+                    <input class="form-control" type="number" placeholder="hour" formControlName="hour">
+                  </div>
+                </div>
+                
+                <div class="d-flex justify-content-center">
+                  <div class="mt-4"><label for="Date end">Add or Subtract :</label></div>
+                  <div class="col-3 mt-3  mb-3">
+                    <nb-select placeholder="Select" status="basic" shape="semi-round"
+                      (selectedChange)="changeSelectedOption($event)" selected="add" required>
+                      <nb-option value="add">+</nb-option>
+                      <nb-option value="substract">_</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+
+                <div class="row my-3">
+                  <div class="col-3 pl-2 pr-2">
+                    <label for="Date end">Day</label>
+                    <input class="form-control" type="number" placeholder="Day" formControlName="rsltDay">
+                  </div>
+                  <div class="col-3 pl-2 pr-2">
+                    <label for="Date end">Hour</label>
+                    <input class="form-control" type="number" placeholder="Hour" formControlName="rsltHour">
+                  </div>
+                  <div class="col-3 pl-2 pr-2">
+                    <label for="Date end">Minute</label>
+                    <input class="form-control" type="number" placeholder="Minute" formControlName="rsltMinute">
+                  </div>
+                  <div class="col-3 pl-2 pr-2">
+                    <label for="Date end">Second</label>
+                    <input class="form-control" type="number" placeholder="Second" formControlName="rsltSecond">
+                  </div>
+                </div>
+                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="col-md-5">
-          <img src="../../../../assets/images/time_management.svg" width="90%" height="80%" alt="">
+        <span #target style="position: relative; top: 200px;"></span>
+ 
+        <div class="d-flex align-items-center col-md-6 w-100 my-3 offset-md-3 px-3" *ngIf="resultTimeSecondCalculator">
+            <div class="border shadow bg-white p-2 mx-auto" style="height:200px ;">
+
+              <div class="my-2">
+                <p class="text-secondary bolder d-block">The result after add <em>{{this.calculeAddOrSubTime.value.rsltDay}}</em> day(s), <em>{{this.calculeAddOrSubTime.value.rsltHour}}</em> hour(s), 
+                <em>{{this.calculeAddOrSubTime.value.rsltMinute}}</em> minut(s) and <em>{{this.calculeAddOrSubTime.value.rsltSecond}}</em> second(s): 
+                </p>
+                <p class="font-weight-bold d-block">
+                <em>{{resultTimeSecondCalculator | date:'MMM d, y, HH:mm:ss'}}</em>
+                </p>
+              </div>
+              <div class="col-md-6 mx-auto">
+                <input type="date" class="form-control inputTime my-3" name='result' value="{{ resultTimeSecondCalculator | date: 'yyyy-MM-dd'}}"
+                id="newdate" >
+                <!-- style="border-color:var(--primary); border-radius: 5px; padding: 6px;" -->
+              </div>
+            </div>
+        </div>
+
+      </div>
+    
+
+      <!--------------------------------------------------------------------------------
+        -------------------------------- second calculator------------------------------
+      --------------------------------------------------------------------------------->
+      <div class="row mt-5">
+        <div class="col-md-5 d-flex justify-content-center">
+          <img src="../../../../assets/images/time_management.svg" width="90%" height="80%" alt="time calculator">
         </div>
         <div class="col-md-7">
           <div class="card">
@@ -17,22 +104,22 @@
               <h2 class="text-white">Time Calculator</h2>
             </div>
             <div class="card-body example-items-col">
-              <form [formGroup]="calculeTime" (ngSubmit)="CalculateTime(target)">
+              <form [formGroup]="calculeTime" (ngSubmit)="CalculateTime()">
                 <div class="row my-2">
                   <div class="col-3 pl-2 pr-2"><label for="Date end">Day</label>
-                    <input class="form-control" type="number" placeholder="day" formControlName="day">
+                    <input class="form-control" type="number" placeholder="Day" formControlName="day">
                   </div>
                   <div class="col-3 pl-2 pr-2"><label for="Date end">Hour</label>
-                    <input class="form-control" type="number" placeholder="hour" formControlName="hour">
+                    <input class="form-control" type="number" placeholder="Hour" formControlName="hour">
                   </div>
                   <div class="col-3 pl-2 pr-2"><label for="Date end">Minute</label>
-                    <input class="form-control" type="number" placeholder="minute" formControlName="minute">
+                    <input class="form-control" type="number" placeholder="Minute" formControlName="minute">
                   </div>
                   <div class="col-3 pl-2 pr-2"> <label for="Date end">Second</label>
-                    <input class="form-control" type="number" placeholder="second" formControlName="second">
+                    <input class="form-control" type="number" placeholder="Second" formControlName="second">
                   </div>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-center">
                   <div class="mt-4"><label for="Date end">Add or Subtract :</label></div>
                   <div class="col-3 mt-3  mb-3">
                     <nb-select placeholder="Select" status="basic" shape="semi-round"
@@ -56,6 +143,9 @@
                     <input class="form-control" type="number" placeholder="Second" formControlName="secondAddSub">
                   </div>
                 </div>
+               
+                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
+
                 <p class="text-center">Result</p>
                 <div class="row my-3">
                   <div class="col-3 pl-2 pr-2">
@@ -75,116 +165,8 @@
                       [(ngModel)]="modelsTime.second">
                   </div>
                 </div>
-                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
               </form>
             </div>
-          </div>
-        </div>
-        <div class="col-6 mx-auto">
-          <!--  -->
-          <div class="d-flex justify-content-between my-2">
-            <h6 class="text-secondary bolder">The healthy weight range for the height is:</h6>
-          </div>
-          <p class="bmi"> kgs - kgs</p>
-          <!--  -->
-        </div>
-        <div #target></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="text-center mb-5 pb-3 mt-4 pt-4">
-            <!-- <p class="text-uppercase mb-0 pres">Vous etes prêt à apprendre ?</p> -->
-            <h1 class="text-secondary text-center">Time Calculator</h1>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">
-              <h2 class="text-white">Time Calculator</h2>
-            </div>
-            <div class="card-body example-items-col">
-              <form [formGroup]="calculeAddOrSubTime" (ngSubmit)="AddOrSubTime(target)">
-                <!-- <div class="row my-2">
-                  <div class="col-3 pl-2 pr-2"><label for="Date end">Day</label>
-                    <input class="form-control"type="number" placeholder="day" formControlName="day">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="Date end">Hour</label>
-                    <input class="form-control"type="number" placeholder="hour" formControlName="hour">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="Date end">Minute</label>
-                    <input class="form-control"type="number" placeholder="minute" formControlName="minute">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"> <label for="Date end">Second</label>
-                    <input class="form-control"type="number" placeholder="second" formControlName="second">
-                  </div>
-                </div> -->
-                <div class="row my-2">
-                  <label for="Start date">Start date</label>
-                  <input placeholder="Start Time" class="form-control" formControlName="startTime"
-                    [nbDatepicker]="startTimePicker">
-                  <!-- <small class="text-danger" *ngIf="submitted && formDate.startDate.errors?.required">Start date is
-                    required.
-                    !</small> -->
-                  <nb-datepicker [startView]="'year'" #startTimePicker></nb-datepicker>
-                </div>
-                <div class="d-flex justify-content-end">
-                  <div class="mt-4"><label for="Date end">Add or Subtract :</label></div>
-                  <div class="col-3 mt-3  mb-3">
-                    <nb-select placeholder="Select" status="basic" shape="semi-round"
-                      (selectedChange)="AddOrSubTime($event)" selected="add" required>
-                      <nb-option value="add">+</nb-option>
-                      <nb-option value="substract">_</nb-option>
-                    </nb-select>
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <!-- <div class="col-3 pl-2 pr-2"><label for="Day">Day</label>
-                    <input class="form-control" type="number" placeholder="Day" formControlName="dayAddSub">
-                  </div> -->
-                  <div class="col-3 pl-2 pr-2"><label for="Date end">Hour</label>
-                    <input class="form-control" type="number" placeholder="hour" formControlName="hour">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="Date end">Minute</label>
-                    <input class="form-control" type="number" placeholder="minute" formControlName="minute">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"> <label for="Date end">Second</label>
-                    <input class="form-control" type="number" placeholder="second" formControlName="second">
-                  </div>
-                </div>
-                <p class="text-center">Result</p>
-                <div class="row my-3">
-                  <!-- <div class="col-3 pl-2 pr-2">
-                    <input class="form-control" type="number" placeholder="day" formControlName="rsltDay"
-                      [(ngModel)]="modelsTime.day">
-                  </div> -->
-                  <div class="col-3 pl-2 pr-2">
-                    <input class="form-control" type="number" placeholder="hour" formControlName="rsltHour"
-                      [(ngModel)]="modelsAddOrSubTime.hour">
-                  </div>
-                  <div class="col-3 pl-2 pr-2">
-                    <input class="form-control" type="number" placeholder="minute" formControlName="rsltMinute"
-                      [(ngModel)]="modelsAddOrSubTime.minute">
-                  </div>
-                  <div class="col-3 pl-2 pr-2">
-                    <input class="form-control" type="number" placeholder="second" formControlName="rsltSecond"
-                      [(ngModel)]="modelsAddOrSubTime.second">
-                  </div>
-                </div>
-                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="col-6 mx-auto">
-            <!--  -->
-            <div class="d-flex justify-content-between my-2">
-              <h6 class="text-secondary bolder">The healthy weight range for the height is:</h6>
-            </div>
-            <input type="date" class="form-control my-3" name='result' value="{{ selectedDay | date: 'yyyy-MM-dd'}}"
-              id="newdate">
-            <p class="bmi"> kgs - kgs</p>
-            <!--  -->
           </div>
         </div>
         <div #target></div>

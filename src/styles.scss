@@ -41,7 +41,7 @@ p{
   color: var(--primary);
 }
 
-.form-control{
+.form-control:not(.inputTime){
   color: #222b45 !important;
   font-size: 0.9375rem !important;
   font-weight: 600 !important;

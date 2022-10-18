@@ -14,6 +14,7 @@ export class RandomNumberComponent implements OnInit {
   lenghtGenreteNumbers!: any;
   t: number = 1;
   error!: string;
+  errorSecondGnerator!: string;
   submitted: boolean = false;
   generateNumbers: Array<number> = [];
   constructor() {
@@ -46,7 +47,7 @@ export class RandomNumberComponent implements OnInit {
       // generate random number 
       this.generatedNumber = Math.random();
       // multiply with difference 
-      this.generatedNumber = Math.floor(this.generatedNumber * difference);
+      this.generatedNumber = Math.round(this.generatedNumber * difference);
       // add with min value 
       this.generatedNumber = this.generatedNumber + this.calculeFormRandomNum.value.upperLimit;
       // this.generatedNumber = ( this.calculeFormRandomNum.value.upperLimit, this.calculeFormRandomNum.value.lowerLimit) => Math.floor(Math.random() * (this.calculeFormRandomNum.value.lowerLimit - this.calculeFormRandomNum.value.upperLimit)) + this.calculeFormRandomNum.value.upperLimit;
@@ -57,42 +58,51 @@ export class RandomNumberComponent implements OnInit {
   }
   public CalculateRandomNumberComprehensive() {
     this.generateNumbers = [];
+    this.errorSecondGnerator = "";
     this.submitted = true;
-    if (this.calculeFormRandomN.valid)
-      this.lenghtGenreteNumbers = this.calculeFormRandomN.value.genreteNumbers;
-    for (let i = 0; i < this.lenghtGenreteNumbers; i++) {
-      // check Type of result to generate if integer or decimal 
-      let numberGenerated: number;
-      if (this.calculeFormRandomN.value.typeNumber == "integer") {
-        numberGenerated = Math.floor(Math.random() * this.calculeFormRandomN.value.upperLimit);
-      } else {
-        numberGenerated = Math.random() * this.calculeFormRandomN.value.upperLimit;
+    if (this.calculeFormRandomN.valid){
+      let difference = this.calculeFormRandomN.value.upperLimit - this.calculeFormRandomN.value.lowerLimit;
+
+      if(this.calculeFormRandomN.value.duplication == 'no' && difference < this.calculeFormRandomN.value.genreteNumbers)
+      {
+         this.errorSecondGnerator = "Please enter number of numbers generator less than difference between (upper limit - lower limit)"
+        return
       }
-
-      // check if Allow duplication in results 
-      if (this.calculeFormRandomN.value.duplication == 'no') {
-        let checkIfNumberInArray = this.generateNumbers.filter(x => x == numberGenerated);
-
-        if (checkIfNumberInArray.length == 0) {
-          this.generateNumbers.push(numberGenerated);
+      for (let i = 0; i < this.calculeFormRandomN.value.genreteNumbers; i++) {
+        // check Type of result to generate if integer or decimal 
+        let numberGenerated: number;
+        // console.log(', difference', difference);
+        
+        if (this.calculeFormRandomN.value.typeNumber == "integer") {
+          numberGenerated = Math.round(Math.random() * difference) + this.calculeFormRandomN.value.lowerLimit;
         } else {
-          i--;
+          numberGenerated = (Math.random() * difference) + this.calculeFormRandomN.value.lowerLimit;
         }
-      } else {
-        this.generateNumbers.push(numberGenerated);
-      }
-    }
 
-    // check if ascend or desend or no
-    if (this.calculeFormRandomN.value.sortNumber != "No") {
-      if (this.calculeFormRandomN.value.sortNumber == "ascend") {
-        this.generateNumbers.sort(function (a, b) {
-          return a - b;
-        });
-      } else {
-        this.generateNumbers.sort(function (a, b) {
-          return b - a;
-        });
+        // check if Allow duplication in results 
+        if (this.calculeFormRandomN.value.duplication == 'no') {
+          let checkIfNumberInArray = this.generateNumbers.filter(x => x == numberGenerated);
+          if (checkIfNumberInArray.length == 0) {
+            this.generateNumbers.push(numberGenerated);
+          } else {
+            i--;
+          }
+        } else {
+          this.generateNumbers.push(numberGenerated);
+        }
+      }
+
+      // check if ascend or desend or no
+      if (this.calculeFormRandomN.value.sortNumber != "No") {
+        if (this.calculeFormRandomN.value.sortNumber == "ascend") {
+          this.generateNumbers.sort(function (a, b) {
+            return a - b;
+          });
+        } else {
+          this.generateNumbers.sort(function (a, b) {
+            return b - a;
+          });
+        }
       }
     }
   }

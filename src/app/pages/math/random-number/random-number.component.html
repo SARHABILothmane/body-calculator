@@ -14,7 +14,11 @@
             <div class="card-header text-white text-center font-weight-bold">Random Number Generator</div>
             <div class="card-body example-items-col">
               <form [formGroup]="calculeFormRandomNum" (ngSubmit)="CalculateRandomNumber()">
-                <small class="text-danger" *ngIf="submitted">{{error}}</small>
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
                 <div class="mb-4">
                   <label for="Lower Limit">Lower Limit</label>
                   <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
@@ -49,7 +53,11 @@
             <div class="card-header text-white text-center font-weight-bold">Random Number Generator</div>
             <div class="card-body example-items-col">
               <form [formGroup]="calculeFormRandomN" (ngSubmit)="CalculateRandomNumberComprehensive()">
-                <small class="text-danger" *ngIf="submitted">{{error}}</small>
+                <div *ngIf="errorSecondGnerator" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{errorSecondGnerator}}
+                  </span>
+                </div>
                 <div class="mb-4">
                   <label for="Lower Limit">Lower Limit</label>
                   <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
@@ -69,7 +77,7 @@
                     !</small>
                 </div>
                 <div class="my-4">
-                  <label for="numbers generat">Numbre of numbers generat</label>
+                  <label for="numbers generat">Number of numbers generat</label>
                   <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
                     placeholder="Numbre of numbers generat" formControlName="genreteNumbers" [(ngModel)]="t">
                   <small class="text-danger" *ngIf="submitted && formRandomN.genreteNumbers.errors?.required">Upper

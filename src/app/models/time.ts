@@ -1,6 +1,6 @@
 export class Time {
-    day!: number;
-    hour!: number;
-    minute!: number;
-    second!: number;
+    day!: string;
+    hour!: string;
+    minute!: string;
+    second!: string;
 }
