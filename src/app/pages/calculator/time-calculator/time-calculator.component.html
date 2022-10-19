@@ -15,8 +15,8 @@
             <div class="card-body example-items-col">
               <form [formGroup]="calculeAddOrSubTime" (ngSubmit)="AddOrSubTime(target)">
                 <div class="row my-2">
-                  <label for="Start date">Start time</label>
-                  <input placeholder="Start Time" class="form-control" formControlName="startTime"
+                  <label for="startTime">Start time</label>
+                  <input placeholder="Start Time" id="startTime" class="form-control" formControlName="startTime"
                     [nbDatepicker]="startTimePicker" readonly>
                   <nb-datepicker [startView]="'year'" #startTimePicker></nb-datepicker>
                 </div>

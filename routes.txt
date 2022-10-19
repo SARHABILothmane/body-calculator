@@ -1,6 +1,8 @@
+/calculators/.
 /calculators/date-calculator/.
 /calculators/age-calculator/.
 /calculators/time-calculator/.
+/health/.
 /health/bmi-calculator/.
 /health/bmi-calculator-women/.
 /health/bmi-calculator-men/.

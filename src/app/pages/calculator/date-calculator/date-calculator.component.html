@@ -1,9 +1,11 @@
 <nb-layout>
   <nb-layout-column>
     <div class="container">
+      <app-breadcrumbs [infoAndUrl]="{categorieUrl: 'calculators/.', nameCategorie: 'Time &amp; Date', namePage:'Date Calculator'}"></app-breadcrumbs>
+
       <div class="row">
         <div class="col-12 px-0 mx-0">
-          <h1 class="text-secondary text-center mb-3 px-2">Date calculator</h1>
+          <h1 class="text-secondary text-center mb-3 px-2">Date Calculator</h1>
           <div class="flexMobile">
             <app-banner *ngIf="envirement"></app-banner>
           </div>

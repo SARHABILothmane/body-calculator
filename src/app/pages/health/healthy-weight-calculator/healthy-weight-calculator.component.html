@@ -1,8 +1,10 @@
 <nb-layout>
   <nb-layout-column>
     <div class="container">
+      <app-breadcrumbs [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Healthy Weight Calculator'}"></app-breadcrumbs>
+
       <div class="col-12">
-        <h1 class="text-secondary text-center mb-3 px-2">Healthy weight calculator</h1>
+        <h1 class="text-secondary text-center mb-3 px-2">Healthy Weight Calculator</h1>
         <div class="flexMobile">
           <app-banner *ngIf="envirement"></app-banner>
         </div>
