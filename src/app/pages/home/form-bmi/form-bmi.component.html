@@ -3,136 +3,118 @@
     <div class="card">
       <div class="card-header text-white text-center font-weight-bold">BMI calculator</div>
       <div class="card-body example-items-col">
-        <nb-tabset (changeTab)="tabsSet($event)">
-          <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <button class="nav-link" (click)="tabsSet('Metric')"
+              [ngClass]="{'active' : switchTabs==='Metric' }">Metric</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" (click)="tabsSet('Imperial')"
+              [ngClass]="{'active' : switchTabs==='Imperial' }">Imperial</button>
+          </li>
+        </ul>
+        <div class="metric" *ngIf="switchTabs==='Metric'">
+          <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
             <span>
               {{error}}
             </span>
           </div>
-          <nb-tab class="metric" tabTitle="Metric">
-            <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
-              <span>
-                {{error}}
-              </span>
+          <form [formGroup]="calculeForm" (ngSubmit)="claculteBmi(target)">
+            <div class="mb-3">
+              <label for="Age">Age</label>
+              <input class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
+                placeholder="Age" [(ngModel)]="modelsBmi.age">
+              <small class="text-danger" *ngIf="submitted && formBmi['age'].errors?.['required']">Age is required.
+                !</small>
+              <small class="text-danger" *ngIf="submitted && formBmi['age'].errors?.['min']">Please provide an age
+                between 5
+                and
+                100.
+                !</small>
+              <small class="text-danger" *ngIf="submitted && formBmi['age'].errors?.['max']">Please provide an age
+                between 5 and 100.
+                !</small>
             </div>
-            <form [formGroup]="calculeForm" (ngSubmit)="claculteBmi(target)">
-              <!-- <div class="mb-3 d-flex justify-content-center">
-                <div class="d-flex flex-column">
-                  <nb-checkbox class="block" status="primary">Male</nb-checkbox>
-                  <p class="text-center mt-2">
-                    <i class="fa fa-male"></i>
-                  </p>
-                </div>
-                <div class="d-flex flex-column">
-                  <nb-checkbox status="success">Female</nb-checkbox>
-                  <p class="text-center mt-2">
-                    <i class="fa fa-female"></i>
-                  </p>
-                </div>
-              </div> -->
-              <div class="mb-3">
-                <label for="Age">Age</label>
-                <!-- <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon> -->
-                <input class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
-                  placeholder="Age" [(ngModel)]="modelsBmi.age">
-                <small class="text-danger" *ngIf="submitted && formBmi.age.errors?.required">Age is required.
-                  !</small>
-                <small class="text-danger" *ngIf="submitted && formBmi.age.errors?.min">Please provide an age between 5
-                  and
-                  100.
-                  !</small>
-                <small class="text-danger" *ngIf="submitted && formBmi.age.errors?.max">Please provide an age between 5
-                  and
-                  100.
-                  !</small>
-                <!-- <div *ngIf="calculeForm.controls['age'].hasError('max')">
-                  Minimum required number is 15.
-                </div> -->
-              </div>
-              <div class="mb-3">
-                <label for="Height">Height<em> : Cm</em></label>
-                <input class="form-control" type="number" nbInput formControlName="height" fullWidth status="basic"
-                  placeholder="cm" [(ngModel)]="modelsBmi.height">
-                <small class="text-danger" *ngIf="submitted && formBmi.height.errors?.required">Height is
-                  required !</small>
-              </div>
-              <div class="mb-3">
-                <label for="Weight">Weight <em> : Kg</em></label>
-                <input class="form-control" type="number" nbInput formControlName="weight" fullWidth status="basic"
-                  placeholder="kg" [(ngModel)]="modelsBmi.weight">
-                <small class="text-danger" *ngIf="submitted && formBmi.weight.errors?.required">Weight is
-                  required !</small>
-              </div>
-              <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
-            </form>
-          </nb-tab>
-          <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
+            <div class="mb-3">
+              <label for="Height">Height<em class="" *ngIf="modelsBmi.height"> : Cm</em></label>
+              <input class="form-control" type="number" nbInput formControlName="height" fullWidth status="basic"
+                placeholder="cm" [(ngModel)]="modelsBmi.height">
+              <small class="text-danger" *ngIf="submitted && formBmi['height'].errors?.['required']">Height is
+                required !</small>
+            </div>
+            <div class="mb-3">
+              <label for="Weight">Weight <em class="" *ngIf="modelsBmi.weight"> : Kg</em></label>
+              <input class="form-control" type="number" nbInput formControlName="weight" fullWidth status="basic"
+                placeholder="kg" [(ngModel)]="modelsBmi.weight">
+              <small class="text-danger" *ngIf="submitted && formBmi['weight'].errors?.['required']">Weight is
+                required !</small>
+            </div>
+            <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+          </form>
+        </div>
+        <div class="imperial" *ngIf="switchTabs==='Imperial'">
+          <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
             <span>
               {{error}}
             </span>
           </div>
-
-          <nb-tab class="imperial" tabTitle="Imperial">
-            <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
-              <span>
-                {{error}}
-              </span>
+          <form [formGroup]="calculeFormImperial" (ngSubmit)="claculteBmiImperiale(target)">
+            <div class="mb-3">
+              <label for="Age">Age</label>
+              <input class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
+                placeholder="Age" [(ngModel)]="modelsBmi.age">
+              <small class="text-danger" *ngIf="submitted && formBmiImeprial['age'].errors?.['required']">Age is
+                required.
+                !</small>
+              <small class="text-danger" *ngIf="submitted && formBmiImeprial['age'].errors?.['min']">Please provide an
+                age
+                between 5
+                and
+                100.
+                !</small>
+              <small class="text-danger" *ngIf="submitted && formBmiImeprial['age'].errors?.['max']">Please provide an
+                age
+                between 5
+                and
+                100.
+                !</small>
             </div>
-            <form [formGroup]="calculeFormImperial" (ngSubmit)="claculteBmiImperiale(target)">
-              <div class="mb-3">
-                <label for="Age">Age</label>
-                <!-- <nb-icon nbSuffix icon="at-outline" pack="eva"></nb-icon> -->
-                <input class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
-                  placeholder="Age" [(ngModel)]="modelsBmi.age">
-                <small class="text-danger" *ngIf="submitted && formBmiImeprial.age.errors?.required">Age is required.
-                  !</small>
-                <small class="text-danger" *ngIf="submitted && formBmiImeprial.age.errors?.min">Please provide an age
-                  between 5
-                  and
-                  100.
-                  !</small>
-                <small class="text-danger" *ngIf="submitted && formBmiImeprial.age.errors?.max">Please provide an age
-                  between 5
-                  and
-                  100.
-                  !</small>
-              </div>
-              <div class="mb-3 ">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <label for="Height">Height<em class=""> : Feet</em></label>
-                    <!-- <input type="number" nbInput formControlName="hFeet" fullWidth status="basic" placeholder="feet"
+            <div class="mb-3 ">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <label for="Height">Height<em class=""> : Feet</em></label>
+                  <!-- <input type="number" nbInput formControlName="hFeet" fullWidth status="basic" placeholder="feet"
                       [(ngModel)]="modelsBmi.heightImperial" (ngModelChange)="onChange($event)"> -->
-                    <input class="form-control" type="number" nbInput formControlName="hFeet" fullWidth status="basic"
-                      placeholder="feet" (value)="calculateHeightImperial(modelsBmi.heightImperial)"
-                      (ngModelChange)="onChange($event)">
-                    <small class="text-danger" *ngIf="submitted && formBmiImeprial.hFeet.errors?.required">Height of
-                      feet is
-                      required !
-                    </small>
-                  </div>
-                  <div class="">
-                    <label for="">Height<em class=""> : inches</em></label>
-                    <input class="form-control" type="number" nbInput formControlName="heightImperial" fullWidth
-                      status="basic" placeholder="inches">
-                    <small class="text-danger"
-                      *ngIf="submitted && formBmiImeprial.heightImperial.errors?.required">Height of inches is
-                      required !</small>
-                  </div>
+                  <input class="form-control" type="number" nbInput formControlName="hFeet" fullWidth status="basic"
+                    placeholder="feet" (value)="calculateHeightImperial(modelsBmi.heightImperial)">
+
+                  <small class="text-danger" *ngIf="submitted && formBmiImeprial['hFeet'].errors?.['required']">Height
+                    of
+                    feet is
+                    required !
+                  </small>
+                </div>
+                <div class="">
+                  <label for="">Height<em class=""> : inches</em></label>
+                  <input class="form-control" type="number" nbInput formControlName="heightImperial" fullWidth
+                    status="basic" placeholder="inches">
+                  <small class="text-danger"
+                    *ngIf="submitted && formBmiImeprial['heightImperial'].errors?.['required']">Height of inches is
+                    required !</small>
                 </div>
               </div>
+            </div>
 
-              <div class="mb-3">
-                <label for="Weight">Weight <em class="" *ngIf="modelsBmi.weightImperial"> : Pounds</em></label>
-                <input class="form-control" type="number" nbInput formControlName="weightImperial" fullWidth
-                  status="basic" placeholder="Pounds" [(ngModel)]="modelsBmi.weightImperial">
-                <small class="text-danger" *ngIf="submitted && formBmiImeprial.weightImperial.errors?.required">
-                  Weight is required !</small>
-              </div>
-              <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
-            </form>
-          </nb-tab>
-        </nb-tabset>
+            <div class="mb-3">
+              <label for="Weight">Weight <em class="" *ngIf="modelsBmi.weightImperial"> : Pounds</em></label>
+              <input class="form-control" type="number" nbInput formControlName="weightImperial" fullWidth
+                status="basic" placeholder="Pounds" [(ngModel)]="modelsBmi.weightImperial">
+              <small class="text-danger" *ngIf="submitted && formBmiImeprial['weightImperial'].errors?.['required']">
+                Weight is required !</small>
+            </div>
+            <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

@@ -30,6 +30,7 @@ export class FormBmiComponent implements OnInit {
     weightImperial: 0,
     heightImperial: 0,
   }
+  switchTabs: string = "Metric";
   // options: AnimationOptions = {
   //   path: '/assets/animations/symgery-body-icon.json',
   // };
@@ -59,7 +60,9 @@ export class FormBmiComponent implements OnInit {
   // };
   envirement: boolean = environment.production;
 
-  constructor() { }
+  constructor() {
+    // document.getElementsByTagName('nb-tabset')
+  }
 
   ngOnInit(): void {
     this.calculeForm = new UntypedFormGroup({
@@ -194,18 +197,30 @@ export class FormBmiComponent implements OnInit {
       this.error = "Please check the fields";
     }
   }
-  tabsSet(e: any) {
-    this.tabTitle = e.tabTitle
-    if (e.tabTitle === "Imperial") {
+  tabsSet(name: string) {
+    this.switchTabs = name;
+    if (this.switchTabs === "Imperial") {
       this.modelsBmi.weightImperial = this.modelsBmi.weight * 2.205;
       this.modelsBmi.heightImperial = this.modelsBmi.height / 30.48;
     }
-    if (e.tabTitle === "Metric") {
+    if (this.switchTabs === "Metric") {
       this.modelsBmi.weight = this.modelsBmi.weightImperial / 2.205;
       this.modelsBmi.heightImperial = this.modelsBmi.height * 30.48;
     }
 
   }
+  // tabsSet(e: any) {
+  //   this.tabTitle = e.tabTitle
+  //   if (e.tabTitle === "Imperial") {
+  //     this.modelsBmi.weightImperial = this.modelsBmi.weight * 2.205;
+  //     this.modelsBmi.heightImperial = this.modelsBmi.height / 30.48;
+  //   }
+  //   if (e.tabTitle === "Metric") {
+  //     this.modelsBmi.weight = this.modelsBmi.weightImperial / 2.205;
+  //     this.modelsBmi.heightImperial = this.modelsBmi.height * 30.48;
+  //   }
+
+  // }
   public onChange(event: any): void {
     console.log(event);
     // if (this.tabTitle === "Metric") {

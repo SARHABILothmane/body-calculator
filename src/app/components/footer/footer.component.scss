@@ -37,7 +37,8 @@
   }
 
   .footer {
-    background: linear-gradient(90deg, color(blue-primary) 0%, color(primary) 35%, color(primary-light) 100%);
+  background: linear-gradient(90deg, color(primary) 0%,  color(primary-light)35%, color(blue-primary)  100%);
+    // background: linear-gradient(90deg, color(blue-primary) 0%, color(primary) 35%, color(primary-light) 100%);
   }
 
   .social-icon {

@@ -31,7 +31,9 @@ export class AgeCalculatorComponent implements OnInit {
   schema!: any;
   checkForm: boolean = false;
   error: string = "";
-  envirement: boolean = environment.production;
+  envirement = new BehaviorSubject<boolean>(environment.production)
+  // envirement: boolean = environment.production;
+
 
   constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculeAge = new UntypedFormGroup({
@@ -46,7 +48,7 @@ export class AgeCalculatorComponent implements OnInit {
       { name: 'description', content: "Free online age calculator (chronological age calculator, calculate age from date of birth, age calculator by date of birth, date of birth calculator)" },
       { property: 'og:title', content: "Free online age calculator by date of birth" },
       { property: 'og:description', content: "Free online age calculator (chronological age calculator, calculate age from date of birth, age calculator by date of birth, date of birth calculator)" },
-      {property: "og:url", content: "https://body-calculator.com/calculators/age-calculator/"}
+      { property: "og:url", content: "https://body-calculator.com/calculators/age-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/calculators/age-calculator/");
     //shema

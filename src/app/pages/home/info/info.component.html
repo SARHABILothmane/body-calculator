@@ -22,13 +22,13 @@
           <h2>BMI Chart</h2>
           <div class="d-flex justify-content-center">
             <img loading="lazy" src="../../../../assets/images/bmi-chart.png"
-            style="min-width: 100px; max-height: 300px;" class="widthImg" alt="bmi chart">
+              style="min-width: 100px; max-height: 300px;" class="widthImg" alt="bmi chart">
           </div>
         </div>
         <div class="col-md-6 mt-5">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3 class="text-center tt"> What BMI means ?</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -47,7 +47,7 @@
         <div class="col-md-6 mt-5">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3>The limitations of BMI ?</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -62,7 +62,7 @@
         <div class="col-md-6 mt-4">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3>Doctors opinions in calculating BMI ?</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -80,7 +80,7 @@
         <div class="col-md-6 mt-4">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3>Is measuring BMI for teenagers and children the same as above?!</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -97,7 +97,7 @@
         <div class="col-md-6 mt-4">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3>Is Body Mass Index secure?!</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -119,7 +119,7 @@
         <div class="col-md-6 mt-4">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3>Who should be excluded from measuring body mass?</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -142,7 +142,7 @@
         <div class="col-md-6 mt-4">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3>How does BMI help us in our daily life?!</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -169,7 +169,7 @@
         <div class="col-md-6 mt-4">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3>How to lose weight healthily?!</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -191,7 +191,7 @@
         <div class="col-md-12 mt-4 mb-5">
           <nb-accordion>
             <nb-accordion-item>
-              <nb-accordion-item-header>
+              <nb-accordion-item-header role=link>
                 <h3>The importance of measuring Waist circumference and How to measure it correctly?!</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
@@ -211,14 +211,28 @@
       </div>
       <div class=" row border shadow bg-white my-5">
         <div class="col-md-12 d-flex justify-content-center p-0">
-          <nb-tabset>
-            <nb-tab tabTitle="BMI Calculator For Women.">
+          <div class="divset">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <button class="nav-link" (click)="tabsSet('women')" [ngClass]="{'active' : switchTabs==='women' }">BMI
+                  CALCULATOR FOR WOMEN</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" (click)="tabsSet('men')" [ngClass]="{'active' : switchTabs==='men' }">BMI
+                  CALCULATOR FOR MEN</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" (click)="tabsSet('children')"
+                  [ngClass]="{'active' : switchTabs==='children' }">BMI CALCULATOR FOR CHILDREN</button>
+              </li>
+            </ul>
+            <div *ngIf="switchTabs==='women'">
               <div class="row mt-3 d-flex flex-md-row-reverse">
                 <div class="col-md-4 col-12">
                   <img loading="lazy" src="../../../../assets/images/undraw_personal_training_0dqn.svg"
                     alt="BMI Calculator For Women" width="95%" height="70%">
                 </div>
-                <div class="col-md-8 col-12  px-0">
+                <div class="col-md-8 col-12 px-5">
                   <p>The body mass of women is calculated by dividing the weight in kilograms by the height
                     square in meters.
                   </p>
@@ -227,28 +241,28 @@
                     68/(1.65)2 = 24.98 and it's a perfect weight, but it is on the edge of weight gain.</p>
                 </div>
               </div>
-            </nb-tab>
-            <nb-tab tabTitle="BMI Calculator For men">
+            </div>
+            <div *ngIf="switchTabs==='men'">
               <div class="row mt-3 d-flex flex-md-row-reverse">
                 <div class="col-md-4 col-12">
                   <img loading="lazy" src="../../../../assets/images/undraw_working_out_-6-psf.svg"
                     alt="BMI Calculator For men" width="100%" height="60%">
                 </div>
-                <div class="col-md-8 col-12 px-0">
+                <div class="col-md-8 col-12 px-5">
                   <p>The Measurement of mass is not different for men and women. The difference in fat for both men
                     and women is that if they are similar in mass, the percentage of fat is not equal, but women are
                     more
                     likely to have fat mass.</p>
                 </div>
               </div>
-            </nb-tab>
-            <nb-tab tabTitle="BMI calculator for children">
+            </div>
+            <div *ngIf="switchTabs==='children'">
               <div class="row mt-3 d-flex flex-md-row-reverse">
                 <div class=" col-md-4 col-12">
                   <img loading="lazy" src="../../../../assets/images/undraw_children_re_c37f.svg"
                     alt="BMI calculator for children" width="100%" height="60%">
                 </div>
-                <div class="col-md-8 col-12 px-0">
+                <div class="col-md-8 col-12 px-5">
                   <p>
                     It is one of the most important assessments used to determine whether children are obese, and
                     also helps to determine the child's growth rate and slow growth.
@@ -259,8 +273,8 @@
                   </p>
                 </div>
               </div>
-            </nb-tab>
-          </nb-tabset>
+            </div>
+          </div>
         </div>
       </div>
 
