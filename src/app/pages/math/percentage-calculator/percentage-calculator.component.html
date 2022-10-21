@@ -1,0 +1,252 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="container">
+      <div class="col-12">
+        <h1 class="text-secondary text-center pb-3">Random Number Generator</h1>
+      </div>
+      <!-- What is p% of x? -->
+      <div class="row mb-3">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">What is p% of x?</div>
+            <div class="card-body">
+              <div *ngIf="rsltY">
+                <p class="font-weight-bold">steps :</p>
+                <!-- <p>y = p x x / 100</p> -->
+                <div class="border">
+                  <p><strong class="ml-5">y =</strong> {{p}} x {{x}} / 100 </p>
+                  <p><strong class="ml-5">y =</strong> {{y}}</p>
+                </div>
+                <h5 class="text-white text-center msg">Result : {{y}}</h5>
+              </div>
+              <form [formGroup]="calculePercentageY" (ngSubmit)="CalculatePercentageY()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="percentage">Is what %</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="%" formControlName="p">
+                    <small class="text-danger" *ngIf="submitted && formPercentageY.p.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-4">
+                    <label for="Of">Of</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="?" formControlName="x">
+                    <small class="text-danger" *ngIf="submitted && formPercentageY.x.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-4 mt-4">
+                    <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 mx-auto  border-shadow bg-white">
+          <p class="text-secondary text-center font-weight-bold mt-2">Methode of calculation</p>
+          <p class="font-weight-bold">steps :</p>
+          <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. ,</p>
+        </div>
+      </div>
+      <!-- x is what percent of y? -->
+      <div class="row mb-3">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">x is what percent of y?</div>
+            <div class="card-body">
+              <div *ngIf="rsltX">
+                <p class="font-weight-bold">steps :</p>
+                <!-- <p>y = p x x / 100</p> -->
+                <div class="border">
+                  <p><strong class="ml-5">p =</strong> {{xOne}} x 100 / {{yOne}}</p>
+                  <p><strong class="ml-5">p =</strong> {{pOne}}</p>
+                </div>
+                <h5 class="text-white text-center msg">Result : {{pOne}}</h5>
+              </div>
+              <form [formGroup]="calculePercentageX" (ngSubmit)="CalculatePercentageX()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="percentage">Is what percent</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="?" formControlName="x">
+                    <small class="text-danger" *ngIf="submitted && formPercentageX.x.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-4">
+                    <label for="Of">Of</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="%" formControlName="y">
+                    <small class="text-danger" *ngIf="submitted && formPercentageX.y.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-4 mt-4">
+                    <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- x is p% of what? -->
+      <div class="row mb-3">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">x is p% of what?</div>
+            <div class="card-body">
+              <div *ngIf="rsltP">
+                <p class="font-weight-bold">steps :</p>
+                <!-- <p>y = p x x / 100</p> -->
+                <div class="border">
+                  <p><strong class="ml-5">y =</strong> {{xTwo}} x 100 / {{pTwo}}</p>
+                  <p><strong class="ml-5">y =</strong> {{yTwo}}</p>
+                </div>
+                <h5 class="text-white text-center msg">Result : {{yTwo}}</h5>
+              </div>
+              <form [formGroup]="calculePercentageP" (ngSubmit)="CalculatePercentageP()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="percentage">Is</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="?" formControlName="x">
+                    <small class="text-danger" *ngIf="submitted && formPercentageP.x.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-4">
+                    <label for="Of">Of what?</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="%" formControlName="p">
+                    <small class="text-danger" *ngIf="submitted && formPercentageP.p.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-4 mt-4">
+                    <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- What is x increased/decreased by p%? -->
+      <div class="row mb-3">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">What is x increased/decreased by p%?</div>
+            <div class="card-body">
+              <div *ngIf="rsltIncDec">
+                <p class="font-weight-bold">steps :</p>
+                <!-- <p>y = p x x / 100</p> -->
+                <div class="border">
+                  <p class="ml-5">{{xTree}} {{incDecPercentage}} {{pTree}}%</p>
+                  <p *ngIf="incDecPercentage ==='increased'">
+                    <strong class="ml-5">p = </strong> {{pTree}} / 100 <br>
+                    <strong class="ml-5">y = </strong> {{xTree}} * (1 + {{resultIncDec}})</p>
+                  <p *ngIf="incDecPercentage ==='decreased'">
+                    <strong class="ml-5">p = </strong> {{pTree}} / 100 <br>
+                    <strong class="ml-5">y = </strong> {{xTree}} * (1 - {{resultIncDec}})</p>
+                  <p><strong class="ml-5">y =</strong> {{yTree}}</p>
+                </div>
+                <h5 class="text-white text-center msg">Result : {{yTree}}</h5>
+              </div>
+              <form [formGroup]="calculePercentageIncDec" (ngSubmit)="CalculatePercentageIncDec()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-3">
+                    <label for="percentage">What Is</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="" formControlName="x">
+                    <small class="text-danger" *ngIf="submitted && formPercentageIncDec.x.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-3 mt-4">
+                    <nb-select class="nb-select-min-width" placeholder="kg" selected="kg" status="basic"
+                      shape="semi-round" fullWidth formControlName="selectPercentage" required>
+                      <nb-option value="increased">increased</nb-option>
+                      <nb-option value="decreased">decreased</nb-option>
+                    </nb-select>
+                  </div>
+                  <div class="col-3">
+                    <label for="Of">By</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="% ?" formControlName="p">
+                    <small class="text-danger" *ngIf="submitted && formPercentageIncDec.p.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-3 mt-4">
+                    <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
+          <h6 class="text-secondary text-center">Result of Random Number Generator</h6>
+          <div *ngIf="percentegeRslt != null">
+            <p class="font-weight-bold">steps :</p>
+            <p> {{percentage}} % x {{of}} = {{percentegeRslt}}</p>
+            <h4 class="text-secondary text-center">{{percentegeRslt}}</h4>
+          </div>
+        </div> -->
+      </div>
+      <h2 class="text-secondary text-center my-5 font-weight-bold" style="font-size: 24px;">Learn About percentage
+        Calculator</h2>
+
+      <div class="row border shadow bg-white my-4">
+        <div class="col-md-12 mx-2 my-4">
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora accusamus excepturi officia vel dicta
+            doloribus perferendis veniam sequi asperiores eveniet totam, magni quisquam. Inventore ducimus tempora ipsam
+            necessitatibus dolorum minima?
+            Vel iste fugit nam repellendus. Hic eos laudantium aut ad sequi expedita quibusdam ipsa quis quasi ipsam
+            molestiae totam nisi est deserunt magnam, esse illo! Alias laboriosam vitae cupiditate est?
+            Est mollitia quia facilis. Placeat nulla odit reiciendis expedita cum ex tenetur rem deserunt consequuntur,
+            mollitia neque quidem necessitatibus corporis suscipit nam soluta corrupti eveniet omnis dolores voluptatum,
+            non vel.</p>
+          <p>Generate a random number between two numbers
+            In this case, we will have a MIN and a MAX value and will need to include the MIN value and exclude the MAX
+            value.
+
+            If the MIN value is always 0, then we can multiply the random number with the MAX value, but if the MIN
+            value is other than 0, we need to find the difference between MAX and MIN. Then we will multiply the random
+            number with that difference and add the MIN value.
+            <li> Let’s say MIN = 3 & MAX = 5.</li>
+            <li>Difference is MAX - MIN = 2.</li>
+            <li>Upon multiplying a random number by 2, we will get a value between 0 and below 2. So, the possible value
+              will be either 0 or 1.</li>
+            <li> When we add the MIN(3) value to the random number, the result is either 3 or 4. We can see this as
+              follows:</li>
+          </p>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

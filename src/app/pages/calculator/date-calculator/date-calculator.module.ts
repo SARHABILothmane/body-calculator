@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
+import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
 
 const routes: Routes = [
   { path: "", component: DateCalculatorComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
     OtherCalcultorModule,
     NgxJsonLdModule,
     RouterModule.forChild(routes),
-    BannerModule
+    BannerModule,
+    BreadcrumbsModule
 
   ]
 })

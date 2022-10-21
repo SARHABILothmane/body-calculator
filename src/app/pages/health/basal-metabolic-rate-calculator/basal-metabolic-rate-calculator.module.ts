@@ -9,6 +9,7 @@ import { BasalMetabolicRateCalculatorComponent } from './basal-metabolic-rate-ca
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
+import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { BannerModule } from 'src/app/shared/banner/banner.module';
     NgxJsonLdModule,
     BannerModule,
     IsDecimalDirectiveModule,
+    BreadcrumbsModule
 
   ]
 })

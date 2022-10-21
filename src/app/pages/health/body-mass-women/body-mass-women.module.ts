@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
+import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
 
 const routes: Routes = [
   { path: "", component: BodyMassWomenComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
     NgxJsonLdModule,
     OtherCalcultorModule,
     RouterModule.forChild(routes),
-    BannerModule
+    BannerModule,
+    BreadcrumbsModule
   ]
 })
 export class BodyMassWomenModule { }

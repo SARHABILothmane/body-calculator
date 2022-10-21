@@ -1,6 +1,10 @@
 <nb-layout>
   <nb-layout-column>
     <div class="container">
+      <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Shape Calculator'}">
+      </app-breadcrumbs>
+
       <div class="col-12">
         <h1 class="text-secondary text-center pb-3 px-3">Body Shape Calculator</h1>
         <div class="flexMobile">
@@ -9,16 +13,15 @@
       </div>
       <div class="row mb-3">
         <div class="col-md-5 d-flex align-items-center">
-          <img class="mb-3" src="../../../../assets/images/undraw_yoga_-248-n.svg" width="100%"
-            height="400px" alt="body shape calculator">
+          <img class="mb-3" src="../../../../assets/images/undraw_yoga_-248-n.svg" width="100%" height="400px"
+            alt="body shape calculator">
         </div>
         <div class="col-md-5">
           <div class="card">
             <div class="card-header text-white text-center font-weight-bold">Calculate your body shape</div>
             <div class="card-body example-items-col">
               <div class="d-flex justify-content-center img-shape">
-                <img height="94px" width="110px" src="assets/images/body-shape-size.png"
-                  alt="body-shape-calculator">
+                <img height="94px" width="110px" src="assets/images/body-shape-size.png" alt="body-shape-calculator">
               </div>
               <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
                 <span>
@@ -115,8 +118,7 @@
       </div>
       <span #target style="position: relative; top: -300px"></span>
       <app-other-calcultor-health eleminateCalculator="bsc"></app-other-calcultor-health>
-
-      <p class=" text-center my-1 font-weight-bold" style="font-size: 24px;">Learn more about Body shape calculator</p>
+      <h2 class="text-secondary text-center my-5 font-weight-bold">Learn more about Body shape calculator</h2>
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
           <p>Using measures of the chest, hip, high hip, and waist, you can calculate your body shape and waist-to-hip

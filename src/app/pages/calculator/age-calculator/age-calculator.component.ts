@@ -31,8 +31,7 @@ export class AgeCalculatorComponent implements OnInit {
   schema!: any;
   checkForm: boolean = false;
   error: string = "";
-  envirement = new BehaviorSubject<boolean>(environment.production)
-  // envirement: boolean = environment.production;
+  envirement: boolean = environment.production;
 
 
   constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {

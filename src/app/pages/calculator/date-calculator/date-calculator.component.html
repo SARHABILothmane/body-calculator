@@ -1,9 +1,13 @@
 <nb-layout>
   <nb-layout-column>
     <div class="container">
+      <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'calculators/.', nameCategorie: 'Time &amp; Date', namePage:'Date Calculator'}">
+      </app-breadcrumbs>
+
       <div class="row">
         <div class="col-12 px-0 mx-0">
-          <h1 class="text-secondary text-center mb-3 px-2">Date calculator</h1>
+          <h1 class="text-secondary text-center mb-3 px-2">Date Calculator</h1>
           <div class="flexMobile">
             <app-banner *ngIf="envirement"></app-banner>
           </div>
@@ -141,7 +145,8 @@
           <div class="col-12 my-3 px-0" *ngIf="showResultAddOrSubtract">
             <div class="border shadow bg-white p-2">
               <div class="col-md-5 d-flex justify-content-center px-0">
-                <input type="date" class="form-control inputTime my-3" name='result' value="{{ resultAddOrSubtract | date: 'yyyy-MM-dd'}}" style="padding: 5px;">
+                <input type="date" class="form-control inputTime my-3" name='result'
+                  value="{{ resultAddOrSubtract | date: 'yyyy-MM-dd'}}" style="padding: 5px;">
               </div>
               <p>The result is: <em>{{resultAddOrSubtract | date:'fullDate'}}</em></p>
               <p>
@@ -190,8 +195,8 @@
         </div>
       </div>
       <app-other-calcultor-time eleminateCalculator="dc"></app-other-calcultor-time>
-      <p class="text-secondary text-center my-1 font-weight-bold" style="font-size: 24px;">Learn more about date
-        Calculator</p>
+      <h2 class="text-secondary text-center my-5 font-weight-bold">Learn more about date
+        Calculator</h2>
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
           <h2 class="text-secondary">Date calculator</h2>

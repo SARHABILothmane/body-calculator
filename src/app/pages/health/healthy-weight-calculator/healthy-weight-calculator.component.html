@@ -1,8 +1,12 @@
 <nb-layout>
   <nb-layout-column>
     <div class="container">
+      <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Healthy Weight Calculator'}">
+      </app-breadcrumbs>
+
       <div class="col-12">
-        <h1 class="text-secondary text-center mb-3 px-2">Healthy weight calculator</h1>
+        <h1 class="text-secondary text-center mb-3 px-2">Healthy Weight Calculator</h1>
         <div class="flexMobile">
           <app-banner *ngIf="envirement"></app-banner>
         </div>
@@ -73,8 +77,8 @@
         </div>
       </div>
 
-      <p class="font-weight-bold text-center text-secondary mb-4 w-100" style="font-size: 24px;">Learn more about
-        healthy weight calculator</p>
+      <h2 class="font-weight-bold text-center text-secondary mb-4 w-100">Learn more about
+        healthy weight calculator</h2>
       <div class="row border shadow bg-white p-3 mb-4">
         <h2 class="text-secondary mt-4"><a href="https://en.wikipedia.org/wiki/Human_body_weight" target="_blank"
             rel="noopener noreferrer">Healthy Weight Calculator</a></h2>

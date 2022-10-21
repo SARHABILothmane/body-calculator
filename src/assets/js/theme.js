@@ -75,24 +75,13 @@
     document.getElementById("cookies").style.display = "none";
     localStorage.setItem('cookie', true);
   }
+  window.onload = function(){
+    let cookie = localStorage.getItem('cookie');
+    if(!cookie){
+      document.getElementById("cookies").style.display = "block";
+    }
 
-  //   function checkIfCookieExicite(){
-  //     let cookie = localStorage.getItem('cookie');
-  //     console.log('cookie',cookie);
-  //     setTimeout(() => {
-        
-  //       if(!cookie){
-  //         document.getElementById("cookies").style.display = "block";
-  //       }
-  //     }, 3000);
-  //   }
-
-  // if (document.readyState === "complete" || document.readyState === "interactive") {
-  //   // call on next available tick
-  //   checkIfCookieExicite();
-  // } else {
-  //     document.addEventListener("DOMContentLoaded", checkIfCookieExicite());
-  // }
+  }
 
   function hideDropDownMenu(){
     document.getElementById("dropDown").style.display = "none";
