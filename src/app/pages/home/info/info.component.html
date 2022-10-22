@@ -2,7 +2,8 @@
   <div class="">
     <div class="text-center my-5">
       <!-- <p class="text-uppercase mb-0 pres">Vous etes prêt à apprendre ?</p> -->
-      <h2 class="text-secondary">Have more questions?</h2>
+      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Have more
+        questions?</p>
     </div>
     <div class="container">
       <!-- <div class="mt-4 d-flex justify-content-center">
@@ -11,20 +12,24 @@
         </div>
       </div> -->
       <div class="row info bg-white">
-        <!-- <div class="col-12 mt-3">
-           <h2>BMI formula</h2>
-            <h3>- English BMI Formula (Imperial)</h3>
-              <p style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">BMI = (Weight in Pounds / (Height in inches x Height in inches)) x 703</p>
-            <h3>- Metric BMI Formula</h3>
-              <p style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">BMI = (Weight in Kilograms / (Height in Meters x Height in Meters))</p>
-        </div> -->
+        <div class="col-12 mt-3">
+          <h2>BMI formula</h2>
+          <h3>- English BMI Formula (Imperial)</h3>
+          <p style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">BMI = (Weight in
+            Pounds / (Height in inches x Height in inches)) x 703</p>
+          <h3>- Metric BMI Formula</h3>
+          <p style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">BMI = (Weight in
+            Kilograms / (Height in Meters x Height in Meters))</p>
+        </div>
         <div class="col-12 mt-3">
           <h2>BMI Chart</h2>
           <div class="d-flex justify-content-center">
-            <!-- <img loading="lazy" src="../../../../assets/images/bmi-chart.png"
-              style="min-width: 100px; max-height: 300px;" class="widthImg" alt="bmi chart"> -->
-            <img loading="lazy" width="50%" height="25%" src="../../../../assets/images/bmi-chart.png" class="widthImg"
+            <img loading="lazy" width="55%" height="30%" src="../../../../assets/images/bmi-chart.png" class="widthImg"
               alt="bmi chart">
+            <!-- <div class="col-md-6 px-0">
+              <img loading="lazy" width="100%" height="300px" src="../../../../assets/images/bmi-chart.png"
+                class="widthImg" alt="bmi chart">
+            </div> -->
           </div>
         </div>
         <div class="col-md-6 mt-5">
@@ -228,7 +233,7 @@
                   [ngClass]="{'active' : switchTabs==='children' }">BMI CALCULATOR FOR CHILDREN</button>
               </li>
             </ul>
-            <div *ngIf="switchTabs==='women'">
+            <div [ngClass]="{'switchTab' : switchTabs==='men' || switchTabs==='children' }">
               <div class="row mt-3 d-flex flex-md-row-reverse">
                 <div class="col-md-4 col-12">
                   <img loading="lazy" src="../../../../assets/images/undraw_personal_training_0dqn.svg"
@@ -244,7 +249,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="switchTabs==='men'">
+            <div [ngClass]="{'switchTab' : switchTabs==='women' || switchTabs==='children' }">
               <div class="row mt-3 d-flex flex-md-row-reverse">
                 <div class="col-md-4 col-12">
                   <img loading="lazy" src="../../../../assets/images/undraw_working_out_-6-psf.svg"
@@ -258,7 +263,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="switchTabs==='children'">
+            <div [ngClass]="{'switchTab' : switchTabs==='men' || switchTabs==='women' }">
               <div class="row mt-3 d-flex flex-md-row-reverse">
                 <div class=" col-md-4 col-12">
                   <img loading="lazy" src="../../../../assets/images/undraw_children_re_c37f.svg"
