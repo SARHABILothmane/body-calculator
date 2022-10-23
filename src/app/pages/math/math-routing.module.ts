@@ -1,3 +1,4 @@
+import { HexCalculatorModule } from './hex-calculator/hex-calculator.module';
 import { PercentageErrorCalculatorModule } from './percentage-error-calculator/percentage-error-calculator.module';
 import { PercentageCalculatorModule } from './percentage-calculator/percentage-calculator.module';
 import { MathComponent } from './math.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
       { path: "percentage-calculator", loadChildren: () => import("src/app/pages/math/percentage-calculator/percentage-calculator.module").then(mod => mod.PercentageCalculatorModule) },
       { path: "percentage-error-calculator", loadChildren: () => import("src/app/pages/math/percentage-error-calculator/percentage-error-calculator.module").then(mod => mod.PercentageErrorCalculatorModule) },
       { path: "binary-calculator", loadChildren: () => import("src/app/pages/math/binary-calculator/binary-calculator.module").then(mod => mod.BinaryCalculatorModule) },
+      { path: "hex-calculator", loadChildren: () => import("src/app/pages/math/hex-calculator/hex-calculator.module").then(mod => mod.HexCalculatorModule) },
 
     ]
   }
