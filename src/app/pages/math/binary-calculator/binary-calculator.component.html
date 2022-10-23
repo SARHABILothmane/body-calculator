@@ -1,0 +1,182 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="container">
+      <div class="col-12">
+        <h1 class="text-secondary text-center pb-3">Binary Calculator</h1>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">Binary Calculation—Add, Subtract, Multiply,
+              or Divide</div>
+            <div class="card-body">
+              <div *ngIf="rsltCalBinary != null">
+                <p *ngIf="addOrSubtractSymbole === '+'"><strong class="ml-5">Value binary : </strong> {{binaryOneCal}} +
+                  {{binaryTwoCal}} = {{rsltCalDecimal}}</p>
+                <p *ngIf="addOrSubtractSymbole === '-'"><strong class="ml-5">Value binary : </strong> {{binaryOneCal}} -
+                  {{binaryTwoCal}} = {{rsltCalDecimal}}</p>
+
+                <p *ngIf="addOrSubtractSymbole === '+'"><strong class="ml-5">Value decimal : </strong> {{binaryOne}} +
+                  {{binaryTwo}} = {{rsltCalBinary}}</p>
+                <p *ngIf="addOrSubtractSymbole === '-'"><strong class="ml-5">Value decimal : </strong> {{binaryOne}} -
+                  {{binaryTwo}} = {{rsltCalBinary}}</p>
+                <!-- </div> -->
+                <h5 class="text-white text-center msg">Result : {{rsltCalBinary}}</h5>
+              </div>
+              <form [formGroup]="calculeBinary" (ngSubmit)="CalculateBinary()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <!-- <label for="binary">Binary value</label> -->
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="01100111 01101111" formControlName="binaryOne">
+                    <small class="text-danger" *ngIf="submitted && formCalculeBinary.binaryOne.errors?.required">this
+                      field
+                      required.
+                      !</small>
+                    <small class="text-danger"
+                      *ngIf="submitted && formCalculeBinary['binaryOne'].errors?.['pattern']">Please
+                      provide an binary 0 and 1.!</small>
+                  </div>
+                  <div class="col-4">
+                    <!-- <label for="Binary">Binary value</label> -->
+                    <nb-select class="nb-select-min-width" selected="+" status="basic" shape="semi-round" fullWidth
+                      (selectedChange)="changeSymbole($event)" required>
+                      <nb-option value="+">+</nb-option>
+                      <nb-option value="-">-</nb-option>
+                    </nb-select>
+                  </div>
+                  <div class="col-4">
+                    <!-- <label for="Binary">Binary value</label> -->
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="01100111 01101111" formControlName="binaryTwo">
+                    <small class="text-danger" *ngIf="submitted && formCalculeBinary.binaryTwo.errors?.required">this
+                      field
+                      required.
+                      !</small>
+                    <small class="text-danger"
+                      *ngIf="submitted && formCalculeBinary['binaryTwo'].errors?.['pattern']">Please
+                      provide an binary 0 and 1.!</small>
+                  </div>
+                  <button type="submit" class="btn btnBgPrimary w-75 mt-4 mx-auto">Calculate</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Convert Binary Value to Decimal Value -->
+      <div class="row mb-3">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">Convert Binary Value to Decimal Value</div>
+            <div class="card-body">
+              <div *ngIf="rsltBinary != null">
+                <!-- <p class="font-weight-bold">steps :</p>
+                  <div class="border">
+                    <p><strong class="ml-5">y =</strong> {{rsltBinary}}</p>
+                  </div> -->
+                <h5 class="text-white text-center msg">Result : {{rsltBinary}}</h5>
+              </div>
+              <form [formGroup]="conveBinaryToDeci" (ngSubmit)="CalculateBinaryToDeci()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <label for="Binary">Binary value</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="binary" formControlName="binary">
+                    <small class="text-danger" *ngIf="submitted && formBinaryDec.binary.errors?.required">this field
+                      required.
+                      !</small>
+                    <small class="text-danger" *ngIf="submitted && formBinaryDec['binary'].errors?.['pattern']">Please
+                      provide an binary 0 and 1.!</small>
+                    <!-- <small class="text-danger" *ngIf="submitted && formBinaryDec['binary'].errors?.['max']">Please
+                      provide an binary 0 and 1.!</small> -->
+                  </div>
+                  <div class="col-6 mt-4">
+                    <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 mx-auto  border-shadow bg-white">
+          <p class="text-secondary text-center font-weight-bold mt-2">Methode of calculation</p>
+          <p class="font-weight-bold">steps :</p>
+          <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. ,</p>
+        </div>
+      </div>
+      <!-- Convert Decimal Value to Binary Value -->
+      <div class="row mb-3">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">Convert Decimal Value to Binary Value</div>
+            <div class="card-body">
+              <div *ngIf="rsltDecimal != null">
+                <h5 class="text-white text-center msg">Result : {{rsltDecimal}}</h5>
+              </div>
+              <form [formGroup]="conveDeciToBinary" (ngSubmit)="CalculateDeciToBinary()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <label for="decimal">Decimal value</label>
+                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                      placeholder="decimal" formControlName="decimal">
+                    <small class="text-danger" *ngIf="submitted && formDecBinary.decimal.errors?.required">this field
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-6 mt-4">
+                    <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="text-secondary text-center my-5 font-weight-bold" style="font-size: 24px;">Learn About percentage
+        Calculator</h2>
+
+      <div class="row border shadow bg-white my-4">
+        <div class="col-md-12 mx-2 my-4">
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora accusamus excepturi officia vel dicta
+            doloribus perferendis veniam sequi asperiores eveniet totam, magni quisquam. Inventore ducimus tempora ipsam
+            necessitatibus dolorum minima?
+            Vel iste fugit nam repellendus. Hic eos laudantium aut ad sequi expedita quibusdam ipsa quis quasi ipsam
+            molestiae totam nisi est deserunt magnam, esse illo! Alias laboriosam vitae cupiditate est?
+            Est mollitia quia facilis. Placeat nulla odit reiciendis expedita cum ex tenetur rem deserunt consequuntur,
+            mollitia neque quidem necessitatibus corporis suscipit nam soluta corrupti eveniet omnis dolores voluptatum,
+            non vel.</p>
+          <p>Generate a random number between two numbers
+            In this case, we will have a MIN and a MAX value and will need to include the MIN value and exclude the MAX
+            value.
+
+            If the MIN value is always 0, then we can multiply the random number with the MAX value, but if the MIN
+            value is other than 0, we need to find the difference between MAX and MIN. Then we will multiply the random
+            number with that difference and add the MIN value.
+            <li> Let’s say MIN = 3 & MAX = 5.</li>
+            <li>Difference is MAX - MIN = 2.</li>
+            <li>Upon multiplying a random number by 2, we will get a value between 0 and below 2. So, the possible value
+              will be either 0 or 1.</li>
+            <li> When we add the MIN(3) value to the random number, the result is either 3 or 4. We can see this as
+              follows:</li>
+          </p>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>
