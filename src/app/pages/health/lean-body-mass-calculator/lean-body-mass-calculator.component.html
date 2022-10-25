@@ -134,6 +134,15 @@
                 </tr>
               </thead>
               <tbody>
+                <tr *ngIf="childLbm != null">
+                  <td scope="row">Peters (for Children)</td>
+                  <td>
+                    {{ childLbm | number}} kg ({{boerBfPer | number}}%)
+                  </td>
+                  <td>
+                    {{boerBf | number}} %
+                  </td>
+                </tr>
                 <tr>
                   <td scope="row">Boer</td>
                   <td>
