@@ -31,7 +31,7 @@ export class OtherCalcultorTimeComponent implements OnInit {
       this.otherCalculators += ' <div class="col-md-4 col-12 ">';
       this.otherCalculators += '<a  href="' + element.url + '">';
       this.otherCalculators += '<div class="designeButton m-1 p-2 bg-white  d-flex justify-content-between ">';
-      this.otherCalculators += '<span class="pr-2 text-dark">';
+      this.otherCalculators += '<span class="pr-2 text-dark font-weight-bold ">';
       this.otherCalculators += element.title;
       this.otherCalculators += '</span>';
       this.otherCalculators += '<span class="font-weight-bold text-dark">&raquo; </span>';

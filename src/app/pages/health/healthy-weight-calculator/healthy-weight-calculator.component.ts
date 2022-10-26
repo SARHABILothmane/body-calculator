@@ -1,10 +1,11 @@
 import { Bmr } from 'src/app/models/bmr';
 // import { faMale, faFemale } from '@fortawesome/free-solid-svg-icons';
 import { UntypedFormGroup, Validators, UntypedFormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { environment } from 'src/environments/environment';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-healthy-weight-calculator',
   templateUrl: './healthy-weight-calculator.component.html',
@@ -29,12 +30,12 @@ export class HealthyWeightCalculatorComponent implements OnInit {
     weight: 0,
   }
 
-  schema!: any;
   error: string = "";
   submitted = false;
   envirement: boolean = environment.production;
 
-  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
+  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService,
+    private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
     this.calculeHwc = new UntypedFormGroup({
       height: new UntypedFormControl("", [Validators.required]),
     });
@@ -50,37 +51,43 @@ export class HealthyWeightCalculatorComponent implements OnInit {
       { property: "og:url", content: "https://body-calculator.com/health/healthy-weight-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/health/healthy-weight-calculator/");
-    //shema
-    this.schema = {
-      "@context": "http://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Healthy weight calculator",
-      "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/health/healthy-weight-calculator/",
-      "author": {
-        "@type": "Person",
-        "name": "SARHABIL"
-      },
-      "datePublished": "2022-01-10",
-      "publisher": {
-        "@type": "Organization",
-        "name": "body-calculator"
-      },
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "Linux",
-      "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
-      "softwareVersion": "1",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "ratingCount": "8864"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1.00",
-        "priceCurrency": "USD"
-      }
-    }
+
+    let script = this._renderer2.createElement('script');
+    script.type = `application/ld+json`;
+    script.text = `
+                    {
+                      "@context": "http://schema.org",
+                      "@type": "SoftwareApplication",
+                      "name": "Healthy weight calculator",
+                      "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
+                      "url": "https://body-calculator.com/health/healthy-weight-calculator/",
+                      "author": {
+                        "@type": "Person",
+                        "name": "SARHABIL"
+                      },
+                      "datePublished": "2022-01-10",
+                      "publisher": {
+                        "@type": "Organization",
+                        "name": "body-calculator"
+                      },
+                      "applicationCategory": "HealthApplication",
+                      "operatingSystem": "Linux",
+                      "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
+                      "softwareVersion": "1",
+                      "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "5",
+                        "ratingCount": "8864"
+                      },
+                      "offers": {
+                        "@type": "Offer",
+                        "price": "1.00",
+                        "priceCurrency": "USD"
+                      }
+                    }
+                `;
+
+    this._renderer2.appendChild(this._document.body, script);
 
   }
   get formHwc() { return this.calculeHwc.controls; }

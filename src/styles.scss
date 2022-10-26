@@ -6,6 +6,16 @@
   // --primary: #3C7DB7 !important;
   --primary: #2F598E !important;
 }
+// fix space in mobile 
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -1,8 +1,9 @@
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { environment } from 'src/environments/environment';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-age-calculator',
@@ -28,13 +29,13 @@ export class AgeCalculatorComponent implements OnInit {
   minute: number | string = 0;
   second: number | string = 0;
   public age!: number;
-  schema!: any;
   checkForm: boolean = false;
   error: string = "";
   envirement: boolean = environment.production;
 
 
-  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
+  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService, 
+    private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
     this.calculeAge = new UntypedFormGroup({
       birthday: new UntypedFormControl("", [Validators.required]),
       today: new UntypedFormControl(new Date(), [Validators.required]),
@@ -50,36 +51,42 @@ export class AgeCalculatorComponent implements OnInit {
       { property: "og:url", content: "https://body-calculator.com/calculators/age-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/calculators/age-calculator/");
-    //shema
-    this.schema = {
-      "@context": "http://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Age calculator",
-      "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/calculators/age-calculator/",
-      "author": {
-        "@type": "Person",
-        "name": "SARHABIL"
-      },
-      "datePublished": "2022-01-10",
-      "publisher": {
-        "@type": "Organization",
-        "name": "body-calculator"
-      },
-      "operatingSystem": "Linux",
-      "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
-      "softwareVersion": "1",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "ratingCount": "8864"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1.00",
-        "priceCurrency": "USD"
-      }
-    }
+
+    let script = this._renderer2.createElement('script');
+    script.type = `application/ld+json`;
+    script.text = `
+                  {
+                    "@context": "http://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "Age calculator",
+                    "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
+                    "url": "https://body-calculator.com/calculators/age-calculator/",
+                    "author": {
+                      "@type": "Person",
+                      "name": "SARHABIL"
+                    },
+                    "datePublished": "2022-01-10",
+                    "publisher": {
+                      "@type": "Organization",
+                      "name": "body-calculator"
+                    },
+                    "operatingSystem": "Linux",
+                    "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
+                    "softwareVersion": "1",
+                    "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": "5",
+                      "ratingCount": "8864"
+                    },
+                    "offers": {
+                      "@type": "Offer",
+                      "price": "1.00",
+                      "priceCurrency": "USD"
+                    }
+                  }
+                `;
+
+    this._renderer2.appendChild(this._document.body, script);
 
   }
 

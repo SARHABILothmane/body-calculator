@@ -2,7 +2,7 @@
   <nb-layout-column>
     <div class="container">
       <app-breadcrumbs
-        [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Shape Calculator'}">
+        [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Shape Calculator', itemUrl: 'health/body-shape-calculator/.'}">
       </app-breadcrumbs>
 
       <div class="col-12">
@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-5">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Calculate your body shape</div>
+            <div class="card-header"><p class="text-white text-center font-weight-bold">Calculate your body shape</p></div>
             <div class="card-body example-items-col">
               <div class="d-flex justify-content-center img-shape">
                 <img height="94px" width="110px" src="assets/images/body-shape-size.png" alt="body-shape-calculator">
@@ -349,6 +349,5 @@
       </div>
       <!-- <app-info></app-info> -->
     </div>
-    <ngx-json-ld [json]="schema"></ngx-json-ld>
   </nb-layout-column>
 </nb-layout>

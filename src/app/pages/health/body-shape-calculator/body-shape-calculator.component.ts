@@ -1,9 +1,10 @@
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { Bsc } from 'src/app/models/bsc';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { environment } from 'src/environments/environment';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-body-shape-calculator',
@@ -30,11 +31,10 @@ export class BodyShapeCalculatorComponent implements OnInit {
     hip: 90,
   }
   error: string = "";
-  schema!: any;
   submitted = false;
   envirement: boolean = environment.production;
 
-  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService) {
+  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
     this.calculeBsc = new UntypedFormGroup({
       bust: new UntypedFormControl("", [Validators.required]),
       waist: new UntypedFormControl("", [Validators.required]),
@@ -53,38 +53,46 @@ export class BodyShapeCalculatorComponent implements OnInit {
       { property: "og:url", content: "https://body-calculator.com/health/body-shape-calculator/" }
     ]);
     this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/body-shape-calculator/");
-    //shema
-    this.schema = {
-      "@context": "http://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Body shape calculator",
-      "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/health/body-shape-calculator/",
-      "author": {
-        "@type": "Person",
-        "name": "SARHABIL"
-      },
-      "datePublished": "2022-01-10",
-      "publisher": {
-        "@type": "Organization",
-        "name": "body-calculator"
-      },
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "Linux",
-      "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
-      "softwareVersion": "1",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "ratingCount": "8864"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1.00",
-        "priceCurrency": "USD"
-      }
-    }
+
+    let script = this._renderer2.createElement('script');
+    script.type = `application/ld+json`;
+    script.text = `
+                  {
+                    "@context": "http://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "Body shape calculator",
+                    "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
+                    "url": "https://body-calculator.com/health/body-shape-calculator/",
+                    "author": {
+                      "@type": "Person",
+                      "name": "SARHABIL"
+                    },
+                    "datePublished": "2022-01-10",
+                    "publisher": {
+                      "@type": "Organization",
+                      "name": "body-calculator"
+                    },
+                    "applicationCategory": "HealthApplication",
+                    "operatingSystem": "Linux",
+                    "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
+                    "softwareVersion": "1",
+                    "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": "5",
+                      "ratingCount": "8864"
+                    },
+                    "offers": {
+                      "@type": "Offer",
+                      "price": "1.00",
+                      "priceCurrency": "USD"
+                    }
+                  }
+                `;
+
+    this._renderer2.appendChild(this._document.body, script);
+
   }
+
   get formBsc() { return this.calculeBsc.controls; }
   public CalculateBsc(e: HTMLElement): void {
     this.submitted = true;

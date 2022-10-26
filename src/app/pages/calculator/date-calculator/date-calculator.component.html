@@ -2,7 +2,7 @@
   <nb-layout-column>
     <div class="container">
       <app-breadcrumbs
-        [infoAndUrl]="{categorieUrl: 'calculators/.', nameCategorie: 'Time &amp; Date', namePage:'Date Calculator'}">
+        [infoAndUrl]="{categorieUrl: 'calculators/.', nameCategorie: 'Time &amp; Date', namePage:'Date Calculator', itemUrl: 'calculators/date-calculator/.'}">
       </app-breadcrumbs>
 
       <div class="row">
@@ -17,7 +17,7 @@
         <div class="col-md-5 mb-4">
           <div class="card">
             <div class="card-header text-white text-center font-weight-bold">
-              <h2 class="text-white">Days between two dates</h2>
+              <p class="text-white">Days between two dates</p>
             </div>
             <div class="card-body example-items-col">
               <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
@@ -80,7 +80,7 @@
         <div class="col-md-10 mt-3">
           <div class="card">
             <div class="card-header text-white text-center font-weight-bold">
-              <h2 class="text-white">Add to or Subtract from a Date</h2>
+              <p class="text-white">Add to or Subtract from a Date</p>
             </div>
             <div class="card-body example-items-col p-3">
               <div *ngIf="errorAddOrSubDate" class="alert alert-danger w-75 mx-auto text-center" role="alert">
@@ -313,6 +313,5 @@
         </div>
       </div>
     </div>
-    <ngx-json-ld [json]="schema"></ngx-json-ld>
   </nb-layout-column>
 </nb-layout>

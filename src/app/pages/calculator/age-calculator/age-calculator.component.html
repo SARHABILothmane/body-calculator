@@ -2,7 +2,7 @@
   <nb-layout-column>
     <div class="container">
       <app-breadcrumbs
-        [infoAndUrl]="{categorieUrl: 'calculators/.', nameCategorie: 'Time &amp; Date', namePage:'Age Calculator'}">
+        [infoAndUrl]="{categorieUrl: 'calculators/.', nameCategorie: 'Time &amp; Date', namePage:'Age Calculator', itemUrl: 'calculators/age-calculator/.'}">
       </app-breadcrumbs>
 
       <div class="col-12 px-0">
@@ -18,7 +18,7 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Calculate age from date of birth</div>
+            <div class="card-header"><p class="text-white text-center font-weight-bold">Calculate age from date of birth</p></div>
             <div class="card-body example-items-col">
               <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
                 <span>
@@ -231,6 +231,5 @@
       </div>
 
     </div>
-    <ngx-json-ld [json]="schema"></ngx-json-ld>
   </nb-layout-column>
 </nb-layout>

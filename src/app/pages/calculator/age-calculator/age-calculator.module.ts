@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 
 import { AgeCalculatorComponent } from './age-calculator.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
 import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
 
@@ -22,12 +21,8 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     NbLayoutModule,
-    // NbCardModule,
-    // NbButtonModule,
-    // NbInputModule,
     NbDatepickerModule.forRoot(),
     OtherCalcultorModule,
-    NgxJsonLdModule,
     RouterModule.forChild(routes),
     BannerModule,
     BreadcrumbsModule

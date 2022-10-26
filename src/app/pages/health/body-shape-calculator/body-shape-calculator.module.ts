@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { BodyShapeCalculatorComponent } from './body-shape-calculator.component';
 import { Routes, RouterModule } from '@angular/router';
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
-import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
 import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
 
@@ -22,13 +21,8 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     NbLayoutModule,
-    // NbCardModule,
-    // NbButtonModule,
-    // NbInputModule,
-    // NbFormFieldModule,
     NbSelectModule,
     OtherCalcultorModule,
-    NgxJsonLdModule,
     RouterModule.forChild(routes),
     BannerModule,
     IsDecimalDirectiveModule,

@@ -1,7 +1,7 @@
 // import { AnimationOptions } from 'ngx-lottie';
 // import { NbToastrService } from '@nebular/theme';
 import { Bmr } from './../../../models/bmr';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 // import { faFemale, faMale } from '@fortawesome/free-solid-svg-icons';
 // import { AnimationItem } from 'lottie-web';
@@ -9,6 +9,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { Banner } from 'src/app/models/banner';
 import { environment } from 'src/environments/environment';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-body-fat-porcentage',
@@ -48,12 +49,12 @@ export class BodyFatPorcentageComponent implements OnInit {
     weight: 0,
   };
 
-  schema!: any;
   envirement: boolean = environment.production;
 
   constructor(
     // private toastrService: NbToastrService
-    private titleService: Title, private metaService: Meta, private canonical: CanonicalService
+    private titleService: Title, private metaService: Meta, private canonical: CanonicalService,
+    private _renderer2: Renderer2,@Inject(DOCUMENT) private _document: Document
   ) {
     // this.banner = new Banner(
     //   'ca-pub-2374538044388820',
@@ -74,37 +75,44 @@ export class BodyFatPorcentageComponent implements OnInit {
       { property: "og:url", content: "https://body-calculator.com/health/body-fat-percentage-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/health/body-fat-percentage-calculator/");
-    //shema
-    this.schema = {
-      "@context": "http://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Body fat percentage calculator",
-      "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/health/body-fat-percentage-calculator/",
-      "author": {
-        "@type": "Person",
-        "name": "SARHABIL"
-      },
-      "datePublished": "2022-01-10",
-      "publisher": {
-        "@type": "Organization",
-        "name": "body-calculator"
-      },
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "Linux",
-      "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
-      "softwareVersion": "1",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "ratingCount": "8864"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1.00",
-        "priceCurrency": "USD"
-      }
-    }
+  
+    let script = this._renderer2.createElement('script');
+    script.type = `application/ld+json`;
+    script.text = `             
+                  {
+                    "@context": "http://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "Body fat percentage calculator",
+                    "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
+                    "url": "https://body-calculator.com/health/body-fat-percentage-calculator/",
+                    "author": {
+                      "@type": "Person",
+                      "name": "SARHABIL"
+                    },
+                    "datePublished": "2022-01-10",
+                    "publisher": {
+                      "@type": "Organization",
+                      "name": "body-calculator"
+                    },
+                    "applicationCategory": "HealthApplication",
+                    "operatingSystem": "Linux",
+                    "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
+                    "softwareVersion": "1",
+                    "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": "5",
+                      "ratingCount": "8864"
+                    },
+                    "offers": {
+                      "@type": "Offer",
+                      "price": "1.00",
+                      "priceCurrency": "USD"
+                    }
+                  }
+
+                `;
+
+    this._renderer2.appendChild(this._document.body, script);
 
     this.calculeBfp = new UntypedFormGroup({
       // gender: new FormControl("", [Validators.required]),

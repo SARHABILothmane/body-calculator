@@ -1,9 +1,10 @@
 import { Bmr } from 'src/app/models/bmr';
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-basal-metabolic-rate-calculator',
@@ -17,12 +18,11 @@ export class BasalMetabolicRateCalculatorComponent implements OnInit {
   selectedHeight: string = "cm";
   selectedWeight: string = "kg";
   height!: number;
-  schema!: any;
   error: string = "";
   submitted = false;
   envirement: boolean = environment.production;
 
-  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService) {
+  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService, private _renderer2: Renderer2,@Inject(DOCUMENT) private _document: Document) {
     this.calculeBmr = new UntypedFormGroup({
       age: new UntypedFormControl("", [Validators.required, Validators.min(5), Validators.max(100)]),
       height: new UntypedFormControl("", [Validators.required]),
@@ -47,37 +47,44 @@ export class BasalMetabolicRateCalculatorComponent implements OnInit {
       { property: "og:url", content: "https://body-calculator.com/health/bmr-calculator/" }
     ]);
     this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/bmr-calculator/");
-    //shema
-    this.schema = {
-      "@context": "http://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "basal metabolic rate BMR calculator",
-      "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/health/bmr-calculator/",
-      "author": {
-        "@type": "Person",
-        "name": "SARHABIL"
-      },
-      "datePublished": "2022-03-26",
-      "publisher": {
-        "@type": "Organization",
-        "name": "body-calculator"
-      },
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "Linux",
-      "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
-      "softwareVersion": "1",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "ratingCount": "8864"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1.00",
-        "priceCurrency": "USD"
-      }
-    }
+
+    
+    let script = this._renderer2.createElement('script');
+    script.type = `application/ld+json`;
+    script.text = `
+                  {
+                    "@context": "http://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "basal metabolic rate BMR calculator",
+                    "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
+                    "url": "https://body-calculator.com/health/bmr-calculator/",
+                    "author": {
+                      "@type": "Person",
+                      "name": "SARHABIL"
+                    },
+                    "datePublished": "2022-03-26",
+                    "publisher": {
+                      "@type": "Organization",
+                      "name": "body-calculator"
+                    },
+                    "applicationCategory": "HealthApplication",
+                    "operatingSystem": "Linux",
+                    "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
+                    "softwareVersion": "1",
+                    "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": "5",
+                      "ratingCount": "8864"
+                    },
+                    "offers": {
+                      "@type": "Offer",
+                      "price": "1.00",
+                      "priceCurrency": "USD"
+                    }
+                  }
+                `;
+
+    this._renderer2.appendChild(this._document.body, script);
   }
   get formBmr() { return this.calculeBmr.controls; }
 

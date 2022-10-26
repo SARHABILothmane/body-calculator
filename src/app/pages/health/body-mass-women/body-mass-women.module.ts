@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 // import { CommonModule } from '@angular/common';
 import { BodyMassWomenComponent } from './body-mass-women.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
 import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
@@ -20,7 +19,6 @@ const routes: Routes = [
   imports: [
     NbLayoutModule,
     FormBmiModule,
-    NgxJsonLdModule,
     OtherCalcultorModule,
     RouterModule.forChild(routes),
     BannerModule,
