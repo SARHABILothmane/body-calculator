@@ -60,15 +60,21 @@ export class BinaryCalculatorComponent implements OnInit {
   CalculateBinaryToDeci() {
     this.submitted = true;
     if (this.conveBinaryToDeci.valid) {
+      this.error = "";
       this.rsltBinary = parseInt(this.conveBinaryToDeci.value.binary, 2);
       console.log(this.rsltBinary);
+    } else {
+      this.error = "Please check the fields";
     }
   }
   CalculateDeciToBinary() {
     this.submitted = true;
     if (this.conveDeciToBinary.valid) {
+      this.error = "";
       this.rsltDecimal = this.conveDeciToBinary.value.decimal;
       this.rsltDecimal = this.rsltDecimal.toString(2)
+    } else {
+      this.error = "Please check the fields";
     }
   }
   changeSymbole(symbole: any) {

@@ -46,18 +46,18 @@
                   </span>
                 </div>
                 <div class="mt-4">
-                  <label for="Observed ">Observed value</label>
-                  <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                    placeholder="Observed value" formControlName="observed">
+                  <label for="Observed">Observed value</label>
+                  <input id="Observed" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="Observed value" formControlName="observed">
                   <small class="text-danger" *ngIf="submitted && formPercentageError.observed.errors?.required">this
                     field
                     required.
                     !</small>
                 </div>
                 <div class="mt-4">
-                  <label for="true value">True value</label>
-                  <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                    placeholder="True value" formControlName="true">
+                  <label for="trueValue">True value</label>
+                  <input id="trueValue" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="True value" formControlName="true">
                   <small class="text-danger" *ngIf="submitted && formPercentageError.true.errors?.required">this field
                     required.
                     !</small>

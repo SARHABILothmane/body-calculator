@@ -26,13 +26,15 @@ export class LeanBodyMassCalculatorComponent implements OnInit {
   childBfPer!: number;
   ecv!: number;
   heightCm!: number;
+  weightRslt!: number;
   error: string = "";
   submitted = false;
-  message: string = "";
+  // message: string = "";
   selectedHeight: string = "cm";
   selectedWeight: string = "kg";
   checked: string = "female";
-  imageLoaded: boolean = false;
+  switchAdulte = false;
+  switchChild = false;
 
   modelsBmi: Bmr = {
     age: 0,
@@ -57,751 +59,669 @@ export class LeanBodyMassCalculatorComponent implements OnInit {
   checkedGender(v: any) {
     this.checked = v;
   }
-  get formDecBinary() { return this.calculeLbm.controls; }
+  get formLbm() { return this.calculeLbm.controls; }
   claculteLbm(e: HTMLElement) {
     this.submitted = true;
     if (this.calculeLbm.valid) {
-      this.error = "";
-      e.scrollIntoView({ behavior: "smooth" });
-      //cm kg
-      if (this.checked === 'male') {
-        if (this.selectedHeight === "cm" && this.selectedWeight === "kg") {
-          // this.heightCm = this.calculeLbm.value.height / 100
-          this.boerLbm = ((0.407 * this.calculeLbm.value.weight) + (0.267 * this.calculeLbm.value.height)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = this.calculeLbm.value.weight / this.calculeLbm.value.height;
-          this.jamesLbm = 1.1 * this.calculeLbm.value.weight - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * this.calculeLbm.value.weight + (0.33929 * this.calculeLbm.value.height)) - 29.5336
-          this.boerBfPer = (this.boerLbm * 100) / this.calculeLbm.value.weight;
-          this.jamesBfPer = (this.jamesLbm * 100) / this.calculeLbm.value.weight;
-          this.humeBfPer = (this.humeLbm * 100) / this.calculeLbm.value.weight;
+      if (this.calculeLbm.value.age >= 14) {
+        this.error = "";
+        this.switchAdulte = true;
+        this.switchChild = false;
+        e.scrollIntoView({ behavior: "smooth" });
+        //cm kg
+        if (this.checked === 'male') {
+          if (this.selectedHeight === "cm" && this.selectedWeight === "kg") {
+            this.weightRslt = this.calculeLbm.value.weight;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.calculeLbm.value.height)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.calculeLbm.value.height;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = ((0.32810 * this.weightRslt) + (0.33929 * this.calculeLbm.value.height)) - 29.5336
+            this.selectedHeight = "cm";
+            this.selectedWeight = "kg";
+          }
+          //m kg
+          if (this.selectedHeight === "m" && this.selectedWeight === "kg") {
+            this.weightRslt = this.calculeLbm.value.weight;
+            this.heightCm = this.calculeLbm.value.height * 100
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = ((0.32810 * this.weightRslt) + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "m";
+            this.selectedWeight = "kg";
+          }
+          //in kg
+          if (this.selectedHeight === "in" && this.selectedWeight === "kg") {
+            this.weightRslt = this.calculeLbm.value.weight;
+            let heightRslt = this.calculeLbm.value.height / 39.37;
+            this.heightCm = heightRslt * 100
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = ((0.32810 * this.weightRslt) + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "in";
+            this.selectedWeight = "kg";
+          }
+          //feet kg
+          if (this.selectedHeight === "ft" && this.selectedWeight === "kg") {
+            this.weightRslt = this.calculeLbm.value.weight;
+            let heightRslt = this.calculeLbm.value.height * 0.3048;
+            this.heightCm = heightRslt * 100
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = ((0.32810 * this.weightRslt) + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "ft";
+            this.selectedWeight = "kg";
+          }
+          ///////dag
+          //cm dag
+          if (this.selectedHeight === "cm" && this.selectedWeight === "dag") {
+            this.weightRslt = this.calculeLbm.value.weight / 100;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.calculeLbm.value.height)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.calculeLbm.value.height;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = ((0.32810 * this.weightRslt) + (0.33929 * this.calculeLbm.value.height)) - 29.5336
+            this.selectedHeight = "cm";
+            this.selectedWeight = "dag";
+          }
+          //m dag
+          if (this.selectedHeight === "m" && this.selectedWeight === "dag") {
+            this.weightRslt = this.calculeLbm.value.weight / 100;
+            this.heightCm = this.calculeLbm.value.height * 100;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "m";
+            this.selectedWeight = "dag";
+          }
+          //in dag
+          if (this.selectedHeight === "in" && this.selectedWeight === "dag") {
+            let heightRslt = this.calculeLbm.value.height / 39.37;
+            this.weightRslt = this.calculeLbm.value.weight / 100;
+            this.heightCm = heightRslt * 100;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "in";
+            this.selectedWeight = "dag";
+          }
+          //feet dag
+          if (this.selectedHeight === "ft" && this.selectedWeight === "dag") {
+            let heightRslt = this.calculeLbm.value.height * 0.3048;
+            this.weightRslt = this.calculeLbm.value.weight / 100;
+            this.heightCm = heightRslt * 100
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "ft";
+            this.selectedWeight = "dag";
+          }
+          ///////lb
+          //cm dag
+          if (this.selectedHeight === "cm" && this.selectedWeight === "lb") {
+            this.weightRslt = this.calculeLbm.value.weight / 2.205;
+            this.heightCm = this.calculeLbm.value.height;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "cm";
+            this.selectedWeight = "lb";
+          }
+          //m dag
+          if (this.selectedHeight === "m" && this.selectedWeight === "lb") {
+            this.weightRslt = this.calculeLbm.value.weight / 2.205;
+            this.heightCm = this.calculeLbm.value.height * 100;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "m";
+            this.selectedWeight = "lb";
+          }
+          //in lb
+          if (this.selectedHeight === "in" && this.selectedWeight === "lb") {
+            this.weightRslt = this.calculeLbm.value.weight / 2.205;
+            let heightRslt = this.calculeLbm.value.height / 39.37;
+            this.heightCm = heightRslt * 100;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "in";
+            this.selectedWeight = "lb";
+          }
+          //feet lb
+          if (this.selectedHeight === "ft" && this.selectedWeight === "lb") {
+            let heightRslt = this.calculeLbm.value.height * 0.3048;
+            this.weightRslt = this.calculeLbm.value.weight / 2.205;
+            this.heightCm = heightRslt * 100
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "ft";
+            this.selectedWeight = "lb";
+          }
+          /////////OZ
+          //cm oz
+          if (this.selectedHeight === "cm" && this.selectedWeight === "oz") {
+            this.weightRslt = this.calculeLbm.value.weight / 35.274;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "cm";
+            this.selectedWeight = "oz";
+          }
+          //m oz
+          if (this.selectedHeight === "m" && this.selectedWeight === "oz") {
+            this.weightRslt = this.calculeLbm.value.weight / 35.274;
+            this.heightCm = this.calculeLbm.value.height * 100;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "m";
+            this.selectedWeight = "oz";
+          }
+          //in oz
+          if (this.selectedHeight === "in" && this.selectedWeight === "oz") {
+            let heightRslt = this.calculeLbm.value.height / 39.37;
+            this.weightRslt = this.calculeLbm.value.weight / 35.274;
+            this.heightCm = heightRslt * 100;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "in";
+            this.selectedWeight = "oz";
+          }
+          //feet oz
+          if (this.selectedHeight === "ft" && this.selectedWeight === "oz") {
+            let heightRslt = this.calculeLbm.value.height * 0.3048;
+            this.weightRslt = this.calculeLbm.value.weight / 35.274;
+            this.heightCm = heightRslt * 100;
+            this.boerLbm = ((0.407 * this.weightRslt) + (0.267 * this.heightCm)) - 19.2
+            // For males:eLBM = 1.1W - 128(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.1 * this.weightRslt - 128 * (this.square(wh, 2))
+            // eLBM = 0.32810*W + 0.33929*H - 29.5336
+            this.humeLbm = (0.32810 * this.weightRslt + (0.33929 * this.heightCm)) - 29.5336
+            this.selectedHeight = "ft";
+            this.selectedWeight = "oz";
+          }
+          //rslt 
+          this.boerBfPer = (this.boerLbm * 100) / this.weightRslt;
+          this.jamesBfPer = (this.jamesLbm * 100) / this.weightRslt;
+          this.humeBfPer = (this.humeLbm * 100) / this.weightRslt;
           this.boerBf = 100 - this.boerBfPer;
           this.jamesBf = 100 - this.jamesBfPer;
           this.humeBf = 100 - this.humeBfPer;
+          Math.floor(this.boerLbm);
+          Math.floor(this.jamesLbm);
+          Math.floor(this.humeLbm);
+
+        }
+        if (this.checked === 'female') {
+          if (this.selectedHeight === "cm" && this.selectedWeight === "kg") {
+            this.weightRslt = this.calculeLbm.value.weight;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.calculeLbm.value.height)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.calculeLbm.value.height;
+            this.jamesLbm = 1.07 * this.calculeLbm.value.weight - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.calculeLbm.value.height)) - 43.2933
+            this.selectedHeight = "cm";
+            this.selectedWeight = "kg";
+          }
+          //m kg
+          if (this.selectedHeight === "m" && this.selectedWeight === "kg") {
+            this.heightCm = this.calculeLbm.value.height * 100;
+            this.weightRslt = this.calculeLbm.value.weight;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "m";
+            this.selectedWeight = "kg";
+          }
+          //in kg
+          if (this.selectedHeight === "in" && this.selectedWeight === "kg") {
+            this.weightRslt = this.calculeLbm.value.weight;
+            let heightRslt = this.calculeLbm.value.height / 39.37;
+            this.heightCm = heightRslt * 100
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "in";
+            this.selectedWeight = "kg";
+          }
+          //feet kg
+          if (this.selectedHeight === "ft" && this.selectedWeight === "kg") {
+            this.weightRslt = this.calculeLbm.value.weight;
+            let heightRslt = this.calculeLbm.value.height * 0.3048;
+            this.heightCm = heightRslt * 100
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "ft";
+            this.selectedWeight = "kg";
+          }
+          ///////dag
+          //cm dag
+          if (this.selectedHeight === "cm" && this.selectedWeight === "dag") {
+            this.weightRslt = this.calculeLbm.value.weight / 100;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.calculeLbm.value.height)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.calculeLbm.value.height;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.calculeLbm.value.height)) - 43.2933
+            this.selectedHeight = "cm";
+            this.selectedWeight = "dag";
+          }
+          //m dag
+          if (this.selectedHeight === "m" && this.selectedWeight === "dag") {
+            this.weightRslt = this.calculeLbm.value.weight / 100;
+            this.heightCm = this.calculeLbm.value.height * 100;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "m";
+            this.selectedWeight = "dag";
+          }
+          //in dag
+          if (this.selectedHeight === "in" && this.selectedWeight === "dag") {
+            let heightRslt = this.calculeLbm.value.height / 39.37;
+            this.weightRslt = this.calculeLbm.value.weight / 100;
+            this.heightCm = heightRslt * 100;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "in";
+            this.selectedWeight = "dag";
+          }
+          //feet dag
+          if (this.selectedHeight === "ft" && this.selectedWeight === "dag") {
+            let heightRslt = this.calculeLbm.value.height * 0.3048;
+            this.weightRslt = this.calculeLbm.value.weight / 100;
+            this.heightCm = heightRslt * 100
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "ft";
+            this.selectedWeight = "dag";
+          }
+          ///////lb
+          //cm dag
+          if (this.selectedHeight === "cm" && this.selectedWeight === "lb") {
+            this.weightRslt = this.calculeLbm.value.weight / 2.205;
+            this.heightCm = this.calculeLbm.value.height;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "cm";
+            this.selectedWeight = "lb";
+          }
+          //m dag
+          if (this.selectedHeight === "m" && this.selectedWeight === "lb") {
+            this.weightRslt = this.calculeLbm.value.weight / 2.205;
+            this.heightCm = this.calculeLbm.value.height * 100;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "m";
+            this.selectedWeight = "lb";
+          }
+          //in lb
+          if (this.selectedHeight === "in" && this.selectedWeight === "lb") {
+            this.weightRslt = this.calculeLbm.value.weight / 2.205;
+            let heightRslt = this.calculeLbm.value.height / 39.37;
+            this.heightCm = heightRslt * 100;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "in";
+            this.selectedWeight = "lb";
+          }
+          //feet lb
+          if (this.selectedHeight === "ft" && this.selectedWeight === "lb") {
+            let heightRslt = this.calculeLbm.value.height * 0.3048;
+            this.weightRslt = this.calculeLbm.value.weight / 2.205;
+            this.heightCm = heightRslt * 100
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "ft";
+            this.selectedWeight = "lb";
+          }
+          /////////OZ
+          //cm oz
+          if (this.selectedHeight === "cm" && this.selectedWeight === "oz") {
+            this.weightRslt = this.calculeLbm.value.weight / 35.274;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "cm";
+            this.selectedWeight = "oz";
+          }
+          //m oz
+          if (this.selectedHeight === "m" && this.selectedWeight === "oz") {
+            this.weightRslt = this.calculeLbm.value.weight / 35.274;
+            this.heightCm = this.calculeLbm.value.height * 100;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "m";
+            this.selectedWeight = "oz";
+          }
+          //in oz
+          if (this.selectedHeight === "in" && this.selectedWeight === "oz") {
+            let heightRslt = this.calculeLbm.value.height / 39.37;
+            this.weightRslt = this.calculeLbm.value.weight / 35.274;
+            this.heightCm = heightRslt * 100;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "in";
+            this.selectedWeight = "oz";
+          }
+          //feet oz
+          if (this.selectedHeight === "ft" && this.selectedWeight === "oz") {
+            let heightRslt = this.calculeLbm.value.height * 0.3048;
+            this.weightRslt = this.calculeLbm.value.weight / 35.274;
+            this.heightCm = heightRslt * 100;
+            this.boerLbm = ((0.252 * this.weightRslt) + (0.473 * this.heightCm)) - 48.3
+            // For males:eLBM = 1.07W - 148(W/H)2
+            let wh = this.weightRslt / this.heightCm;
+            this.jamesLbm = 1.07 * this.weightRslt - 148 * (this.square(wh, 2))
+            // eLBM = 0.29569*W + 0.41813*H - 29.5336
+            this.humeLbm = ((0.29569 * this.weightRslt) + (0.41813 * this.heightCm)) - 43.2933
+            this.selectedHeight = "ft";
+            this.selectedWeight = "oz";
+          }
+          //rslt 
+          this.boerBfPer = (this.boerLbm * 100) / this.weightRslt;
+          this.jamesBfPer = (this.jamesLbm * 100) / this.weightRslt;
+          this.humeBfPer = (this.humeLbm * 100) / this.weightRslt;
+          this.boerBf = 100 - this.boerBfPer;
+          this.jamesBf = 100 - this.jamesBfPer;
+          this.humeBf = 100 - this.humeBfPer;
+          Math.floor(this.boerLbm);
+          Math.floor(this.jamesLbm);
+          Math.floor(this.humeLbm);
+        }
+      } else {
+        this.error = "";
+        this.switchAdulte = false;
+        this.switchChild = true;
+        e.scrollIntoView({ behavior: "smooth" });
+        // eECV = 0.0215·W0.6469·H0.7236
+        // (ECV = weight0.6469 × height0.7236 × 0.02154)
+        // eLBM = 3.8·eECV
+        if (this.selectedHeight === "cm" && this.selectedWeight === "kg") {
+          this.weightRslt = this.calculeLbm.value.weight;
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.calculeLbm.value.height, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "cm";
           this.selectedWeight = "kg";
         }
         //m kg
         if (this.selectedHeight === "m" && this.selectedWeight === "kg") {
+          this.weightRslt = this.calculeLbm.value.weight;
           this.heightCm = this.calculeLbm.value.height * 100
-          this.boerLbm = ((0.407 * this.calculeLbm.value.weight) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = this.calculeLbm.value.weight / this.heightCm;
-          this.jamesLbm = 1.1 * this.calculeLbm.value.weight - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * this.calculeLbm.value.weight + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "m";
           this.selectedWeight = "kg";
         }
         //in kg
         if (this.selectedHeight === "in" && this.selectedWeight === "kg") {
+          this.weightRslt = this.calculeLbm.value.weight;
           let heightRslt = this.calculeLbm.value.height / 39.37;
           this.heightCm = heightRslt * 100
-          this.boerLbm = ((0.407 * this.calculeLbm.value.weight) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = this.calculeLbm.value.weight / this.heightCm;
-          this.jamesLbm = 1.1 * this.calculeLbm.value.weight - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * this.calculeLbm.value.weight + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "in";
           this.selectedWeight = "kg";
         }
         //feet kg
         if (this.selectedHeight === "ft" && this.selectedWeight === "kg") {
+          this.weightRslt = this.calculeLbm.value.weight;
           let heightRslt = this.calculeLbm.value.height * 0.3048;
           this.heightCm = heightRslt * 100
-          this.boerLbm = ((0.407 * this.calculeLbm.value.weight) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = this.calculeLbm.value.weight / this.heightCm;
-          this.jamesLbm = 1.1 * this.calculeLbm.value.weight - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * this.calculeLbm.value.weight + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "ft";
           this.selectedWeight = "kg";
         }
         ///////dag
         //cm dag
         if (this.selectedHeight === "cm" && this.selectedWeight === "dag") {
-          let weightRslt = this.calculeLbm.value.weight / 100;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.calculeLbm.value.height)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.calculeLbm.value.height;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.calculeLbm.value.height)) - 29.5336
+          this.weightRslt = this.calculeLbm.value.weight / 100;
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.calculeLbm.value.height, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "cm";
           this.selectedWeight = "dag";
         }
         //m dag
         if (this.selectedHeight === "m" && this.selectedWeight === "dag") {
-          let weightRslt = this.calculeLbm.value.weight / 100;
+          this.weightRslt = this.calculeLbm.value.weight / 100;
           this.heightCm = this.calculeLbm.value.height * 100;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "m";
           this.selectedWeight = "dag";
         }
         //in dag
         if (this.selectedHeight === "in" && this.selectedWeight === "dag") {
           let heightRslt = this.calculeLbm.value.height / 39.37;
-          let weightRslt = this.calculeLbm.value.weight / 100;
+          this.weightRslt = this.calculeLbm.value.weight / 100;
           this.heightCm = heightRslt * 100;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "in";
           this.selectedWeight = "dag";
         }
         //feet dag
         if (this.selectedHeight === "ft" && this.selectedWeight === "dag") {
           let heightRslt = this.calculeLbm.value.height * 0.3048;
-          let weightRslt = this.calculeLbm.value.weight / 100;
+          this.weightRslt = this.calculeLbm.value.weight / 100;
           this.heightCm = heightRslt * 100
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "ft";
           this.selectedWeight = "dag";
         }
         ///////lb
         //cm dag
         if (this.selectedHeight === "cm" && this.selectedWeight === "lb") {
-          let weightRslt = this.calculeLbm.value.weight / 2.205;
+          this.weightRslt = this.calculeLbm.value.weight / 2.205;
           this.heightCm = this.calculeLbm.value.height;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "cm";
           this.selectedWeight = "lb";
         }
         //m dag
         if (this.selectedHeight === "m" && this.selectedWeight === "lb") {
-          let weightRslt = this.calculeLbm.value.weight / 2.205;
+          this.weightRslt = this.calculeLbm.value.weight / 2.205;
           this.heightCm = this.calculeLbm.value.height * 100;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "m";
           this.selectedWeight = "lb";
         }
         //in lb
         if (this.selectedHeight === "in" && this.selectedWeight === "lb") {
-          let weightRslt = this.calculeLbm.value.weight / 2.205;
+          this.weightRslt = this.calculeLbm.value.weight / 2.205;
           let heightRslt = this.calculeLbm.value.height / 39.37;
           this.heightCm = heightRslt * 100;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "in";
           this.selectedWeight = "lb";
         }
         //feet lb
         if (this.selectedHeight === "ft" && this.selectedWeight === "lb") {
           let heightRslt = this.calculeLbm.value.height * 0.3048;
-          let weightRslt = this.calculeLbm.value.weight / 2.205;
+          this.weightRslt = this.calculeLbm.value.weight / 2.205;
           this.heightCm = heightRslt * 100
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "ft";
           this.selectedWeight = "lb";
         }
         /////////OZ
         //cm oz
         if (this.selectedHeight === "cm" && this.selectedWeight === "oz") {
-          let weightRslt = this.calculeLbm.value.weight / 35.274;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          this.weightRslt = this.calculeLbm.value.weight / 35.274;
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "cm";
           this.selectedWeight = "oz";
         }
         //m oz
         if (this.selectedHeight === "m" && this.selectedWeight === "oz") {
-          let weightRslt = this.calculeLbm.value.weight / 35.274;
+          this.weightRslt = this.calculeLbm.value.weight / 35.274;
           this.heightCm = this.calculeLbm.value.height * 100;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "m";
           this.selectedWeight = "oz";
         }
         //in oz
         if (this.selectedHeight === "in" && this.selectedWeight === "oz") {
           let heightRslt = this.calculeLbm.value.height / 39.37;
-          let weightRslt = this.calculeLbm.value.weight / 35.274;
+          this.weightRslt = this.calculeLbm.value.weight / 35.274;
           this.heightCm = heightRslt * 100;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "in";
           this.selectedWeight = "oz";
         }
         //feet oz
         if (this.selectedHeight === "ft" && this.selectedWeight === "oz") {
           let heightRslt = this.calculeLbm.value.height * 0.3048;
-          let weightRslt = this.calculeLbm.value.weight / 35.274;
+          this.weightRslt = this.calculeLbm.value.weight / 35.274;
           this.heightCm = heightRslt * 100;
-          this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-          // For males:eLBM = 1.1W - 128(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-          // eLBM = 0.32810*W + 0.33929*H - 29.5336
-          this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
+          let w = this.square(this.weightRslt, 0.6469);
+          let h = this.square(this.heightCm, 0.7236);
+          this.ecv = w * h * 0.02154;
+          this.childLbm = 3.8 * this.ecv
           this.selectedHeight = "ft";
           this.selectedWeight = "oz";
         }
         //rslt 
-        Math.floor(this.boerLbm);
-        Math.floor(this.jamesLbm);
-        Math.floor(this.humeLbm);
-      }
-      if (this.checked === 'female') {
-        if (this.selectedHeight === "cm" && this.selectedWeight === "kg") {
-          // this.heightCm = this.calculeLbm.value.height / 100
-          this.boerLbm = ((0.252 * this.calculeLbm.value.weight) + (0.473 * this.calculeLbm.value.height)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = this.calculeLbm.value.weight / this.calculeLbm.value.height;
-          this.jamesLbm = 1.07 * this.calculeLbm.value.weight - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * this.calculeLbm.value.weight + (0.41813 * this.calculeLbm.value.height)) - 29.5336
-          this.boerBfPer = (this.boerLbm * 100) / this.calculeLbm.value.weight;
-          this.jamesBfPer = (this.jamesLbm * 100) / this.calculeLbm.value.weight;
-          this.humeBfPer = (this.humeLbm * 100) / this.calculeLbm.value.weight;
-          this.boerBf = 100 - this.boerBfPer;
-          this.jamesBf = 100 - this.jamesBfPer;
-          this.humeBf = 100 - this.humeBfPer;
-          this.selectedHeight = "cm";
-          this.selectedWeight = "kg";
-        }
-        //m kg
-        if (this.selectedHeight === "m" && this.selectedWeight === "kg") {
-          this.heightCm = this.calculeLbm.value.height * 100
-          this.boerLbm = ((0.252 * this.calculeLbm.value.weight) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = this.calculeLbm.value.weight / this.heightCm;
-          this.jamesLbm = 1.07 * this.calculeLbm.value.weight - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * this.calculeLbm.value.weight + (0.41813 * this.heightCm)) - 29.5336
-          this.selectedHeight = "m";
-          this.selectedWeight = "kg";
-        }
-        //in kg
-        if (this.selectedHeight === "in" && this.selectedWeight === "kg") {
-          let heightRslt = this.calculeLbm.value.height / 39.37;
-          this.heightCm = heightRslt * 100
-          this.boerLbm = ((0.252 * this.calculeLbm.value.weight) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = this.calculeLbm.value.weight / this.heightCm;
-          this.jamesLbm = 1.07 * this.calculeLbm.value.weight - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * this.calculeLbm.value.weight + (0.41813 * this.heightCm)) - 29.5336
-          this.selectedHeight = "in";
-          this.selectedWeight = "kg";
-        }
-        //feet kg
-        if (this.selectedHeight === "ft" && this.selectedWeight === "kg") {
-          let heightRslt = this.calculeLbm.value.height * 0.3048;
-          this.heightCm = heightRslt * 100
-          this.boerLbm = ((0.252 * this.calculeLbm.value.weight) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = this.calculeLbm.value.weight / this.heightCm;
-          this.jamesLbm = 1.07 * this.calculeLbm.value.weight - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * this.calculeLbm.value.weight + (0.41813 * this.heightCm)) - 29.5336
-          this.selectedHeight = "ft";
-          this.selectedWeight = "kg";
-        }
-        ///////dag
-        //cm dag
-        if (this.selectedHeight === "cm" && this.selectedWeight === "dag") {
-          let weightRslt = this.calculeLbm.value.weight / 100;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.calculeLbm.value.height)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.calculeLbm.value.height;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.calculeLbm.value.height)) - 29.5336
-          this.selectedHeight = "cm";
-          this.selectedWeight = "dag";
-        }
-        //m dag
-        if (this.selectedHeight === "m" && this.selectedWeight === "dag") {
-          let weightRslt = this.calculeLbm.value.weight / 100;
-          this.heightCm = this.calculeLbm.value.height * 100;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 29.5336
-          this.selectedHeight = "m";
-          this.selectedWeight = "dag";
-        }
-        //in dag
-        if (this.selectedHeight === "in" && this.selectedWeight === "dag") {
-          let heightRslt = this.calculeLbm.value.height / 39.37;
-          let weightRslt = this.calculeLbm.value.weight / 100;
-          this.heightCm = heightRslt * 100;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 29.5336
-          this.selectedHeight = "in";
-          this.selectedWeight = "dag";
-        }
-        //feet dag
-        if (this.selectedHeight === "ft" && this.selectedWeight === "dag") {
-          let heightRslt = this.calculeLbm.value.height * 0.3048;
-          let weightRslt = this.calculeLbm.value.weight / 100;
-          this.heightCm = heightRslt * 100
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "ft";
-          this.selectedWeight = "dag";
-        }
-        ///////lb
-        //cm dag
-        if (this.selectedHeight === "cm" && this.selectedWeight === "lb") {
-          let weightRslt = this.calculeLbm.value.weight / 2.205;
-          this.heightCm = this.calculeLbm.value.height;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "cm";
-          this.selectedWeight = "lb";
-        }
-        //m dag
-        if (this.selectedHeight === "m" && this.selectedWeight === "lb") {
-          let weightRslt = this.calculeLbm.value.weight / 2.205;
-          this.heightCm = this.calculeLbm.value.height * 100;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "m";
-          this.selectedWeight = "lb";
-        }
-        //in lb
-        if (this.selectedHeight === "in" && this.selectedWeight === "lb") {
-          let weightRslt = this.calculeLbm.value.weight / 2.205;
-          let heightRslt = this.calculeLbm.value.height / 39.37;
-          this.heightCm = heightRslt * 100;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "in";
-          this.selectedWeight = "lb";
-        }
-        //feet lb
-        if (this.selectedHeight === "ft" && this.selectedWeight === "lb") {
-          let heightRslt = this.calculeLbm.value.height * 0.3048;
-          let weightRslt = this.calculeLbm.value.weight / 2.205;
-          this.heightCm = heightRslt * 100
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "ft";
-          this.selectedWeight = "lb";
-        }
-        /////////OZ
-        //cm oz
-        if (this.selectedHeight === "cm" && this.selectedWeight === "oz") {
-          let weightRslt = this.calculeLbm.value.weight / 35.274;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "cm";
-          this.selectedWeight = "oz";
-        }
-        //m oz
-        if (this.selectedHeight === "m" && this.selectedWeight === "oz") {
-          let weightRslt = this.calculeLbm.value.weight / 35.274;
-          this.heightCm = this.calculeLbm.value.height * 100;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "m";
-          this.selectedWeight = "oz";
-        }
-        //in oz
-        if (this.selectedHeight === "in" && this.selectedWeight === "oz") {
-          let heightRslt = this.calculeLbm.value.height / 39.37;
-          let weightRslt = this.calculeLbm.value.weight / 35.274;
-          this.heightCm = heightRslt * 100;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "in";
-          this.selectedWeight = "oz";
-        }
-        //feet oz
-        if (this.selectedHeight === "ft" && this.selectedWeight === "oz") {
-          let heightRslt = this.calculeLbm.value.height * 0.3048;
-          let weightRslt = this.calculeLbm.value.weight / 35.274;
-          this.heightCm = heightRslt * 100;
-          this.boerLbm = ((0.252 * weightRslt) + (0.473 * this.heightCm)) - 48.3
-          // For males:eLBM = 1.07W - 148(W/H)2
-          let wh = weightRslt / this.heightCm;
-          this.jamesLbm = 1.07 * weightRslt - 148 * (this.square(wh, 2))
-          // eLBM = 0.29569*W + 0.41813*H - 29.5336
-          this.humeLbm = (0.29569 * weightRslt + (0.41813 * this.heightCm)) - 43.2933
-          this.selectedHeight = "ft";
-          this.selectedWeight = "oz";
-        }
-        //rslt 
-        Math.floor(this.boerLbm);
-        Math.floor(this.jamesLbm);
-        Math.floor(this.humeLbm);
+        this.childBfPer = (this.childLbm * 100) / this.weightRslt;
+        this.childBf = 100 - this.boerBfPer;
+        Math.floor(this.childLbm);
       }
     } else {
-      // eECV = 0.0215·W0.6469·H0.7236
-      // (ECV = weight0.6469 × height0.7236 × 0.02154)
-      // eLBM = 3.8·eECV
-      if (this.selectedHeight === "cm" && this.selectedWeight === "kg") {
-        // this.heightCm = this.calculeLbm.value.height / 100
-        this.boerLbm = ((0.407 * this.calculeLbm.value.weight) + (0.267 * this.calculeLbm.value.height)) - 19.2
-        let w = this.square(this.calculeLbm.value.weight, 0.6469);
-        let h = this.square(this.calculeLbm.value.height, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = this.calculeLbm.value.weight / this.calculeLbm.value.height;
-        this.jamesLbm = 1.1 * this.calculeLbm.value.weight - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * this.calculeLbm.value.weight + (0.33929 * this.calculeLbm.value.height)) - 29.5336
-        this.boerBfPer = (this.boerLbm * 100) / this.calculeLbm.value.weight;
-        this.jamesBfPer = (this.jamesLbm * 100) / this.calculeLbm.value.weight;
-        this.humeBfPer = (this.humeLbm * 100) / this.calculeLbm.value.weight;
-        this.boerBf = 100 - this.boerBfPer;
-        this.jamesBf = 100 - this.jamesBfPer;
-        this.humeBf = 100 - this.humeBfPer;
-        this.selectedHeight = "cm";
-        this.selectedWeight = "kg";
-      }
-      //m kg
-      if (this.selectedHeight === "m" && this.selectedWeight === "kg") {
-        this.heightCm = this.calculeLbm.value.height * 100
-        this.boerLbm = ((0.407 * this.calculeLbm.value.weight) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(this.calculeLbm.value.weight, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = this.calculeLbm.value.weight / this.heightCm;
-        this.jamesLbm = 1.1 * this.calculeLbm.value.weight - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * this.calculeLbm.value.weight + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "m";
-        this.selectedWeight = "kg";
-      }
-      //in kg
-      if (this.selectedHeight === "in" && this.selectedWeight === "kg") {
-        let heightRslt = this.calculeLbm.value.height / 39.37;
-        this.heightCm = heightRslt * 100
-        this.boerLbm = ((0.407 * this.calculeLbm.value.weight) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(this.calculeLbm.value.weight, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = this.calculeLbm.value.weight / this.heightCm;
-        this.jamesLbm = 1.1 * this.calculeLbm.value.weight - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * this.calculeLbm.value.weight + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "in";
-        this.selectedWeight = "kg";
-      }
-      //feet kg
-      if (this.selectedHeight === "ft" && this.selectedWeight === "kg") {
-        let heightRslt = this.calculeLbm.value.height * 0.3048;
-        this.heightCm = heightRslt * 100
-        this.boerLbm = ((0.407 * this.calculeLbm.value.weight) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(this.calculeLbm.value.weight, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = this.calculeLbm.value.weight / this.heightCm;
-        this.jamesLbm = 1.1 * this.calculeLbm.value.weight - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * this.calculeLbm.value.weight + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "ft";
-        this.selectedWeight = "kg";
-      }
-      ///////dag
-      //cm dag
-      if (this.selectedHeight === "cm" && this.selectedWeight === "dag") {
-        let weightRslt = this.calculeLbm.value.weight / 100;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.calculeLbm.value.height)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.calculeLbm.value.height, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.calculeLbm.value.height;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.calculeLbm.value.height)) - 29.5336
-        this.selectedHeight = "cm";
-        this.selectedWeight = "dag";
-      }
-      //m dag
-      if (this.selectedHeight === "m" && this.selectedWeight === "dag") {
-        let weightRslt = this.calculeLbm.value.weight / 100;
-        this.heightCm = this.calculeLbm.value.height * 100;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "m";
-        this.selectedWeight = "dag";
-      }
-      //in dag
-      if (this.selectedHeight === "in" && this.selectedWeight === "dag") {
-        let heightRslt = this.calculeLbm.value.height / 39.37;
-        let weightRslt = this.calculeLbm.value.weight / 100;
-        this.heightCm = heightRslt * 100;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2;
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "in";
-        this.selectedWeight = "dag";
-      }
-      //feet dag
-      if (this.selectedHeight === "ft" && this.selectedWeight === "dag") {
-        let heightRslt = this.calculeLbm.value.height * 0.3048;
-        let weightRslt = this.calculeLbm.value.weight / 100;
-        this.heightCm = heightRslt * 100
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2;
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "ft";
-        this.selectedWeight = "dag";
-      }
-      ///////lb
-      //cm dag
-      if (this.selectedHeight === "cm" && this.selectedWeight === "lb") {
-        let weightRslt = this.calculeLbm.value.weight / 2.205;
-        this.heightCm = this.calculeLbm.value.height;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "cm";
-        this.selectedWeight = "lb";
-      }
-      //m dag
-      if (this.selectedHeight === "m" && this.selectedWeight === "lb") {
-        let weightRslt = this.calculeLbm.value.weight / 2.205;
-        this.heightCm = this.calculeLbm.value.height * 100;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "m";
-        this.selectedWeight = "lb";
-      }
-      //in lb
-      if (this.selectedHeight === "in" && this.selectedWeight === "lb") {
-        let weightRslt = this.calculeLbm.value.weight / 2.205;
-        let heightRslt = this.calculeLbm.value.height / 39.37;
-        this.heightCm = heightRslt * 100;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "in";
-        this.selectedWeight = "lb";
-      }
-      //feet lb
-      if (this.selectedHeight === "ft" && this.selectedWeight === "lb") {
-        let heightRslt = this.calculeLbm.value.height * 0.3048;
-        let weightRslt = this.calculeLbm.value.weight / 2.205;
-        this.heightCm = heightRslt * 100
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "ft";
-        this.selectedWeight = "lb";
-      }
-      /////////OZ
-      //cm oz
-      if (this.selectedHeight === "cm" && this.selectedWeight === "oz") {
-        let weightRslt = this.calculeLbm.value.weight / 35.274;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "cm";
-        this.selectedWeight = "oz";
-      }
-      //m oz
-      if (this.selectedHeight === "m" && this.selectedWeight === "oz") {
-        let weightRslt = this.calculeLbm.value.weight / 35.274;
-        this.heightCm = this.calculeLbm.value.height * 100;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "m";
-        this.selectedWeight = "oz";
-      }
-      //in oz
-      if (this.selectedHeight === "in" && this.selectedWeight === "oz") {
-        let heightRslt = this.calculeLbm.value.height / 39.37;
-        let weightRslt = this.calculeLbm.value.weight / 35.274;
-        this.heightCm = heightRslt * 100;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "in";
-        this.selectedWeight = "oz";
-      }
-      //feet oz
-      if (this.selectedHeight === "ft" && this.selectedWeight === "oz") {
-        let heightRslt = this.calculeLbm.value.height * 0.3048;
-        let weightRslt = this.calculeLbm.value.weight / 35.274;
-        this.heightCm = heightRslt * 100;
-        this.boerLbm = ((0.407 * weightRslt) + (0.267 * this.heightCm)) - 19.2
-        let w = this.square(weightRslt, 0.6469);
-        let h = this.square(this.heightCm, 0.7236);
-        this.ecv = w * h * 0.02154;
-        this.childLbm = 3.8 * this.ecv
-        // For males:eLBM = 1.1W - 128(W/H)2
-        let wh = weightRslt / this.heightCm;
-        this.jamesLbm = 1.1 * weightRslt - 128 * (this.square(wh, 2))
-        // eLBM = 0.32810*W + 0.33929*H - 29.5336
-        this.humeLbm = (0.32810 * weightRslt + (0.33929 * this.heightCm)) - 29.5336
-        this.selectedHeight = "ft";
-        this.selectedWeight = "oz";
-      }
-      //rslt 
-      Math.floor(this.boerLbm);
-      Math.floor(this.jamesLbm);
-      Math.floor(this.humeLbm);
+      this.error = "Please check the fields";
     }
   }
   heightSelect(v: any) {

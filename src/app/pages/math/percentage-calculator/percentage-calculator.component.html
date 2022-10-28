@@ -28,16 +28,16 @@
                 <div class="row">
                   <div class="col-4">
                     <label for="percentage">Is what %</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="%" formControlName="p">
+                    <input id="percentage" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="%" formControlName="p">
                     <small class="text-danger" *ngIf="submitted && formPercentageY.p.errors?.required">this field
                       required.
                       !</small>
                   </div>
                   <div class="col-4">
                     <label for="Of">Of</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="?" formControlName="x">
+                    <input id="Of" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="?" formControlName="x">
                     <small class="text-danger" *ngIf="submitted && formPercentageY.x.errors?.required">this field
                       required.
                       !</small>
@@ -79,17 +79,17 @@
                 </div>
                 <div class="row">
                   <div class="col-4">
-                    <label for="percentage">Is what percent</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="?" formControlName="x">
+                    <label for="IsPercentage">Is what percent</label>
+                    <input id="IsPercentage" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="?" formControlName="x">
                     <small class="text-danger" *ngIf="submitted && formPercentageX.x.errors?.required">this field
                       required.
                       !</small>
                   </div>
                   <div class="col-4">
-                    <label for="Of">Of</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="%" formControlName="y">
+                    <label for="IsOf">Of</label>
+                    <input id="IsOf" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="%" formControlName="y">
                     <small class="text-danger" *ngIf="submitted && formPercentageX.y.errors?.required">this field
                       required.
                       !</small>
@@ -126,17 +126,17 @@
                 </div>
                 <div class="row">
                   <div class="col-4">
-                    <label for="percentage">Is</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="?" formControlName="x">
+                    <label for="perX">Is</label>
+                    <input id="perX" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="?" formControlName="x">
                     <small class="text-danger" *ngIf="submitted && formPercentageP.x.errors?.required">this field
                       required.
                       !</small>
                   </div>
                   <div class="col-4">
-                    <label for="Of">Of what?</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="%" formControlName="p">
+                    <label for="perY">Of what?</label>
+                    <input id="perY" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="%" formControlName="p">
                     <small class="text-danger" *ngIf="submitted && formPercentageP.p.errors?.required">this field
                       required.
                       !</small>
@@ -179,24 +179,25 @@
                 </div>
                 <div class="row">
                   <div class="col-3">
-                    <label for="percentage">What Is</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="" formControlName="x">
+                    <label for="what">What Is</label>
+                    <input id="what" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="" formControlName="x">
                     <small class="text-danger" *ngIf="submitted && formPercentageIncDec.x.errors?.required">this field
                       required.
                       !</small>
                   </div>
                   <div class="col-3 mt-4">
-                    <nb-select class="nb-select-min-width" placeholder="kg" selected="kg" status="basic"
+                    <label for="increased"></label>
+                    <nb-select id="increased" class="nb-select-min-width" placeholder="kg" selected="kg" status="basic"
                       shape="semi-round" fullWidth formControlName="selectPercentage" required>
                       <nb-option value="increased">increased</nb-option>
                       <nb-option value="decreased">decreased</nb-option>
                     </nb-select>
                   </div>
                   <div class="col-3">
-                    <label for="Of">By</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="% ?" formControlName="p">
+                    <label for="by">By</label>
+                    <input id="by" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="% ?" formControlName="p">
                     <small class="text-danger" *ngIf="submitted && formPercentageIncDec.p.errors?.required">this field
                       required.
                       !</small>

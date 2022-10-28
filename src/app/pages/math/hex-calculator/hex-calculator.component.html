@@ -32,26 +32,26 @@
                 </div>
                 <div class="row">
                   <div class="col-4">
-                    <!-- <label for="binary">Binary value</label> -->
-                    <input class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="Hex" formControlName="hexOne">
+                    <label for="hexOne"></label>
+                    <input id="hexOne" class="form-control" type="text" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="Hex" formControlName="hexOne">
                     <small class="text-danger" *ngIf="submitted && formCalculeHex.hexOne.errors?.required">this
                       field
                       required.
                       !</small>
                   </div>
                   <div class="col-4">
-                    <!-- <label for="Binary">Binary value</label> -->
-                    <nb-select class="nb-select-min-width" selected="+" status="basic" shape="semi-round" fullWidth
-                      (selectedChange)="changeSymbole($event)" required>
+                    <label for="addOrSub"></label>
+                    <nb-select id="addOrSub" class="nb-select-min-width" selected="+" status="basic" shape="semi-round"
+                      fullWidth (selectedChange)="changeSymbole($event)" required>
                       <nb-option value="+">+</nb-option>
                       <nb-option value="-">-</nb-option>
                     </nb-select>
                   </div>
                   <div class="col-4">
-                    <!-- <label for="Binary">Binary value</label> -->
-                    <input class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="Hex" formControlName="hexTwo">
+                    <label for="hexTwo"></label>
+                    <input id="hexTwo" class="form-control" type="text" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="Hex" formControlName="hexTwo">
                     <small class="text-danger" *ngIf="submitted && formCalculeHex.hexTwo.errors?.required">this
                       field
                       required.
@@ -81,8 +81,8 @@
                 </div>
                 <div class="row">
                   <div class="col-6">
-                    <label for="Binary">Binary value</label>
-                    <input class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
+                    <label for="hex">Hex value</label>
+                    <input id="hex" class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
                       placeholder="Hex" formControlName="hex">
                     <small class="text-danger" *ngIf="submitted && formHexDec.hex.errors?.required">this field
                       required.
@@ -121,8 +121,8 @@
                 <div class="row">
                   <div class="col-6">
                     <label for="decimal">Decimal value</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="decimal" formControlName="decimal">
+                    <input id="decimal" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="decimal" formControlName="decimal">
                     <small class="text-danger" *ngIf="submitted && formDecHex.decimal.errors?.required">this field
                       required.
                       !</small>

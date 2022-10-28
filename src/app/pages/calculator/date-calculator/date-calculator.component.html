@@ -27,8 +27,8 @@
               </div>
               <form [formGroup]="calculeDate" (ngSubmit)="CalculateDate(target)">
                 <div>
-                  <label for="Start date">Start date</label>
-                  <input placeholder="Start date" class="form-control" formControlName="startDate"
+                  <label for="Start-date">Start date</label>
+                  <input id="Start-date" placeholder="Start date" class="form-control" formControlName="startDate"
                     [nbDatepicker]="birthdayTimePicker" readonly>
                   <small class="text-danger" *ngIf="submitted && formDate.startDate.errors?.required">Start date is
                     required.
@@ -36,8 +36,8 @@
                   <nb-datepicker [startView]="'year'" #birthdayTimePicker></nb-datepicker>
                 </div>
                 <div>
-                  <label class="mt-3" for="Date end">End date</label>
-                  <input class="form-control" placeholder="End date" formControlName="dateEnd"
+                  <label class="mt-3" for="Date-end">End date</label>
+                  <input id="Date-end" class="form-control" placeholder="End date" formControlName="dateEnd"
                     [nbDatepicker]="todayTimePicker" readonly>
                   <small class="text-danger" *ngIf="submitted && formDate.dateEnd.errors?.required"> End date is
                     required.
@@ -92,10 +92,10 @@
                 <div class="col-md-8 col-12 mx-auto ">
                   <div class="row d-flex justify-content-center">
                     <div class="col-md-2 col-4 px-0">
-                      <label class="mt-2" for="Start date">Start date</label>
+                      <label class="mt-2" for="Startdate">Start date</label>
                     </div>
                     <div class="col-md-5 col-8 pr-0">
-                      <input class="form-control" placeholder="Start date" formControlName="addSubDate"
+                      <input id="Startdate" class="form-control" placeholder="Start date" formControlName="addSubDate"
                         [nbDatepicker]="addSubDateTimePicker" readonly>
                       <nb-datepicker [startView]="'year'" #addSubDateTimePicker></nb-datepicker>
                     </div>
@@ -108,8 +108,9 @@
                         <label class="mt-2" for="Date end">Add or Subtract</label>
                       </div>
                       <div class="col-md-3 col-8 pr-0">
-                        <nb-select class="nb-select-min-width" selected="+" status="basic" shape="semi-round" fullWidth
-                          (selectedChange)="changeSymbole($event)" required>
+                        <label for="addOrSub"></label>
+                        <nb-select id="addOrSub" class="nb-select-min-width" selected="+" status="basic"
+                          shape="semi-round" fullWidth (selectedChange)="changeSymbole($event)" required>
                           <nb-option value="+">+</nb-option>
                           <nb-option value="-">-</nb-option>
                         </nb-select>
@@ -118,17 +119,17 @@
                   </div>
                 </div>
                 <div class="row my-4">
-                  <div class="col-3 pl-2 pr-2"><label for="Date end">Years</label>
-                    <input class="form-control" type="number" placeholder="years" formControlName="years">
+                  <div class="col-3 pl-2 pr-2"><label for="years">Years</label>
+                    <input id="years" class="form-control" type="number" placeholder="years" formControlName="years">
                   </div>
-                  <div class="col-3 pl-2 pr-2"><label for="Date end">Months</label>
-                    <input class="form-control" type="number" placeholder="months" formControlName="months">
+                  <div class="col-3 pl-2 pr-2"><label for="Months">Months</label>
+                    <input id="Months" class="form-control" type="number" placeholder="months" formControlName="months">
                   </div>
-                  <div class="col-3 pl-2 pr-2"><label for="Date end">Weeks</label>
-                    <input class="form-control" type="number" placeholder="weeks" formControlName="weeks">
+                  <div class="col-3 pl-2 pr-2"><label for="Weeks">Weeks</label>
+                    <input id="Weeks" class="form-control" type="number" placeholder="weeks" formControlName="weeks">
                   </div>
-                  <div class="col-3 pl-2 pr-2"> <label for="Date end">Days</label>
-                    <input class="form-control" type="number" placeholder="days" formControlName="days">
+                  <div class="col-3 pl-2 pr-2"> <label for="Days">Days</label>
+                    <input id="Days" class="form-control" type="number" placeholder="days" formControlName="days">
 
                   </div>
                 </div>
@@ -145,7 +146,8 @@
           <div class="col-12 my-3 px-0" *ngIf="showResultAddOrSubtract">
             <div class="border shadow bg-white p-2">
               <div class="col-md-5 d-flex justify-content-center px-0">
-                <input type="date" class="form-control inputTime my-3" name='result'
+                <label for="rslt"></label>
+                <input id="rslt" type="date" class="form-control inputTime my-3" name='result'
                   value="{{ resultAddOrSubtract | date: 'yyyy-MM-dd'}}" style="padding: 5px;">
               </div>
               <p>The result is: <em>{{resultAddOrSubtract | date:'fullDate'}}</em></p>

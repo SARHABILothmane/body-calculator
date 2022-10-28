@@ -18,7 +18,9 @@
         </div>
         <div class="col-md-5">
           <div class="card">
-            <div class="card-header"><p class="text-white text-center font-weight-bold">Calculate your body shape</p></div>
+            <div class="card-header">
+              <p class="text-white text-center font-weight-bold">Calculate your body shape</p>
+            </div>
             <div class="card-body example-items-col">
               <div class="d-flex justify-content-center img-shape">
                 <img height="94px" width="110px" src="assets/images/body-shape-size.png" alt="body-shape-calculator">
@@ -29,7 +31,7 @@
                 </span>
               </div>
               <form [formGroup]="calculeBsc" (ngSubmit)="CalculateBsc(target)">
-                <label for="Bust size">Bust Size :</label>
+                <label for="Bust">Bust Size :</label>
                 <!-- <strong *ngIf="selectedBust == 'cm'"> cm</strong>
                 <strong *ngIf="selectedBust == 'm'"> Metres</strong>
                 <strong *ngIf="selectedBust == 'in'"> Inches</strong>
@@ -38,55 +40,56 @@
                 <div class="row">
                   <div class="col-6">
                     <div class="mb-3 nb-form-field-max-width ">
-                      <input type="number" formControlName="bust" class="form-control" [(ngModel)]="modelsBsc.bust"
-                        placeholder="Bust" IsDecimal>
+                      <input id="Bust" type="number" formControlName="bust" class="form-control"
+                        [(ngModel)]="modelsBsc.bust" placeholder="Bust" IsDecimal>
                       <small class="text-danger" *ngIf="submitted && formBsc.bust.errors?.required">Bust is required.
                         !</small>
                     </div>
                     <!-- nb-form-field -->
-                    <label for="Waist size">Waist Size :</label>
+                    <label for="Waist-size">Waist Size :</label>
                     <!-- <strong *ngIf="selectedWaist == 'cm'"> cm</strong>
                     <strong *ngIf="selectedWaist == 'm'"> Metres</strong>
                     <strong *ngIf="selectedWaist == 'in'"> Inches</strong>
                     <strong *ngIf="selectedWaist == 'ft'"> Feet</strong> -->
                     <!-- nb-form-field -->
                     <div class="mb-3 nb-form-field-max-width">
-                      <input type="number" formControlName="waist" class="form-control" [(ngModel)]="modelsBsc.waist"
-                        placeholder="Waist" IsDecimal>
+                      <input id="Waist-size" type="number" formControlName="waist" class="form-control"
+                        [(ngModel)]="modelsBsc.waist" placeholder="Waist" IsDecimal>
                       <small class="text-danger" *ngIf="submitted && formBsc.waist.errors?.required">Waist is required.
                         !</small>
                     </div>
                     <!-- nb-form-field -->
-                    <label for="High Hip size">High Hip Size :</label>
+                    <label for="HighHipSize">High Hip Size :</label>
                     <!-- <strong *ngIf="selectedHighHip == 'cm'"> cm</strong>
                     <strong *ngIf="selectedHighHip == 'm'"> Metres</strong>
                     <strong *ngIf="selectedHighHip == 'in'"> Inches</strong>
                     <strong *ngIf="selectedHighHip == 'ft'"> Feet</strong> -->
                     <!-- nb-form-field -->
                     <div class="mb-3 nb-form-field-max-width">
-                      <input type="number" formControlName="highHip" class="form-control"
+                      <input id="HighHipSize" type="number" formControlName="highHip" class="form-control"
                         [(ngModel)]="modelsBsc.highHip" placeholder="High Hip" IsDecimal>
                       <small class="text-danger" *ngIf="submitted && formBsc.highHip.errors?.required">High Hip is
                         required.
                         !</small>
                     </div>
                     <!-- nb-form-field -->
-                    <label for="Hip size">Hip Size :</label>
+                    <label for="HipSize">Hip Size :</label>
                     <!-- <strong *ngIf="selectedHip == 'cm'"> cm</strong>
                     <strong *ngIf="selectedHip == 'm'"> Metres</strong>
                     <strong *ngIf="selectedHip == 'in'"> Inches</strong>
                     <strong *ngIf="selectedHip == 'ft'"> Feet</strong> -->
                     <!-- nb-form-field -->
                     <div class="mb-3 nb-form-field-max-width">
-                      <input type="number" formControlName="hip" class="form-control" [(ngModel)]="modelsBsc.hip"
-                        placeholder="Hip" IsDecimal>
+                      <input id="HipSize" type="number" formControlName="hip" class="form-control"
+                        [(ngModel)]="modelsBsc.hip" placeholder="Hip" IsDecimal>
                       <small class="text-danger" *ngIf="submitted && formBsc.hip.errors?.required">Hip is
                         required.
                         !</small>
                     </div>
                   </div>
                   <div class="col-6 d-flex align-items-center justify-content-center">
-                    <nb-select class="nb-select-min-width" selected="cm" status="primary" shape="semi-round"
+                    <label for="height"></label>
+                    <nb-select id="height" class="nb-select-min-width" selected="cm" status="primary" shape="semi-round"
                       (selectedChange)="[bustSelect($event), waistSelect($event), highHipSelect($event), hipSelect($event)]"
                       required>
                       <nb-option value="cm">cm</nb-option>

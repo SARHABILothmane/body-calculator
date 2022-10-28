@@ -1,3 +1,5 @@
+import { CombinationsCalculatorModule } from './combinations-calculator/combinations-calculator.module';
+import { PermutationsCalculatorModule } from './permutations-calculator/permutations-calculator.module';
 import { MathComponent } from './math.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +12,8 @@ const routes: Routes = [
       { path: "percentage-error-calculator/.", loadChildren: () => import("src/app/pages/math/percentage-error-calculator/percentage-error-calculator.module").then(mod => mod.PercentageErrorCalculatorModule) },
       { path: "binary-calculator/.", loadChildren: () => import("src/app/pages/math/binary-calculator/binary-calculator.module").then(mod => mod.BinaryCalculatorModule) },
       { path: "hex-calculator/.", loadChildren: () => import("src/app/pages/math/hex-calculator/hex-calculator.module").then(mod => mod.HexCalculatorModule) },
+      { path: "permutations-calculator/.", loadChildren: () => import("src/app/pages/math/permutations-calculator/permutations-calculator.module").then(mod => mod.PermutationsCalculatorModule) },
+      { path: "combinations-calculator/.", loadChildren: () => import("src/app/pages/math/combinations-calculator/combinations-calculator.module").then(mod => mod.CombinationsCalculatorModule) },
 
     ]
   }

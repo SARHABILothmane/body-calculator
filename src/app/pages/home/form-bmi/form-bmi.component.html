@@ -1,7 +1,9 @@
 <div class="row d-flex justify-content-center">
   <div class="col-md-6 mt-4 pr-0">
     <div class="card">
-      <div class="card-header"><p class="text-white text-center font-weight-bold">BMI Calculator</p></div>
+      <div class="card-header">
+        <p class="text-white text-center font-weight-bold">BMI Calculator</p>
+      </div>
       <div class="card-body example-items-col">
         <ul class="nav nav-tabs">
           <li class="nav-item">
@@ -22,7 +24,7 @@
           <form [formGroup]="calculeForm" (ngSubmit)="claculteBmi(target)">
             <div class="mb-3">
               <label for="Age">Age</label>
-              <input class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
+              <input id="Age" class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
                 placeholder="Age" [(ngModel)]="modelsBmi.age">
               <small class="text-danger" *ngIf="submitted && formBmi['age'].errors?.['required']">Age is required.
                 !</small>
@@ -37,15 +39,15 @@
             </div>
             <div class="mb-3">
               <label for="Height">Height<em class="" *ngIf="modelsBmi.height"> : Cm</em></label>
-              <input class="form-control" type="number" nbInput formControlName="height" fullWidth status="basic"
-                placeholder="cm" [(ngModel)]="modelsBmi.height">
+              <input id="Height" class="form-control" type="number" nbInput formControlName="height" fullWidth
+                status="basic" placeholder="cm" [(ngModel)]="modelsBmi.height">
               <small class="text-danger" *ngIf="submitted && formBmi['height'].errors?.['required']">Height is
                 required !</small>
             </div>
             <div class="mb-3">
               <label for="Weight">Weight <em class="" *ngIf="modelsBmi.weight"> : Kg</em></label>
-              <input class="form-control" type="number" nbInput formControlName="weight" fullWidth status="basic"
-                placeholder="kg" [(ngModel)]="modelsBmi.weight">
+              <input id="Weight" class="form-control" type="number" nbInput formControlName="weight" fullWidth
+                status="basic" placeholder="kg" [(ngModel)]="modelsBmi.weight">
               <small class="text-danger" *ngIf="submitted && formBmi['weight'].errors?.['required']">Weight is
                 required !</small>
             </div>
@@ -61,7 +63,7 @@
           <form [formGroup]="calculeFormImperial" (ngSubmit)="claculteBmiImperiale(target)">
             <div class="mb-3">
               <label for="Age">Age</label>
-              <input class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
+              <input id="Age" class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
                 placeholder="Age" [(ngModel)]="modelsBmi.age">
               <small class="text-danger" *ngIf="submitted && formBmiImeprial['age'].errors?.['required']">Age is
                 required.
@@ -85,8 +87,8 @@
                   <label for="Height">Height<em class=""> : Feet</em></label>
                   <!-- <input type="number" nbInput formControlName="hFeet" fullWidth status="basic" placeholder="feet"
                       [(ngModel)]="modelsBmi.heightImperial" (ngModelChange)="onChange($event)"> -->
-                  <input class="form-control" type="number" nbInput formControlName="hFeet" fullWidth status="basic"
-                    placeholder="feet" (value)="calculateHeightImperial(modelsBmi.heightImperial)">
+                  <input id="Height" class="form-control" type="number" nbInput formControlName="hFeet" fullWidth
+                    status="basic" placeholder="feet" (value)="calculateHeightImperial(modelsBmi.heightImperial)">
 
                   <small class="text-danger" *ngIf="submitted && formBmiImeprial['hFeet'].errors?.['required']">Height
                     of
@@ -95,9 +97,9 @@
                   </small>
                 </div>
                 <div class="">
-                  <label for="">Height<em class=""> : inches</em></label>
-                  <input class="form-control" type="number" nbInput formControlName="heightImperial" fullWidth
-                    status="basic" placeholder="inches">
+                  <label for="Height">Height<em class=""> : inches</em></label>
+                  <input id="Height" class="form-control" type="number" nbInput formControlName="heightImperial"
+                    fullWidth status="basic" placeholder="inches">
                   <small class="text-danger"
                     *ngIf="submitted && formBmiImeprial['heightImperial'].errors?.['required']">Height of inches is
                     required !</small>
@@ -107,7 +109,7 @@
 
             <div class="mb-3">
               <label for="Weight">Weight <em class="" *ngIf="modelsBmi.weightImperial"> : Pounds</em></label>
-              <input class="form-control" type="number" nbInput formControlName="weightImperial" fullWidth
+              <input id="Weight" class="form-control" type="number" nbInput formControlName="weightImperial" fullWidth
                 status="basic" placeholder="Pounds" [(ngModel)]="modelsBmi.weightImperial">
               <small class="text-danger" *ngIf="submitted && formBmiImeprial['weightImperial'].errors?.['required']">
                 Weight is required !</small>

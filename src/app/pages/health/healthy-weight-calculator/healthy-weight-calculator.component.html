@@ -19,7 +19,9 @@
 
         <div class="col-md-5 offset-md-1 ">
           <div class="card">
-            <div class="card-header"><p class="text-white text-center font-weight-bold">Healthy Weight Calculator</p></div>
+            <div class="card-header">
+              <p class="text-white text-center font-weight-bold">Healthy Weight Calculator</p>
+            </div>
             <div class="card-body example-items-col">
               <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
                 <span>
@@ -27,7 +29,7 @@
                 </span>
               </div>
               <form [formGroup]="calculeHwc" (ngSubmit)="CalculateHwc(target)">
-                <label for="">Height :</label>
+                <label for="selectedHeight">Height :</label>
                 <strong *ngIf="selectedHeight == 'cm'"> cm</strong>
                 <strong *ngIf="selectedHeight == 'm'"> Metres</strong>
                 <strong *ngIf="selectedHeight == 'in'"> Inches</strong>
@@ -35,14 +37,16 @@
                 <div class="mb-3">
                   <div class="row">
                     <div class="col-6">
-                      <input class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
-                        placeholder="Height" formControlName="height" [(ngModel)]="modelsIwc.height" IsDecimal>
+                      <label for="height"></label>
+                      <input id="height" class="form-control" type="text" nbInput fullWidth status="basic"
+                        shape="semi-round" placeholder="Height" formControlName="height" [(ngModel)]="modelsIwc.height"
+                        IsDecimal>
                       <small class="text-danger" *ngIf="submitted && formHwc.height.errors?.required">Height is
                         required !</small>
                     </div>
                     <div class="col-6 pl-0">
-                      <nb-select class="nb-select-min-width" placeholder="cm" selected="cm" status="basic"
-                        shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
+                      <nb-select id="selectedHeight" class="nb-select-min-width" placeholder="cm" selected="cm"
+                        status="basic" shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
                         <!-- <nb-option value="cm" *ngIf="selectedItem == 'cm'">cm</nb-option> -->
                         <nb-option value="cm">cm</nb-option>
                         <nb-option value="m">Metres (m)</nb-option>

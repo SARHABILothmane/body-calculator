@@ -44,6 +44,7 @@ export class HexCalculatorComponent implements OnInit {
   CalculateHex() {
     this.submitted = true;
     if (this.calculeHex.valid) {
+      this.error = "";
       this.hexOne = parseInt(this.calculeHex.value.hexOne, 16);
       this.hexTwo = parseInt(this.calculeHex.value.hexTwo, 16);
       //  
@@ -55,21 +56,27 @@ export class HexCalculatorComponent implements OnInit {
         this.rsltCalHex = this.hexOne - this.hexTwo;
       }
       this.rsltCalDecimal = this.rsltCalHex.toString(16)
+    } else {
+      this.error = "Please check the fields";
     }
   }
   CalculateHexToDeci() {
     this.submitted = true;
     if (this.conveHexToDeci.valid) {
+      this.error = "";
       this.rsltHex = parseInt(this.conveHexToDeci.value.hex, 16);
-      console.log(this.rsltHex);
-
+    } else {
+      this.error = "Please check the fields";
     }
   }
   CalculateDeciToHex() {
     this.submitted = true;
     if (this.conveDeciToHex.valid) {
+      this.error = "";
       this.rsltDecimal = this.conveDeciToHex.value.decimal;
       this.rsltDecimal = this.rsltDecimal.toString(16)
+    } else {
+      this.error = "Please check the fields";
     }
   }
   changeSymbole(symbole: any) {

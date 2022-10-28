@@ -31,9 +31,9 @@
                 </div>
                 <div class="row">
                   <div class="col-4">
-                    <!-- <label for="binary">Binary value</label> -->
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="01100111 01101111" formControlName="binaryOne">
+                    <label for="binary"></label>
+                    <input id="binary" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="01100111 01101111" formControlName="binaryOne">
                     <small class="text-danger" *ngIf="submitted && formCalculeBinary.binaryOne.errors?.required">this
                       field
                       required.
@@ -43,17 +43,17 @@
                       provide an binary 0 and 1.!</small>
                   </div>
                   <div class="col-4">
-                    <!-- <label for="Binary">Binary value</label> -->
-                    <nb-select class="nb-select-min-width" selected="+" status="basic" shape="semi-round" fullWidth
-                      (selectedChange)="changeSymbole($event)" required>
+                    <label for="addOrSub"></label>
+                    <nb-select id="addOrSub" class="nb-select-min-width" selected="+" status="basic" shape="semi-round"
+                      fullWidth (selectedChange)="changeSymbole($event)" required>
                       <nb-option value="+">+</nb-option>
                       <nb-option value="-">-</nb-option>
                     </nb-select>
                   </div>
                   <div class="col-4">
-                    <!-- <label for="Binary">Binary value</label> -->
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="01100111 01101111" formControlName="binaryTwo">
+                    <label for="binaryTwo"></label>
+                    <input id="binaryTwo" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="01100111 01101111" formControlName="binaryTwo">
                     <small class="text-danger" *ngIf="submitted && formCalculeBinary.binaryTwo.errors?.required">this
                       field
                       required.
@@ -90,9 +90,9 @@
                 </div>
                 <div class="row">
                   <div class="col-6">
-                    <label for="Binary">Binary value</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="binary" formControlName="binary">
+                    <label for="BinaryV">Binary value</label>
+                    <input id="BinaryV" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="binary" formControlName="binary">
                     <small class="text-danger" *ngIf="submitted && formBinaryDec.binary.errors?.required">this field
                       required.
                       !</small>
@@ -133,8 +133,8 @@
                 <div class="row">
                   <div class="col-6">
                     <label for="decimal">Decimal value</label>
-                    <input class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="decimal" formControlName="decimal">
+                    <input id="decimal" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="decimal" formControlName="decimal">
                     <small class="text-danger" *ngIf="submitted && formDecBinary.decimal.errors?.required">this field
                       required.
                       !</small>

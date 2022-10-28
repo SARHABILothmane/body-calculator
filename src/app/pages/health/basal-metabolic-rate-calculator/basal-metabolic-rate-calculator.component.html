@@ -17,7 +17,9 @@
         </div>
         <div class="col-md-6">
           <div class="card">
-            <div class="card-header"><p class="text-white text-center font-weight-bold">BMR Calculator</p></div>
+            <div class="card-header">
+              <p class="text-white text-center font-weight-bold">BMR Calculator</p>
+            </div>
             <div class="card-body example-items-col">
               <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
                 <span>
@@ -38,7 +40,7 @@
                 </div>
                 <div>
                   <label for="Age">Age</label>
-                  <input class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
+                  <input id="Age" class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
                     placeholder="Age" formControlName="age">
                   <small class="text-danger" *ngIf="submitted && formBmr.age.errors?.required">Age is required.
                     !</small>
@@ -62,14 +64,17 @@
                 <div class="mb-3">
                   <div class="row">
                     <div class="col-6">
-                      <input class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
-                        placeholder="Height" formControlName="height" [(ngModel)]="modelsBmr.height" IsDecimal>
+                      <label for="height"></label>
+                      <input id="height" class="form-control" type="text" nbInput fullWidth status="basic"
+                        shape="semi-round" placeholder="Height" formControlName="height" [(ngModel)]="modelsBmr.height"
+                        IsDecimal>
                       <small class="text-danger" *ngIf="submitted && formBmr.height.errors?.required">Height is
                         required !</small>
                     </div>
                     <div class="col-6 pl-0">
-                      <nb-select class="nb-select-min-width" placeholder="cm" selected="cm" status="basic"
-                        shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
+                      <label for="selctHeight"></label>
+                      <nb-select id="selctHeight" class="nb-select-min-width" placeholder="cm" selected="cm"
+                        status="basic" shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
                         <!-- <nb-option value="cm" *ngIf="selectedItem == 'cm'">cm</nb-option> -->
                         <nb-option value="cm">cm</nb-option>
                         <nb-option value="m">Metres (m)</nb-option>
@@ -89,14 +94,17 @@
                 <div class="mb-3">
                   <div class="row">
                     <div class="col-6">
-                      <input class="form-control" type="number" nbInput formControlName="weight" shape="semi-round"
-                        fullWidth status="basic" placeholder="kg" [(ngModel)]="modelsBmr.weight" IsDecimal>
+                      <label for="weight"></label>
+                      <input id="weight" class="form-control" type="number" nbInput formControlName="weight"
+                        shape="semi-round" fullWidth status="basic" placeholder="kg" [(ngModel)]="modelsBmr.weight"
+                        IsDecimal>
                       <small class="text-danger" *ngIf="submitted && formBmr.weight.errors?.required">Weight is
                         required !</small>
                     </div>
                     <div class="col-6 pl-0">
-                      <nb-select class="nb-select-min-width" placeholder="kg" selected="kg" status="basic"
-                        shape="semi-round" fullWidth (selectedChange)="weightSelect($event)" required>
+                      <label for="selectWeight"></label>
+                      <nb-select id="selectWeight" class="nb-select-min-width" placeholder="kg" selected="kg"
+                        status="basic" shape="semi-round" fullWidth (selectedChange)="weightSelect($event)" required>
                         <nb-option value="kg">kg</nb-option>
                         <nb-option value="dag">Decagrams (dag)</nb-option>
                         <nb-option value="lb">Pounds (lb)</nb-option>

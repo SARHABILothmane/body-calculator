@@ -18,7 +18,9 @@
         </div>
         <div class="col-md-6">
           <div class="card">
-            <div class="card-header"><P class="text-white text-center font-weight-bold">Ideal Weight Calculator</P></div>
+            <div class="card-header">
+              <P class="text-white text-center font-weight-bold">Ideal Weight Calculator</P>
+            </div>
             <div class="card-body example-items-col">
               <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
                 <span>
@@ -41,7 +43,7 @@
                 </div>
                 <div>
                   <label for="Age">Age</label>
-                  <input class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
+                  <input id="Age" class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
                     placeholder="Age" formControlName="age">
                   <small class="text-danger" *ngIf="submitted && formIwc.age.errors?.required">Age is required
                     !</small>
@@ -57,7 +59,7 @@
                     !</small>
                 </div>
                 <div>
-                  <label for="" class="mt-3">Height :</label>
+                  <label for="height" class="mt-3">Height :</label>
                   <strong *ngIf="selectedHeight == 'cm'"> cm</strong>
                   <strong *ngIf="selectedHeight == 'm'"> Metres</strong>
                   <strong *ngIf="selectedHeight == 'in'"> Inches</strong>
@@ -67,15 +69,17 @@
                   <div class="mb-3">
                     <div class="row">
                       <div class="col-6">
-                        <input class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
-                          placeholder="Height" formControlName="height" [(ngModel)]="modelsIwc.height" IsDecimal>
+                        <input id="height" class="form-control" type="text" nbInput fullWidth status="basic"
+                          shape="semi-round" placeholder="Height" formControlName="height"
+                          [(ngModel)]="modelsIwc.height" IsDecimal>
                         <small class="text-danger" *ngIf="submitted && formIwc.height.errors?.required">Height is
                           required !
                           !</small>
                       </div>
                       <div class="col-6 pl-0">
-                        <nb-select class="nb-select-min-width" selected="cm" placeholder="cm" status="basic"
-                          shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
+                        <label for="selectHeight"></label>
+                        <nb-select id="selectHeight" class="nb-select-min-width" selected="cm" placeholder="cm"
+                          status="basic" shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
                           <!-- <nb-option value="cm" *ngIf="selectedItem == 'cm'">cm</nb-option> -->
                           <nb-option value="cm">cm</nb-option>
                           <nb-option value="m">Metres (m)</nb-option>

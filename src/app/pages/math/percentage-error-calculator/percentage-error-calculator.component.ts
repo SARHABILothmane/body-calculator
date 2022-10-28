@@ -27,10 +27,13 @@ export class PercentageErrorCalculatorComponent implements OnInit {
   CalculatePercentageError() {
     this.submitted = true;
     if (this.calculePercentageError.valid) {
+      this.error = "";
       this.valueX = this.calculePercentageError.value.observed
       this.valueY = this.calculePercentageError.value.true
       let rslt = (this.valueX - this.valueY) / this.valueY
       this.rsltError = rslt * 100;
+    } else {
+      this.error = "Please check the fields";
     }
   }
 }

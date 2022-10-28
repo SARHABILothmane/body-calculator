@@ -18,7 +18,9 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="card">
-            <div class="card-header"><p class="text-white text-center font-weight-bold">Calculate age from date of birth</p></div>
+            <div class="card-header">
+              <p class="text-white text-center font-weight-bold">Calculate age from date of birth</p>
+            </div>
             <div class="card-body example-items-col">
               <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
                 <span>
@@ -27,8 +29,8 @@
               </div>
               <form [formGroup]="calculeAge" (ngSubmit)="CalculateAge(target)">
                 <label for="Birthday">Date of birth</label>
-                <input class="form-control" nbInput fullWidth placeholder="Pick Birthday" formControlName="birthday"
-                  [nbDatepicker]="birthdayTimePicker" readonly>
+                <input id="Birthday" class="form-control" nbInput fullWidth placeholder="Pick Birthday"
+                  formControlName="birthday" [nbDatepicker]="birthdayTimePicker" readonly>
                 <nb-datepicker [startView]="'year'" #birthdayTimePicker></nb-datepicker>
                 <div>
                   <small class="error mt-1" *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)">
@@ -36,8 +38,8 @@
                   </small>
                 </div>
                 <label class="mt-3" for="Today">Age at the date of</label>
-                <input class="form-control" nbInput fullWidth placeholder="Pick a date" formControlName="today"
-                  [nbDatepicker]="todayTimePicker" readonly>
+                <input id="Today" class="form-control" nbInput fullWidth placeholder="Pick a date"
+                  formControlName="today" [nbDatepicker]="todayTimePicker" readonly>
                 <nb-datepicker [startView]="'year'" #todayTimePicker></nb-datepicker>
                 <small class="error mt-1" *ngIf="today.invalid && (today.dirty || today.touched)">
                   Age at the date of is required !
