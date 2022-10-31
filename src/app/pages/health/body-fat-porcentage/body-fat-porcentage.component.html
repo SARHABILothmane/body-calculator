@@ -6,7 +6,7 @@
           [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Fat Percentage Calculator', itemUrl: 'health/body-fat-percentage-calculator/.'}">
         </app-breadcrumbs>
         <div class="col-12">
-          <h1 class="text-secondary text-center">Body fat percentage BFP calculator</h1>
+          <h1 class="text-secondary text-center">Body Fat Percentage BFP Calculator</h1>
           <div class="flexMobile">
             <app-banner *ngIf="envirement"></app-banner>
           </div>
@@ -28,12 +28,8 @@
                   </span>
                 </div>
                 <form [formGroup]="calculeBfp" (ngSubmit)="claculteBfp(target)">
-                  <label for="">Gender</label>
-                  <!-- <fa-icon *ngIf="checked == 'male'" class="social-icon ml-5" [icon]="faMale"></fa-icon>
-                  <fa-icon *ngIf="checked == 'female'" class="social-icon ml-5" [icon]="faFemale"></fa-icon> -->
-                  <!-- nb-form-field -->
                   <div class="mb-3">
-                    <label for="gender"></label>
+                    <label for="gender">Gender</label>
                     <nb-select id="gender" formControlName="gender" placeholder="gender" selected="female"
                       status="basic" shape="semi-round" fullWidth (selectedChange)="checkedGender($event)" required>
                       <nb-option value="male">Male</nb-option>
@@ -63,24 +59,23 @@
                       100.
                       !</small>
                   </div>
-                  <label for="">Height :</label>
-                  <strong *ngIf="selectedHeight == 'cm'"> cm</strong>
-                  <strong *ngIf="selectedHeight == 'm'"> Metres</strong>
-                  <strong *ngIf="selectedHeight == 'in'"> Inches</strong>
-                  <strong *ngIf="selectedHeight == 'ft'"> Feet</strong>
+                  
                   <!-- nb-form-field -->
                   <div class="mb-3 nb-form-field-max-width">
                     <div class="row">
                       <div class="col-6">
-                        <label for="height"></label>
+                        <label for="height">Height :</label>
+                        <strong *ngIf="selectedHeight == 'cm'"> cm</strong>
+                        <strong *ngIf="selectedHeight == 'm'"> Metres</strong>
+                        <strong *ngIf="selectedHeight == 'in'"> Inches</strong>
+                        <strong *ngIf="selectedHeight == 'ft'"> Feet</strong>
                         <input id="height" class="form-control" type="number" formControlName="height" placeholder="cm"
                           [(ngModel)]="modelsBmi.height" IsDecimal>
                       </div>
                       <div class="col-6 pl-0">
-                        <label for="heightSelcet"></label>
+                        <label for="heightSelcet">Unit</label>
                         <nb-select id="heightSelcet" class="nb-select-min-width" placeholder="cm" selected="cm"
                           status="basic" shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
-                          <!-- <nb-option value="cm" *ngIf="selectedItem == 'cm'">cm</nb-option> -->
                           <nb-option value="cm">cm</nb-option>
                           <nb-option value="m">Metres (m)</nb-option>
                           <nb-option value="in">Inches (in)</nb-option>
@@ -93,22 +88,22 @@
                     </small>
                   </div>
                   <!-- nb-form-field -->
-                  <label for="">Weight :</label>
-                  <strong *ngIf="selectedWeight == 'kg'"> kg</strong>
-                  <strong *ngIf="selectedWeight == 'dag'"> Decagrams</strong>
-                  <strong *ngIf="selectedWeight == 'lb'"> Pounds</strong>
-                  <strong *ngIf="selectedWeight == 'oz'"> Ounces</strong>
+             
                   <!-- nb-form-field -->
                   <div class="mb-3">
                     <div class="row">
                       <div class="col-6">
-                        <label for="weight"></label>
-                        <input id="weight" type="number" class="form-control" formControlName="weight" placeholder="kg"
+                        <label for="weightSelcet">Weight :</label>
+                        <strong *ngIf="selectedWeight == 'kg'"> kg</strong>
+                        <strong *ngIf="selectedWeight == 'dag'"> Decagrams</strong>
+                        <strong *ngIf="selectedWeight == 'lb'"> Pounds</strong>
+                        <strong *ngIf="selectedWeight == 'oz'"> Ounces</strong>
+                        <input id="weightSelcet" type="number" class="form-control" formControlName="weight" placeholder="kg"
                           [(ngModel)]="modelsBmi.weight" IsDecimal>
                       </div>
                       <div class="col-6 pl-0">
-                        <label for="weightSelcet"></label>
-                        <nb-select id="weightSelcet" class="nb-select-min-width" placeholder="kg" selected="kg"
+                        <label for="UnitKg">Unit</label>
+                        <nb-select id="UnitKg" class="nb-select-min-width" placeholder="kg" selected="kg"
                           status="basic" shape="semi-round" fullWidth (selectedChange)="weightSelect($event)" required>
                           <nb-option value="kg">kg</nb-option>
                           <nb-option value="dag">Decagrams (dag)</nb-option>
@@ -130,6 +125,7 @@
             </div>
             <div class="col-12">
               <app-banner *ngIf="envirement"></app-banner>
+              <!-- <span #target style="position: relative; top: -350px"></span> -->
             </div>
             <div #target></div>
             <div class="mt-2" *ngIf="bmi">
@@ -178,7 +174,7 @@
                 </tr>
                 <tr [class.msg]="message === 'Average'">
                   <td scope="row">Average</td>
-                  <td>25-31%</td>
+                  <td>25-32%</td>
                 </tr>
                 <tr [class.msg]="message === 'Obese'">
                   <td scope="row">Obese</td>

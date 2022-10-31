@@ -38,14 +38,14 @@
                 !</small>
             </div>
             <div class="mb-3">
-              <label for="Height">Height<em class="" *ngIf="modelsBmi.height"> : Cm</em></label>
+              <label for="Height">Height<em> : Cm</em></label>
               <input id="Height" class="form-control" type="number" nbInput formControlName="height" fullWidth
                 status="basic" placeholder="cm" [(ngModel)]="modelsBmi.height">
               <small class="text-danger" *ngIf="submitted && formBmi['height'].errors?.['required']">Height is
                 required !</small>
             </div>
             <div class="mb-3">
-              <label for="Weight">Weight <em class="" *ngIf="modelsBmi.weight"> : Kg</em></label>
+              <label for="Weight">Weight <em> : Kg</em></label>
               <input id="Weight" class="form-control" type="number" nbInput formControlName="weight" fullWidth
                 status="basic" placeholder="kg" [(ngModel)]="modelsBmi.weight">
               <small class="text-danger" *ngIf="submitted && formBmi['weight'].errors?.['required']">Weight is
@@ -97,8 +97,8 @@
                   </small>
                 </div>
                 <div class="">
-                  <label for="Height">Height<em class=""> : inches</em></label>
-                  <input id="Height" class="form-control" type="number" nbInput formControlName="heightImperial"
+                  <label for="HeightInches">Height<em class=""> : inches</em></label>
+                  <input id="HeightInches" class="form-control" type="number" nbInput formControlName="heightImperial"
                     fullWidth status="basic" placeholder="inches">
                   <small class="text-danger"
                     *ngIf="submitted && formBmiImeprial['heightImperial'].errors?.['required']">Height of inches is
@@ -122,6 +122,7 @@
   </div>
   <div class="col-12">
     <app-banner *ngIf="envirement"></app-banner>
+    <!-- <span #target style="position: relative; top: -350px"></span> -->
   </div>
   <!-- <span #target></span> -->
   <div *ngIf="bmi" class="col-md-6 col-11 bg-white">
@@ -137,9 +138,9 @@
         <ng-lottie *ngIf="message == 'Obese class Ⅲ'" [options]="emojiObese3" width="50%"></ng-lottie>
       </div> -->
     <!-- </div> -->
-    <div class="d-flex justify-content-between px-2">
-      <p class="bmi" *ngIf="bmi">Bmi = {{bmi | number}} kg/m<sup>2</sup></p>
+    <div class="d-flex justify-content-between px-2 mt-3">
       <p class="bmi">{{message}}</p>
+      <p class="bmi" *ngIf="bmi">Bmi = {{bmi | number}} kg/m<sup>2</sup></p>
     </div>
     <table class="table" *ngIf="addCataloge && checkAge >= 20">
       <!-- <table class="table border"> -->

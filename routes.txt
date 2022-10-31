@@ -11,6 +11,8 @@
 /health/body-shape-calculator/.
 /health/bmr-calculator/.
 /health/healthy-weight-calculator/.
+/math/.
+/math/random-number-generator/.
 /contact/.
 /private-policy/.
 /terms/.

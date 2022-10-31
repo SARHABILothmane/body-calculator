@@ -1,15 +1,9 @@
-// import { AnimationOptions } from 'ngx-lottie';
-// import { NbToastrService } from '@nebular/theme';
 import { Bmr } from './../../../models/bmr';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef,OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-// import { faFemale, faMale } from '@fortawesome/free-solid-svg-icons';
-// import { AnimationItem } from 'lottie-web';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
-import { Banner } from 'src/app/models/banner';
 import { environment } from 'src/environments/environment';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-body-fat-porcentage',
@@ -27,7 +21,6 @@ export class BodyFatPorcentageComponent implements OnInit {
   bfm!: string;
   lbm!: string;
   heightCm!: number;
-  private index: number = 0;
   error: string = "";
   submitted = false;
   message: string = "";
@@ -36,12 +29,6 @@ export class BodyFatPorcentageComponent implements OnInit {
   selectedWeight: string = "kg";
   checked: string = "female";
   imageLoaded: boolean = false;
-  // optionsF: AnimationOptions = {
-  //   path: '/assets/animations/relaxed-woman-meditating.json',
-  // };
-  // bfpFemale: AnimationOptions = {
-  //   path: '/assets/animations/bfpFemale.json',
-  // };
 
   modelsBmi: Bmr = {
     age: 0,
@@ -52,16 +39,9 @@ export class BodyFatPorcentageComponent implements OnInit {
   envirement: boolean = environment.production;
 
   constructor(
-    // private toastrService: NbToastrService
     private titleService: Title, private metaService: Meta, private canonical: CanonicalService,
-    private _renderer2: Renderer2,@Inject(DOCUMENT) private _document: Document
+    private elementRef:ElementRef
   ) {
-    // this.banner = new Banner(
-    //   'ca-pub-2374538044388820',
-    //   7784325323,
-    //   'auto',
-    //   true
-    // )
   }
 
 
@@ -76,43 +56,48 @@ export class BodyFatPorcentageComponent implements OnInit {
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/health/body-fat-percentage-calculator/");
   
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `             
-                  {
-                    "@context": "http://schema.org",
-                    "@type": "SoftwareApplication",
-                    "name": "Body fat percentage calculator",
-                    "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-                    "url": "https://body-calculator.com/health/body-fat-percentage-calculator/",
-                    "author": {
-                      "@type": "Person",
-                      "name": "SARHABIL"
-                    },
-                    "datePublished": "2022-01-10",
-                    "publisher": {
-                      "@type": "Organization",
-                      "name": "body-calculator"
-                    },
-                    "applicationCategory": "HealthApplication",
-                    "operatingSystem": "Linux",
-                    "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
-                    "softwareVersion": "1",
-                    "aggregateRating": {
-                      "@type": "AggregateRating",
-                      "ratingValue": "5",
-                      "ratingCount": "8864"
-                    },
-                    "offers": {
-                      "@type": "Offer",
-                      "price": "1.00",
-                      "priceCurrency": "USD"
-                    }
-                  }
+    // let script = this._renderer2.createElement('script');
+    // script.type = `application/ld+json`;
+    
+    var s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.text = `             
+              {
+                "@context": "http://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Body fat percentage calculator",
+                "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
+                "url": "https://body-calculator.com/health/body-fat-percentage-calculator/",
+                "author": {
+                  "@type": "Person",
+                  "name": "SARHABIL"
+                },
+                "datePublished": "2022-01-10",
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "body-calculator"
+                },
+                "applicationCategory": "HealthApplication",
+                "operatingSystem": "Linux",
+                "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
+                "softwareVersion": "1",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "5",
+                  "ratingCount": "8864"
+                },
+                "offers": {
+                  "@type": "Offer",
+                  "price": "1.00",
+                  "priceCurrency": "USD"
+                }
+              }
 
-                `;
+            `;
+ 
+    this.elementRef.nativeElement.appendChild(s);
 
-    this._renderer2.appendChild(this._document.body, script);
+    // this._renderer2.appendChild(this._document.body, script);
 
     this.calculeBfp = new UntypedFormGroup({
       // gender: new FormControl("", [Validators.required]),

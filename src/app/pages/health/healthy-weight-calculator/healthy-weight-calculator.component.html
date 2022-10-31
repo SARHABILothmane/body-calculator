@@ -29,15 +29,15 @@
                 </span>
               </div>
               <form [formGroup]="calculeHwc" (ngSubmit)="CalculateHwc(target)">
-                <label for="selectedHeight">Height :</label>
-                <strong *ngIf="selectedHeight == 'cm'"> cm</strong>
-                <strong *ngIf="selectedHeight == 'm'"> Metres</strong>
-                <strong *ngIf="selectedHeight == 'in'"> Inches</strong>
-                <strong *ngIf="selectedHeight == 'ft'"> Feet</strong>
+      
                 <div class="mb-3">
                   <div class="row">
                     <div class="col-6">
-                      <label for="height"></label>
+                      <label for="height">Height :</label>
+                      <strong *ngIf="selectedHeight == 'cm'"> cm</strong>
+                      <strong *ngIf="selectedHeight == 'm'"> Metres</strong>
+                      <strong *ngIf="selectedHeight == 'in'"> Inches</strong>
+                      <strong *ngIf="selectedHeight == 'ft'"> Feet</strong>
                       <input id="height" class="form-control" type="text" nbInput fullWidth status="basic"
                         shape="semi-round" placeholder="Height" formControlName="height" [(ngModel)]="modelsIwc.height"
                         IsDecimal>
@@ -45,6 +45,7 @@
                         required !</small>
                     </div>
                     <div class="col-6 pl-0">
+                      <label for="selectedHeight">Unit :</label>
                       <nb-select id="selectedHeight" class="nb-select-min-width" placeholder="cm" selected="cm"
                         status="basic" shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
                         <!-- <nb-option value="cm" *ngIf="selectedItem == 'cm'">cm</nb-option> -->
@@ -63,6 +64,7 @@
         </div>
         <div class="col-12">
           <app-banner *ngIf="envirement"></app-banner>
+          <!-- <span #target style="position: relative; top: -350px"></span> -->
         </div>
 
         <div class="col-md-4 mt-3 mx-auto" *ngIf="height">

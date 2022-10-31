@@ -55,6 +55,7 @@
         </div>
         <div class="col-12">
           <app-banner *ngIf="envirement"></app-banner>
+          <!-- <span #target style="position: relative; top: -350px"></span> -->
         </div>
         <span #target></span>
         <div class="col-md-5 d-flex justify-content-center">
@@ -105,10 +106,9 @@
                   <div>
                     <div class="row d-flex justify-content-center">
                       <div class="col-4 px-0">
-                        <label class="mt-2" for="Date end">Add or Subtract</label>
+                        <label class="mt-2" for="addOrSub">Add or subtract</label>
                       </div>
                       <div class="col-md-3 col-8 pr-0">
-                        <label for="addOrSub"></label>
                         <nb-select id="addOrSub" class="nb-select-min-width" selected="+" status="basic"
                           shape="semi-round" fullWidth (selectedChange)="changeSymbole($event)" required>
                           <nb-option value="+">+</nb-option>

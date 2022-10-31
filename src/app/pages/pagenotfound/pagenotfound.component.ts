@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pagenotfound',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagenotfoundComponent implements OnInit {
 
-  constructor() { }
+  constructor(private metaService: Meta) { }
 
   ngOnInit(): void {
+    this.metaService.addTags([
+      { name: 'robots', content: "noindex, nofollow" },
+    ]);
   }
 
 }
