@@ -1,9 +1,8 @@
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { environment } from 'src/environments/environment';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-age-calculator',
@@ -32,10 +31,9 @@ export class AgeCalculatorComponent implements OnInit {
   checkForm: boolean = false;
   error: string = "";
   envirement: boolean = environment.production;
+  schema:any;
 
-
-  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService, 
-    private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
+  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculeAge = new UntypedFormGroup({
       birthday: new UntypedFormControl("", [Validators.required]),
       today: new UntypedFormControl(new Date(), [Validators.required]),
@@ -52,10 +50,7 @@ export class AgeCalculatorComponent implements OnInit {
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/calculators/age-calculator/");
 
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `
-                  {
+    this.schema = {
                     "@context": "http://schema.org",
                     "@type": "SoftwareApplication",
                     "name": "Age calculator",
@@ -83,10 +78,7 @@ export class AgeCalculatorComponent implements OnInit {
                       "price": "1.00",
                       "priceCurrency": "USD"
                     }
-                  }
-                `;
-
-    this._renderer2.appendChild(this._document.body, script);
+                  };
 
   }
 

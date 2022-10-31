@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
@@ -52,12 +51,12 @@ export class DateCalculatorComponent implements OnInit {
   minDate: Date = new Date();
   // filter: any;
   filterDate = new Date();
+  schema:any;
   filterDateResult = (filterDate: any) => filterDate.setHours(0, 0, 0, 0) == this.resultAddOrSubtract?.setHours(0, 0, 0, 0);
   filterSelectedDate = (filterDate: any) => filterDate.setHours(0, 0, 0, 0) == this.selectedDate?.setHours(0, 0, 0, 0);
   envirement: boolean = environment.production;
 
-  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService,
-              private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
+  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculeDate = new UntypedFormGroup({
       startDate: new UntypedFormControl("", [Validators.required]),
       dateEnd: new UntypedFormControl("", [Validators.required]),
@@ -82,10 +81,7 @@ export class DateCalculatorComponent implements OnInit {
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/calculators/date-calculator/");
 
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `
-                      {
+    this.schema = {
                         "@context": "http://schema.org",
                         "@type": "SoftwareApplication",
                         "name": "Age calculator",
@@ -113,10 +109,7 @@ export class DateCalculatorComponent implements OnInit {
                           "price": "1.00",
                           "priceCurrency": "USD"
                         }
-                      }
-                `;
-
-    this._renderer2.appendChild(this._document.body, script);
+                      };
   }
 
   get formDate() { return this.calculeDate.controls; }

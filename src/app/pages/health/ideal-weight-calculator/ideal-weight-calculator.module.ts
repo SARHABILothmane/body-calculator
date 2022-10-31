@@ -8,6 +8,7 @@ import { IdealWeightCalculatorComponent } from './ideal-weight-calculator.compon
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
 import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 
 const routes: Routes = [
@@ -26,8 +27,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     BannerModule,
     IsDecimalDirectiveModule,
-    BreadcrumbsModule
-
+    BreadcrumbsModule,
+    NgxJsonLdModule
   ]
 })
 export class IdealWeightCalculatorModule { }

@@ -1,5 +1,5 @@
 import { Bmr } from './../../../models/bmr';
-import { Component, ElementRef,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
@@ -37,12 +37,9 @@ export class BodyFatPorcentageComponent implements OnInit {
   };
 
   envirement: boolean = environment.production;
-
+  schema: any;
   constructor(
-    private titleService: Title, private metaService: Meta, private canonical: CanonicalService,
-    private elementRef:ElementRef
-  ) {
-  }
+    private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {}
 
 
   ngOnInit(): void {
@@ -56,13 +53,7 @@ export class BodyFatPorcentageComponent implements OnInit {
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/health/body-fat-percentage-calculator/");
   
-    // let script = this._renderer2.createElement('script');
-    // script.type = `application/ld+json`;
-    
-    var s = document.createElement("script");
-    s.type = "application/ld+json";
-    s.text = `             
-              {
+    this.schema =  {
                 "@context": "http://schema.org",
                 "@type": "SoftwareApplication",
                 "name": "Body fat percentage calculator",
@@ -91,13 +82,7 @@ export class BodyFatPorcentageComponent implements OnInit {
                   "price": "1.00",
                   "priceCurrency": "USD"
                 }
-              }
-
-            `;
- 
-    this.elementRef.nativeElement.appendChild(s);
-
-    // this._renderer2.appendChild(this._document.body, script);
+              };
 
     this.calculeBfp = new UntypedFormGroup({
       // gender: new FormControl("", [Validators.required]),

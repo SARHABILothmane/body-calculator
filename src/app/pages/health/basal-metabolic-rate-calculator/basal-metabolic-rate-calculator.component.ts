@@ -1,10 +1,9 @@
 import { Bmr } from 'src/app/models/bmr';
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-basal-metabolic-rate-calculator',
@@ -21,8 +20,8 @@ export class BasalMetabolicRateCalculatorComponent implements OnInit {
   error: string = "";
   submitted = false;
   envirement: boolean = environment.production;
-
-  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService, private _renderer2: Renderer2,@Inject(DOCUMENT) private _document: Document) {
+  schema!: any;
+  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService) {
     this.calculeBmr = new UntypedFormGroup({
       age: new UntypedFormControl("", [Validators.required, Validators.min(5), Validators.max(100)]),
       height: new UntypedFormControl("", [Validators.required]),
@@ -48,11 +47,7 @@ export class BasalMetabolicRateCalculatorComponent implements OnInit {
     ]);
     this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/bmr-calculator/");
 
-    
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `
-                  {
+   this.schema =  {
                     "@context": "http://schema.org",
                     "@type": "SoftwareApplication",
                     "name": "basal metabolic rate BMR calculator",
@@ -81,10 +76,9 @@ export class BasalMetabolicRateCalculatorComponent implements OnInit {
                       "price": "1.00",
                       "priceCurrency": "USD"
                     }
-                  }
-                `;
+                  };
 
-    this._renderer2.appendChild(this._document.body, script);
+
   }
   get formBmr() { return this.calculeBmr.controls; }
 

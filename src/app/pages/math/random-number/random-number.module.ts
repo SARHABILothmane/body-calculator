@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
 import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 const routes: Routes = [
   { path: "", component: RandomNumberComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
     NbLayoutModule,
     BannerModule,
     BreadcrumbsModule,
+    NgxJsonLdModule,
     RouterModule.forChild(routes),
   ]
 })

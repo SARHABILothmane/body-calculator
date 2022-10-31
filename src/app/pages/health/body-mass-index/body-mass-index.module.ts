@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BodyMassIndexComponent } from './body-mass-index.component';
 import { InfoModule } from '../../home/info/info.module';
 import { HeroSectionModule } from '../../home/hero-section/hero-section.module';
-// import { NgxJsonLdModule } from '@ngx-lite/json-ld';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
   imports: [
     InfoModule,
     HeroSectionModule,
-    // NgxJsonLdModule,
+    NgxJsonLdModule,
     RouterModule.forChild(routes),
   ]
 })

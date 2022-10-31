@@ -1,9 +1,8 @@
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-random-number',
@@ -21,8 +20,8 @@ export class RandomNumberComponent implements OnInit {
   submitted: boolean = false;
   generateNumbers: Array<number> = [];
   envirement: boolean = environment.production;
-  constructor(  private titleService: Title, private metaService: Meta, private canonical: CanonicalService,
-    private _renderer2: Renderer2,@Inject(DOCUMENT) private _document: Document) {
+  schema:any;
+  constructor(  private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculeFormRandomNum = new UntypedFormGroup({
       lowerLimit: new UntypedFormControl("", [Validators.required]),
       upperLimit: new UntypedFormControl("", [Validators.required]),
@@ -48,10 +47,7 @@ export class RandomNumberComponent implements OnInit {
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/math/random-number-generator/");
   
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `             
-                  {
+    this.schema = {
                     "@context": "http://schema.org",
                     "@type": "SoftwareApplication",
                     "name": "Random Number Generator RNG",
@@ -80,12 +76,7 @@ export class RandomNumberComponent implements OnInit {
                       "price": "1.00",
                       "priceCurrency": "USD"
                     }
-                  }
-
-                `;
-
-    this._renderer2.appendChild(this._document.body, script);
-
+                  };
   }
   get formRandomNumber() { return this.calculeFormRandomNum.controls; }
   get formRandomN() { return this.calculeFormRandomN.controls; }

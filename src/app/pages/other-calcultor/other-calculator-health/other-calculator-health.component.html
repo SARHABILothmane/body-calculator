@@ -1,6 +1,22 @@
-<p class="font-weight-bold text-center">Other calculators</p>
+<!-- ShareThis BEGIN -->
+<p class="font-weight-bold text-center mt-3">Help us improve this app by share it with your friends</p>
+<st-inline-share-buttons [config]="inlineShareButtonsConfig"></st-inline-share-buttons>
+<!-- ShareThis END -->
+<p class="font-weight-bold text-center mt-3">Other calculators</p>
 <section class="row pb-4" [innerHTML]="otherCalculators">
 </section>
+  <img loading="lazy" src="../../../assets/images/rating.svg" style="display: block;margin-left: auto;margin-right: auto;width: 250px; height: 100px;" alt="rate-our-app">
+  <div  style="padding-bottom: 20px">
+      <a href="https://g.page/r/CWcEpRY1bs9YEAI/review" target="_blank">
+        <button class="btn btn-primary" style="display:block;  margin:auto;">
+          Rate us
+        </button>
+      </a>
+  </div>
+<!-- ShareThis BEGIN -->
+<st-inline-share-buttons [config]="inlineShareButtonsConfig"></st-inline-share-buttons>
+<!-- ShareThis END -->
+<!-- start button go to  -->
 <a rel="noopener" [routerLink]="goToOtherPage.url">
   <button style="position: fixed; bottom: 0px;width: 300px;height: 40px;margin: 0 auto;left: 0;right: 0;
     bottom:10px;background-color: #0051BD; color:white; z-index: 1; font-weight:bold;font-size:15px;opacity: 0.9;"
@@ -8,3 +24,4 @@
     {{goToOtherPage.name}}
   </button>
 </a>
+<!-- end button go to  -->

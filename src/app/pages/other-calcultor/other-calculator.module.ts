@@ -5,13 +5,14 @@ import {OtherCalcultorHealthComponent } from './other-calculator-health/other-ca
 // import { NbIconModule } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { OtherCalcultorTimeComponent } from './other-calculator-time/other-calculator-time.component';
-
+import { SharethisAngularModule } from 'sharethis-angular';
 @NgModule({
   declarations: [OtherCalcultorHealthComponent, OtherCalcultorTimeComponent],
   imports: [
     // CommonModule,
     // NbIconModule,
-    RouterModule
+    RouterModule,
+    SharethisAngularModule
   ],
   exports:[OtherCalcultorHealthComponent,OtherCalcultorTimeComponent]
 })

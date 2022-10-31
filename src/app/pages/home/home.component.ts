@@ -1,8 +1,7 @@
 import { AnimationOptions } from 'ngx-lottie';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +9,8 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService,
-              private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) { }
+  schema:any;
+  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) { }
   scroll(el: HTMLElement) {
     el.scrollIntoView({ behavior: "smooth" });
   }
@@ -59,11 +57,7 @@ export class HomeComponent implements OnInit {
       {property: "og:url", content: "https://body-calculator.com/"}
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com");
-
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `
-                    {
+    this.schema = {
                       "@context": "http://schema.org",
                       "@type": "SoftwareApplication",
                       "name": "free online calculators",
@@ -92,9 +86,6 @@ export class HomeComponent implements OnInit {
                         "price": "1.00",
                         "priceCurrency": "USD"
                       }
-                    }
-                `;
-
-    this._renderer2.appendChild(this._document.body, script);
+                    };
   }
 }

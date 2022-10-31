@@ -37,6 +37,13 @@
     color: color(primary);
   }
 
+  .activeLink:hover{
+    font-family: font(font-family-regular) !important;
+    border-bottom: 3.5px solid white !important;
+    padding-bottom: 4px !important;
+    color: white !important;
+  }
+
 
   .linkActiveDropDown{
     color: color(primary);

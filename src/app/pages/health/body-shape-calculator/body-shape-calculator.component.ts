@@ -1,10 +1,9 @@
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Bsc } from 'src/app/models/bsc';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { environment } from 'src/environments/environment';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-body-shape-calculator',
@@ -33,8 +32,8 @@ export class BodyShapeCalculatorComponent implements OnInit {
   error: string = "";
   submitted = false;
   envirement: boolean = environment.production;
-
-  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
+  schema: any;
+  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService) {
     this.calculeBsc = new UntypedFormGroup({
       bust: new UntypedFormControl("", [Validators.required]),
       waist: new UntypedFormControl("", [Validators.required]),
@@ -54,10 +53,7 @@ export class BodyShapeCalculatorComponent implements OnInit {
     ]);
     this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/body-shape-calculator/");
 
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `
-                  {
+    this.schema = {
                     "@context": "http://schema.org",
                     "@type": "SoftwareApplication",
                     "name": "Body shape calculator",
@@ -86,10 +82,7 @@ export class BodyShapeCalculatorComponent implements OnInit {
                       "price": "1.00",
                       "priceCurrency": "USD"
                     }
-                  }
-                `;
-
-    this._renderer2.appendChild(this._document.body, script);
+                  };
 
   }
 

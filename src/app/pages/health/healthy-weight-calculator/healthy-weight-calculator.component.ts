@@ -1,11 +1,10 @@
 import { Bmr } from 'src/app/models/bmr';
 // import { faMale, faFemale } from '@fortawesome/free-solid-svg-icons';
 import { UntypedFormGroup, Validators, UntypedFormControl } from '@angular/forms';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { environment } from 'src/environments/environment';
-import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-healthy-weight-calculator',
   templateUrl: './healthy-weight-calculator.component.html',
@@ -33,9 +32,8 @@ export class HealthyWeightCalculatorComponent implements OnInit {
   error: string = "";
   submitted = false;
   envirement: boolean = environment.production;
-
-  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService,
-    private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
+  schema:any;
+  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculeHwc = new UntypedFormGroup({
       height: new UntypedFormControl("", [Validators.required]),
     });
@@ -52,10 +50,7 @@ export class HealthyWeightCalculatorComponent implements OnInit {
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/health/healthy-weight-calculator/");
 
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `
-                    {
+    this.schema= {
                       "@context": "http://schema.org",
                       "@type": "SoftwareApplication",
                       "name": "Healthy weight calculator",
@@ -84,10 +79,7 @@ export class HealthyWeightCalculatorComponent implements OnInit {
                         "price": "1.00",
                         "priceCurrency": "USD"
                       }
-                    }
-                `;
-
-    this._renderer2.appendChild(this._document.body, script);
+                    };
 
   }
   get formHwc() { return this.calculeHwc.controls; }

@@ -1,8 +1,7 @@
 import { CanonicalService } from 'src/app/services/canonical.service';
 import { Meta, Title } from '@angular/platform-browser';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-body-mass-index',
@@ -12,8 +11,8 @@ import { DOCUMENT } from '@angular/common';
 export class BodyMassMenComponent implements OnInit {
 
   envirement: boolean = environment.production;
-
-  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService, private _renderer2: Renderer2,@Inject(DOCUMENT) private _document: Document) { }
+  schema!: any;
+  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService) { }
   ngOnInit(): void {
     //this.href = this.router.url;
     this.titleService.setTitle("Body-calculator - free online body mass index BMI calculator men");
@@ -26,10 +25,7 @@ export class BodyMassMenComponent implements OnInit {
     ]);
     this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/bmi-calculator-men/");
   
-    let script = this._renderer2.createElement('script');
-    script.type = `application/ld+json`;
-    script.text = `
-                  {
+    this.schema ={
                     "@context": "http://schema.org",
                     "@type": "SoftwareApplication",
                     "name": "Body mass index bmi calculator men",
@@ -58,9 +54,6 @@ export class BodyMassMenComponent implements OnInit {
                       "price": "1.00",
                       "priceCurrency": "USD"
                     }
-                  }
-                `;
-
-    this._renderer2.appendChild(this._document.body, script);
+                  };
   }
 }

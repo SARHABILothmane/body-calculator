@@ -1,4 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { InlineShareButtonsConfig} from 'sharethis-angular';
+
+const inlineShareButtonsConfig:InlineShareButtonsConfig = {
+  alignment: 'center', // alignment of buttons (left, center, right)
+  color: 'social', // set the color of buttons (social, white)
+  enabled: true, // show/hide buttons (true, false)
+  font_size: 16, // font size for the buttons
+  labels: 'cta', // button labels (cta, counts, null)
+  language: 'en', // which language to use (see LANGUAGES)
+  networks: [
+  // which networks to include (see SHARING NETWORKS)
+  'sharethis',
+  'facebook',
+  'twitter',
+  'linkedin',
+  'whatsapp',
+  'messenger',
+  ],
+  padding: 12, // padding within buttons (INTEGER)
+  radius: 4, // the corner radius on each button (INTEGER)
+  show_total: false,
+  size: 40, // the size of each button (INTEGER)
+};
 
 @Component({
   selector: 'app-other-calcultor-health',
@@ -6,6 +29,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./other-calculator-health.component.scss']
 })
 export class OtherCalcultorHealthComponent implements OnInit {
+  inlineShareButtonsConfig = inlineShareButtonsConfig;
   arrayOtherCalculators: any;
   @Input() eleminateCalculator: any;
   otherCalculators: string = "";

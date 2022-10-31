@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
 import { BannerModule } from 'src/app/shared/banner/banner.module';
 import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 const routes: Routes = [
   { path: "", component: BodyShapeCalculatorComponent },
@@ -26,7 +27,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     BannerModule,
     IsDecimalDirectiveModule,
-    BreadcrumbsModule
+    BreadcrumbsModule,
+    NgxJsonLdModule,
+
   ]
 })
 export class BodyShapeCalculatorModule { }

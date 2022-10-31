@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { BodyFatPorcentageRoutingModule } from './body-fat-porcentage-routing.module';
 import { BodyFatPorcentageComponent } from './body-fat-porcentage.component';
 import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module
     NbLayoutModule,
     BannerModule,
     IsDecimalDirectiveModule,
-    BreadcrumbsModule
+    BreadcrumbsModule,
+    NgxJsonLdModule
+
   ]
 })
 export class BodyFatPorcentageModule { }

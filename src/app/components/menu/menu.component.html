@@ -8,8 +8,8 @@
           src="../../../assets/images/logo/calculator.svg" alt="body-calculator"></a>
       <ul class="d-flex list pl-2 pl-xl-5 mr-5">
         <li class="list-item">
-          <a routerLinkActive="active" class="colorBlack" [routerLinkActiveOptions]="{ exact: true }"
-            routerLink="">Home</a>
+          <a routerLinkActive="active" class="colorBlack activeLink" [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="/">Home</a>
         </li>
         <li class="dropdown list-item">
           <span>Calculators</span>
@@ -56,7 +56,13 @@
           </div>
         </li>
         <li class="list-item">
-          <a routerLinkActive="active" class="colorBlack" [routerLinkActiveOptions]="{ exact: true }"
+          <a href="https://g.page/r/CWcEpRY1bs9YEAI/review" target="_blank" class="colorBlack activeLink"
+            >
+            Rate us
+           </a>
+        </li>
+        <li class="list-item">
+          <a routerLinkActive="active" class="colorBlack activeLink" [routerLinkActiveOptions]="{ exact: true }"
             routerLink="/contact/.">Contact
             us</a>
         </li>
@@ -80,10 +86,10 @@
           <span aria-hidden="true" class="text-dark">&times;</span>
         </button>
       </div>
-      <a class="d-block logo text-center" (click)="toggle()" routerLink="/">
+      <!-- <a class="d-block logo text-center" (click)="toggle()" routerLink="/">
         <img loading="lazy" width="60px" height="60px" src="../../../assets/images/logo/calculator.svg"
           alt="body calculator">
-      </a>
+      </a> -->
 
       <a (click)="toggle()" routerLink="/" class=" d-flex justify-content-between align-items-center">
         <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown"
@@ -135,6 +141,10 @@
       <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
         routerLink="/math/random-number-generator/.">
         <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Random Number Generator RNG</span>
+        <span class="font-weight-bold text-dark">&raquo;</span>
+      </a>
+      <a (click)="toggle()" href="https://g.page/r/CWcEpRY1bs9YEAI/review" target="_blank" class="pb-2 d-flex justify-content-between align-items-center">
+        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Rate us</span>
         <span class="font-weight-bold text-dark">&raquo;</span>
       </a>
       <a (click)="toggle()" routerLink="/contact/." class="pb-2 d-flex justify-content-between align-items-center">
