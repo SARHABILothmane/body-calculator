@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import urlAndDescription from '../../../assets/url-json-descriptions/urlAndDescription.json';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
   dt: any;
+  urlDescription: any;
   constructor(private router: Router) { }
   // faFacebook = faFacebook;
   // faInstagram = faInstagram;
@@ -15,7 +17,7 @@ export class FooterComponent implements OnInit {
   // faTwitter = faTwitter;
   ngOnInit(): void {
     this.dt = new Date().getFullYear();
-
+    this.urlDescription = urlAndDescription;
   }
   goToEspace() {
     this.router.navigateByUrl("/candidat");

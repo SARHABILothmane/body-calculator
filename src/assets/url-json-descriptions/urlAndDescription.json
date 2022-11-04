@@ -1,0 +1,80 @@
+{
+    "arrayDetails": 
+        [
+            {
+            "categorieName": "Health",
+            "categorieUrl": "/health/.",
+                "urlAndDescriptions": [
+                    {
+                        "name": "Body Mass Index",
+                        "textInHref": "Body Mass Index BMI Calculator",
+                        "description": "It is a general indicator to tell you whether you have a healthy body weight for their height or not. BMI measures the person's leanness or corpulence based on his height and weight.",
+                        "url": "/health/bmi-calculator/."
+                    },
+                    {
+                        "name": "Body Fat Percentage",
+                        "textInHref": "Body Fat Percentage BFP Calculator",
+                        "description": "With the BFP calculator, you will know the amount of fat in your body, your body health condition through fat percentage and the ideal fat percentage you should have.",
+                        "url": "/health/body-fat-percentage-calculator/."
+                    },
+                    {
+                        "name": "Body Shape",
+                        "textInHref": "Body Shape Calculator",
+                        "description": "Body shape calculator helps you to determine your body type based on your body measurements.",
+                        "url": "/health/body-shape-calculator/."
+                    },
+                    {
+                        "name": "Ideal Weight",
+                        "textInHref": "Ideal Weight IBW Calculator",
+                        "description": "Ideal weight helps you to determine your ideal body weight (IBW). It computes the ideal weight based on height, age and gender.",
+                        "url": "/health/ideal-weight-calculator/."
+                    },
+                    {
+                        "name": "Basal Metabolic Rate",
+                        "textInHref": "Basal Metabolic Rate BMR Calculator",
+                        "description": "It estimates the basal metabolic rate which is the amount of energy the body expended while at rest. Use this calculator to find out your BMR and determine your caloric needs.",
+                        "url": "/health/bmr-calculator/."
+                    },
+                    {
+                        "name": "Healthy Weight",
+                        "textInHref": "Healthy Weight Calculator",
+                        "description": "This calculator computes your healthy body weight range based on your height. It is more accurate for adults aged from 18 to more older.",
+                        "url": "/health/healthy-weight-calculator/."
+                    }
+                ]
+            },
+            {
+                "categorieName": "Math",
+                "categorieUrl": "/math/.",
+
+                    "urlAndDescriptions": [
+                        {
+                            "name": "Random Number Generator",
+                            "textInHref": "Random number generator",
+                            "description": "With this calculator you can  get a random, cryptographically safe number. It can generate random numbers which can be used for determining who will go first in a game",
+                            "url": "/math/random-number-generator/."
+                        }
+                       
+                    ]
+            },
+            {
+            "categorieName": "Time & Date",
+            "categorieUrl": "/calculators/.",
+                "urlAndDescriptions": [
+                    {
+                        "name": "Age Calculator",
+                        "textInHref": "Age Calculator",
+                        "description": "With Age Calculator you can determine your age or the interval between two dates. It displayed age in years, months, weeks, days, also hours, minutes, and seconds.",
+                        "url": "/calculators/age-calculator/."
+                    },
+                    {
+                        "name": "Date Calculator",
+                        "textInHref": "Date Calculator",
+                        "description": "With the date calculator you can compute the period Between Two Dates. You can Find years, months, and Even days between two dates. ",
+                        "url": "/calculators/date-calculator/."
+                    }
+                ]
+            }
+            
+        ]
+}

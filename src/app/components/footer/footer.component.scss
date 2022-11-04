@@ -88,3 +88,27 @@
   }
 
 }
+
+.icon{
+  color: white !important;
+}
+
+.facebook:hover .icon-fecebook{
+  color: #3B5998 !important;
+}
+
+.facebook:hover{
+  border-color:#3B5998 !important ;
+  // color: #3B5998 !important;
+}
+
+.pinterest:hover .icon-pinterest{
+  color: red!important;
+}
+
+.pinterest:hover{
+  border-color: red !important ;
+  // color: #3B5998 !important;
+}
+
+

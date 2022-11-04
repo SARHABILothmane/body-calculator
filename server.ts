@@ -1,7 +1,8 @@
 import 'zone.js/node';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
-import * as express from 'express';
+// import * as express from 'express' badalt hada bach i5dam json;
+import express from 'express';
 import { join } from 'path';
 
 import { createWindow } from 'domino'

@@ -41,14 +41,14 @@ export class OtherCalcultorTimeComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.eleminateCalculator == 'ac'){
-      this.goToOtherPage =  {name: "Date calculator", url:"/calculators/date-calculator/."}
+      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
     }else{
-      this.goToOtherPage =  {name: "Age calculator", url:"/calculators/age-calculator/."}
+      this.goToOtherPage =  {name: "Age Calculator", url:"/calculators/age-calculator/."}
     }
 
     this.arrayOtherCalculators = [
-      { 'title': 'Age calculator', 'url': '/calculators/age-calculator/.', 'code': 'ac' },
-      { 'title': 'Date calculator', 'url': '/calculators/date-calculator/.', 'code': 'dc' },
+      { 'title': 'Age Calculator', 'url': '/calculators/age-calculator/.', 'code': 'ac' },
+      { 'title': 'Date Calculator', 'url': '/calculators/date-calculator/.', 'code': 'dc' },
     ];
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);
 

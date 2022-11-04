@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
+import urlAndDescription from '../../../assets/url-json-descriptions/urlAndDescription.json';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -11,9 +11,11 @@ export class MenuComponent implements OnInit {
   isClosed: boolean = true;
   loading = false;
   detailsFormation: any;
+  urlDescription: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.urlDescription = urlAndDescription;
   }
   toggle() {
     if (this.isClosed) {
@@ -25,4 +27,5 @@ export class MenuComponent implements OnInit {
       this.isClosed = !this.isClosed;
     }
   }
+
 }

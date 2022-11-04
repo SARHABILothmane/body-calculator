@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { LottieModule } from 'ngx-lottie';
 import { CalculatorScientifiqueComponent } from './calculator-scientifique/calculator-scientifique.component';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
+import { SearchBoxModule } from 'src/app/shared/search-box/search-box.module';
+import { CommonModule } from '@angular/common';
 
 export function playerFactory() {
   return import('lottie-web/build/player/lottie_svg');
@@ -17,7 +18,8 @@ export function playerFactory() {
   imports: [
     HomeRoutingModule,
     NgxJsonLdModule,
-    LottieModule.forRoot({ player: playerFactory }),
+    SearchBoxModule,
+    CommonModule
   ]
 })
 export class HomeModule { }

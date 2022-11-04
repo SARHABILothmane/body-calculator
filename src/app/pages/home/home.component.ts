@@ -1,8 +1,9 @@
-import { AnimationOptions } from 'ngx-lottie';
+// import { AnimationOptions } from 'ngx-lottie';
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { CanonicalService } from 'src/app/services/canonical.service';
-
+import urlAndDescription from '../../../assets/url-json-descriptions/urlAndDescription.json';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,44 +11,14 @@ import { CanonicalService } from 'src/app/services/canonical.service';
 })
 export class HomeComponent implements OnInit {
   schema:any;
-  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) { }
+  urlDescription: any;
+  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService, private router: Router) { }
   scroll(el: HTMLElement) {
     el.scrollIntoView({ behavior: "smooth" });
   }
 
-  bmi: AnimationOptions = {
-    path: '/assets/animations/bmi.json',
-  };
-  bfp: AnimationOptions = {
-    path: '/assets/animations/bfp.json',
-  };
-  iwc: AnimationOptions = {
-    path: '/assets/animations/iwc.json',
-  };
-  bsc: AnimationOptions = {
-    path: '/assets/animations/bsc.json',
-  };
-  bmr: AnimationOptions = {
-    path: '/assets/animations/bmr.json',
-  };
-  hwc: AnimationOptions = {
-    path: '/assets/animations/hwc.json',
-  };
-  date: AnimationOptions = {
-    path: '/assets/animations/date.json',
-  };
-  age: AnimationOptions = {
-    path: '/assets/animations/age.json',
-  };
-  time: AnimationOptions = {
-    path: '/assets/animations/time.json',
-  };
-  calendre: AnimationOptions = {
-    path: '/assets/animations/lf20_jrrlfpbo.json',
-  };
-
-
   ngOnInit(): void {
+    this.urlDescription = urlAndDescription;
     this.titleService.setTitle("Body-calculator - free online tool to calculate fitness, time...");
     this.metaService.addTags([
       { name: 'keywords', content: "bmi calculator, bmi calculator women, body fat percentage calculator, basal metabolic rate calculator, body shape calculator, healthy weight calculator, ideal weight calculator, age calculator, data calculator" },
@@ -87,5 +58,9 @@ export class HomeComponent implements OnInit {
                         "priceCurrency": "USD"
                       }
                     };
+  }
+
+  goToPage(url: string){
+    this.router.navigateByUrl(url);
   }
 }

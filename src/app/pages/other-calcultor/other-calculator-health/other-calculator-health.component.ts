@@ -41,9 +41,9 @@ export class OtherCalcultorHealthComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.eleminateCalculator == 'bmi') {
-      this.goToOtherPage = { name: "Go to body fat percentage calculator", url: "/health/body-fat-percentage-calculator/." }
+      this.goToOtherPage = { name: "Go to Body Fat Percentage Calculator", url: "/health/body-fat-percentage-calculator/." }
     } else {
-      this.goToOtherPage = { name: "Body mass index BMI calculator", url: "/health/bmi-calculator/." }
+      this.goToOtherPage = { name: "Body Mass Index BMI Calculator", url: "/health/bmi-calculator/." }
     }
     // if(this.eleminateCalculator == 'bmi'){
     //   this.goToOtherPage =  {name: "Go to body fat percentage calculator", url:"/health/body-fat-percentage-calculator/."}
@@ -54,12 +54,12 @@ export class OtherCalcultorHealthComponent implements OnInit {
     // }
 
     this.arrayOtherCalculators = [
-      { 'title': 'Body mass index BMI calculator', 'url': '/health/bmi-calculator/.', 'code': 'bmi' },
-      { 'title': 'Body fat percentage calculator', 'url': '/health/body-fat-percentage-calculator/.', 'code': 'bfp' },
-      { 'title': 'Ideal weight calculator', 'url': '/health/ideal-weight-calculator/.', 'code': 'iwc' },
-      { 'title': 'Body shape calculator', 'url': '/health/body-shape-calculator/.', 'code': 'bsc' },
-      { 'title': 'Basal metabolic rate BMR calculator', 'url': '/health/bmr-calculator/.', 'code': 'bmr' },
-      { 'title': 'Healthy weight calculator', 'url': '/health/healthy-weight-calculator/.', 'code': 'hwc' },
+      { 'title': 'Body Mass Index BMI Calculator', 'url': '/health/bmi-calculator/.', 'code': 'bmi' },
+      { 'title': 'Body Fat Percentage Calculator', 'url': '/health/body-fat-percentage-calculator/.', 'code': 'bfp' },
+      { 'title': 'Ideal Weight Calculator', 'url': '/health/ideal-weight-calculator/.', 'code': 'iwc' },
+      { 'title': 'Body Shape Calculator', 'url': '/health/body-shape-calculator/.', 'code': 'bsc' },
+      { 'title': 'Basal Metabolic Rate BMR Calculator', 'url': '/health/bmr-calculator/.', 'code': 'bmr' },
+      { 'title': 'Healthy Weight Calculator', 'url': '/health/healthy-weight-calculator/.', 'code': 'hwc' },
     ];
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);
     this.arrayOtherCalculators.forEach((element: { url: string; title: string; }) => {

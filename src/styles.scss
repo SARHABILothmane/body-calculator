@@ -126,3 +126,28 @@ nb-layout-header nav{
 .nb-theme-default nb-select .select-button{
   min-width: 120px !important;
 }
+
+// style to designe search box 
+app-search-box input{
+    background-color: white !important;
+    border: solid 1px var(--primary) !important;
+    width: 100% !important;
+    border-radius: 15px !important;
+    padding: 13px !important;
+    max-width: 200rem !important;
+}
+
+app-search-box nb-layout .scrollable-container .layout{
+  min-height: auto !important;
+}
+
+// to make the text visible in bmi tab 
+nb-accordion-item-body div{
+  visibility: visible !important;
+}
+// to make the search box height
+.nb-theme-default nb-option-list .option-list{
+  max-height: 11rem !important;
+}
+
+

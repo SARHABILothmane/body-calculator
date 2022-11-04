@@ -6,13 +6,15 @@ import {OtherCalcultorHealthComponent } from './other-calculator-health/other-ca
 import { RouterModule } from '@angular/router';
 import { OtherCalcultorTimeComponent } from './other-calculator-time/other-calculator-time.component';
 import { SharethisAngularModule } from 'sharethis-angular';
+import { SearchBoxModule } from 'src/app/shared/search-box/search-box.module';
 @NgModule({
   declarations: [OtherCalcultorHealthComponent, OtherCalcultorTimeComponent],
   imports: [
     // CommonModule,
     // NbIconModule,
     RouterModule,
-    SharethisAngularModule
+    SharethisAngularModule,
+    SearchBoxModule
   ],
   exports:[OtherCalcultorHealthComponent,OtherCalcultorTimeComponent]
 })

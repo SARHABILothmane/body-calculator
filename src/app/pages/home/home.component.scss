@@ -47,10 +47,10 @@
     }
   }
 
-  .about-card {
-    margin: 20px 0;
-    height: 0%;
-  }
+  // .about-card {
+  //   margin: 20px 0;
+  //   height: 0%;
+  // }
 
   .voir-plus {
     position: absolute;
@@ -89,4 +89,14 @@
 h2{
   font-size: 22px !important;
   margin-top: 20px;
+}
+
+.linkName{
+  font-size: 15px; 
+  line-height: 40px;
+}
+
+.categorieSize{
+  font-size: 20px !important;
+  font-weight: 1000;
 }

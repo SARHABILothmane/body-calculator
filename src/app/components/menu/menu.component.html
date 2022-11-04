@@ -8,10 +8,10 @@
           src="../../../assets/images/logo/calculator.svg" alt="body-calculator"></a>
       <ul class="d-flex list pl-2 pl-xl-5 mr-5">
         <li class="list-item">
-          <a routerLinkActive="active" class="colorBlack activeLink" [routerLinkActiveOptions]="{ exact: true }"
+          <a routerLinkActive="active" class="linkBar" [routerLinkActiveOptions]="{ exact: true }"
             routerLink="/">Home</a>
         </li>
-        <li class="dropdown list-item">
+        <!-- <li class="dropdown list-item">
           <span>Calculators</span>
           <div class="dropdown-content" id="dropDown">
             <div class="d-flex flex-column">
@@ -54,15 +54,34 @@
               </a>
             </div>
           </div>
+        </li> -->
+
+        <li class="dropdown list-item" *ngFor="let details of urlDescription.arrayDetails;">
+          <span class="linkBar">{{details.categorieName}}</span>
+          <div class="dropdown-content">
+            <div class="d-flex flex-column">
+              <ng-template ngFor let-detailAndUrl [ngForOf]="details.urlAndDescriptions" let-i="index">
+                <a onclick="hideDropDownMenu()" class="pb-2 colorBlack mb-2 dropDownLink" routerLink="{{detailAndUrl.url}}"
+                  routerLinkActive="linkActiveDropDown" *ngIf="i < 10">
+                  {{detailAndUrl.textInHref}}
+                </a>
+              </ng-template>
+              <a onclick="hideDropDownMenu()" class="pb-2 colorBlack" routerLink="{{details.categorieUrl}}"
+                routerLinkActive="linkActiveDropDown" *ngIf="details.urlAndDescriptions.length > 10">
+                See more 
+              </a>
+            </div>
+          </div>
         </li>
+
         <li class="list-item">
-          <a href="https://g.page/r/CWcEpRY1bs9YEAI/review" target="_blank" class="colorBlack activeLink"
+          <a href="https://g.page/r/CWcEpRY1bs9YEAI/review" target="_blank" class="colorBlack linkBar"
             >
             Rate us
            </a>
         </li>
         <li class="list-item">
-          <a routerLinkActive="active" class="colorBlack activeLink" [routerLinkActiveOptions]="{ exact: true }"
+          <a routerLinkActive="active" class="colorBlack linkBar" [routerLinkActiveOptions]="{ exact: true }"
             routerLink="/contact/.">Contact
             us</a>
         </li>

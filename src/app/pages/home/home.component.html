@@ -5,90 +5,62 @@
       <app-calculator-scientifique></app-calculator-scientifique>
     </div>
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-4 text-center about-card">
-          <a routerLink="/health/bmi-calculator/." class="font-weight-bold" style="font-size: 30px; line-height: 40px;">
-            <div style="width: 80%;" class="mx-auto">
-              <ng-lottie [options]="bmi" height="220px"></ng-lottie>
-            </div>
-            Body Mass Index BMI Calculator
-          </a>
+      <section class="col-md-6 mx-auto mb-2 pb-5 px-0" >
+        <app-search-box></app-search-box>
+      </section>
+      <p class="mx-auto text-center mb-5" style=" font-size: 30px !important;font-weight: 1000; line-height: 2.5rem !important;">
+        <span style="display: inline-block;
+        border-bottom: 4px solid var(--primary);
+        padding-bottom: 2px;">
+          The most popular calculators
+        </span>
+      </p>
+      <section class="row px-0" *ngFor="let details of urlDescription.arrayDetails">
+        <div class="col-12">
+          <p class="categorieSize">{{details.categorieName}}</p>
         </div>
+        <ng-template ngFor let-detailAndUrl [ngForOf]="details.urlAndDescriptions" let-i="index" >
+          <div class="col-md-3 p-2 col-12 mb-2" (click)="goToPage(detailAndUrl.url)" style="cursor: pointer;" *ngIf="detailAndUrl.description.length">
+                <div class="p-3 bg-white designeButton  d-flex justify-content-between" style="flex-direction: column; min-height: 300px;">
+                    <div >
+                      <h3 style="font-size: 20px; min-height:40px; line-height: 1.5rem">{{detailAndUrl.name}}</h3>
+                      <p >{{detailAndUrl.description}}</p>
+                    </div>
+                    <a style="color:var(--primary) ;" routerLink="{{detailAndUrl.url}}" class="pr-2 font-weight-bold d-flex justify-content-between align-items-center" >
+                      {{detailAndUrl.textInHref}}
+                      <span class="font-weight-bold" style="color:var(--primary) ;">&raquo;</span>
+                    </a>
+                </div>
+          </div>
+        </ng-template>
+      </section>
+      <article class="my-4">
+        <p class="mx-auto text-center mb-5 " style=" font-size: 30px !important;font-weight: 1000; line-height: 2.5rem !important;">
+          <span style="display: inline-block;
+          border-bottom: 4px solid var(--primary);
+          padding-bottom: 2px;">
+            About our calculators
+          </span>
+        </p>
 
-        <div class="col-12 col-md-4 text-center about-card">
-          <a routerLink="/health/body-fat-percentage-calculator/." class="font-weight-bold" style="font-size: 30px; line-height: 40px;">
-            <ng-lottie [options]="bfp" height="220px"></ng-lottie>
-            Body Fat Percentage BFP Calculator
-          </a>
-        </div>
-
-        <div class="col-12 col-md-4 text-center about-card">
-          <a routerLink="/health/ideal-weight-calculator/." class="font-weight-bold" style="font-size: 30px; line-height: 40px;">
-            <div style="width: 45%;" class="mx-auto">
-              <ng-lottie [options]="iwc" height="220px"></ng-lottie>
-            </div>
-            Ideal Weight Calculator
-          </a>
-        </div>
-
-      </div>
-
-      <div class="row align-items-center">
-        <div class="col-12 col-md-4 text-center about-card">
-          <a routerLink="/health/body-shape-calculator/." class="font-weight-bold" style="font-size: 30px; line-height: 40px;">
-            <div style="width: 60%;" class="mx-auto">
-              <ng-lottie height="220px" [options]="bsc"></ng-lottie>
-            </div>
-            Body Shape Calculator
-          </a>
-        </div>
-
-        <div class="col-12 col-md-4 mx-auto text-center about-card">
-          <a routerLink="/health/bmr-calculator/." class="font-weight-bold" style="font-size: 30px; line-height: 40px;">
-            <div style="width: 80%;" class="mx-auto">
-              <ng-lottie height="220px" [options]="bmr"></ng-lottie>
-            </div>
-            Basal Metabolic Rate BMR Calculator
-          </a>
-        </div>
-
-        <div class="col-12 col-md-4 mx-auto text-center about-card">
-          <a routerLink="/health/healthy-weight-calculator/." class="font-weight-bold" style="font-size: 30px; line-height: 40px;">
-            <div style="width: 50%;" class="mx-auto">
-              <ng-lottie height="220px" [options]="hwc"></ng-lottie>
-            </div>
-            Healthy Weight Calculator
-          </a>
-        </div>
-
-      </div>
-
-      <div class="row">
-        <div class="col-12 col-md-4 mx-auto text-center about-card">
-          <a routerLink="/calculators/age-calculator/." class="font-weight-bold" style="font-size: 30px; line-height: 40px;">
-            <div style="width: 70%;" class="mx-auto">
-              <ng-lottie height="220px" [options]="calendre"></ng-lottie>
-            </div>
-            Age Calculator
-          </a>
-        </div>
-        <div class="col-12 col-md-4 mx-auto text-center about-card">
-          <a routerLink="/calculators/date-calculator/." class="font-weight-bold" style="font-size: 30px; line-height: 40px;">
-            <div style="width: 60%;" class="mx-auto">
-              <ng-lottie height="220px" [options]="date"></ng-lottie>
-            </div>
-            Date Calculator
-          </a>
-        </div>
-        <!-- <div class="col-12 col-md-4 mx-auto text-center about-card">
-          <a routerLink="/calculators/time-calculator/.">
-            <div style="width: 80%;" class="mx-auto">
-              <ng-lottie height="220px" [options]="time"></ng-lottie>
-            </div>
-            <h3 class="mb-4">Time calculator</h3>
-          </a>
-        </div> -->
-      </div>
+        <p>
+          The circulation of information is now much easier than it was in the past thanks to the great development in computers, smart phones, applications and websites, so you can get any information in any field without getting tired or effort while sitting at your home, 
+          and here we have developed this site in order to help you obtain accurate information in many important areas that you may need in most cases to collect a lot of information to reach certain results you need in your life matters.
+        </p>
+        <p>
+          Our site contains a very large number of online calculators that make managing your life much easier than before. You can now enter the site and choose any calculator to get accurate information and statistics in many areas of your daily life for free without incurring any costs.
+        </p>
+        <p>
+          For example, in the field of health, many people seek to pay attention to their body and its health from all sides, especially with the great development in the field of health and the large number of media that talk about health, the ideal body and a healthy lifestyle, which has led to an increase in awareness among many people of the importance of health care and a healthy lifestyle.
+        </p>
+        <p>
+          Many people are paying close attention to their health, from following a healthy diet and exercising, to paying close attention to the body's metabolic rate, pulse rate, and many other health issues.
+        </p>
+        <p>
+          We also did not forget your multiple daily needs that you may need certain accounts to find out about something in your day or other business, so we have developed various calculators to make it easier for you to manage your affairs in different areas of life, such as Age Calculator, Date Calculator, Percentage Calculator, Hex Calculator
+          And many other different Calculators.
+        </p>
+      </article>
     </div>
   </section>
 </div>

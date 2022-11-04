@@ -1,7 +1,7 @@
 import { FooterComponent } from './../../components/footer/footer.component';
 import { MenuComponent } from './../../components/menu/menu.component';
 import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 import { SiteLayoutRoutingModule } from './site-layout-routing.module';
 import { SiteLayoutComponent } from './site-layout.component';
@@ -17,7 +17,7 @@ import { NbLayoutModule } from '@nebular/theme';
     FooterComponent
   ],
   imports: [
-    // CommonModule,
+    CommonModule,
     SiteLayoutRoutingModule,
     // NbInputModule,
     // NbButtonModule,
