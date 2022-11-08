@@ -6,15 +6,14 @@
           [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Random Number Generator', itemUrl: 'math/random-number-generator/.'}">
         </app-breadcrumbs>
         <h1 class="text-secondary text-center pb-3">Random Number Generator RNG</h1>
-          <app-banner *ngIf="envirement"></app-banner>
+        <app-banner *ngIf="envirement"></app-banner>
       </div>
-      <div class="row mb-3 ">
-       
-        <div class="col-md-6 offset-md-3">
+      <div class="row mb-2">
+        <div class="col-md-6">
           <div class="card">
             <div class="card-header text-white text-center font-weight-bold">Random Number Generator</div>
             <div class="card-body example-items-col">
-              <form [formGroup]="calculeFormRandomNum" (ngSubmit)="CalculateRandomNumber(target)">
+              <form [formGroup]="calculeFormRandomNum" (ngSubmit)="CalculateRandomNumber()">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{error}}
@@ -43,20 +42,19 @@
             </div>
           </div>
         </div>
-        <div class="col-12">
-          <app-banner *ngIf="envirement"></app-banner>
-        </div>
-        <span #target ></span>
-        <div class="col-md-6 offset-md-3 my-auto  my-3 py-2 border-shadow bg-white" *ngIf="generatedNumber != null">
-          <p class="text-secondary text-center font-weight-bold">Result of Random Number Generator</p>
-          <p class=" text-center font-weight-bold" style="color: var(--primary);">{{generatedNumber}} </p>
+        <div class="col-md-6">
+          <img [ngClass]="{'showImg' : generatedNumber != null }" src="../../../../assets/images/random-genrator.svg"
+            width="100%" height="61%" alt="Random Number Generator">
+          <div [ngClass]="{'showImg' : generatedNumber === null }" class="border-shadow bg-white">
+            <p class="text-secondary text-center font-weight-bold">Result of Random Number Generator</p>
+            <p class="text-center font-weight-bold" style="color: var(--primary);">{{generatedNumber}} </p>
+          </div>
         </div>
       </div>
       <!-------------------------------------------------------------------------------------------------------------
         ------------------------------ second randum number generateur  ------------------------------------------
       ----------------------------------------------------------------------------------------------------------------->
       <div class="row mb-3">
-
         <div class="col-md-6 offset-md-3">
           <div class="card">
             <div class="card-header text-white text-center font-weight-bold">Comprehensive Version</div>
@@ -71,7 +69,7 @@
                   <label for="LowerLim">Lower Limit</label>
                   <input id="LowerLim" class="form-control" type="number" nbInput fullWidth status="basic"
                     shape="semi-round" placeholder="Lower Limit" formControlName="lowerLimit">
-                  <small class="text-danger" *ngIf="submitted && formRandomN.lowerLimit.errors?.required">Lower
+                  <small class="text-danger" *ngIf="submittedFormTwo && formRandomN.lowerLimit.errors?.required">Lower
                     Limit is
                     required.
                     !</small>
@@ -80,7 +78,7 @@
                   <label for="UpperLim">Upper Limit</label>
                   <input id="UpperLim" class="form-control" type="number" nbInput fullWidth status="basic"
                     shape="semi-round" placeholder="Upper Limit" formControlName="upperLimit">
-                  <small class="text-danger" *ngIf="submitted && formRandomN.upperLimit.errors?.required">Upper
+                  <small class="text-danger" *ngIf="submittedFormTwo && formRandomN.upperLimit.errors?.required">Upper
                     Limit is
                     required.
                     !</small>
@@ -88,9 +86,9 @@
                 <div class="my-4">
                   <label for="numbersGenerat">Number of numbers generat</label>
                   <input id="numbersGenerat" class="form-control" type="number" nbInput fullWidth status="basic"
-                    shape="semi-round" placeholder="Numbre of numbers generat" formControlName="genreteNumbers"
-                    >
-                  <small class="text-danger" *ngIf="submitted && formRandomN.genreteNumbers.errors?.required">Upper
+                    shape="semi-round" placeholder="Numbre of numbers generat" formControlName="genreteNumbers">
+                  <small class="text-danger"
+                    *ngIf="submittedFormTwo && formRandomN.genreteNumbers.errors?.required">Upper
                     Limit is
                     required.
                     !</small>
@@ -113,18 +111,18 @@
                   <div class="radio d-flex d-flex justify-content-between border rounded border-shadow mx-5 p-2 mb-4">
                     <label for="Sort the results?">Sort the results?</label>
                     <div class="form-check form-check-inline">
-                      <input id="Ascend" class="form-check-input" type="radio" name="sortNumber"
-                        value="ascend" formControlName="sortNumber">
+                      <input id="Ascend" class="form-check-input" type="radio" name="sortNumber" value="ascend"
+                        formControlName="sortNumber">
                       <label class="form-check-label ml-2" for="Ascend">Ascend</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input id="Descend" class="form-check-input" type="radio" name="sortNumber"
-                        value="descend" formControlName="sortNumber">
+                      <input id="Descend" class="form-check-input" type="radio" name="sortNumber" value="descend"
+                        formControlName="sortNumber">
                       <label class="form-check-label ml-2" for="Descend">Descend</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input id="radio" class="form-check-input" type="radio" name="sortNumber" 
-                        value="No" formControlName="sortNumber">
+                      <input id="radio" class="form-check-input" type="radio" name="sortNumber" value="No"
+                        formControlName="sortNumber">
                       <label class="form-check-label ml-2" for="radio">No</label>
                     </div>
                   </div>
@@ -147,20 +145,21 @@
             </div>
           </div>
         </div>
-
-        <div class="col-12">
-          <app-banner *ngIf="envirement"></app-banner>
-        </div>
-        <span #target2 ></span>
+        <span #target2></span>
         <div class="col-md-6 offset-md-3 my-auto  my-3 py-2 border-shadow bg-white" *ngIf="generateNumbers.length">
           <p class="text-secondary text-center font-weight-bold">Result of Comprehensive Version</p>
           <div *ngFor="let e of generateNumbers">
-            {{e}}
+            <p class="text-center font-weight-bold" style="color: var(--primary);">{{e}}</p>
           </div>
-          <p class="text-center font-weight-bold" style="color: var(--primary);" *ngIf="generatedN != null">{{generatedN}} </p>
+          <p class="text-center font-weight-bold" style="color: var(--primary);" *ngIf="generatedN != null">
+            {{generatedN}} </p>
+        </div>
+        <div class="col-12">
+          <app-banner *ngIf="envirement"></app-banner>
         </div>
       </div>
-      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 24px;">
+      <app-other-calcultor-math eleminateCalculator="rng"></app-other-calcultor-math>
+      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">
         Learn about Random Number Generator RNG
       </p>
 

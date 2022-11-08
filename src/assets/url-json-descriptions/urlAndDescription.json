@@ -53,6 +53,30 @@
                             "textInHref": "Random number generator",
                             "description": "With this calculator you can  get a random, cryptographically safe number. It can generate random numbers which can be used for determining who will go first in a game",
                             "url": "/math/random-number-generator/."
+                        },
+                        {
+                            "name": "Binary Calculator",
+                            "textInHref": "Binary Calculator",
+                            "description": "The following calculators can be used to multiply, divide, add, or subtract two binary numbers, as well as to convert binary to decimal values and vice versa.",
+                            "url": "/math/binary-calculator/."
+                        },
+                        {
+                            "name": "Hex Calculator",
+                            "textInHref": "Hex Calculator",
+                            "description": "The following calculators allow you to convert between hexadecimal and decimal values as well as multiply, divide, add, and subtract two hex digits.",
+                            "url": "/math/hex-calculator/."
+                        },
+                        {
+                            "name": "Percentage Calculator",
+                            "textInHref": "Percentage Calculator",
+                            "description": "You can calculate percentages and percent values with an online percentage calculator.This percent calculator calculates percent numbers in equations as well as unclear percent values.",
+                            "url": "/math/percentage-calculator/."
+                        },
+                        {
+                            "name": "Percent Error Calculator",
+                            "textInHref": "Percent Error Calculator",
+                            "description": "Let's use this calculator to figure out how much difference there is between your estimate and the actual number. Rather than computing a number each time, we frequently choose to guess it. ",
+                            "url": "/math/percentage-error-calculator/."
                         }
                        
                     ]
@@ -72,6 +96,12 @@
                         "textInHref": "Date Calculator",
                         "description": "With the date calculator you can compute the period Between Two Dates. You can Find years, months, and Even days between two dates. ",
                         "url": "/calculators/date-calculator/."
+                    },
+                    {
+                        "name": "Time Calculator",
+                        "textInHref": "Time Calculator",
+                        "description": "Using the time and date calculator, you may add time, multiply time, divide time, find the time difference between dates, and determine the duration between them.",
+                        "url": "/calculators/time-calculator/."
                     }
                 ]
             }

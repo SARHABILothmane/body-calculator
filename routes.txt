@@ -13,6 +13,10 @@
 /health/healthy-weight-calculator/.
 /math/.
 /math/random-number-generator/.
+/math/binary-calculator/.
+/math/hex-calculator/.
+/math/percentage-calculator/.
+/math/percentage-error-calculator/.
 /contact/.
 /private-policy/.
 /terms/.

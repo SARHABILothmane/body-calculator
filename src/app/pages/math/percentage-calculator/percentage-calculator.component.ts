@@ -1,5 +1,8 @@
+import { Title, Meta } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
+import { CanonicalService } from 'src/app/services/canonical.service';
 
 @Component({
   selector: 'app-percentage-calculator',
@@ -11,11 +14,16 @@ export class PercentageCalculatorComponent implements OnInit {
   calculePercentageX!: UntypedFormGroup;
   calculePercentageP!: UntypedFormGroup;
   calculePercentageIncDec!: UntypedFormGroup;
+  schema: any;
+  envirement: boolean = environment.production;
   error!: string;
+  errorFormTwo!: string;
+  errorFormThree!: string;
+  errorFormFor!: string;
   submitted: boolean = false;
-  // percentegeRslt!: number;
-  // percentage!: number;
-  // of!: number;
+  submittedFormTwo: boolean = false;
+  submittedFormThree: boolean = false;
+  submittedFormFor: boolean = false;
   p!: number;
   x!: number;
   y!: number;
@@ -36,7 +44,7 @@ export class PercentageCalculatorComponent implements OnInit {
   incDecPercentage: string = "increased";
 
 
-  constructor() {
+  constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculePercentageY = new UntypedFormGroup({
       p: new UntypedFormControl("", [Validators.required]),
       x: new UntypedFormControl("", [Validators.required]),
@@ -56,7 +64,47 @@ export class PercentageCalculatorComponent implements OnInit {
     });
   }
 
+
   ngOnInit(): void {
+    this.titleService.setTitle("Free online Percentage Calculator");
+    this.metaService.addTags([
+      { name: 'keywords', content: "how to find percentage on calculator,how to find out percentage on calculator,percentage,calculator,percentage calculator,how to check percentage in calculator mobile,how to calculate percentage,check percentage in calculator,how to find out percentage from calculator easy way,how to find calculator,percentages,percentage calculation,how to check percentage of marks in calculator" },
+      { name: 'description', content: "An online percentage calculator is a tool that allows you to compute percentages and percent values. Simply put, this percent calculator employs simple formulas to calculate percentages and unknown percent values in equations. This % calculator also allows you to add or subtract a percentage from a given amount, as well as solve equations. " },
+      { property: 'og:title', content: "Free online Percentage calculator" },
+      { property: 'og:description', content: "An online percentage calculator is a tool that allows you to compute percentages and percent values. Simply put, this percent calculator employs simple formulas to calculate percentages and unknown percent values in equations. This % calculator also allows you to add or subtract a percentage from a given amount, as well as solve equations." },
+      { property: "og:url", content: "https://body-calculator.com/math/percentage-calculator/" }
+    ]);
+    this.canonical.createCanonicalLink("https://body-calculator.com/math/percentage-calculator/");
+
+    this.schema = {
+      "@context": "http://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Age calculator",
+      "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
+      "url": "https://body-calculator.com/math/percentage-calculator/",
+      "author": {
+        "@type": "Person",
+        "name": "SARHABIL"
+      },
+      "datePublished": "2022-01-10",
+      "publisher": {
+        "@type": "Organization",
+        "name": "body-calculator"
+      },
+      "operatingSystem": "Linux",
+      "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
+      "softwareVersion": "1",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "8864"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "1.00",
+        "priceCurrency": "USD"
+      }
+    };
   }
   get formPercentageY() { return this.calculePercentageY.controls; }
   get formPercentageX() { return this.calculePercentageX.controls; }
@@ -80,8 +128,9 @@ export class PercentageCalculatorComponent implements OnInit {
     }
   }
   CalculatePercentageX() {
-    this.submitted = true;
+    this.submittedFormTwo = true;
     if (this.calculePercentageX.valid) {
+      this.errorFormTwo = "";
       this.rsltX = true;
       this.yOne = this.calculePercentageX.value.y;
       this.xOne = this.calculePercentageX.value.x;
@@ -89,12 +138,13 @@ export class PercentageCalculatorComponent implements OnInit {
       this.pOne = result / this.yOne;
       // p= x*100/y              x is what percent of y? formula
     } else {
-      this.error = "Please check the fields";
+      this.errorFormTwo = "Please check the fields";
     }
   }
   CalculatePercentageP() {
-    this.submitted = true;
+    this.submittedFormThree = true;
     if (this.calculePercentageP.valid) {
+      this.errorFormThree = "";
       this.rsltP = true;
       this.pTwo = this.calculePercentageP.value.p;
       this.xTwo = this.calculePercentageP.value.x;
@@ -102,13 +152,13 @@ export class PercentageCalculatorComponent implements OnInit {
       this.yTwo = result / this.pTwo;
       // y= x*100/p           x is p% of what? formula
     } else {
-      this.error = "Please check the fields";
+      this.errorFormThree = "Please check the fields";
     }
   }
   CalculatePercentageIncDec() {
-    this.submitted = true;
+    this.submittedFormFor = true;
     if (this.calculePercentageIncDec.valid) {
-      this.error = "";
+      this.errorFormFor = "";
       this.rsltIncDec = true;
       this.pTree = this.calculePercentageIncDec.value.p;
       this.xTree = this.calculePercentageIncDec.value.x;
@@ -125,7 +175,7 @@ export class PercentageCalculatorComponent implements OnInit {
       // y= +- . 100+P/100  what is x increased/decreased by p% formula
 
     } else {
-      this.error = "Please check the fields";
+      this.errorFormFor = "Please check the fields";
     }
   }
   selectPercentage() {
