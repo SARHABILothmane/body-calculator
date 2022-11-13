@@ -39,20 +39,22 @@ export class OtherCalcultorMathComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    if (this.eleminateCalculator == 'bc') {
+    if (this.eleminateCalculator == 'pc') {
+      this.goToOtherPage = { name: "Go to Percent Error Calculator", url: "/math/percent-error-calculator/." }
+    }else if(this.eleminateCalculator == 'pec'){
+      this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
+    }else if(this.eleminateCalculator == 'rng'){
+      this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
+    }else {
       this.goToOtherPage = { name: "Go to Random Number Generateur", url: "/math/random-number-generator/." }
-    } else {
-      this.goToOtherPage = { name: "Go to Binary Calculator", url: "/math/binary-calculator/." }
-      // this.goToOtherPage = { name: "Go to Hex Calculator", url: "/math/hex-calculator/." }
     }
 
     this.arrayOtherCalculators = [
-      { 'title': 'Binary Calculator', 'url': '/math/binary-calculator/.', 'code': 'bc' },
+      // { 'title': 'Binary Calculator', 'url': '/math/binary-calculator/.', 'code': 'bc' },
       { 'title': 'Random Number Generator', 'url': '/math/random-number-generator/.', 'code': 'rng' },
-      { 'title': 'Hex Calculator', 'url': '/math/hex-calculator/.', 'code': 'hex' },
+      // { 'title': 'Hex Calculator', 'url': '/math/hex-calculator/.', 'code': 'hex' },
       { 'title': 'Percentage Calculator', 'url': '/math/percentage-calculator/.', 'code': 'pc' },
-      { 'title': 'Percentage Error Calculator', 'url': '/math/percentage-error-calculator/.', 'code': 'pec' },
+      { 'title': 'Percentage Error Calculator', 'url': '/math/percent-error-calculator/.', 'code': 'pec' },
     ];
 
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);

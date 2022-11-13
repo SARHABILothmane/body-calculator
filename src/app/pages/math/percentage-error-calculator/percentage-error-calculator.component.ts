@@ -26,27 +26,27 @@ export class PercentageErrorCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online Percent Error Calculator");
+    this.titleService.setTitle("Free online Percent Error Calculator - Percent Error Formula");
     this.metaService.addTags([
-      { name: 'keywords', content: "percent error,percent error calculator,error,how to calculate percent error,percent error formula,percent,percentage error,why should you use the percent error calculator,calculate percent error,mean error calculator,percent error calculation,calculating percent error,relative error calculator,mean absolute percentage error calculator,relative error,rounding error on scientific calculator,what is percent error,percent error explanation" },
-      { name: 'description', content: "Free online Percent Error Calculator. Let's use this calculator to figure out how much difference there is between your estimate and the actual number. Rather than computing a number each time, we frequently choose to guess it. We created this percent mistake calculator for you, and it will enhance your calculations and estimations. When you've previously utilized the projected value in complex computations, this percent error calculator comes in useful." },
-      { property: 'og:title', content: "Free online Percent Error Calculator" },
-      { property: 'og:description', content: "Free online Percent Error Calculator. Let's use this calculator to figure out how much difference there is between your estimate and the actual number. Rather than computing a number each time, we frequently choose to guess it. We created this percent mistake calculator for you, and it will enhance your calculations and estimations. When you've previously utilized the projected value in complex computations, this percent error calculator comes in useful." },
-      { property: "og:url", content: "https://body-calculator.com/math/percentage-error-calculator/" }
+      { name: 'keywords', content: "percent error,percent error calculator,how to calculate percent error,percent error formula, how to find percent error, " },
+      { name: 'description', content: "Free online Percent Error Calculator with Percent Error Formula" },
+      { property: 'og:title', content: "Free online Percent Error Calculator - Percent Error Formula" },
+      { property: 'og:description', content: "Free online Percent Error Calculator with Percent Error Formula" },
+      { property: "og:url", content: "https://body-calculator.com/math/percent-error-calculator/" }
     ]);
-    this.canonical.createCanonicalLink("https://body-calculator.com/math/percentage-error-calculator/");
+    this.canonical.createCanonicalLink("https://body-calculator.com/math/percent-error-calculator/");
 
     this.schema = {
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
       "name": "Age calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/math/percentage-error-calculator/",
+      "url": "https://body-calculator.com/math/percent-error-calculator/",
       "author": {
         "@type": "Person",
         "name": "SARHABIL"
       },
-      "datePublished": "2022-01-10",
+      "datePublished": "2022-11-13",
       "publisher": {
         "@type": "Organization",
         "name": "body-calculator"
@@ -79,5 +79,9 @@ export class PercentageErrorCalculatorComponent implements OnInit {
     } else {
       this.error = "Please check the fields";
     }
+  }
+
+  convertToPositiveNumber(value: number){
+    return Math.abs(value);
   }
 }

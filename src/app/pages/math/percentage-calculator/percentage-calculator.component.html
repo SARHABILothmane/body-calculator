@@ -1,31 +1,49 @@
 <nb-layout>
   <nb-layout-column>
     <div class="container">
+      <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Percentage Calculator', itemUrl: 'math/percentage-calculator/'}">
+      </app-breadcrumbs>
       <div class="col-12">
-        <h1 class="text-secondary text-center pb-3">Percentage Calculator
-        </h1>
+        <h1 class="text-secondary text-center pb-3">Percentage Calculator</h1>
         <div class="flexMobile">
           <app-banner *ngIf="envirement"></app-banner>
         </div>
       </div>
       <div class="row mb-3">
-        <div class="col-md-5 mx-auto">
-          <img src="../../../../assets/images/percentage-calclulator.svg" width="100%" height="100%"
-            alt="Percentage Calculator">
+        <div class="col-md-5 mx-auto d-flex  justify-content-center align-items-center">
+          <img loading="lazy" src="../../../../assets/images/percentage-calclulator.svg" width="300px" height="300px"
+            alt="Percentage Calculator" class="d-md-block d-none">
         </div>
         <div class="col-md-7">
           <!-- What is p% of x? -->
           <div class="card mb-3">
-            <div class="card-header text-white text-center font-weight-bold">What is p% of x?</div>
+            <div class="card-header text-white text-center font-weight-bold row mx-0 py-1">
+              <p class="d-inline col-md-6 col-8  my-auto text-white text-center font-weight-bold">What is p% of x?</p> 
+              <div class="col-4 ">
+                <div class="row  my-auto" style="width: 120px;">
+                      <span class="col-4 px-1 d-flex align-items-center">
+                        R = 
+                      </span>
+                      <span class="col-4 px-1">
+                        <span style="border-bottom: solid 3px white ; padding-bottom:5px; margin-bottom: 5px;">p * x</span><br>
+                        <span class="d-flex justify-content-center">
+                          <span class="mt-2 ">100</span> 
+                        </span>
+                      </span>
+                </div>
+              </div>
+            </div>
             <div class="card-body">
               <div *ngIf="rsltY">
                 <p class="font-weight-bold">steps :</p>
                 <!-- <p>y = p x x / 100</p> -->
                 <div class="border">
-                  <p><strong class="ml-5">y =</strong> {{p}} x {{x}} / 100 </p>
-                  <p><strong class="ml-5">y =</strong> {{y}}</p>
+                  <p><strong class="ml-5">R =</strong> {{p}} x {{x}} / 100 </p>
+                  <p><strong class="ml-5">R =</strong> {{y}}</p>
                 </div>
-                <h5 class="text-white text-center msg">Result : {{y}}</h5>
+                <p class="text-white text-center msg font-weight-bold">Result : {{y}}</p>
+                <app-banner *ngIf="envirement"></app-banner>
               </div>
               <form [formGroup]="calculePercentageY" (ngSubmit)="CalculatePercentageY()">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
@@ -34,15 +52,15 @@
                   </span>
                 </div>
                 <div class="row">
-                  <div class="col-4">
-                    <label for="percentage">Is what %</label>
+                  <div class="col-md-4 col-6">
+                    <label for="percentage">What is %</label>
                     <input id="percentage" class="form-control" type="number" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="%" formControlName="p">
                     <small class="text-danger" *ngIf="submitted && formPercentageY.p.errors?.required">this field
                       required.
                       !</small>
                   </div>
-                  <div class="col-4">
+                  <div class="col-md-4 col-6">
                     <label for="Of">Of</label>
                     <input id="Of" class="form-control" type="number" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="?" formControlName="x">
@@ -50,7 +68,7 @@
                       required.
                       !</small>
                   </div>
-                  <div class="col-4 mt-4">
+                  <div class="col-md-4 mt-4">
                     <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
                   </div>
                 </div>
@@ -59,16 +77,32 @@
           </div>
           <!-- x is what percent of y? -->
           <div class="card mb-3">
-            <div class="card-header text-white text-center font-weight-bold">x is what percent of y?</div>
+            <div class="card-header text-white text-center font-weight-bold row mx-0 py-1">
+              <p class="d-inline col-md-6 col-8 my-auto text-white text-center font-weight-bold">x is what percent of y?</p> 
+              <div class="col-4 ">
+                <div class="row  my-auto" style="width: 120px;">
+                      <span class="col-4 px-1 d-flex align-items-center">
+                        R = 
+                      </span>
+                      <span class="col-6 px-1">
+                        <span style="border-bottom: solid 3px white ; padding-bottom:5px; margin-bottom: 5px;">x * 100</span><br>
+                        <span class="d-flex justify-content-center">
+                          <span class="mt-2 ">y</span> 
+                        </span>
+                      </span>
+                </div>
+              </div>
+            </div>
             <div class="card-body">
               <div *ngIf="rsltX">
                 <p class="font-weight-bold">steps :</p>
                 <!-- <p>y = p x x / 100</p> -->
                 <div class="border">
-                  <p><strong class="ml-5">p =</strong> {{xOne}} x 100 / {{yOne}}</p>
-                  <p><strong class="ml-5">p =</strong> {{pOne}}</p>
+                  <p><strong class="ml-5">R =</strong> {{xOne}} x 100 / {{yOne}}</p>
+                  <p><strong class="ml-5">R =</strong> {{pOne}}</p>
                 </div>
-                <h5 class="text-white text-center msg">Result : {{pOne}}</h5>
+                <p class="text-white text-center msg font-weight-bold">Result : {{pOne}}</p>
+                <app-banner *ngIf="envirement"></app-banner>
               </div>
               <form [formGroup]="calculePercentageX" (ngSubmit)="CalculatePercentageX()">
                 <div *ngIf="errorFormTwo" class="alert alert-danger mx-auto text-center" role="alert">
@@ -77,41 +111,60 @@
                   </span>
                 </div>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-md-4 col-6">
                     <label for="IsPercentage">Is what percent</label>
                     <input id="IsPercentage" class="form-control" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="?" formControlName="x">
+                      shape="semi-round" placeholder="%" formControlName="x">
                     <small class="text-danger" *ngIf="submittedFormTwo && formPercentageX.x.errors?.required">this field
                       required.
                       !</small>
                   </div>
-                  <div class="col-4">
+                  <div class="col-md-4 col-6">
                     <label for="IsOf">Of</label>
                     <input id="IsOf" class="form-control" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="%" formControlName="y">
+                      shape="semi-round" placeholder="?" formControlName="y">
                     <small class="text-danger" *ngIf="submittedFormTwo && formPercentageX.y.errors?.required">this field
                       required.
                       !</small>
                   </div>
-                  <div class="col-4 mt-4">
+                  <div class="col-md-4 mt-4">
                     <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
+          <div class="col-12">
+            <app-banner *ngIf="envirement"></app-banner>
+          </div>
           <!-- x is p% of what? -->
           <div class="card mb-3">
-            <div class="card-header text-white text-center font-weight-bold">x is p% of what?</div>
+            <div class="card-header text-white text-center font-weight-bold row mx-0 py-1">
+              <p class="d-inline col-md-6 col-8 my-auto text-white text-center font-weight-bold">x is p% of what?</p> 
+              <div class="col-4">
+                <div class="row  my-auto" style="width: 120px;">
+                      <span class="col-4 px-1 d-flex align-items-center">
+                        R = 
+                      </span>
+                      <span class="col-6 px-1">
+                        <span style="border-bottom: solid 3px white ; padding-bottom:5px; margin-bottom: 5px;">x * 100</span><br>
+                        <span class="d-flex justify-content-center">
+                          <span class="mt-2 ">p</span> 
+                        </span>
+                      </span>
+                </div>
+              </div>
+            </div>
             <div class="card-body">
               <div *ngIf="rsltP">
                 <p class="font-weight-bold">steps :</p>
-                <!-- <p>y = p x x / 100</p> -->
+
                 <div class="border">
                   <p><strong class="ml-5">y =</strong> {{xTwo}} x 100 / {{pTwo}}</p>
                   <p><strong class="ml-5">y =</strong> {{yTwo}}</p>
                 </div>
-                <h5 class="text-white text-center msg">Result : {{yTwo}}</h5>
+                <p class="text-white text-center msg font-weight-bold">Result : {{yTwo}}</p>
+                <app-banner *ngIf="envirement"></app-banner>
               </div>
               <form [formGroup]="calculePercentageP" (ngSubmit)="CalculatePercentageP()">
                 <div *ngIf="errorFormThree" class="alert alert-danger mx-auto text-center" role="alert">
@@ -120,8 +173,8 @@
                   </span>
                 </div>
                 <div class="row">
-                  <div class="col-4">
-                    <label for="perX">Is</label>
+                  <div class="col-md-4 col-6">
+                    <label for="perX">Is x</label>
                     <input id="perX" class="form-control" type="number" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="?" formControlName="x">
                     <small class="text-danger" *ngIf="submittedFormThree && formPercentageP.x.errors?.required">this
@@ -129,8 +182,8 @@
                       required.
                       !</small>
                   </div>
-                  <div class="col-4">
-                    <label for="perY">Of what?</label>
+                  <div class="col-md-4 col-6">
+                    <label for="perY">% of what?</label>
                     <input id="perY" class="form-control" type="number" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="%" formControlName="p">
                     <small class="text-danger" *ngIf="submittedFormThree && formPercentageP.p.errors?.required">this
@@ -138,7 +191,7 @@
                       required.
                       !</small>
                   </div>
-                  <div class="col-4 mt-4">
+                  <div class="col-md-4 mt-4">
                     <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
                   </div>
                 </div>
@@ -148,22 +201,44 @@
           </div>
           <!-- What is x increased/decreased by p%? -->
           <div class="card mb-3">
-            <div class="card-header text-white text-center font-weight-bold">What is x increased/decreased by p%?</div>
+            <div class="card-header text-white text-center font-weight-bold row mx-0 p-1">
+              <p class="d-inline  col-7 px-1 my-auto text-white text-center font-weight-bold">What is x increased /decreased by p%?</p> 
+              <div class="col-5 px-0">
+                <div class="row  my-auto px-0" >
+                      <span class="col-2 col-md-1 px-0 d-flex align-items-center">
+                        R = 
+                      </span>
+                      <span class="col-2 col-md-1 px-0 d-flex align-items-center">
+                        <!-- <span class="d-inline">&nbsp;&#177;&nbsp;</span> -->
+                        &nbsp;X&nbsp;* 
+                      </span>
+                      <span class="col-6 col-md-3 px-1">
+                          <span style="border-bottom: solid 3px white ; padding-bottom:5px; margin-bottom: 5px;">100 &#177; p</span><br>                        
+                          <span class="d-flex justify-content-center">
+                            <span class="mt-2 ">100</span> 
+                          </span>
+                      </span>
+                </div>
+              </div>
+            </div>
             <div class="card-body">
               <div *ngIf="rsltIncDec">
                 <p class="font-weight-bold">steps :</p>
-                <!-- <p>y = p x x / 100</p> -->
                 <div class="border">
-                  <p class="ml-5">{{xTree}} {{incDecPercentage}} {{pTree}}%</p>
+                  <p class="ml-5">{{xTree}} {{incDecPercentage}} by {{pTree}}%</p>
+
                   <p *ngIf="incDecPercentage ==='increased'">
-                    <strong class="ml-5">p = </strong> {{pTree}} / 100 <br>
-                    <strong class="ml-5">y = </strong> {{xTree}} * (1 + {{resultIncDec}})</p>
+                    <strong class="ml-5">R</strong> = {{xTree}} * ((100 + {{pTree}})/100)
+                  </p>
+
                   <p *ngIf="incDecPercentage ==='decreased'">
-                    <strong class="ml-5">p = </strong> {{pTree}} / 100 <br>
-                    <strong class="ml-5">y = </strong> {{xTree}} * (1 - {{resultIncDec}})</p>
-                  <p><strong class="ml-5">y =</strong> {{yTree}}</p>
+                    <strong class="ml-5">R =</strong> {{xTree}} * ((100 - {{pTree}})/100)
+                  </p>
+
+                  <p><strong class="ml-5">R =</strong> {{yTree}}</p>
                 </div>
-                <h5 class="text-white text-center msg">Result : {{yTree}}</h5>
+                <p class="text-white text-center msg font-weight-bold">Result : {{yTree}}</p>
+                <app-banner *ngIf="envirement"></app-banner>
               </div>
               <form [formGroup]="calculePercentageIncDec" (ngSubmit)="CalculatePercentageIncDec()">
                 <div *ngIf="errorFormFor" class="alert alert-danger mx-auto text-center" role="alert">
@@ -172,16 +247,16 @@
                   </span>
                 </div>
                 <div class="row">
-                  <div class="col-3">
-                    <label for="what">What Is</label>
+                  <div class="col-md-3 col-4">
+                    <label for="what">What Is x</label>
                     <input id="what" class="form-control" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="" formControlName="x">
+                      shape="semi-round" placeholder="" formControlName="x" placeholder="?">
                     <small class="text-danger" *ngIf="submittedFormFor && formPercentageIncDec.x.errors?.required">this
                       field
                       required.
                       !</small>
                   </div>
-                  <div class="col-3 mt-4">
+                  <div class="col-md-3 col-5 mt-4 px-1">
                     <label for="increased"></label>
                     <nb-select id="increased" class="nb-select-min-width" placeholder="kg" selected="kg" status="basic"
                       shape="semi-round" fullWidth formControlName="selectPercentage" required>
@@ -189,30 +264,21 @@
                       <nb-option value="decreased">decreased</nb-option>
                     </nb-select>
                   </div>
-                  <div class="col-3">
-                    <label for="by">By</label>
+                  <div class="col-md-3 col-3 px-2">
+                    <label for="by">By p</label>
                     <input id="by" class="form-control" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="% ?" formControlName="p">
+                      shape="semi-round" placeholder="?" formControlName="p">
                     <small class="text-danger" *ngIf="submittedFormFor && formPercentageIncDec.p.errors?.required">this
                       field
                       required.
                       !</small>
                   </div>
-                  <div class="col-3 mt-4">
+                  <div class="col-md-3 mt-4">
                     <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
                   </div>
                 </div>
               </form>
             </div>
-
-            <!-- <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
-          <h6 class="text-secondary text-center">Result of Random Number Generator</h6>
-          <div *ngIf="percentegeRslt != null">
-            <p class="font-weight-bold">steps :</p>
-            <p> {{percentage}} % x {{of}} = {{percentegeRslt}}</p>
-            <h4 class="text-secondary text-center">{{percentegeRslt}}</h4>
-          </div>
-        </div> -->
           </div>
         </div>
         <div class="col-12">
@@ -228,7 +294,7 @@
         <div class="col-md-12 mx-2 my-4">
           <h2>Percentage Calculator</h2>
           <p>
-            An online percentage calculator is a tool that allows you to compute percentages and percent values. Simply
+            An online <a href="https://en.wikipedia.org/wiki/Percentage" target="_blank" rel="noopener noreferrer">percentage calculator</a> is a tool that allows you to compute percentages and percent values. Simply
             put, this percent calculator employs simple formulas to calculate percentages and unknown percent values in
             equations. This % calculator also allows you to add or subtract a percentage from a given amount, as well as
             solve equations.

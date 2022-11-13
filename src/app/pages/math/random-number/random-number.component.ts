@@ -82,7 +82,7 @@ export class RandomNumberComponent implements OnInit {
   get formRandomNumber() { return this.calculeFormRandomNum.controls; }
   get formRandomN() { return this.calculeFormRandomN.controls; }
 
-  public CalculateRandomNumber(): void {
+  public CalculateRandomNumber(e: HTMLElement): void {
     this.submitted = true;
     if (this.calculeFormRandomNum.valid && this.calculeFormRandomNum.value.upperLimit >= this.calculeFormRandomNum.value.lowerLimit) {
       this.error = '';
@@ -96,6 +96,7 @@ export class RandomNumberComponent implements OnInit {
       this.generatedNumber = this.generatedNumber + this.calculeFormRandomNum.value.upperLimit;
       // e.scrollIntoView({ behavior: "smooth" });
       // this.generatedNumber = ( this.calculeFormRandomNum.value.upperLimit, this.calculeFormRandomNum.value.lowerLimit) => Math.floor(Math.random() * (this.calculeFormRandomNum.value.lowerLimit - this.calculeFormRandomNum.value.upperLimit)) + this.calculeFormRandomNum.value.upperLimit;
+      e.scrollIntoView({ behavior: "smooth" });
     }
     if (this.calculeFormRandomNum.value.upperLimit < this.calculeFormRandomNum.value.lowerLimit) {
       this.error = "The lower limit value needs to be smaller than the upper limit value.";

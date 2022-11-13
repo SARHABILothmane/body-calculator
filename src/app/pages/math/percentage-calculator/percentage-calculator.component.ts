@@ -66,12 +66,12 @@ export class PercentageCalculatorComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online Percentage Calculator");
+    this.titleService.setTitle("Free online Percentage Calculator - Percent Change Calculator");
     this.metaService.addTags([
-      { name: 'keywords', content: "how to find percentage on calculator,how to find out percentage on calculator,percentage,calculator,percentage calculator,how to check percentage in calculator mobile,how to calculate percentage,check percentage in calculator,how to find out percentage from calculator easy way,how to find calculator,percentages,percentage calculation,how to check percentage of marks in calculator" },
-      { name: 'description', content: "An online percentage calculator is a tool that allows you to compute percentages and percent values. Simply put, this percent calculator employs simple formulas to calculate percentages and unknown percent values in equations. This % calculator also allows you to add or subtract a percentage from a given amount, as well as solve equations. " },
-      { property: 'og:title', content: "Free online Percentage calculator" },
-      { property: 'og:description', content: "An online percentage calculator is a tool that allows you to compute percentages and percent values. Simply put, this percent calculator employs simple formulas to calculate percentages and unknown percent values in equations. This % calculator also allows you to add or subtract a percentage from a given amount, as well as solve equations." },
+      { name: 'keywords', content: "Percentage Increase Calculator, percent change calculator, percentage formula , what percentage of, percentage change calculator, percentage difference calculator, percentage increase formula, percentage decrease calculator, how to calculate percentage, how to find percentage, how to calculate percentages, how to calculate percentage increase, how to calculate percentage of a number" },
+      { name: 'description', content: "Online Percentage Calculator that allow you to calculate percentage in different situation like Percentage Increase Calculator, Percent Change Calculator" },
+      { property: 'og:title', content: "Free online Percentage Calculator - Percent Change Calculator" },
+      { property: 'og:description', content: "Online Percentage Calculator that allow you to calculate percentage in different situation like Percentage Increase Calculator, Percentage Decrease Calculator" },
       { property: "og:url", content: "https://body-calculator.com/math/percentage-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/math/percentage-calculator/");
@@ -86,7 +86,7 @@ export class PercentageCalculatorComponent implements OnInit {
         "@type": "Person",
         "name": "SARHABIL"
       },
-      "datePublished": "2022-01-10",
+      "datePublished": "2022-11-13",
       "publisher": {
         "@type": "Organization",
         "name": "body-calculator"

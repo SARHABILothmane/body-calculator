@@ -9,11 +9,11 @@
         <app-banner *ngIf="envirement"></app-banner>
       </div>
       <div class="row mb-2">
-        <div class="col-md-6">
+        <div class="col-md-6 offset-md-3">
           <div class="card">
             <div class="card-header text-white text-center font-weight-bold">Random Number Generator</div>
             <div class="card-body example-items-col">
-              <form [formGroup]="calculeFormRandomNum" (ngSubmit)="CalculateRandomNumber()">
+              <form [formGroup]="calculeFormRandomNum" (ngSubmit)="CalculateRandomNumber(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{error}}
@@ -42,9 +42,13 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <img [ngClass]="{'showImg' : generatedNumber != null }" src="../../../../assets/images/random-genrator.svg"
-            width="100%" height="61%" alt="Random Number Generator">
+        <div class="col-12">
+          <app-banner ></app-banner>
+          <span #target style="position: relative; top: -350px"></span>
+        </div>
+        <div class="col-md-6 offset-md-3 my-auto  my-3 py-2 border-shadow bg-white">
+          <!-- <img [ngClass]="{'showImg' : generatedNumber != null }" src="../../../../assets/images/random-genrator.svg"
+            width="100%" height="61%" alt="Random Number Generator"> -->
           <div [ngClass]="{'showImg' : generatedNumber === null }" class="border-shadow bg-white">
             <p class="text-secondary text-center font-weight-bold">Result of Random Number Generator</p>
             <p class="text-center font-weight-bold" style="color: var(--primary);">{{generatedNumber}} </p>
@@ -145,7 +149,11 @@
             </div>
           </div>
         </div>
-        <span #target2></span>
+        
+        <div class="col-12">
+          <app-banner ></app-banner>
+          <span #target2 style="position: relative; top: -350px"></span>
+        </div>
         <div class="col-md-6 offset-md-3 my-auto  my-3 py-2 border-shadow bg-white" *ngIf="generateNumbers.length">
           <p class="text-secondary text-center font-weight-bold">Result of Comprehensive Version</p>
           <div *ngFor="let e of generateNumbers">
@@ -153,9 +161,6 @@
           </div>
           <p class="text-center font-weight-bold" style="color: var(--primary);" *ngIf="generatedN != null">
             {{generatedN}} </p>
-        </div>
-        <div class="col-12">
-          <app-banner *ngIf="envirement"></app-banner>
         </div>
       </div>
       <app-other-calcultor-math eleminateCalculator="rng"></app-other-calcultor-math>
@@ -166,7 +171,7 @@
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
           <h2>Random number generator RNG</h2>
-          <p>Use our random number generator website to get a really unexpected and cryptographically secure number.
+          <p>Use our <a href="https://en.wikipedia.org/wiki/Random_number_generation" target="_blank" rel="noopener noreferrer">random number generator</a> website to get a really unexpected and cryptographically secure number.
             It creates random numbers that can be utilized in situations requiring impartial randomization, such as when
             drawing numbers for a lottery, raffle, giveaway, or sweepstake.
             An RNG draw may also be used to choose who goes first in a game, among other things.
@@ -293,7 +298,7 @@
             these seemingly random outcomes.</p>
           <p>
             Random number generators of this sort are usually referred to as Pseudorandom number generators since they
-            produce Pseudorandom Numbers.
+            produce <a href="https://en.wikipedia.org/wiki/Pseudorandomness#:~:text=A%20pseudorandom%20sequence%20of%20numbers,completely%20deterministic%20and%20repeatable%20process." target="_blank" rel="noopener noreferrer">Pseudorandom Numbers.</a>
           </p>
           <p>
             Even while this sort of generator does not normally take data from sources of naturally occurring

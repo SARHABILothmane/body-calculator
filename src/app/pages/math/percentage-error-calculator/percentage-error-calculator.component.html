@@ -3,9 +3,9 @@
     <div class="container">
       <div class="col-12">
         <app-breadcrumbs
-          [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Percent Calculator', itemUrl: 'math/percentage-error-calculator/'}">
+          [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Percent Error Calculator', itemUrl: 'math/percent-error-calculator/'}">
         </app-breadcrumbs>
-        <h1 class="text-secondary text-center pb-3">Percentage Error Calculator</h1>
+        <h1 class="text-secondary text-center pb-3">Percent Error Calculator</h1>
         <div class="flexMobile">
           <app-banner *ngIf="envirement"></app-banner>
         </div>
@@ -40,10 +40,33 @@
                           </td>
                         </tr>
                       </table>
-                      <p><strong class="ml-5">Percent error =</strong> {{valueX}} - {{valueY}} / {{valueY}} </p>
+                      <table align="center"><tbody><tr>
+                        <td>Percentage error = </td>
+                        <td>
+                          <table>
+                            <tbody>
+                              <tr align="center">
+                                <td>|V<sub>true</sub> - V<sub>observed</sub>|</td>
+                              </tr>
+                              <tr>
+                                <td bgcolor="#000000" height="1">
+
+                                </td>
+                              </tr>
+                              <tr align="center">
+                                <td>V<sub>true</sub>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                        <td> × 100</td>
+                        </tr></tbody></table>
+                      <p><strong class="ml-5">Percent error =</strong> (({{valueX}} - {{valueY}}) / {{valueY}}) * 100 </p>
                       <p><strong class="ml-5">Percent error =</strong> {{rsltError}}</p>
                 </div>
-                <h5 class="text-white text-center msg">Result : {{rsltError}}</h5>
+                <p class="text-white text-center msg font-weight-bold">Result : {{convertToPositiveNumber(rsltError)}}% error</p>
+                <app-banner *ngIf="envirement"></app-banner>
               </div>
               <form [formGroup]="calculePercentageError" (ngSubmit)="CalculatePercentageError()">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
@@ -75,8 +98,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 mx-auto">
-          <img src="../../../../assets/images/percentage-error-calculator.svg" width="100%" height="80%"
+        <div class="col-md-5 mx-auto d-md-block d-none">
+          <img src="../../../../assets/images/percentage-error-calculator.svg" width="350px" height="300px"
             alt="Percent Error Calculator">
         </div>
         <div class="col-12">
@@ -85,8 +108,8 @@
       </div>
       <app-other-calcultor-math eleminateCalculator="pec"></app-other-calcultor-math>
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
-        Binary
-        Calculator</p>
+        Percent Calculator
+      </p>
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
           <p>Let's use this calculator to figure out how much difference there is between your estimate and the actual
@@ -100,7 +123,7 @@
             to discuss and grasp the magnitude of the error without knowing anything else. Using only the relative
             mistake, such as 1/100, is less handy than mentioning the 1% error. Our % error calculator can help you
             easily calculate it.</p>
-          <h3 class="">percent error</h3>
+          <h3>Percent error</h3>
           <p>For example, if I advise you that the absolute measurement error is 500 grammes, you are unsure if this is
             a significant or little change in relation to what you are measuring. If you were measuring weights in a
             market, say, selling potatoes, a 500 gramme (0.5 kilogramme or around 1 pound) inaccuracy would be fairly
@@ -110,13 +133,13 @@
             because 0.5kg is just 1% for a 50kg man (110lbs) and 0.5% for a 100kg (220lbs) man - enough for the purpose.
             As a result, the same absolute error produces radically different % errors, illustrating its utility.</p>
           <p>Percent error should not be confused with standard deviation (of the sample), standard error (of the mean),
-            or margin of error, as these are more sophisticated statistical concepts.</p>
-          <h3 class="">Using the percent error calculator</h3>
+            or <a href="https://en.wikipedia.org/wiki/Margin_of_error" target="_blank" rel="noopener noreferrer">margin of error</a>, as these are more sophisticated statistical concepts.</p>
+          <h3>Using the percent error calculator</h3>
           <p>Simply enter the observed value from any particular measurement or observation into our calculator, and
             then supply the correct value, if known. If it is unknown, put the best approximation you have. The relative
             error calculator will then calculate the mistake as a percentage, either positive or negative, based on the
             direction of the observed deviation from the real number.</p>
-          <h3 class="">Percentage Error Calculator:</h3>
+          <h3>Percentage Error Calculator:</h3>
           <p>This explains how to manually compute % inaccuracy. You'll be glad to hear that you have access to a
             calculator that strives to make calculations really easy and quick. You no longer need to bother about
             solving the equation to obtain the results. You can do so in the blink of an eye. You must have data that
@@ -125,7 +148,7 @@
             data in the appropriate slots and then click the calculate button, calculating the % inaccuracy is really
             fast. The % error would be calculated automatically using a percent error calculator, and the result would
             be shown on the screen.</p>
-          <h3 class="">What are percent of Error, standard error and margin of error?</h3>
+          <h3>What are percent of Error, standard error and margin of error?</h3>
           <p>In layman's terms, a percentage mistake is also known as a relative error. It is the difference between a
             true and observed value. The true value is the one evaluated without any observation. The observed value, on
             the other hand, is one that is determined following an practical observation.</p>
@@ -133,15 +156,15 @@
             and determine that a time period of 25 minutes is required, it is the observed value. The relative error
             will be determined by dividing the difference between the true and observed values by the true value. The
             result will then be multiplied by 100.</p>
-          <h3 class="">Standard of Error</h3>
-          <p>The standard of error is calculated for the entire sample rather than for a single number. The standard of
+          <h3>Standard of Error</h3>
+          <p>The <a href="https://en.wikipedia.org/wiki/Standard_error#:~:text=The%20standard%20error%20(SE)%20of,of%20the%20mean%20(SEM)." target="_blank" rel="noopener noreferrer">standard of error</a> is calculated for the entire sample rather than for a single number. The standard of
             error value reflects how correctly a fixed sample represents the entire population.</p>
-          <h3 class="">Margin of Error</h3>
+          <h3>Margin of Error</h3>
           <p>In layman's terms, the margin of error is expressed as
             Margin of Error = Standard Error multiplied by Z Score MarginofError=StandardofError×ZScore
             The determination of confidence intervals is linked to the margin of error.
           </p>
-          <h3 class="">Percent error formula</h3>
+          <h3>Percent error formula</h3>
           <p>The % error formula can be written in a variety of ways. The most obvious example, assuming V stands for
             Value:</p>
           <p><strong>Percentage error = (Vobserverd - Vtrue) / Vtrue x 100</strong></p>
@@ -166,7 +189,7 @@
           <h2 class="text-secondary">How to calculate percent error?</h2>
           <p>Here are some examples utilising various beginning points and measurement systems. Our calculator may be
             used to check all of them.</p>
-          <h3 class="">Example 1: Percentage error from observed and true value</h3>
+          <h3>Example 1: Percentage error from observed and true value</h3>
           <p>Consider an example from ordinary life. Assume you're buying wooden laths to build a treehouse. You order
             laths that are 10 feet (304.8 cm) long, but when they arrive, they are 10 feet 1 inch (307.34 cm) long. What
             is the percentage error?</p>
@@ -174,7 +197,7 @@
           <p><strong>(10 feet 1 inch - 10 feet) / 10 feet x 100 = (121 inches - 120 inches) / 120 inches x 100 = 1 / 120
             </strong></p>
           <p><strong>inches x 100 = 0.0083 inches x 100 = 0.83% mistake</strong></p>
-          <h3 class="">Example 2: Converting absolute inaccuracy to percent error</h3>
+          <h3>Example 2: Converting absolute inaccuracy to percent error</h3>
           <p>Return to our scales example from paragraph one. If we know our home scale's allowable absolute mistake is
             0.5kg (1.1 pound), how do we compute the percent inaccuracy if we estimate our accurate weight to be 100kg
             (220 lbs)?</p>
@@ -182,7 +205,7 @@
             divide 1.1 by 220 to obtain the relative error, then multiply by 100 to get the percent.</p>
           <p><strong>In kg: (0.5 / 100) × 100 = 0.005 * 100 = 0.5% mistake</strong></p>
           <p><strong>In lbs: (1.1 / 220) × 100 = 0.005 * 100 = 0.5% mistake</strong></p>
-          <h3 class="">Example 3: Absolute to percentage error</h3>
+          <h3>Example 3: Absolute to percentage error</h3>
           <p>Let's return to the treehouse scenario, but with a twist. Now, when you purchase, the manufacturer informs
             you that a variance of up to 0.5 inches (12.7 mm) from your specification is to be expected owing to the
             manufacturing process. What is the percentage error?</p>
@@ -191,7 +214,7 @@
           <p><strong>0.5 inch / 10 feet x 100 = 0.5 inch / 120 inches x 100 = 0.00416 x 100 = 0.416% percentage
               mistake</strong></p>
           <p>Do you want to create your own examples? Check your results with our % error calculator.</p>
-          <h3 class="">Fundamental Assumption for % Error:</h3>
+          <h3>Fundamental Assumption for % Error:</h3>
           <p>The fundamental assumption for calculating Percent error is that the subject is given correct values. In
             order to advance, he must be informed of the accepted or actual worth. However, there are some instances
             where the real value is unknown. </p>
