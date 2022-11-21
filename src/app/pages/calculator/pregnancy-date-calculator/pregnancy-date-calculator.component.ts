@@ -35,6 +35,7 @@ export class PregnancyDateCalculatorComponent implements OnInit {
   submitted = false;
   submittedDue = false;
   submittedLast = false;
+  showTable = false;
   submittedConception = false;
   checkdSymbole: string = "due";
   daysSub: number = 0;
@@ -44,6 +45,9 @@ export class PregnancyDateCalculatorComponent implements OnInit {
   lastDayDayWeek2!: Date;
   arrOfWeekF: any = [];
   arrOfWeekL: any = [];
+  dateNow = new Date();
+  indexOfDateNow!: number;
+
   length = 42; // user defined length
   constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculePregnancy = new UntypedFormGroup({
@@ -100,66 +104,62 @@ export class PregnancyDateCalculatorComponent implements OnInit {
     this.submitted = true;
     if (this.calculePregnancy.valid) {
       this.error = "";
-      let dateNow = new Date();
       this.rsltPregnancy = new Date(this.calculePregnancy.value.pregnancy.toISOString());
       let due = 28 - this.calculePregnancy.value.dueDate;
       this.rsltPregnancy.setFullYear(this.rsltPregnancy.getFullYear());
       this.rsltPregnancy.setMonth(this.rsltPregnancy.getMonth());
       this.rsltPregnancy.setDate(this.rsltPregnancy.getDate());
-      // if (this.checkdSymbole === 'due') {
-      //   this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + (40 * 7) - due);
-      //   this.pregnancyDays = 280 - this.daysDiff(dateNow, this.rsltPregnancy) - due;
-      //   this.daysSub = 280 - this.daysDiff(dateNow, this.rsltPregnancy) - due;
-      //   this.arrOfWeekL = [];
-      //   this.arrOfWeekF = [];
-      // }
+
       if (this.checkdSymbole === 'due') {
         this.arrOfWeekL = [];
         this.arrOfWeekF = [];
-        this.submittedLast = true
-        this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() - (38 * 7) - due);
+        this.showTable = true;
+        this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() - (38 * 7));
         // this.pregnancyDays = 280 - this.daysDiff(dateNow, this.rsltPregnancy) - due;
         // let dueDate = new Date(this.calculePregnancy.value.pregnancy.toISOString());
-        this.daysSub = this.daysDiff(this.rsltPregnancy, dateNow) + 14;
+        this.daysSub = this.daysDiff(this.rsltPregnancy, this.dateNow) + 14;
         this.month = Math.floor(this.daysSub / 31);
         this.dayF = this.daysSub - (this.month * 31);
         this.week = Math.floor(this.daysSub / 7);
         this.dayW = this.daysSub - (this.week * 7);
 
-
-        this.firstDayWeek1 = new Date(this.calculePregnancy.value.pregnancy.toISOString());
-        this.firstDayWeek1.setDate(this.firstDayWeek1.getDate() + 1)
-        this.lastDayDayWeek1 = new Date(this.calculePregnancy.value.pregnancy.toISOString());
-        this.lastDayDayWeek1.setDate(this.lastDayDayWeek1.getDate() + (42 * 7));
-        for (let q = this.firstDayWeek1; q <= this.lastDayDayWeek1; q.setDate(q.getDate() + 7)) {
+        let x = new Date(this.rsltPregnancy);
+        x.setDate(x.getDate() - 13);
+        let last = new Date(this.rsltPregnancy);
+        last.setDate(last.getDate() + (40 * 7));
+        for (let q = x; q <= last; q.setDate(q.getDate() + 7)) {
           this.arrOfWeekF.push(new Date(q));
-          this.arrOfWeekF.sort(
-            (objA: any, objB: any) => objB.getTime() - objA.getTime(),
-          );
         }
-
-        let f = new Date(this.calculePregnancy.value.pregnancy.toISOString());
-        f.setDate(f.getDate() + 7)
-        for (let l = f; l <= this.lastDayDayWeek1; l.setDate(l.getDate() + 7)) {
+        let f = new Date(this.rsltPregnancy);
+        f.setDate(f.getDate() - 7)
+        for (let l = f; l <= last; l.setDate(l.getDate() + 7)) {
           this.arrOfWeekL.push(new Date(l));
-          this.arrOfWeekL.sort(
-            (objA: any, objB: any) => objB.getTime() - objA.getTime(),
-          );
-
         }
+        let dd = new Date();
+        // dd.setDate(dd.getDate() - 7)
+        this.indexOfDateNow = this.arrOfWeekL.findIndex((date: any) =>
+          date === dd,
+        );
+
 
       }
       if (this.checkdSymbole === 'last') {
+        this.showTable = true;
         this.arrOfWeekL = [];
         this.arrOfWeekF = [];
         let pregnancyRLast = new Date(this.calculePregnancy.value.pregnancy.toISOString());
         pregnancyRLast.setDate(pregnancyRLast.getDate() - due);
-        this.daysSub = this.daysDiff(pregnancyRLast, dateNow) - due;
+        this.daysSub = this.daysDiff(pregnancyRLast, this.dateNow) - due;
         // this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() - due);
         let progress = this.daysSub * 100 / 280;
         this.progressPercent = Math.floor(progress)
         this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + (40 * 7) - due);
-        this.pregnancyDays = 280 - this.daysDiff(dateNow, this.rsltPregnancy) - due;
+        this.pregnancyDays = 280 - this.daysDiff(this.dateNow, this.rsltPregnancy) - due;
+        // this.daysSub = this.daysDiff(this.rsltPregnancy, this.dateNow) + 14;
+        // this.month = Math.floor(this.daysSub / 31);
+        // this.dayF = this.daysSub - (this.month * 31);
+        // this.week = Math.floor(this.daysSub / 7);
+        // this.dayW = this.daysSub - (this.week * 7);
 
         this.firstDayWeek1 = new Date(this.calculePregnancy.value.pregnancy.toISOString());
         this.firstDayWeek1.setDate(this.firstDayWeek1.getDate() + 1)
@@ -167,15 +167,64 @@ export class PregnancyDateCalculatorComponent implements OnInit {
         this.lastDayDayWeek1.setDate(this.lastDayDayWeek1.getDate() + (42 * 7));
         // this.lastDayDayWeek1 = new Date(this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + 7));
         for (let q = this.firstDayWeek1; q <= this.lastDayDayWeek1; q.setDate(q.getDate() + 7)) {
-          this.arrOfWeekF.push(q.toString());
+          this.arrOfWeekF.push(new Date(q));
         }
 
         let f = new Date(this.calculePregnancy.value.pregnancy.toISOString());
         f.setDate(f.getDate() + 7)
         for (let l = f; l <= this.lastDayDayWeek1; l.setDate(l.getDate() + 7)) {
-          this.arrOfWeekL.push(l.toString());
+          this.arrOfWeekL.push(new Date(l));
         }
+        this.indexOfDateNow = this.arrOfWeekL.findIndex(
+          (date: Date) =>
+            date.toDateString() === new Date().toDateString(),
+        );
+
       }
+
+      if (this.checkdSymbole === 'conception') {
+        this.showTable = true;
+        this.arrOfWeekL = [];
+        this.arrOfWeekF = [];
+        let pregnancyRLast = new Date(this.calculePregnancy.value.pregnancy.toISOString());
+        pregnancyRLast.setDate(pregnancyRLast.getDate() - due);
+        this.daysSub = this.daysDiff(pregnancyRLast, this.dateNow) - due;
+        // this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() - due);
+        let progress = this.daysSub * 100 / 280;
+        this.progressPercent = Math.floor(progress)
+        this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + (120) - due);
+        this.pregnancyDays = 280 - this.daysDiff(this.dateNow, this.rsltPregnancy) - due;
+        this.daysSub = this.pregnancyDays
+        this.month = Math.floor(this.daysSub / 31);
+        this.dayF = this.daysSub - (this.month * 31);
+        this.week = Math.floor(this.daysSub / 7);
+        this.dayW = this.daysSub - (this.week * 7);
+
+
+        this.firstDayWeek1 = new Date(this.rsltPregnancy);
+        this.firstDayWeek1.setDate(this.firstDayWeek1.getDate() - 279)
+        this.lastDayDayWeek1 = new Date(this.calculePregnancy.value.pregnancy.toISOString());
+        this.lastDayDayWeek1.setDate(this.lastDayDayWeek1.getDate() + (134));
+        // this.lastDayDayWeek1 = new Date(this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + 7));
+        for (let q = this.firstDayWeek1; q <= this.lastDayDayWeek1; q.setDate(q.getDate() + 7)) {
+          this.arrOfWeekF.push(new Date(q));
+        }
+
+        let f = new Date(this.rsltPregnancy);
+        let last = new Date(this.lastDayDayWeek1);
+        f.setDate(f.getDate() - 273)
+        last.setDate(last.getDate() + 1)
+        for (let l = f; l <= last; l.setDate(l.getDate() + 7)) {
+          this.arrOfWeekL.push(new Date(l));
+        }
+        this.indexOfDateNow = this.arrOfWeekL.findIndex(
+          (date: Date) =>
+            date.toDateString() === new Date().toDateString(),
+        );
+
+      }
+
+
 
       // this.month = Math.floor(this.daysSub / 30);
       // this.dayF = this.daysSub - (this.month * 30);
@@ -238,18 +287,12 @@ export class PregnancyDateCalculatorComponent implements OnInit {
   }
   changeSymbole(symbole: any) {
     this.checkdSymbole = symbole;
-    if (this.checkdSymbole === 'due') { this.submittedLast = true };
+    if (this.checkdSymbole === 'due') { this.submittedLast = false; };
     if (this.checkdSymbole === 'last') { this.submittedLast = true; };
     if (this.checkdSymbole === 'conception') { this.submittedLast = false };
 
   }
 
 }
-function getStartOfWeek(date: any, Date: DateConstructor) {
-  throw new Error('Function not implemented.');
-}
 
-function getEndOfWeek(date: any, Date: DateConstructor) {
-  throw new Error('Function not implemented.');
-}
 
