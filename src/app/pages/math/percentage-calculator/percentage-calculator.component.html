@@ -2,7 +2,7 @@
   <nb-layout-column>
     <div class="container">
       <app-breadcrumbs
-        [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Percentage Calculator', itemUrl: 'math/percentage-calculator/'}">
+        [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Percentage Calculator', itemUrl: 'math/percentage-calculator/.'}">
       </app-breadcrumbs>
       <div class="col-12">
         <h1 class="text-secondary text-center pb-3">Percentage Calculator</h1>
@@ -34,7 +34,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" #target>
               <div *ngIf="rsltY">
                 <p class="font-weight-bold">steps :</p>
                 <!-- <p>y = p x x / 100</p> -->
@@ -45,7 +45,7 @@
                 <p class="text-white text-center msg font-weight-bold">Result : {{y}}</p>
                 <app-banner *ngIf="envirement"></app-banner>
               </div>
-              <form [formGroup]="calculePercentageY" (ngSubmit)="CalculatePercentageY()">
+              <form [formGroup]="calculePercentageY" (ngSubmit)="CalculatePercentageY(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{error}}
@@ -93,7 +93,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" #target2>
               <div *ngIf="rsltX">
                 <p class="font-weight-bold">steps :</p>
                 <!-- <p>y = p x x / 100</p> -->
@@ -104,7 +104,7 @@
                 <p class="text-white text-center msg font-weight-bold">Result : {{pOne}}</p>
                 <app-banner *ngIf="envirement"></app-banner>
               </div>
-              <form [formGroup]="calculePercentageX" (ngSubmit)="CalculatePercentageX()">
+              <form [formGroup]="calculePercentageX" (ngSubmit)="CalculatePercentageX(target2)">
                 <div *ngIf="errorFormTwo" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{errorFormTwo}}
@@ -155,7 +155,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" #target3>
               <div *ngIf="rsltP">
                 <p class="font-weight-bold">steps :</p>
 
@@ -166,7 +166,7 @@
                 <p class="text-white text-center msg font-weight-bold">Result : {{yTwo}}</p>
                 <app-banner *ngIf="envirement"></app-banner>
               </div>
-              <form [formGroup]="calculePercentageP" (ngSubmit)="CalculatePercentageP()">
+              <form [formGroup]="calculePercentageP" (ngSubmit)="CalculatePercentageP(target3)">
                 <div *ngIf="errorFormThree" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{errorFormThree}}
@@ -221,7 +221,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" #target4>
               <div *ngIf="rsltIncDec">
                 <p class="font-weight-bold">steps :</p>
                 <div class="border">
@@ -240,7 +240,7 @@
                 <p class="text-white text-center msg font-weight-bold">Result : {{yTree}}</p>
                 <app-banner *ngIf="envirement"></app-banner>
               </div>
-              <form [formGroup]="calculePercentageIncDec" (ngSubmit)="CalculatePercentageIncDec()">
+              <form [formGroup]="calculePercentageIncDec" (ngSubmit)="CalculatePercentageIncDec(target4)">
                 <div *ngIf="errorFormFor" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{errorFormFor}}

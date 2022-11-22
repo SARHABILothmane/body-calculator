@@ -3,7 +3,7 @@
     <div class="container">
       <div class="col-12">
         <app-breadcrumbs
-          [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Percent Error Calculator', itemUrl: 'math/percent-error-calculator/'}">
+          [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Percent Error Calculator', itemUrl: 'math/percent-error-calculator/.'}">
         </app-breadcrumbs>
         <h1 class="text-secondary text-center pb-3">Percent Error Calculator</h1>
         <div class="flexMobile">
@@ -15,7 +15,7 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header text-white text-center font-weight-bold">Percent Error Calculator</div>
-            <div class="card-body">
+            <div class="card-body" #target>
               <div *ngIf="rsltError != null">
                 <p class="font-weight-bold">steps :</p>
                 <div class="border">
@@ -68,7 +68,7 @@
                 <p class="text-white text-center msg font-weight-bold">Result : {{convertToPositiveNumber(rsltError)}}% error</p>
                 <app-banner *ngIf="envirement"></app-banner>
               </div>
-              <form [formGroup]="calculePercentageError" (ngSubmit)="CalculatePercentageError()">
+              <form [formGroup]="calculePercentageError" (ngSubmit)="CalculatePercentageError(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{error}}

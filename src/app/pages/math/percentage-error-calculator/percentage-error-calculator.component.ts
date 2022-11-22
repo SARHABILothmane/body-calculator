@@ -39,7 +39,7 @@ export class PercentageErrorCalculatorComponent implements OnInit {
     this.schema = {
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Age calculator",
+      "name": "percent error calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
       "url": "https://body-calculator.com/math/percent-error-calculator/",
       "author": {
@@ -51,6 +51,7 @@ export class PercentageErrorCalculatorComponent implements OnInit {
         "@type": "Organization",
         "name": "body-calculator"
       },
+      "applicationCategory": "EducationalApplication",
       "operatingSystem": "Linux",
       "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
       "softwareVersion": "1",
@@ -68,7 +69,7 @@ export class PercentageErrorCalculatorComponent implements OnInit {
   }
   get formPercentageError() { return this.calculePercentageError.controls; }
 
-  CalculatePercentageError() {
+  CalculatePercentageError(e: HTMLElement) {
     this.submitted = true;
     if (this.calculePercentageError.valid) {
       this.error = "";
@@ -76,6 +77,7 @@ export class PercentageErrorCalculatorComponent implements OnInit {
       this.valueY = this.calculePercentageError.value.true
       let rslt = (this.valueX - this.valueY) / this.valueY
       this.rsltError = rslt * 100;
+      e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.error = "Please check the fields";
     }

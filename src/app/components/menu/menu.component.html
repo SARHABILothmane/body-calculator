@@ -11,50 +11,6 @@
           <a routerLinkActive="active" class="linkBar" [routerLinkActiveOptions]="{ exact: true }"
             routerLink="/">Home</a>
         </li>
-        <!-- <li class="dropdown list-item">
-          <span>Calculators</span>
-          <div class="dropdown-content" id="dropDown">
-            <div class="d-flex flex-column">
-              <a onclick="hideDropDownMenu()" class="pb-2 colorBlack" routerLink="/health/bmi-calculator/."
-                routerLinkActive="linkActiveDropDown">
-                Body Mass Index BMI Calculator
-              </a>
-              <a onclick="hideDropDownMenu()" class="py-2 colorBlack"
-                routerLink="/health/body-fat-percentage-calculator/." routerLinkActive="linkActiveDropDown">
-                Body Fat Percentage BFP Calculator
-              </a>
-              <a onclick="hideDropDownMenu()" class="py-2 colorBlack" routerLink="/health/ideal-weight-calculator/."
-                routerLinkActive="linkActiveDropDown">
-                Ideal Weight Calculator
-              </a>
-              <a onclick="hideDropDownMenu()" class="py-2 colorBlack" routerLink="/health/body-shape-calculator/."
-                routerLinkActive="linkActiveDropDown">
-                Body Shape Calculator
-              </a>
-              <a onclick="hideDropDownMenu()" class="py-2 colorBlack" routerLink="/health/bmr-calculator/."
-                routerLinkActive="linkActiveDropDown">
-                Basal Metabolic Rate BMR Calculator
-              </a>
-              <a onclick="hideDropDownMenu()" class="py-2 colorBlack" routerLink="/health/healthy-weight-calculator/."
-                routerLinkActive="linkActiveDropDown">
-                Healthy Weight Calculator
-              </a>
-              <a onclick="hideDropDownMenu()" class="py-2 colorBlack" routerLink="/calculators/age-calculator/."
-                routerLinkActive="linkActiveDropDown">
-                Age Calculator
-              </a>
-              <a onclick="hideDropDownMenu()" class="py-2 colorBlack" routerLink="/calculators/date-calculator/."
-                routerLinkActive="linkActiveDropDown">
-                Date Calculator
-              </a>
-
-              <a onclick="hideDropDownMenu()" class="py-2 colorBlack" routerLink="/math/random-number-generator/."
-                routerLinkActive="linkActiveDropDown">
-                 Random Number Generator RNG
-              </a>
-            </div>
-          </div>
-        </li> -->
 
         <li class="dropdown list-item" *ngFor="let details of urlDescription.arrayDetails;">
           <span class="linkBar">{{details.categorieName}}</span>
@@ -88,98 +44,80 @@
 
       </ul>
     </div>
-    <div class="d-flex justify-content-between align-items-center mobile-header">
-      <a class="d-block logo" routerLink="/"><img width="40px" height="100px"
-          src="../../../assets/images/logo/calculator.svg" alt="body-calcultor"></a>
+    <!-- -----------------------------------------------------------------------------------------
+  ------------------------------ start parte navbar in mobile ------------------------------->
+      <nav class="d-md-none d-block">
+        <ul class="nav-mobile">
+          <!-- <li style="width: 45px;"></li>         -->
+          <li >
+            <a class=" logo" routerLink="/"><img width="40px" height="60px"
+              src="../../../assets/images/logo/calculator.svg" alt="body-calcultor">
+            </a>
+          </li>
+          <li class="menu-container " style="width: 30px;"> 
+            <input id="menu-toggle" type="checkbox">
+            <label for="menu-toggle" class="menu-button" >  
+              <svg class="icon-open" viewBox="0 0 24 24">
+                  <path style="fill:var(--grayDark);" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+              </svg>
+              <svg class="icon-close" viewBox="0 0 100 100">
+                <path style="fill:var(--grayDark);" d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z"/>
+              </svg> 
+            </label>      
+            <ul class="menu-sidebar">
 
+              <li class="nav-item">
+                <a routerLink="/" style="width:90%; left: 20px;">
+                  <span routerLinkActive="linkActiveDropDown" [routerLinkActiveOptions]="{ exact: true }">
+                    Home
+                  </span>
+                </a>
+              </li>
 
-      <img (click)="toggle()" style="width: 35px;height: 27px;"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAA2CAMAAABN0h93AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFFRkYyRDY2QTg2NzExRUNCNDhFQTcyQjE3RjlDRjVBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFFRkYyRDY3QTg2NzExRUNCNDhFQTcyQjE3RjlDRjVBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUVGRjJENjRBODY3MTFFQ0I0OEVBNzJCMTdGOUNGNUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUVGRjJENjVBODY3MTFFQ0I0OEVBNzJCMTdGOUNGNUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5cVVSYAAAAElBMVEUAAAAFBQVQUFBOTk6AgIAAAADLjW8oAAAABnRSTlP//////wCzv6S/AAAAZ0lEQVR42uzWMQ7AIAwEQRPw/7+cAkFDx20kiM4PmALLKyKRCZIpwkwmtDmLqZ1pZi5h8gxm3pSsjAvXEDgU/2SQJ2YW7vqZub9+VESTiqjr9zWjLgqIqL+QZvyFXOv37A8aileAAQAFvhc8UR1OAgAAAABJRU5ErkJggg=="
-        alt="menu">
-    </div>
+              <li *ngFor="let details of urlDescription.arrayDetails;">
+                <input type="checkbox" id="{{details.categorieName}}" class="submenu-toggle">        
+                <label class="submenu-label pl-0" for="{{details.categorieName}}">
+                  <span  class="active" style="font-size: 15px;">
+                    {{details.categorieName}}
+                  </span>
+                </label>
+                <div class="arrow right">&#8250;</div>           
+                <ul class="menu-sub" style="z-index: 1556;">
+                  <li class="menu-sub-title">
+                    <label class="submenu-label" for="{{details.categorieName}}">Back</label>
+                    <div class="arrow left">&#8249;</div>              
+                  </li>  
+                  
+                  <li (click)="closeNavBarMobile()" *ngFor="let detailAndUrl of details.urlAndDescriptions">
+                    <a routerLink="{{detailAndUrl.url}}"
+                      routerLinkActive="linkActiveDropDown">
+                      {{detailAndUrl.textInHref}}
+                    </a>
+                  </li>
+                </ul>
+              </li>
 
-    <div #sidebar id="mySidebar" class="sidebar shadow " style="z-index: 2;">
+              <li class="nav-item">
+                <a href="https://g.page/r/CWcEpRY1bs9YEAI/review" target="_blank" style="width:90%; left: 20px;">
+                  <span>
+                    Rate us
+                  </span>
+                </a>
+              </li>
 
-      <div class="d-flex justify-content-end">
-        <button (click)="toggle()" type="button" class="close m-3" aria-label="Close">
-          <span aria-hidden="true" class="text-dark">&times;</span>
-        </button>
-      </div>
-      <!-- <a class="d-block logo text-center" (click)="toggle()" routerLink="/">
-        <img loading="lazy" width="60px" height="60px" src="../../../assets/images/logo/calculator.svg"
-          alt="body calculator">
-      </a> -->
+              <li class="nav-item">
+                <a routerLink="/contact/." style="width:90%; left: 20px;">
+                  <span routerLinkActive="linkActiveDropDown">
+                    Contact us
+                  </span>
+                </a>
+              </li>
 
-      <a (click)="toggle()" routerLink="/" class=" d-flex justify-content-between align-items-center">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown"
-          [routerLinkActiveOptions]="{exact:true}">Home</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="pb-2 d-flex justify-content-between align-items-center"
-        routerLink="/health/bmi-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Body Mass Index BMI Calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/health/body-fat-percentage-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Body Fat Percentage BFP
-          calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/health/ideal-weight-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Ideal Weight Calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/health/body-shape-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Body Shape Calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/health/bmr-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Basal Metabolic Rate BMR
-          calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/health/healthy-weight-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Healthy Weight Calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/calculators/age-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Age calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/calculators/date-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Date calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/math/random-number-generator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Random Number Generator RNG</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/math/percentage-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Percentage Calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" class="py-2 d-flex justify-content-between align-items-center"
-        routerLink="/math/percent-error-calculator/.">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Percent Error Calculator</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" href="https://g.page/r/CWcEpRY1bs9YEAI/review" target="_blank" class="pb-2 d-flex justify-content-between align-items-center">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Rate us</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-      <a (click)="toggle()" routerLink="/contact/." class="pb-2 d-flex justify-content-between align-items-center">
-        <span class="pr-2 font-weight-bold" routerLinkActive="linkActiveDropDown">Contact us</span>
-        <span class="font-weight-bold text-dark">&raquo;</span>
-      </a>
-    </div>
+            </ul> 
+          </li>
+        </ul>
+      </nav>
+<!-- -----------------------------------------------------------------------------------------
+------------------------------ end parte navbar in mobile ------------------------------->
   </menu>
 </div>

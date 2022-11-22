@@ -3,7 +3,7 @@
     <div class="container">
       <div class="col-12">
         <app-breadcrumbs
-          [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Binary Calculator', itemUrl: 'math/binary-calculator/'}">
+          [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Binary Calculator', itemUrl: 'math/binary-calculator/.'}">
         </app-breadcrumbs>
         <h1 class="text-secondary text-center pb-3">Binary Calculator</h1>
         <div class="flexMobile">
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="row mb-3">
-        <div class="col-md-5 mx-auto  border-shadow bg-white">
+        <!-- <div class="col-md-5 mx-auto  border-shadow bg-white">
           <p class="text-secondary text-center font-weight-bold mt-2">Methode of calculation</p>
           <div class="d-flex">
             <img src="../../../../assets/images/calculator-binray.svg" width="18%" height="50%" alt="Binary Calculator">
@@ -28,12 +28,13 @@
               decimal number system division procedure. The divider always divides the payout evenly, and the only
               significant change is that binary subtraction is used instead of decimal subtraction.</p>
           </div>
-        </div>
-        <div class="col-md-7">
+        </div> -->
+        <div class="col-md-7 offset-md-3">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Binary Calculation—Add, Subtract, Multiply,
-              or Divide</div>
-            <div class="card-body">
+            <div class="card-header"><h2 class="text-white text-center">Binary Addition Calculator, Subtract, Multiply,
+              or Divide</h2>
+            </div>
+            <div class="card-body my-4" #target>
               <div *ngIf="rsltCalBinary != null">
                 <p *ngIf="addOrSubtractSymbole === '+'"><strong class="ml-5">Value binary : </strong> {{binaryOneCal}} +
                   {{binaryTwoCal}} = {{rsltCalDecimal}}</p>
@@ -56,17 +57,18 @@
                   &divide;
                   {{binaryTwo}} = {{rsltCalBinary}}</p>
                 <!-- </div> -->
-                <h5 class="text-white text-center msg">Result : {{rsltCalBinary | number}}</h5>
+                <p class="text-white text-center msg font-weight-bold">Result : {{rsltCalBinary | number}}</p>
+                <app-banner *ngIf="envirement"></app-banner>
               </div>
-              <form [formGroup]="calculeBinary" (ngSubmit)="CalculateBinary()">
+              <form [formGroup]="calculeBinary" (ngSubmit)="CalculateBinary(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{error}}
                   </span>
                 </div>
                 <div class="row">
-                  <div class="col-4">
-                    <label for="binary"></label>
+                  <div class="col-md-5  px-1">
+                    <label for="binary" hidden="hidden">Binary calculator</label>
                     <input id="binary" class="form-control" type="number" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="01100111 01101111" formControlName="binaryOne">
                     <small class="text-danger" *ngIf="submitted && formCalculeBinary.binaryOne.errors?.required">this
@@ -77,9 +79,9 @@
                       *ngIf="submitted && formCalculeBinary['binaryOne'].errors?.['pattern']">Please
                       provide an binary 0 and 1.!</small>
                   </div>
-                  <div class="col-4">
-                    <label for="addOrSub"></label>
-                    <nb-select id="addOrSub" class="nb-select-min-width" selected="+" status="basic" shape="semi-round"
+                  <div class="col-md-2 col-3 mx-auto margin px-1">
+                    <label hidden="hidden">binary division calculator</label>
+                    <nb-select id="addOrSub" class="selctionOptions" selected="+" status="basic" shape="semi-round"
                       fullWidth (selectedChange)="changeSymbole($event)" required>
                       <nb-option value="+">+</nb-option>
                       <nb-option value="-">-</nb-option>
@@ -87,8 +89,8 @@
                       <nb-option value="/">&divide;</nb-option>
                     </nb-select>
                   </div>
-                  <div class="col-4">
-                    <label for="binaryTwo"></label>
+                  <div class="col-md-5  px-1">
+                    <label for="binaryTwo" hidden="hidden">binary number calculator</label>
                     <input id="binaryTwo" class="form-control" type="number" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="01100111 01101111" formControlName="binaryTwo">
                     <small class="text-danger" *ngIf="submitted && formCalculeBinary.binaryTwo.errors?.required">this
@@ -106,20 +108,24 @@
           </div>
         </div>
       </div>
+      <div class="col-12">
+        <app-banner *ngIf="envirement"></app-banner>
+      </div>
       <!--Convert Binary Value to Decimal Value -->
-      <div class="row mb-3">
+      <div class="row mb-3" >
         <div class="col-md-7 mt-3">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Convert Binary Value to Decimal Value</div>
-            <div class="card-body">
+            <div class="card-header"><h2 class=" text-white text-center">Binary to Decimal Calculator</h2></div>
+            <div class="card-body" #target2>
               <div *ngIf="rsltBinary != null">
                 <!-- <p class="font-weight-bold">steps :</p>
                   <div class="border">
                     <p><strong class="ml-5">y =</strong> {{rsltBinary}}</p>
                   </div> -->
-                <h5 class="text-white text-center msg">Result : {{rsltBinary}}</h5>
+                <p class="text-white text-center msg font-weight-bold">Result : {{rsltBinary}}</p>
+                <app-banner *ngIf="envirement"></app-banner>
               </div>
-              <form [formGroup]="conveBinaryToDeci" (ngSubmit)="CalculateBinaryToDeci()">
+              <form [formGroup]="conveBinaryToDeci" (ngSubmit)="CalculateBinaryToDeci(target2)">
                 <div *ngIf="errorFormTwo" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{errorFormTwo}}
@@ -148,43 +154,31 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 mx-auto  border-shadow bg-white">
+        <div class="col-md-5 mx-auto  border-shadow bg-white mt-3">
           <p class="text-secondary text-center font-weight-bold mt-2">Methode of convertion</p>
           <div class="d-flex">
-            <img src="../../../../assets/images/browser-binary-.svg" width="18%" height="50%"
-              alt="Convert Binary Value to Decimal">
+            <img src="../../../../assets/images/browser-binary-.svg" width="70px" height="100px"
+              alt="Binary to Decimal Calculator">
             <p class="ml-2"> Example: Convert the binary number 101 :<br>
               Solution : 101 is 1 x 2<sup>2</sup> + 0 x 2<sup>1</sup> + 1 x 2<sup>0</sup> <br>
-              = 4+ 0 + 1 <br> decimal of 101 =<strong> 5</strong></p>
+              = 4+ 0 + 1 <br> Decimal of 101 =<strong> 5</strong></p>
           </div>
         </div>
       </div>
+      <div class="col-12">
+        <app-banner *ngIf="envirement"></app-banner>
+      </div>
       <!-- Convert Decimal Value to Binary Value -->
-      <div class="row mb-3">
-        <div class="col-md-5 mx-auto  border-shadow bg-white">
-          <p class="text-secondary text-center font-weight-bold mt-2">Methode of convertion</p>
-          <div class=" d-flex">
-            <img src="../../../../assets/images/binary-numbers-.svg" width="18%" height="50%"
-              alt="Convert Decimal Value to Binary">
-            <p class="ml-2">Example: Convert the decimal number 12 :<br>
-              12 &divide; 2 = 6 remainder <strong>0</strong> =>
-              6 &divide; 2 = 3 remainder <strong>0</strong><br>
-              3 &divide; 2 = 1 remainder <strong>1</strong> =>
-              1 &divide; 2 = 0 remainder <strong>1</strong><br>
-              binray of 12 = <strong>1100</strong>
-            </p>
-            <!-- <p class="ml-2">Example decimal : 120 is 2 x 10<sup>1</sup> + 0 x 10<sup>0</sup> <br>
-              = 20.</p> -->
-          </div>
-        </div>
+      <div class="row mb-3 d-flex flex-md-row-reverse">
         <div class="col-md-7 mt-3">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Convert Decimal Value to Binary Value</div>
-            <div class="card-body">
+            <div class="card-header"><h2 class="text-white text-center">Decimal to Binary Calculator</h2></div>
+            <div class="card-body" #target3>
               <div *ngIf="rsltDecimal != null">
-                <h5 class="text-white text-center msg">Result : {{rsltDecimal}}</h5>
+                <p class="text-white text-center msg font-weight-bold">Result : {{rsltDecimal}}</p>
+                <app-banner *ngIf="envirement"></app-banner>
               </div>
-              <form [formGroup]="conveDeciToBinary" (ngSubmit)="CalculateDeciToBinary()">
+              <form [formGroup]="conveDeciToBinary" (ngSubmit)="CalculateDeciToBinary(target3)">
                 <div *ngIf="errorFormThree" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{errorFormThree}}
@@ -208,8 +202,21 @@
             </div>
           </div>
         </div>
-        <div class="col-12">
-          <app-banner *ngIf="envirement"></app-banner>
+        <div class="col-md-5 mx-auto  border-shadow bg-white mt-3">
+          <p class="text-secondary text-center font-weight-bold mt-2">Methode of convertion</p>
+          <div class=" d-flex">
+            <img src="../../../../assets/images/binary-numbers-.svg" width="70px" height="100px"
+              alt="Decimal to Binary Calculator">
+            <p class="ml-2">Example: Convert the decimal number 12 :<br>
+              12 &divide; 2 = 6 remainder <strong>0</strong> =>
+              6 &divide; 2 = 3 remainder <strong>0</strong><br>
+              3 &divide; 2 = 1 remainder <strong>1</strong> =>
+              1 &divide; 2 = 0 remainder <strong>1</strong><br>
+              Binray of 12 = <strong>1100</strong>
+            </p>
+            <!-- <p class="ml-2">Example decimal : 120 is 2 x 10<sup>1</sup> + 0 x 10<sup>0</sup> <br>
+              = 20.</p> -->
+          </div>
         </div>
       </div>
       <app-other-calcultor-math eleminateCalculator="bc"></app-other-calcultor-math>
@@ -219,10 +226,10 @@
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
           <p>Our binary calculator is a useful tool for calculating binary numbers. It can effortlessly add, subtract,
-            multiply, and divide binary numbers. There are 11 operations that may be performed on the provided integers,
-            including OR, AND, NOT, XOR, and others. It returns results in binary, decimal, and hexadecimal formats.</p>
-          <h2 class="text-secondary">The binary system</h2>
-          <p>The binary system is a numerical system that works almost identically to the decimal number system that
+            multiply, and divide <a href="https://en.wikipedia.org/wiki/Binary_number" target="_blank" rel="noopener noreferrer">binary numbers</a>. There are 11 operations that may be performed on the provided integers,
+            including OR, AND, NOT, XOR, and others. It returns results in binary, decimal, and <a routerLink="/math/hex-calculator/.">hexadecimal</a> formats.</p>
+          <h3 class="text-secondary">The binary system</h3>
+          <p>The <a href="https://en.wikipedia.org/wiki/Category:Binary_arithmetic" target="_blank" rel="noopener noreferrer">binary</a> system is a numerical system that works almost identically to the decimal number system that
             most people are familiar with. While the decimal number system has 10 as its base, the binary number system
             has 2. Furthermore, while the decimal system employs digits 0 through 9, the binary system employs just
             digits 0 and 1, with each digit referred to as a bit. </p>
@@ -233,14 +240,14 @@
           <p>It is significantly easier to develop circuitry that detects only two states, on and off (or true/false,
             present/absent, and so on). Using a decimal system would need more complex electronics capable of detecting
             10 states for the numbers 0 through 9.</p>
-          <h3 class="">What is a binary number?</h3>
+          <h4 class="">What is a binary number ?</h4>
           <p>A binary number is a number stated in the binary system, which is a positional numeral system with a base
             of two that employs just two symbols to represent all conceivable numerical values: </p>
           <p>0 and 1. For example, 10 decimal equals 1010 binary, 100 decimal equals 1100100 binary, and 1,000 decimal
             equals 1111101000 binary. </p>
           <p>Binary numbers, like decimal numbers, contain signs; for example, -101 is equal to -5 in decimal. For the
             time being, the binary calculator / binary converter above does not support negative numbers.</p>
-          <h3 class="">Binary Number</h3>
+          <h3 class="">Binary Number calculator</h3>
           <p>While binary numerals were historically used in Egypt, China, India, and other cultures, they have
             primarily been used in computing since the twentieth century, primarily by computer system designers,
             software engineers, and programmers, among others, because the underlying computer systems encode everything
@@ -401,19 +408,19 @@
               </tbody>
             </table>
           </div>
-          <h3 class="">Applications of the binary system</h3>
+          <h4 class="">Applications of the binary system</h4>
           <p>Almost all current technologies and computers employ the binary system due to its simplicity in digital
             circuitry using logic gates. It is significantly easier to create hardware that just requires two states.
             These two states might be true or false, on or off, and so on.</p>
           <p>In a decimal system, on the other hand, it is evident that the hardware design would work on the ten states
             because the decimal number system is based on the digits 0 to 9.</p>
-          <h3 class="">Converting to and from binary numbers</h3>
+          <h4 class="">Converting to and from binary numbers</h4>
           <p>Converting numbers to and from binary has no effect on the number itself; it only alters its form. You can
             conduct both sorts of conversions fast and simply using our binary converter above, or you can learn how to
             do it manually below. </p>
-          <p>It is important to note that binary computation and conversion are distinct operations: you do not need to
+          <p>It is important to note that binary computation and binary conversion are distinct operations: you do not need to
             do one to conduct the other.</p>
-          <h3>Binary to decimal</h3>
+          <h4>Binary to Decimal Calculator</h4>
           <p>Each binary numeral place represents a power of two, just as each decimal number point represents a power
             of ten. For example, the decimal representation of the number 20 is 2 x 10<sup>1</sup> + 0 x 10<sup>0</sup>
             = 20. In decimal, the
@@ -421,7 +428,7 @@
           <p>To convert from binary to decimal, take each position and multiply its value by 2 to the power of the
             position number, counting from right to left and beginning at zero. If you need to compute big exponents
             like 216, our exponent calculator may come in handy.</p>
-          <h3>Decimal to binary</h3>
+          <h4>Decimal to binary Calculator</h4>
           <p>Going from a higher base to a lower base is a more complicated operation. This is when having a tool like
             our binary converter available comes in helpful. Assume the number to be converted from decimal to binary is
             X. </p>
@@ -429,7 +436,7 @@
             power of 16 indicated above goes into X. Y1 represents the remainder.</p>
           <p>Repeat the preceding steps with Yn as a beginning value until 2 is more than the remaining value, then
             assign the remainder to the 20 place, and you will have your hex value.</p>
-          <h3>Decimal to Binary step by step method</h3>
+          <h4>Decimal to Binary step by step method</h4>
           <p>To convert a decimal number to a binary number, carefully follow these procedures.</p>
           <ul>
             <li>Find the greatest power of 2 in the given number</li>
@@ -443,17 +450,17 @@
           <p>11110 = (1 × 2<sup>4</sup>) + (1 × 2<sup>3</sup>) + (1 × 2<sup>2</sup>) + (1 × 2<sup>1</sup>) + (0 ×
             2<sup>0</sup>)</p>
           <p>16 + 8 + 4 + 2 + 0 = 30.</p>
-          <h3>Binary number algebraic operations</h3>
+          <h4>Binary number algebraic operations</h4>
           <p>You may execute the four fundamental arithmetic operations on binary integers with our tool in binary
             calculator mode: addition, subtraction, multiplication, and division. </p>
           <p>To perform binary calculations on their own, most people would prefer to use a table for lower numbers and
             a calculator for bigger ones. </p>
           <p> Subtraction operates the same as any other number system, with the exception that when borrowing a number,
             you must borrow a group of 210 rather than 1010 as you would with decimals.</p>
-          <h3>Binary Addition</h3>
-          <p>Binary addition follows the same concepts as decimal addition, but instead of adding a 1 when the applied
+          <h4>Binary Addition Calculator</h4>
+          <p>Binary Addition Calculator follows the same concepts as decimal addition, but instead of adding a 1 when the applied
             numbers exceed 10, it adds when the addition results are similar to 2.</p>
-          <h3>Addition Rules in the Binary System</h3>
+          <h4>Addition Rules in the Binary System</h4>
           <em>0 + 0 = 0</em><br>
           <em>0 + 1 = 1</em><br>
           <em>1 + 0 = 1</em><br>
@@ -463,42 +470,37 @@
           <p>The only major distinction is that the binary number 2 equals 10 in the decimal system. If 1+ 1= 0 also
             takes 1 from the preceding column to the right, you have made a frequent binary addition error. Instead of
             0, the value at the bottom of the transferred number should be 1.</p>
-          <h3>Binary Subtraction</h3>
-          <p>Except for those resulting from the usage of just numbers 0 and 1, binary subtraction is nearly identical
+          <h4>Binary Subtraction Calculator</h4>
+          <p>Except for those resulting from the usage of just numbers 0 and 1, binary subtraction calculator is nearly identical
             to binary addition. Lending a number occurs whenever the amount removed is larger than the number by which
             it was deducted.</p>
           <p>Borrowing is only suitable in binary subtraction when 1 is subtracted from 0. If this occurs, the 0 in the
             borrowing column becomes a 2, and the 1 in the borrowing 1 column is lowered. If the next column is likewise
             0, borrowings from each column must be carried out in order to decrease a column with a value of 1 to 0. We
             will discuss the rules.</p>
-          <h3>Rules of Subtraction </h3>
+          <h4>Rules of Subtraction </h4>
           <em>0 - 0 = 0</em><br>
           <em>0 - 1 = 1</em><br>
           <em>1 - 0 = 1</em><br>
           <em>1 - 1 = 0</em><br>
-          <h3>Binary Multiplication</h3>
-          <p>Binary multiplication is also not as difficult as it appears. Because the only values utilised are 0 and 1,
+          <h3>Binary Multiplication calculator</h3>
+          <p>Binary multiplication calculator is also not as difficult as it appears. Because the only values utilised are 0 and 1,
             the numbers to be added are comparable to the first word or 0.</p>
           <p>As with decimal multiplication, placeholder0 must be entered in each consecutive section, and the value
             must be shifted to the left.
-            Binary multiplication may appear complex to you due to the repetitive binary addition, but it is not.
+            Binary multiplication  may appear complex to you due to the repetitive binary addition, but it is not.
           </p>
-          <h3>Rules of Multiplication</h3>
+          <h4>Rules of Multiplication</h4>
           <em>0 x 0 = 0</em><br>
           <em>0 x 1 = 0</em><br>
           <em>1 x 0 = 0</em><br>
           <em>1 x 1 = 1</em><br>
-          <h3>Binary Division</h3>
-          <p>The binary division procedure is analogous to the long decimal number system division procedure. The
+          <h4>Binary Division calculator</h4>
+          <p>The binary division calculator procedure is analogous to the long decimal number system division procedure. The
             divider always divides the payout evenly, and the only significant change is that binary subtraction is used
             instead of decimal subtraction. Understanding binary subtraction is necessary for understanding binary
             division.</p>
-          <!-- <h3>Rules of  Multiplication</h3>
-          <em>0 &divide; 0 = 0</em><br>
-          <em>0 &divide; 1 = 0</em><br>
-          <em>1 &divide; 0 = 0</em><br>
-          <em>1 &divide; 1 = 1</em><br> -->
-          <h2 class="text-secondary">How to Use our Binary Calculator?</h2>
+          <h3 class="text-secondary">How to Use our Binary Calculator?</h3>
           <p>Unlike some other online binary addition or binary multiplication calculators, a binary calculator with
             answer is incredibly simple to use. Many binary subtraction calculators accessible online have comparable
             functionality but are extremely difficult to use</p>

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="col-12">
         <app-breadcrumbs
-          [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Hex Calculator', itemUrl: 'math/hex-calculator/'}">
+          [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Hex Calculator', itemUrl: 'math/hex-calculator/.'}">
         </app-breadcrumbs>
         <h1 class="text-secondary text-center pb-3">Hex Calculator</h1>
         <div class="flexMobile">
@@ -12,13 +12,15 @@
       </div>
       <div class="row mb-3">
         <div class="col-md-5 mx-auto">
-          <img src="../../../../assets/images/hex-calculator.svg" width="100%" height="100%" alt="Hex Calculator">
+          <img src="../../../../assets/images/hex-calculator.svg" width="100%" height="100%" alt="Hex Calculator" class="d-md-block d-none">
         </div>
         <div class="col-md-7">
           <div class="card mb-3">
-            <div class="card-header text-white text-center font-weight-bold">Hexadecimal Calculation Add, Subtract,
-              Multiply,
-              or Divide</div>
+            <div class="card-header">
+              <h2 class="text-white text-center">
+                Hexadecimal Calculator Add, Subtract, Multiply or Divide
+              </h2>
+            </div>
             <div class="card-body">
               <div *ngIf="rsltCalHex != null">
                 <p *ngIf="addOrSubtractSymbole === '+'"><strong class="ml-5">Value Hex : </strong> {{hexOneCal}} +
@@ -50,18 +52,18 @@
                   </span>
                 </div>
                 <div class="row">
-                  <div class="col-4">
-                    <label for="hexOne"></label>
+                  <div class="col-md-5  px-1">
+                    <label for="hexOne" hidden="hidden">hexadecimal addition calculator</label>
                     <input id="hexOne" class="form-control" type="text" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="Hex" formControlName="hexOne">
+                      shape="semi-round" placeholder="Hex value" formControlName="hexOne">
                     <small class="text-danger" *ngIf="submitted && formCalculeHex.hexOne.errors?.required">this
                       field
                       required.
                       !</small>
                   </div>
-                  <div class="col-4">
-                    <label for="addOrSub"></label>
-                    <nb-select id="addOrSub" class="nb-select-min-width" selected="+" status="basic" shape="semi-round"
+                  <div class="col-md-2 col-3 mx-auto margin px-1">
+                    <label for="addOrSub" hidden="hidden">hex addition calculator</label>
+                    <nb-select id="addOrSub" class="selctionOptions" selected="+" status="basic" shape="semi-round"
                       fullWidth (selectedChange)="changeSymbole($event)" required>
                       <nb-option value="+">+</nb-option>
                       <nb-option value="-">-</nb-option>
@@ -69,10 +71,10 @@
                       <nb-option value="/">&divide;</nb-option>
                     </nb-select>
                   </div>
-                  <div class="col-4">
-                    <label for="hexTwo"></label>
+                  <div class="col-md-5  px-1">
+                    <label for="hexTwo" hidden="hidden">hex cal</label>
                     <input id="hexTwo" class="form-control" type="text" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="Hex" formControlName="hexTwo">
+                      shape="semi-round" placeholder="Hex value" formControlName="hexTwo">
                     <small class="text-danger" *ngIf="submitted && formCalculeHex.hexTwo.errors?.required">this
                       field
                       required.
@@ -84,9 +86,14 @@
             </div>
           </div>
           <!--Convert Hexdecimal Value to Decimal Value -->
+          <div class="col-12">
+            <app-banner *ngIf="envirement"></app-banner>
+          </div>
           <!-- <div class="col-md-7"> -->
           <div class="card mb-3">
-            <div class="card-header text-white text-center font-weight-bold">Convert Hex Value to Decimal Value</div>
+            <div class="card-header">
+              <h2 class="text-white text-center">Hex to Decimal Calculator</h2>
+            </div>
             <div class="card-body">
               <div *ngIf="rsltHex != null">
                 <h5 class="text-white text-center msg">Result : {{rsltHex}}</h5>
@@ -101,7 +108,7 @@
                   <div class="col-6">
                     <label for="hex">Hex value</label>
                     <input id="hex" class="form-control" type="text" nbInput fullWidth status="basic" shape="semi-round"
-                      placeholder="Hex" formControlName="hex">
+                      placeholder="Hex value" formControlName="hex">
                     <small class="text-danger" *ngIf="submittedFormTwo && formHexDec.hex.errors?.required">this field
                       required.
                       !</small>
@@ -114,9 +121,16 @@
             </div>
           </div>
           <!-- Convert Decimal Value to Hex Value -->
+          <div class="col-12">
+            <app-banner *ngIf="envirement"></app-banner>
+          </div>
           <!-- <div class="col-md-7"> -->
           <div class="card mb-3">
-            <div class="card-header text-white text-center font-weight-bold">Convert Decimal Value to Hex Value</div>
+            <div class="card-header">
+              <h2 class=" text-white text-center">
+                Decimal to Hex Calculator
+              </h2>
+            </div>
             <div class="card-body">
               <div *ngIf="rsltDecimal != null">
                 <h5 class="text-white text-center msg">Result : <strong class="text-uppercase">{{rsltDecimal}}</strong>
@@ -132,7 +146,7 @@
                   <div class="col-6">
                     <label for="decimal">Decimal value</label>
                     <input id="decimal" class="form-control" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="decimal" formControlName="decimal">
+                      shape="semi-round" placeholder="Decimal value" formControlName="decimal">
                     <small class="text-danger" *ngIf="submittedFormThree && formDecHex.decimal.errors?.required">this
                       field
                       required.
@@ -147,22 +161,19 @@
           </div>
           <!-- </div> -->
         </div>
-        <div class="col-12">
-          <app-banner *ngIf="envirement"></app-banner>
-        </div>
       </div>
-      <app-other-calcultor-math eleminateCalculator="hex"></app-other-calcultor-math>
-      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
-        Binary
-        Calculator</p>
+      <app-other-calcultor-math eleminateCalculator="hc"></app-other-calcultor-math>
+      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">
+        Learn more about Hex Calculator
+      </p>
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
           <p>To do algebraic operations with hex numbers, use this tool in hex calculator mode (add, subtract, multiply
             and divide hexadecimal). Use it in hex converter mode to easily convert a hex number to a decimal number, or
-            a decimal number to a hex number (decimal to hex and hex to the decimal converter), or to convert hex to
-            binary and binary to hex.</p>
-          <h2 class="text-secondary">What is a hex number?</h2>
-          <p>A hex number, short for hexadecimal number, is a number stated in the hexadecimal positional numeral system
+            a decimal number to a hex number (decimal to hex and <a href="https://www.wikihow.com/Convert-from-Decimal-to-Hexadecimal" target="_blank" rel="noopener noreferrer nofollow">hex to the decimal</a> converter), or to convert hex to
+            <a routerLink="/math/binary-calculator/.">binary</a> and binary to hex.</p>
+          <h3 class="text-secondary">What is a hex number?</h3>
+          <p>A hex number, short for <a href="https://en.wikipedia.org/wiki/Hexadecimal" target="_blank" rel="noopener noreferrer">hexadecimal</a> number, is a number stated in the hexadecimal positional numeral system
             with a base of 16 that employs sixteen symbols: the numbers 0 to 9 and the letters A,B,C,D,E, and F to
             represent values 0 to 15. Small-case letters a through f can be substituted. </p>
           <p>For example, 10 in decimal is A in hex, 100 in decimal is 64 in hex, and 1,000 in decimal is 3E8 in hex.
@@ -170,18 +181,23 @@
           <p>Hexadecimal numbers are primarily utilised in computing by computer system designers, software engineers,
             and programmers as a handy representation of the underlying binary systems. People in such jobs are more
             likely to require a hex calculator or hex converter.</p>
-          <h3 class="">hex number</h3>
+          <h4 class="">Hex number</h4>
           <p>An average person would come across them on a daily basis when browsing the web since special characters
-            are encoded as a hex number in website addresses (URLs), for example, %20 stands for "space" (blank). </p>
-          <p>Many websites additionally encode special characters in HTML using their hexadecimal numerical character
+            are encoded as a <a href="https://en.wikipedia.org/wiki/Hex" target="_blank" rel="noopener noreferrer">hex</a> number in website addresses (URLs), for example, %20 stands for "space" (blank). 
+          </p>
+          <p>
+            Many websites additionally encode special characters in HTML using their hexadecimal numerical character
             reference (" & #xcode;"), for example,'is the Unicode for a single quotation mark ('). A typical online
-            surfer
-            should not need a hexadecimal converter or calculator to do so.</p>
-          <p>You may use our hex calculator to perform mathematical operations on hex numbers (addition, subtraction,
+            surfer should not need a hexadecimal converter or calculator to do so.
+          </p>
+          <p>
+            You may use our hex calculator to perform mathematical operations on hex numbers (addition, subtraction,
             multiplication, and division) as well as a hex converter for hex-to-decimal, decimal-to-hex, hex-to-binary,
-            and binary-to-hex conversions.</p>
-          <p>Here's a table with some numbers expressed in decimal, hexadecimal, and binary formats (base 10, base 2,
-            and base 16).</p>
+            and binary-to-hex conversions.
+          </p>
+          <p>
+            Here's a table with some numbers expressed in decimal, hexadecimal, and binary formats (base 10, base 2, and base 16).
+          </p>
           <div class="col-md-8 col-12 mb-3 mx-auto">
             <table class="table">
               <thead class="thead-dark">
@@ -330,12 +346,12 @@
               </tbody>
             </table>
           </div>
-          <h2 class="text-secondary">Converting to and from hex numerals</h2>
+          <h3 class="text-secondary">Converting to and from hex numerals</h3>
           <P>Converting numbers to and from hex has no effect on the number itself; it only changes its form. You may
             quickly and simply perform both sorts of conversions with our hex converter above. It is important to note
             that hex conversion and hex computation are distinct activities that can be performed independently of one
             another.</P>
-          <h3 class="">Hex to decimal</h3>
+          <h4 class="">Hex to decimal</h4>
           <p>In the same way that each place in a decimal number represents a power of 10, each position in a
             hexadecimal numeral represents a power of 16. For example, the decimal representation of the number 20 is 20
             in decimal is 2 x 10<sup>1</sup> + 0 x 10<sup>0</sup> = 20. In dec, the hex number 20 equals 2 then 2 x
@@ -345,7 +361,7 @@
             is converted to 11, then multiply each position by 16 to the power of the position number, counting from
             right to left and beginning at zero. If you need to compute big exponents such as 168, our exponent
             calculator can help.</p>
-          <h3 class="">Decimal to hex</h3>
+          <h4 class="">Decimal to hex</h4>
           <p>As we move from a higher to a lower base, the process becomes more complicated. Assume the integer to be
             converted from decimal to hex is X. Begin by determining the greatest power of 16 X and denoting it by E.
             Then, using Z1, compute how many times the power of 16 determined above goes into X. Y1 represents the
@@ -353,7 +369,7 @@
           <p>Repeat the preceding steps, starting with Yn, until 16 is greater than the remaining value, then assign the
             remainder to the 16 0 positions, then assign each of the values Y1...n to its appropriate place, and you
             will have your hex value.</p>
-          <h2 class="text-secondary">Algebraic operations with hexadecimal numbers</h2>
+          <h3 class="text-secondary">Algebraic operations with hexadecimal numbers</h3>
           <p>You may execute the four fundamental arithmetic operations on hex numbers with our tool in hexadecimal
             calculator mode: addition, subtraction, multiplication, and division. As a result, it also functions as a
             hexadecimal addition calculator, a hexadecimal subtraction calculator, and so on. </p>
@@ -361,19 +377,19 @@
             numbers and a base 16 calculator for bigger ones. Subtraction operates the same as any other number system,
             except that when borrowing a number, you must borrow a group of 16 10 rather than 10 10 as with decimals.
           </p>
-          <h3 class="">Hex Addition</h3>
+          <h4 class="">Hex Addition Calculator</h4>
           <p>The sole difference between hex addition and decimal addition is the addition of the numbers A, B, C, D, E,
             and F. If the values have not yet been committed to memory, it may be useful to have the decimal equivalents
             of A through F on hand for executing hex operations. An example of hex addition is shown below. Work through
             the example and refer to the text below for more information.</p>
-          <img src="../../../../assets/images/hex-addition.png" width="120px" height="80px" alt="Hex Addition">
+          <img loading="lazy" src="../../../../assets/images/hex-addition.png" width="120px" height="80px" alt="hex addition calculator">
           <p>When numbers more than 9 (the digits A through F) are present, hex addition includes calculating basic
             decimal addition while converting between hex and decimal. In the above example, B + 8 equals 11 + 8 = 19.
             Because there is one set of 16, with three left over, 19 decimal is 13 hex. The 1 carries over to the next
             column, just like in decimal addition. As a result, the following column is 1 + A (10) + 7 = 18 decimal, or
             12 hex. Carry the 1 to the last column, yielding 1 + 8 + B (11) = 20 decimal, or 14 hex. This produces the
             value 1423 hex.</p>
-          <h3>Hex Subtraction</h3>
+          <h4>Hex Subtraction</h4>
           <p>Hex subtraction is calculated in the same manner as hex addition is: by performing the operation while
             converting between hex and decimal numbers. Borrowing is the most major distinction between hex and decimal
             subtraction. When borrowing in hex, the borrowed "1" represents 16decimal instead of 10decimal. </p>
@@ -381,7 +397,7 @@
             reason that the borrowed 1 in decimal represents 10). Hex subtraction is no more difficult than decimal
             subtraction as long as this is acknowledged and conversions of the letter numbers A-F are done correctly.
             Work through the example and refer to the text below for more information.</p>
-          <img src="../../../../assets/images/hex-substraction.png" width="120px" height="80px"
+          <img loading="lazy" src="../../../../assets/images/hex-substraction.png" width="120px" height="80px"
             alt="Subtraction Addition">
           <p>C, or 12decimal, is smaller than F, or 15decimal, in the first column on the right in the preceding
             example. As a result, it is required to borrow from the next column. This changes the D to C and adds 1, or
@@ -391,16 +407,16 @@
             C - A = 12decimal - 10decimal = 2, and 5 - 3 = 2, resulting in 22D. If the number being subtracted is
             greater than the number being subtracted from, just swap the numbers' places, compute the subtraction, and
             add a negative sign to the result.</p>
-          <h3>Hex Multiplication</h3>
+          <h4>Hex Multiplication</h4>
           <p>Hex multiplication can be challenging since the conversions between hex and decimal while executing the
             operations need more work due to the bigger numerals. A hexadecimal multiplication table can be useful (one
             is provided below). Otherwise, each step will require manual conversion between decimal and hex. </p>
           <p>An example of hex multiplication is shown below. Each of the multiplication and addition stages is
             presented to the right of the example. It is worth noting that all of the numbers used are hexadecimal. If
             required, go to the additional section.</p>
-          <img src="../../../../assets/images/hex-multiplication.png" width="220px" height="100px"
-            alt="Hex Multiplication">
-          <h3>Hex Division</h3>
+          <img loading="lazy" src="../../../../assets/images/hex-multiplication.png" width="220px" height="100px"
+            alt="hex calculator">
+          <h4>Hex Division</h4>
           <p>Long division in hex is identical to long division in decimal, with the exception that multiplication and
             subtraction are performed in hex. It is also feasible to convert to decimal and conduct long division in
             decimal before converting back. The division example will be calculated fully in hex for demonstration
@@ -409,7 +425,7 @@
           <p>Here's an example: It's worth noting that all of the numbers in the example are hexadecimal. Although no
             borrowing happens in the case below, keep in mind that borrowing in hex results in borrowing 16 decimal
             rather than 10 decimal. For further information, see the hex subtraction section.</p>
-          <img src="../../../../assets/images/hex-devision.png" width="220px" height="100px" alt="Hex division">
+          <img loading="lazy" src="../../../../assets/images/hex-devision.png" width="220px" height="100px" alt="Hexadecimal Calculator">
         </div>
       </div>
     </div>
