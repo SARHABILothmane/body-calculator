@@ -45,12 +45,12 @@ export class BinaryCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online Binary calculator");
+    this.titleService.setTitle("Free online Binary Calculator - Binary Addition Calculator");
     this.metaService.addTags([
-      { name: 'keywords', content: "binary calculator,binary,calculator,decimal to binary in calculator,decimal to binary,binary to decimal calculator,binary addition with use calculator,how to convert decimal to binary using calculator,binary to decimal,paper binary calculator,binary calculator circuit,decimal to binary calculator,binary converter,binary,decimal to binary conversion,decimal to binary converter,convert decimal to binary,binary to decimal converter,how to convert decimal to binary,decimal to binary,converter,binary to decimal conversion,how to convert binary to decimal,bcd to binary converter,text to binary converter,binary number,bcd to binary code converter,binary to decimal,binary conversion,binary number system converter" },
-      { name: 'description', content: "Free online Binary calculator and Binary Converter. The following calculators can be used to multiply, divide, add, or subtract two binary numbers, as well as to convert binary to decimal values and vice versa. " },
-      { property: 'og:title', content: "Free online Binary calculator and Binary Converter" },
-      { property: 'og:description', content: "Free online Binary calculator and Binary Converter. The following calculators can be used to multiply, divide, add, or subtract two binary numbers, as well as to convert binary to decimal values and vice versa." },
+      { name: 'keywords', content: "binary calculator,binary addition calculator, binary subtraction calculator, decimal to binary calculator, binary division calculator, binary to decimal calculator, binary multiplication calculator, binary number calculator, binary conversion calculator" },
+      { name: 'description', content: "Free online Binary calculator and Binary to Decimal Calculator, can be used also to binary addition calculator, multiply, divide and subtract two binary numbers" },
+      { property: 'og:title', content: "Free online Binary Calculator - Binary Addition Calculator" },
+      { property: 'og:description', content: "Free online Binary calculator and Binary to Decimal Calculator, can be used also to Hexadecimal Addition Calculator?  multiply, divide and subtract two binary numbers" },
       { property: "og:url", content: "https://body-calculator.com/math/binary-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/math/binary-calculator/");
@@ -58,18 +58,19 @@ export class BinaryCalculatorComponent implements OnInit {
     this.schema = {
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Age calculator",
+      "name": "binary calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
       "url": "https://body-calculator.com/math/binary-calculator/",
       "author": {
         "@type": "Person",
         "name": "SARHABIL"
       },
-      "datePublished": "2022-01-10",
+      "datePublished": "2022-11-21",
       "publisher": {
         "@type": "Organization",
         "name": "body-calculator"
       },
+      "applicationCategory": "EducationalApplication",
       "operatingSystem": "Linux",
       "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
       "softwareVersion": "1",
@@ -89,7 +90,7 @@ export class BinaryCalculatorComponent implements OnInit {
   get formBinaryDec() { return this.conveBinaryToDeci.controls; }
   get formDecBinary() { return this.conveDeciToBinary.controls; }
 
-  CalculateBinary() {
+  CalculateBinary(e: HTMLElement) {
     this.submitted = true;
     if (this.calculeBinary.valid) {
       this.error = "";
@@ -110,27 +111,29 @@ export class BinaryCalculatorComponent implements OnInit {
         this.rsltCalBinary = this.binaryOne / this.binaryTwo;
       }
       this.rsltCalDecimal = this.rsltCalBinary.toString(2)
+      e.scrollIntoView({ behavior: "smooth" });
     }
     else {
       this.error = "Please check the fields";
     }
   }
-  CalculateBinaryToDeci() {
+  CalculateBinaryToDeci(e: HTMLElement) {
     this.submittedFormTwo = true;
     if (this.conveBinaryToDeci.valid) {
       this.errorFormTwo = "";
       this.rsltBinary = parseInt(this.conveBinaryToDeci.value.binary, 2);
-      console.log(this.rsltBinary);
+      e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.errorFormTwo = "Please check the fields";
     }
   }
-  CalculateDeciToBinary() {
+  CalculateDeciToBinary(e: HTMLElement) {
     this.submittedFormThree = true;
     if (this.conveDeciToBinary.valid) {
       this.errorFormThree = "";
       this.rsltDecimal = this.conveDeciToBinary.value.decimal;
       this.rsltDecimal = this.rsltDecimal.toString(2)
+      e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.errorFormThree = "Please check the fields";
     }

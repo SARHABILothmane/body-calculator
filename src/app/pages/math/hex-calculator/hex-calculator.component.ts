@@ -45,12 +45,12 @@ export class HexCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online Hex calculator");
+    this.titleService.setTitle("Free online Hex Calculator - Hexadecimal Calculator");
     this.metaService.addTags([
-      { name: 'keywords', content: "hex calculator,hex,calculator,decimal to hex in calculator,decimal to hex,hex to decimal calculator,hex addition with use calculator,how to convert decimal to hex using calculator,hex to decimal,paper hex calculator,hex calculator circuit,decimal to hex calculator,hex converter,hex,decimal to hex conversion,decimal to hex converter,convert decimal to hex,hex to decimal converter,how to convert decimal to hex,decimal to hex,converter,hex to decimal conversion,how to convert hex to decimal,bcd to hex converter,text to hex converter,hex number,bcd to hex code converter,hex to decimal,hex conversion,hex number system converter" },
-      { name: 'description', content: "Free online hex calculator and hex Converter. The following calculators can be used to multiply, divide, add, or subtract two hex numbers, as well as to convert hex to decimal values and vice versa. " },
-      { property: 'og:title', content: "Free online hex calculator and hex Converter" },
-      { property: 'og:description', content: "Free online hex calculator and hex Converter. The following calculators can be used to multiply, divide, add, or subtract two hex numbers, as well as to convert hex to decimal values and vice versa." },
+      { name: 'keywords', content: "hex calculator, hexadecimal calculator, hexadecimal addition calculator, hex addition calculator, hex cal, " },
+      { name: 'description', content: "Free online Hex Calculator and Hexadecimal Calculator, can be used to multiply, divide, add, or subtract hex numbers, as well as to convert hex to decimal values and vice versa." },
+      { property: 'og:title', content: "Free online Hex Calculator - Hexadecimal Calculator" },
+      { property: 'og:description', content: "Free online Hex Calculator and Hexadecimal Calculator, can be used to multiply, divide, add, or subtract hex numbers, as well as to convert hex to decimal values and vice versa." },
       { property: "og:url", content: "https://body-calculator.com/math/hex-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/math/hex-calculator/");
@@ -58,18 +58,19 @@ export class HexCalculatorComponent implements OnInit {
     this.schema = {
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Age calculator",
+      "name": "hex calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
       "url": "https://body-calculator.com/math/hex-calculator/",
       "author": {
         "@type": "Person",
         "name": "SARHABIL"
       },
-      "datePublished": "2022-01-10",
+      "datePublished": "2022-11-21",
       "publisher": {
         "@type": "Organization",
         "name": "body-calculator"
       },
+      "applicationCategory": "EducationalApplication",
       "operatingSystem": "Linux",
       "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
       "softwareVersion": "1",

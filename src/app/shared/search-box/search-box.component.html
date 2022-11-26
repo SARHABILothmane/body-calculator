@@ -1,7 +1,7 @@
 <nb-layout>
   <nb-layout-column class="text-center">
     <label for="search" #target class="font-weight-bold text-center">Search a calculator</label>
-    <input #autoInput nbInput type="text" id="search" (input)="onChange()" (focus)="onFocus(target)"
+    <input #autoInput nbInput autocomplete="off" type="text" id="search" (input)="onChange()" (focus)="onFocus(target)"
       (keydown)="searchBox()" placeholder="Enter a calculator name" [nbAutocomplete]="auto" />
 
     <nb-autocomplete #auto (selectedChange)="onSelectionChange($event)">

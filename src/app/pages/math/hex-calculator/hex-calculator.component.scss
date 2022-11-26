@@ -6,3 +6,9 @@
     -webkit-transition: background 2s;
     transition: background 2s;
   }
+
+  @media screen and (max-width: 552px) {
+    .margin{
+        margin:  20px 0;
+    }
+  }

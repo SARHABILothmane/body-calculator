@@ -79,7 +79,7 @@ export class PercentageCalculatorComponent implements OnInit {
     this.schema = {
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Age calculator",
+      "name": "percentage calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
       "url": "https://body-calculator.com/math/percentage-calculator/",
       "author": {
@@ -91,6 +91,7 @@ export class PercentageCalculatorComponent implements OnInit {
         "@type": "Organization",
         "name": "body-calculator"
       },
+      "applicationCategory": "EducationalApplication",
       "operatingSystem": "Linux",
       "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
       "softwareVersion": "1",
@@ -111,7 +112,7 @@ export class PercentageCalculatorComponent implements OnInit {
   get formPercentageP() { return this.calculePercentageP.controls; }
   get formPercentageIncDec() { return this.calculePercentageIncDec.controls; }
 
-  CalculatePercentageY() {
+  CalculatePercentageY(e: HTMLElement) {
     this.submitted = true;
     if (this.calculePercentageY.valid) {
       this.rsltY = true;
@@ -119,6 +120,7 @@ export class PercentageCalculatorComponent implements OnInit {
       this.x = this.calculePercentageY.value.x;
       let result = this.p * this.x;
       this.y = result / 100;
+      e.scrollIntoView({ behavior: "smooth" });
       // y= x*p//100            what is p% of x? formula
       // p= x*100/y              x is what percent of y? formula
       // y= x*100/p           x is p% of what? formula
@@ -127,7 +129,7 @@ export class PercentageCalculatorComponent implements OnInit {
       this.error = "Please check the fields";
     }
   }
-  CalculatePercentageX() {
+  CalculatePercentageX(e: HTMLElement) {
     this.submittedFormTwo = true;
     if (this.calculePercentageX.valid) {
       this.errorFormTwo = "";
@@ -136,12 +138,13 @@ export class PercentageCalculatorComponent implements OnInit {
       this.xOne = this.calculePercentageX.value.x;
       let result = this.xOne * 100;
       this.pOne = result / this.yOne;
+      e.scrollIntoView({ behavior: "smooth" });
       // p= x*100/y              x is what percent of y? formula
     } else {
       this.errorFormTwo = "Please check the fields";
     }
   }
-  CalculatePercentageP() {
+  CalculatePercentageP(e: HTMLElement) {
     this.submittedFormThree = true;
     if (this.calculePercentageP.valid) {
       this.errorFormThree = "";
@@ -150,12 +153,13 @@ export class PercentageCalculatorComponent implements OnInit {
       this.xTwo = this.calculePercentageP.value.x;
       let result = this.xTwo * 100;
       this.yTwo = result / this.pTwo;
+      e.scrollIntoView({ behavior: "smooth" });
       // y= x*100/p           x is p% of what? formula
     } else {
       this.errorFormThree = "Please check the fields";
     }
   }
-  CalculatePercentageIncDec() {
+  CalculatePercentageIncDec(e: HTMLElement) {
     this.submittedFormFor = true;
     if (this.calculePercentageIncDec.valid) {
       this.errorFormFor = "";
@@ -171,7 +175,7 @@ export class PercentageCalculatorComponent implements OnInit {
         this.resultIncDec = this.pTree / 100;
         this.yTree = this.xTree * (1 - this.resultIncDec);
       }
-
+      e.scrollIntoView({ behavior: "smooth" });
       // y= +- . 100+P/100  what is x increased/decreased by p% formula
 
     } else {

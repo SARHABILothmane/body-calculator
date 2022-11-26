@@ -17,6 +17,8 @@
 /math/hex-calculator/.
 /math/percentage-calculator/.
 /math/percent-error-calculator/.
+/math/binary-calculator/.
+/math/hex-calculator/.
 /contact/.
 /private-policy/.
 /terms/.

@@ -28,4 +28,10 @@ export class MenuComponent implements OnInit {
     }
   }
 
+  closeNavBarMobile(){
+    const elementMenu = document.getElementById("menu-toggle") as HTMLInputElement ;
+    // const element = document.getElementById(nameOfElement) as HTMLInputElement ;
+    elementMenu.checked  = false;
+    // element.checked  = false;
+  }
 }
