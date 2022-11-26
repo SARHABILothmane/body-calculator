@@ -105,7 +105,7 @@ export class PregnancyDateCalculatorComponent implements OnInit {
     if (this.calculePregnancy.valid) {
       this.error = "";
       this.rsltPregnancy = new Date(this.calculePregnancy.value.pregnancy.toISOString());
-      let due = 28 - this.calculePregnancy.value.dueDate;
+      // let due = 28 - this.calculePregnancy.value.dueDate;
       this.rsltPregnancy.setFullYear(this.rsltPregnancy.getFullYear());
       this.rsltPregnancy.setMonth(this.rsltPregnancy.getMonth());
       this.rsltPregnancy.setDate(this.rsltPregnancy.getDate());
@@ -122,7 +122,13 @@ export class PregnancyDateCalculatorComponent implements OnInit {
         this.dayF = this.daysSub - (this.month * 31);
         this.week = Math.floor(this.daysSub / 7);
         this.dayW = this.daysSub - (this.week * 7);
-
+        if (this.daysDiff(this.dateNow, this.rsltPregnancy) > 280) {
+          this.error = "Date was more than 9 months (280 days) ago. This tool only works up to 40 weeks of pregnancy. Please enter a date within the last 40 weeks.";
+          return;
+        } else {
+          let progress = this.daysSub * 100 / 280;
+          this.progressPercent = Math.floor(progress)
+        }
         let x = new Date(this.rsltPregnancy);
         x.setDate(x.getDate() - 13);
         let last = new Date(this.rsltPregnancy);
@@ -141,18 +147,26 @@ export class PregnancyDateCalculatorComponent implements OnInit {
           date === dd,
         );
 
-
       }
       if (this.checkdSymbole === 'last') {
         this.showTable = true;
         this.arrOfWeekL = [];
         this.arrOfWeekF = [];
         let pregnancyRLast = new Date(this.calculePregnancy.value.pregnancy.toISOString());
+        let due = 28 - this.calculePregnancy.value.dueDate;
         pregnancyRLast.setDate(pregnancyRLast.getDate() - due);
         this.daysSub = this.daysDiff(pregnancyRLast, this.dateNow) - due;
         // this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() - due);
         let progress = this.daysSub * 100 / 280;
         this.progressPercent = Math.floor(progress)
+        // if (this.daysDiff(this.rsltPregnancy, this.dateNow) > 280) {
+        //   this.error = "Date was more than 9 months (280 days) ago. This tool only works up to 40 weeks of pregnancy. Please enter a date within the last 40 weeks.";
+        //   return;
+        // } else {
+        //   let progress = this.daysSub * 100 / 280;
+        //   this.progressPercent = Math.floor(progress)
+        // }
+
         this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + (40 * 7) - due);
         this.pregnancyDays = 280 - this.daysDiff(this.dateNow, this.rsltPregnancy) - due;
         // this.daysSub = this.daysDiff(this.rsltPregnancy, this.dateNow) + 14;
@@ -187,13 +201,15 @@ export class PregnancyDateCalculatorComponent implements OnInit {
         this.arrOfWeekL = [];
         this.arrOfWeekF = [];
         let pregnancyRLast = new Date(this.calculePregnancy.value.pregnancy.toISOString());
-        pregnancyRLast.setDate(pregnancyRLast.getDate() - due);
-        this.daysSub = this.daysDiff(pregnancyRLast, this.dateNow) - due;
+        pregnancyRLast.setDate(pregnancyRLast.getDate());
+        this.daysSub = this.daysDiff(pregnancyRLast, this.dateNow);
         // this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() - due);
         let progress = this.daysSub * 100 / 280;
         this.progressPercent = Math.floor(progress)
-        this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + (120) - due);
-        this.pregnancyDays = 280 - this.daysDiff(this.dateNow, this.rsltPregnancy) - due;
+        // this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + (120) - due);
+        this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + (266));
+
+        this.pregnancyDays = 280 - this.daysDiff(this.dateNow, this.rsltPregnancy);
         this.daysSub = this.pregnancyDays
         this.month = Math.floor(this.daysSub / 31);
         this.dayF = this.daysSub - (this.month * 31);
@@ -204,7 +220,7 @@ export class PregnancyDateCalculatorComponent implements OnInit {
         this.firstDayWeek1 = new Date(this.rsltPregnancy);
         this.firstDayWeek1.setDate(this.firstDayWeek1.getDate() - 279)
         this.lastDayDayWeek1 = new Date(this.calculePregnancy.value.pregnancy.toISOString());
-        this.lastDayDayWeek1.setDate(this.lastDayDayWeek1.getDate() + (134));
+        this.lastDayDayWeek1.setDate(this.lastDayDayWeek1.getDate() + (280));
         // this.lastDayDayWeek1 = new Date(this.rsltPregnancy.setDate(this.rsltPregnancy.getDate() + 7));
         for (let q = this.firstDayWeek1; q <= this.lastDayDayWeek1; q.setDate(q.getDate() + 7)) {
           this.arrOfWeekF.push(new Date(q));
@@ -223,8 +239,6 @@ export class PregnancyDateCalculatorComponent implements OnInit {
         );
 
       }
-
-
 
       // this.month = Math.floor(this.daysSub / 30);
       // this.dayF = this.daysSub - (this.month * 30);

@@ -95,7 +95,7 @@
                   value="{{ rsltPregnancy | date: 'yyyy-MM-dd'}}" style="padding: 5px;">
               </div>
               <p>Your due date is : <span class="font-weight-bold">{{rsltPregnancy | date:"fullDate" }}</span></p>
-              <div class="" *ngIf="submittedLast">
+              <div class="">
                 <p>You are {{progressPercent}} % of the way through your pregnancy. </p>
                 <nb-progress-bar [value]="progressPercent" status="primary">{{progressPercent}} %</nb-progress-bar>
                 <p class="mt-2">Your baby was likely conceived on : <em>{{arrOfWeekL[1] | date:"fullDate"}}</em> </p>

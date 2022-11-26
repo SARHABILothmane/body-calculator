@@ -1,0 +1,162 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="container">
+      <div class="col-12">
+        <h1 class="text-secondary text-center pb-3">Log Calculator (Logarithm)</h1>
+      </div>
+      <div class="row mb-3 d-flex flex-md-r ow-reverse">
+        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
+          <h6 class="text-secondary text-center">Result of Logarithm Calculator</h6>
+          <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
+          <div *ngIf="rsltRoot">
+            <h5 class="text-white text-center msg">Result : {{root | number}}</h5>
+            <p class="font-weight-bold">steps :</p>
+            <p class="text-center">The square root of {{rootValue}} is {{root}}</p>
+            <p class="text-center">
+              <strong class="square">&radic;<span class="line"> {{rootValue}} </span> = {{root | number}}</strong>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">Exponent Calculator</div>
+            <div class="card-body example-items-col">
+              <form [formGroup]="calculeFormRoot" (ngSubmit)="CalculateRoot()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row mx-auto">
+                  <div class="my-4 col-8">
+                    <hr class="ml-3">
+                    <div class="d-flex">
+                      <div id="radical2">
+                        <strong>&radic;</strong>
+                      </div>
+                      <label for="objects"></label>
+                      <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
+                        shape="semi-round" placeholder="2" formControlName="root">
+                    </div>
+                    <small class="text-danger" *ngIf="submitted && formRoot.root.errors?.required">Lower
+                      Limit is
+                      required.
+                      !</small>
+                  </div>
+                </div>
+                <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">Exponent Calculator</div>
+            <div class="card-body example-items-col">
+              <form [formGroup]="calculeFormRootGeneral" (ngSubmit)="CalculateRootGenral()">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <div class="row mx-auto">
+                  <div class="col-5">
+                    <label for="sample"></label>
+                    <input id="sample" class="form-control hr" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="3" formControlName="n">
+                    <small class="text-danger" *ngIf="submitted && formRootGenerl.n.errors?.required">Upper
+                      Limit is
+                      required.
+                      !</small>
+                  </div>
+                  <div class="col-6 mt-4 my-4">
+                    <hr class="ml-3">
+                    <div class="d-flex">
+                      <div id="radical">
+                        <strong>&radic;</strong>
+                      </div>
+                      <label for="objects"></label>
+                      <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
+                        shape="semi-round" placeholder="2" formControlName="x">
+                    </div>
+                    <small class="text-danger" *ngIf="submitted && formRootGenerl.x.errors?.required">Lower
+                      Limit is
+                      required.
+                      !</small>
+                    <small class="text-danger" *ngIf="submitted && formRootGenerl['x'].errors?.['min']">Please
+                      provide an positive number !</small>
+                  </div>
+                </div>
+                <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
+          <h6 class="text-secondary text-center">Result of Logarithm Calculator</h6>
+          <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
+          <div *ngIf="rsltRootGenreral">
+            <h5 class="text-white text-center msg">Result : {{rootGeneral | number}}</h5>
+            <p class="font-weight-bold">steps :</p>
+            <p class="text-center">The root of {{n}} is {{x}}
+              <p class="text-center">
+                <strong class="square">{{n}}&radic;<span class="line"> {{x}} </span> = {{rootGeneral | number}}</strong>
+              </p>
+          </div>
+          <div *ngIf="!rsltRootGenreral">
+            <p class="font-weight-bold text-center">nth root calculator</p>
+            <p class="text-center">The nth root of x is given by the formula:</p>
+            <p class="text-center">
+              <strong class="square">nth root = n&radic;<span class="line">x</span></strong>
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn About
+        Permutation Calculator</p>
+
+      <div class="row border shadow bg-white my-4">
+        <div class="col-md-12 mx-2 my-4">
+          <h2>Random number generator</h2>
+          <p>Use our random number generator website to get a really unexpected and cryptographically secure number.
+            It creates random numbers that can be utilized in situations requiring impartial randomization, such as when
+            drawing numbers for a lottery, raffle, giveaway, or sweepstake.
+            An RNG draw may also be used to choose who goes first in a game, among other things.
+          </p>
+          <h2>How to pick a random number between two numbers?</h2>
+          <p>
+            You may use this random number generator to get a number that is genuinely random between any two values.
+            To acquire a random number between 1 and 10, for example, put 1 in the first field and 10 in the second,
+            then click "Get Random Number." Our randomizer will select a number between 1 and 10 at random.
+            To produce a random number between 1 and 100, repeat the process, but enter 100 in the picker's second
+            field.
+          </p>
+          <p>
+            The range for a conventional six-sided dice should be 1 to 6 to imitate a dice roll.
+            Set the range between 1 and 2 to simulate a coin flip, and the random selector will choose a number between
+            1 and 2.
+          </p>
+          <p>
+            To create many unique numbers (no duplicates), simply pick how many you require from the drop-down menu
+            below.
+            Selecting 6 numbers from a potential set of 1 to 49, for example, would be equal to replicating a lottery
+            draw for a game with these characteristics.
+          </p>
+          <h2>Where does a random number generator come in handy?</h2>
+          <p>
+            You may be holding a charity lottery, a giveaway, a raffle, sweepstakes, or another type of contest and need
+            to select a winner - this generator is for you! It is fully neutral and outside of your control, so you can
+            reassure your audience of the fairness of the draw, which may not be the case if you use traditional
+            techniques such as rolling a dice.
+          </p>
+          <p>
+            A period is the number of iterations a PRNG takes before it begins to replicate itself. All else being
+            equal, a PRNG with a long time will need more computer resources to forecast and crack.
+          </p>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>
