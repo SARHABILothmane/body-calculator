@@ -1,7 +1,8 @@
-import { PregnancyDateCalculatorModule } from './pregnancy-date-calculator/pregnancy-date-calculator.module';
+// import { PregnancyDateCalculatorModule } from './pregnancy-date-calculator/pregnancy-date-calculator.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CalcultorComponent } from './calculator.component';
+import { CommonModule } from '@angular/common';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     CalcultorComponent,
   ],
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    CommonModule
   ]
 })
 export class CalcultorModule { }

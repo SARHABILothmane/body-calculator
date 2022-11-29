@@ -66,7 +66,7 @@
             </label>      
             <ul class="menu-sidebar">
 
-              <li class="nav-item">
+              <li class="nav-item d-flex align-items-center" (click)="closeNavBarMobile()">
                 <a routerLink="/" style="width:90%; left: 20px;">
                   <span routerLinkActive="linkActiveDropDown" [routerLinkActiveOptions]="{ exact: true }">
                     Home
@@ -76,7 +76,7 @@
 
               <li *ngFor="let details of urlDescription.arrayDetails;">
                 <input type="checkbox" id="{{details.categorieName}}" class="submenu-toggle">        
-                <label class="submenu-label pl-0" for="{{details.categorieName}}">
+                <label class="submenu-label pl-0 d-flex align-items-center" for="{{details.categorieName}}">
                   <span  class="active" style="font-size: 15px;">
                     {{details.categorieName}}
                   </span>
@@ -84,11 +84,11 @@
                 <div class="arrow right">&#8250;</div>           
                 <ul class="menu-sub" style="z-index: 1556;">
                   <li class="menu-sub-title">
-                    <label class="submenu-label" for="{{details.categorieName}}">Back</label>
+                    <label class="submenu-label d-flex align-items-center" for="{{details.categorieName}}">Back</label>
                     <div class="arrow left">&#8249;</div>              
                   </li>  
                   
-                  <li (click)="closeNavBarMobile()" *ngFor="let detailAndUrl of details.urlAndDescriptions">
+                  <li class="d-flex align-items-center" (click)="closeNavBarMobile()" *ngFor="let detailAndUrl of details.urlAndDescriptions">
                     <a routerLink="{{detailAndUrl.url}}"
                       routerLinkActive="linkActiveDropDown">
                       {{detailAndUrl.textInHref}}
@@ -97,7 +97,7 @@
                 </ul>
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item d-flex align-items-center">
                 <a href="https://g.page/r/CWcEpRY1bs9YEAI/review" target="_blank" style="width:90%; left: 20px;">
                   <span>
                     Rate us
@@ -105,7 +105,7 @@
                 </a>
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item d-flex align-items-center" (click)="closeNavBarMobile()">
                 <a routerLink="/contact/." style="width:90%; left: 20px;">
                   <span routerLinkActive="linkActiveDropDown">
                     Contact us

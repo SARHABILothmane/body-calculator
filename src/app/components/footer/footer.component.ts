@@ -23,4 +23,8 @@ export class FooterComponent implements OnInit {
     this.router.navigateByUrl("/candidat");
   }
 
+  ngOnDestroy() {
+    this.urlDescription = [];
+  }
+
 }

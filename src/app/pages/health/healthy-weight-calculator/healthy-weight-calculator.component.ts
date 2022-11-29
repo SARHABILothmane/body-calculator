@@ -40,12 +40,12 @@ export class HealthyWeightCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online healthy weight calculator");
+    this.titleService.setTitle("Free online Healthy Weight Calculator");
     this.metaService.addTags([
       { name: 'keywords', content: "Healthy weight calculator" },
-      { name: 'description', content: "Free online Healthy weight calculator (healthy weight range calculator)" },
-      { property: 'og:title', content: "Free online healthy weight calculator" },
-      { property: 'og:description', content: "Free online Healthy weight calculator (healthy weight range calculator)" },
+      { name: 'description', content: "Free online Healthy Weight Calculator (Healthy Weight Range Calculator)" },
+      { property: 'og:title', content: "Free online Healthy Weight Calculator" },
+      { property: 'og:description', content: "Free online Healthy Weight Calculator (Healthy Weight Range Calculator)" },
       { property: "og:url", content: "https://body-calculator.com/health/healthy-weight-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/health/healthy-weight-calculator/");

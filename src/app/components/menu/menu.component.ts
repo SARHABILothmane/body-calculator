@@ -34,4 +34,8 @@ export class MenuComponent implements OnInit {
     elementMenu.checked  = false;
     // element.checked  = false;
   }
+  
+  ngOnDestroy() {
+    this.urlDescription = [];
+  }
 }

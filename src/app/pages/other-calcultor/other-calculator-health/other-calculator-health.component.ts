@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { InlineShareButtonsConfig} from 'sharethis-angular';
 
 const inlineShareButtonsConfig:InlineShareButtonsConfig = {
@@ -25,8 +26,7 @@ const inlineShareButtonsConfig:InlineShareButtonsConfig = {
 
 @Component({
   selector: 'app-other-calcultor-health',
-  templateUrl: './other-calculator-health.component.html',
-  styleUrls: ['./other-calculator-health.component.scss']
+  templateUrl: './other-calculator-health.component.html'
 })
 export class OtherCalcultorHealthComponent implements OnInit {
   inlineShareButtonsConfig = inlineShareButtonsConfig;
@@ -34,11 +34,39 @@ export class OtherCalcultorHealthComponent implements OnInit {
   @Input() eleminateCalculator: any;
   otherCalculators: string = "";
   goToOtherPage: any;
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
+
+    this.activatedRoute.queryParams.subscribe( params => 
+      {
+        setTimeout(() => {
+          const arrowTwo = document.getElementById('arrowTwo'); 
+          const arrow = document.getElementById('arrow'); 
+
+          arrow?.animate([
+            {left: '0'},
+            {left: '10px'},
+            {left: '0'}
+          ],{
+            duration: 700,
+            iterations: Infinity
+          });
+
+          arrowTwo?.animate([
+            {left: '0'},
+            {left: '10px'},
+            {left: '0'}
+          ],{
+            duration: 700,
+            iterations: Infinity
+          });
+        }, 2000);
+    });
   }
 
 
   ngOnInit(): void {
+
+ 
 
     if (this.eleminateCalculator == 'bmi') {
       this.goToOtherPage = { name: "Go to Body Fat Percentage Calculator", url: "/health/body-fat-percentage-calculator/." }
@@ -76,5 +104,13 @@ export class OtherCalcultorHealthComponent implements OnInit {
       // this.otherCalculators +=    '</div>';
       this.otherCalculators += '</div>';
     });
+  }
+
+  ngOnDestroy() {
+    this.arrayOtherCalculators = [];
+    this.otherCalculators = "";
+    this.inlineShareButtonsConfig = {networks: []};
+    this.goToOtherPage = "";
+    this.eleminateCalculator = "";
   }
 }

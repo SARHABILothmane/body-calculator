@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { InlineShareButtonsConfig} from 'sharethis-angular';
 
 
@@ -25,8 +26,7 @@ const inlineShareButtonsConfig:InlineShareButtonsConfig = {
 };
 @Component({
   selector: 'app-other-calcultor-time',
-  templateUrl: './other-calculator-time.component.html',
-  styleUrls: ['./other-calculator-time.component.scss']
+  templateUrl: './other-calculator-time.component.html'
 })
 export class OtherCalcultorTimeComponent implements OnInit {
   arrayOtherCalculators: any;
@@ -35,20 +35,51 @@ export class OtherCalcultorTimeComponent implements OnInit {
   @Input() eleminateCalculator: any;
   otherCalculators: string = "";
   goToOtherPage:any;
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
+
+    this.activatedRoute.queryParams.subscribe( params => 
+      {
+        setTimeout(() => {
+          const arrowTwo = document.getElementById('arrowTwo'); 
+          const arrow = document.getElementById('arrow'); 
+
+          arrow?.animate([
+            {left: '0'},
+            {left: '10px'},
+            {left: '0'}
+          ],{
+            duration: 700,
+            iterations: Infinity
+          });
+
+          arrowTwo?.animate([
+            {left: '0'},
+            {left: '10px'},
+            {left: '0'}
+          ],{
+            duration: 700,
+            iterations: Infinity
+          });
+        }, 2000);
+    });
   }
 
 
   ngOnInit(): void {
     if(this.eleminateCalculator == 'ac'){
       this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
-    }else{
+    }else if(this.eleminateCalculator == 'tc'){
+      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
+    }else if(this.eleminateCalculator == 'dc'){
       this.goToOtherPage =  {name: "Age Calculator", url:"/calculators/age-calculator/."}
+    }else{
+      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
     }
 
     this.arrayOtherCalculators = [
       { 'title': 'Age Calculator', 'url': '/calculators/age-calculator/.', 'code': 'ac' },
       { 'title': 'Date Calculator', 'url': '/calculators/date-calculator/.', 'code': 'dc' },
+      { 'title': 'Time Calculator', 'url': '/calculators/time-calculator/.', 'code': 'tc' },
     ];
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);
 
@@ -64,5 +95,13 @@ export class OtherCalcultorTimeComponent implements OnInit {
       this.otherCalculators += '</a>';
       this.otherCalculators += '</div>';
     });
+  }
+
+  ngOnDestroy() {
+    this.arrayOtherCalculators = [];
+    this.otherCalculators = "";
+    this.inlineShareButtonsConfig = {networks: []};
+    this.goToOtherPage = "";
+    this.eleminateCalculator = "";
   }
 }

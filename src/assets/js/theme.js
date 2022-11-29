@@ -99,9 +99,13 @@
     hideButtonGoToWhenFocus();
     let cookie = localStorage.getItem('cookie');
     if(!cookie){
-      document.getElementById("cookies").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("cookies").style.display = "block";
+      }, 3000);
     }
   }
+
+
 
   let url = window.location.href;
 

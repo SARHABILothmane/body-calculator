@@ -20,8 +20,8 @@
           <p class="categorieSize">{{details.categorieName}}</p>
         </div>
         <ng-template ngFor let-detailAndUrl [ngForOf]="details.urlAndDescriptions" let-i="index" >
-          <div class="col-md-3 p-2 col-12 mb-2" (click)="goToPage(detailAndUrl.url)" style="cursor: pointer;" *ngIf="detailAndUrl.description.length">
-                <div class="p-3 bg-white designeButton  d-flex justify-content-between" style="flex-direction: column; min-height: 300px;">
+          <div class="col-md-3 p-2 col-12 mb-2" (click)="goToPage(detailAndUrl.url)" style="cursor: pointer;" *ngIf="detailAndUrl?.description?.length">
+                <div class="p-3 bg-white designeButton  d-flex justify-content-between minHeight" style="flex-direction: column;">
                     <div >
                       <h3 style="font-size: 20px; min-height:40px; line-height: 1.5rem">{{detailAndUrl.name}}</h3>
                       <p >{{detailAndUrl.description}}</p>
@@ -47,15 +47,22 @@
           The circulation of information is now much easier than it was in the past thanks to the great development in computers, smart phones, applications and websites, so you can get any information in any field without getting tired or effort while sitting at your home, 
           and here we have developed this site in order to help you obtain accurate information in many important areas that you may need in most cases to collect a lot of information to reach certain results you need in your life matters.
         </p>
+        <h4>Our vision</h4>
+        <P>We seek to Facilitate the conduct of your daily life and reduce your financial burdens.</P>
+        <h4>Our mission</h4>
+        <p>Continuous research and development to reach any new way to facilitate your life, through the development of calculators that you can use for free at any time in all areas that you deal with during your day.</p>
+        <h4>What does our site contain?</h4>
         <p>
           Our site contains a very large number of online calculators that make managing your life much easier than before. You can now enter the site and choose any calculator to get accurate information and statistics in many areas of your daily life for free without incurring any costs.
         </p>
+        <h4>How does our site help you monitor your health?</h4>
         <p>
-          For example, in the field of health, many people seek to pay attention to their body and its health from all sides, especially with the great development in the field of health and the large number of media that talk about health, the ideal body and a healthy lifestyle, which has led to an increase in awareness among many people of the importance of health care and a healthy lifestyle.
+          Many people seek to pay attention to their body and its health from all sides, especially with the great development in the field of health and the large number of media that talk about health, the ideal body and a healthy lifestyle, which has led to an increase in awareness among many people of the importance of health care and a healthy lifestyle.
         </p>
         <p>
           Many people are paying close attention to their health, from following a healthy diet and exercising, to paying close attention to the body's metabolic rate, pulse rate, and many other health issues.
         </p>
+        <h4>Our various calculator to serve your daily needs</h4>
         <p>
           We also did not forget your multiple daily needs that you may need certain accounts to find out about something in your day or other business, so we have developed various calculators to make it easier for you to manage your affairs in different areas of life, such as Age Calculator, Date Calculator, Percentage Calculator, Hex Calculator
           And many other different Calculators.

@@ -115,14 +115,6 @@ nb-layout-header nav{
 //   padding-top: 20px;
 // }
 
-// @media screen and (max-width: 552px) {
-//   .flexMobile {
-//     display: flex;
-//     align-items: center!important;
-//     justify-content: center!important;
-//   }
-// }
-
 .nb-theme-default nb-select .select-button{
   min-width: 120px !important;
 }
@@ -154,4 +146,64 @@ nb-accordion-item-body div{
   max-height: 11rem !important;
 }
 
+/* start style for arrow moving  */
+.iconn {
+  position: absolute;
+  top: -55px;
+  // left: 90%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 20px;
+  cursor: pointer;
+  transform: rotate(-90deg);
+  // display: none;
+  z-index: 2000;
+  }
+  
+  .arrowMoving {
+  position: absolute;
+  top: 25px;
+  width: 90%;
+  height: 10px;
+  background-color: #33a4ff;
+  animation: arrow 700ms linear infinite;
+  }
+  
+  .arrowMoving::after,
+  .arrowMoving::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 10px;
+  left: -8px;
+  background-color: #33a4ff;
+  }
+  
+  .arrowMoving::after {
+  top: -12px;
+  transform: rotate(135deg);
+  }
+  
+  .arrowMoving::before {
+  top: 12px;
+  transform: rotate(-135deg);
+  }
+  
+  @media screen and (min-width: 552px) {
+      .leftPosition{
+       left: 10% !important;
+      }
+  
+      .leftPositionTwo{
+          left: 80% !important;
+      }
+    }
+    
+    @media screen and (max-width: 552px) {
 
+    .leftPositionTwo{
+        left: 70%;
+      }
+    }
+
+  /* end style for arrow moving  */

@@ -63,4 +63,8 @@ export class HomeComponent implements OnInit {
   goToPage(url: string){
     this.router.navigateByUrl(url);
   }
+
+  ngOnDestroy() {
+    this.urlDescription = [];
+  }
 }

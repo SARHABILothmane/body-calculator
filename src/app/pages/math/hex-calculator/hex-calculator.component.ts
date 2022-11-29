@@ -48,9 +48,9 @@ export class HexCalculatorComponent implements OnInit {
     this.titleService.setTitle("Free online Hex Calculator - Hexadecimal Calculator");
     this.metaService.addTags([
       { name: 'keywords', content: "hex calculator, hexadecimal calculator, hexadecimal addition calculator, hex addition calculator, hex cal, " },
-      { name: 'description', content: "Free online Hex Calculator and Hexadecimal Calculator, can be used to multiply, divide, add, or subtract hex numbers, as well as to convert hex to decimal values and vice versa." },
+      { name: 'description', content: "Free online Hex Calculator and Hexadecimal Calculator, can be used to multiply, divide, add, or subtract hex numbers, as well as to convert decimal to hex" },
       { property: 'og:title', content: "Free online Hex Calculator - Hexadecimal Calculator" },
-      { property: 'og:description', content: "Free online Hex Calculator and Hexadecimal Calculator, can be used to multiply, divide, add, or subtract hex numbers, as well as to convert hex to decimal values and vice versa." },
+      { property: 'og:description', content: "Free online Hex Calculator and Hexadecimal Calculator, can be used to multiply, divide, add, or subtract hex numbers, as well as to convert decimal to hex" },
       { property: "og:url", content: "https://body-calculator.com/math/hex-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/math/hex-calculator/");

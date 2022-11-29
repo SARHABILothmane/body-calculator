@@ -13,16 +13,16 @@
       </div> -->
       <div class="row info bg-white">
         <div class="col-12 mt-3">
-          <h2>BMI formula</h2>
-          <h3>- English BMI Formula (Imperial)</h3>
+          <h3>BMI formula</h3>
+          <h4>- English BMI Formula (Imperial)</h4>
           <p style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">BMI = (Weight in
             Pounds / (Height in inches x Height in inches)) x 703</p>
-          <h3>- Metric BMI Formula</h3>
+          <h4>- Metric BMI Formula</h4>
           <p style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">BMI = (Weight in
             Kilograms / (Height in Meters x Height in Meters))</p>
         </div>
         <div class="col-12 mt-3">
-          <h2>BMI Chart</h2>
+          <h3>BMI Chart</h3>
           <div class="d-flex justify-content-center" >
             <!-- <img loading="lazy" width="55%" height="30%" src="../../../../assets/images/bmi-chart.png" class="widthImg"
               alt="bmi chart"> -->
@@ -36,10 +36,10 @@
           <nb-accordion>
             <nb-accordion-item>
               <nb-accordion-item-header role=link>
-                <h3 class="text-center tt"> What BMI means ?</h3>
+                <h3 class="text-center tt">What BMI means ?</h3>
               </nb-accordion-item-header>
               <nb-accordion-item-body>
-                <p>Body mass index is known as a way to estimate body fat according to human weight and height. Studies
+                <p>Body mass index is known as a way to estimate <a href="/health/body-fat-percentage-calculator/.">body fat</a> according to human weight and height. Studies
                   have shown that high body mass index (BMI) is significantly associated with the risk of developing
                   chronic diseases such as heart disease, hypertension, and adult grade 2 diabetes.</p>
                 <p>The body mass index (BMI) gives a reasonable estimate of body fat in women, men, young, or elderly
@@ -74,7 +74,7 @@
               </nb-accordion-item-header>
               <nb-accordion-item-body>
                 <p> In calculating the BMI for adult women and men doctors said it is not reliably accurate because it
-                  measures not only excess fat but also excess body weight as a whole. Measurement may be influenced by
+                  measures not only excess fat but also excess <a href="/health/ideal-weight-calculator/.">body weight</a> as a whole. Measurement may be influenced by
                   other factors, including age, gender, or ethnicity, as well as activity level and fat mass.</p>
                 <p>On the contrary, older people measured with BMI have a healthy weight, regardless of whether their
                   activity is limited, and their excess fat mass is not heavy. If we look at the bodies of bodybuilders
@@ -94,7 +94,7 @@
                 <p>Children and teenagers measuring BMI are different if we Apply the factors that occur from the
                   effectiveness of the mass index in adults will negatively affect their sexual and physical maturity.
                 </p>
-                <p>The body mass index and body fat index in children vary according to obesity and thinness. This
+                <p>The <a href="https://en.wikipedia.org/wiki/Body_mass_index" target="_blank" rel="noopener noreferrer">body mass index</a> and body fat index in children vary according to obesity and thinness. This
                   difference is due to the fat-free mass.</p>
               </nb-accordion-item-body>
             </nb-accordion-item>
@@ -210,7 +210,7 @@
                   your waist.</p>
                 <p> People with a very big waist circumference are about to have different kinds of diseases like
                   diabetes and high blood pressure. Pregnant women aren't allowed to measure their waist because their
-                  bodies are not in their normal shape.</p>
+                  bodies are not in their <a routerLink="/health/body-shape-calculator/.">normal shape</a>.</p>
               </nb-accordion-item-body>
             </nb-accordion-item>
           </nb-accordion>
@@ -238,9 +238,9 @@
             </ul>
             <div [ngClass]="{'switchTab' : switchTabs==='men' || switchTabs==='children' }">
               <div class="row mt-3 d-flex flex-md-row-reverse">
-                <div class="col-md-4 col-12">
+                <div class="col-md-4 col-12 d-flex justify-content-center">
                   <img loading="lazy" src="../../../../assets/images/undraw_personal_training_0dqn.svg"
-                    alt="BMI Calculator For Women" width="95%" height="70%">
+                    alt="BMI Calculator For Women" width="200px" height="200px">
                 </div>
                 <div class="col-md-8 col-12 px-5">
                   <p>The body mass of women is calculated by dividing the weight in kilograms by the height
@@ -254,9 +254,9 @@
             </div>
             <div [ngClass]="{'switchTab' : switchTabs==='women' || switchTabs==='children' }">
               <div class="row mt-3 d-flex flex-md-row-reverse">
-                <div class="col-md-4 col-12">
+                <div class="col-md-4 col-12 d-flex justify-content-center">
                   <img loading="lazy" src="../../../../assets/images/undraw_working_out_-6-psf.svg"
-                    alt="BMI Calculator For men" width="100%" height="60%">
+                    alt="BMI Calculator For men" width="200px" height="200px">
                 </div>
                 <div class="col-md-8 col-12 px-5">
                   <p>The Measurement of mass is not different for men and women. The difference in fat for both men
@@ -268,9 +268,9 @@
             </div>
             <div [ngClass]="{'switchTab' : switchTabs==='men' || switchTabs==='women' }">
               <div class="row mt-3 d-flex flex-md-row-reverse">
-                <div class=" col-md-4 col-12">
+                <div class=" col-md-4 col-12 d-flex justify-content-center">
                   <img loading="lazy" src="../../../../assets/images/undraw_children_re_c37f.svg"
-                    alt="BMI calculator for children" width="100%" height="60%">
+                    alt="BMI calculator for children" width="200px" height="200px">
                 </div>
                 <div class="col-md-8 col-12 px-5">
                   <p>

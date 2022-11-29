@@ -63,12 +63,12 @@ export class TimeCalculatorComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online time calculator");
+    this.titleService.setTitle("Free online Time Calculator - Time and Date Calculator");
     this.metaService.addTags([
-      { name: 'keywords', content: "time calculator,calculator time from a date, time calculation,calculate time in excel,how to calculate time,time calculation in calculator,bed time calculator,work time calculator,calculator of time,delay time calculator,time,calculator,bed time calculator for students,time calculation app,how to calculate time,takt time calculation,calculation of time,bed time calculator wake up and go to bed" },
-      { name: 'description', content: "Free online age calculator (You may subtract time (discover the time difference), multiply time, divide time, add time, and compute the duration between dates using the time and date calculator.)" },
-      { property: 'og:title', content: "Free online time calculator " },
-      { property: 'og:description', content: "Free online age calculator (You may subtract time (discover the time difference), multiply time, divide time, add time, and compute the duration between dates using the time and date calculator.)" },
+      { name: 'keywords', content: "time calculator,time and date calculator, date time calculator" },
+      { name: 'description', content: "Time calculator (You may subtract time (discover the time difference), add time, and compute the duration between dates using the time and date calculator.)" },
+      { property: 'og:title', content: "Free online Time Calculator - Time and Date Calculator" },
+      { property: 'og:description', content: "Time calculator (You may subtract time (discover the time difference), add time, and compute the duration between dates using the time and date calculator.)" },
       { property: "og:url", content: "https://body-calculator.com/calculators/time-calculator/" }
     ]);
     this.canonical.createCanonicalLink("https://body-calculator.com/calculators/time-calculator/");
@@ -76,14 +76,14 @@ export class TimeCalculatorComponent implements OnInit {
     this.schema = {
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Age calculator",
+      "name": "Time calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
       "url": "https://body-calculator.com/calculators/time-calculator/",
       "author": {
         "@type": "Person",
         "name": "SARHABIL"
       },
-      "datePublished": "2022-01-10",
+      "datePublished": "2022-11-26",
       "publisher": {
         "@type": "Organization",
         "name": "body-calculator"

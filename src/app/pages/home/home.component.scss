@@ -100,3 +100,9 @@ h2{
   font-size: 20px !important;
   font-weight: 1000;
 }
+
+@media screen and (min-width: 552px) {
+  .minHeight{
+    min-height: 300px;
+  }
+}

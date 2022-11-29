@@ -97,6 +97,12 @@ li .active {
   font-family: font(font-family-regular) !important;
   border-bottom: 6px solid color(blue-primary) !important;
 }
+.activeTab {
+  display: block !important;
+}
+.inactiveTab {
+  display: none !important;
+}
 .nav-item{
   background-color: buttonface !important;
 }

@@ -12,14 +12,14 @@
         </div>
       </div>
       <div class="row mb-3 d-flex flex-md-row-reverse">
-        <div class="col-md-5 mx-auto mb-5">
-          <img src="../../../../assets/images/undraw_healthy_habit_bh-5-w.svg" width="100%" height="100%"
+        <div class="col-md-5 mx-auto mb-5 d-flex justify-content-center align-items-center">
+          <img src="../../../../assets/images/undraw_healthy_habit_bh-5-w.svg" width="300px" height="250px"
             alt="ideal-weight-calculator">
         </div>
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-              <P class="text-white text-center font-weight-bold">Ideal Weight Calculator</P>
+              <h2 class="text-white text-center font-weight-bold">Ideal Body Weight Calculator</h2>
             </div>
             <div class="card-body example-items-col">
               <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
@@ -92,7 +92,7 @@
         </div>
         <div class="col-12">
           <app-banner *ngIf="envirement"></app-banner>
-          <!-- <span #target style="position: relative; top: -350px"></span> -->
+          <span #target style="position: relative; top: -350px"></span>
         </div>
         <div class="col-md-6 mx-auto bg-white" *ngIf="height">
           <p class="bmi text-center my-3">Your ideal weight based on popular formulas:</p>
@@ -130,13 +130,12 @@
             </tbody>
           </table>
         </div>
-        <span #target></span>
+        <!-- <span #target></span> -->
       </div>
       <app-other-calcultor-health eleminateCalculator="iwc"></app-other-calcultor-health>
 
-      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
-        Ideal Weight
-        Calculator</p>
+      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">
+        Learn more about Ideal Weight Calculator</p>
 
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
@@ -154,7 +153,7 @@
             number of important variables, such as body composition, ethnicity, race, gender and age.</p>
           <p>Medical professionals utilize BMI despite its flaws because it is a low-cost and rapid way to assess
             one's probable health status and results.</p>
-          <h2 class="text-secondary">Defining a Ideal Weight Calculator</h2>
+          <h3 class="text-secondary">Defining a Ideal Weight Calculator</h3>
           <p>As a rule of thumb, the conventional ideal weight estimate does not take into account health studies or
             demographic norms.</p>
           <ul>
@@ -169,13 +168,13 @@
             women and 22.5 for males. The study's authors propose an alternative calculation based on BMI.</p>
           <p>Results apply to both men and women, since the healthy BMI range is the same. A BMI of 22 falls somewhere
             in the center of the healthy normal weight range of 18.5 to 24.9.</p>
-          <h2 class="text-secondary">Equations for the Ideal Weight Calculator that Have Been Revised</h2>
+          <h3 class="text-secondary">Equations for the Ideal Weight Calculator that Have Been Revised</h3>
           <p>Body mass index + (BMI divided by 5) x 5 = (Height in inches minus 60)</p>
           <p>Weight in kilos = 2.2 x BMI + (3.5 x BMI) (Height in meters minus 1.5)</p>
           <p>The greater height range is the most significant change between the older and current calculations. New
             BMI equations enable women to gain a few pounds more at each height compared to earlier charts, and the
             optimal weight for women is the same as for males when using BMI.</p>
-          <h2 class="text-secondary">Why Do People Gain or Lose Weight?</h2>
+          <h3 class="text-secondary">Why Do People Gain or Lose Weight?</h3>
           <p>Having a BMI significantly over or below the healthy range is related with poor health results and
             increased death for various illnesses, whereas being underweight is associated with better health outcomes
             and lower mortality.</p>
@@ -184,23 +183,23 @@
             their bodies.</p>
           <p>Health authorities typically use your BMI, which is derived from your height and weight, to determine
             whether or not you are overweight or obese.</p>
-          <p>People with a lot of muscle mass may have a higher BMI, yet nevertheless have minimal body fat. Although
+          <p>People with a lot of muscle mass may have a higher BMI, yet nevertheless have minimal <a routerLink="/health/body-fat-percentage-calculator/.">body fat</a>. Although
             they may seem to be healthy, those who have lost muscle mass and instead replaced it with fat may have a
             BMI that is too high or too low.</p>
           <p>A healthy weight may be determined using both your BMI and your waist circumference, according to the
             Centers for Disease Control and Prevention (CDC). For non-pregnant women, a waist circumference of 35
             inches or more implies an increased risk of obesity-related diseases, according to the Centers for Disease
             Control and Prevention3.</p>
-          <h2 class="text-secondary">Other Ideal Weight Calculator</h2>
+          <h3 class="text-secondary">Other Ideal Weight Calculator</h3>
           <p>Weight and body fat levels may be measured in a variety of methods.</p>
-          <h3 class="text-secondary"><a routerLink="/health/bmi-calculator/.">Calculator for the BMI</a></h3>
+          <h4 class="text-secondary">Calculator for the BMI</h4>
           <p>Adults' BMI is not affected by their age, while children's is. This is due to their rapid expansion.
             People 2–19 years old have their BMI calculated by taking into account their chronological age and the
             gender of their fetus at the time of birth.</p>
           <p>The CDC's calculator for children and adolescents may be used to determine a child's BMI.</p>
           <p>In the CDC's BMI charts for children, the percentiles are based on comparisons between children of the
             same age and gender.</p>
-          <h3 class="text-secondary">Calculator for the BMI</h3>
+          <h4 class="text-secondary">Calculator for the BMI</h4>
           <p>The BMI is a straightforward measurement that may be done in a matter of minutes. Although it takes the
             user's height into account, it does not take into account things like:</p>
           <p>measures of the hips or waist.
@@ -224,13 +223,13 @@
             studies.</p>
           <p>This risk is exacerbated if a person has a large waist compared to their hip circumference. As a result,
             the WHR may be used to determine if a person's weight and size are in the moderate range.</p>
-          <h3 class="text-secondary"><a routerLink="/health/body-fat-percentage-calculator/.">Percentage of Body Fat</a>
-          </h3>
+          <h4 class="text-secondary"><a routerLink="/health/body-fat-percentage-calculator/.">Percentage of Body Fat</a>
+          </h4>
           <p>Your BMI is not the same as your body fat percentage. Gaining or decreasing muscle mass may be determined
             by taking this measurement. Men and women have distinct healthy weight ranges. A bioelectrical impedance
             scale, for example, may be used to quantify body fat. </p>
 
-          <h3 class="text-secondary">In addition, there are other metrics, such as</h3>
+          <h4 class="text-secondary">In addition, there are other metrics, such as</h4>
           <p>underwater weighing, or air densitometry, which measures air displacement dual-energy X-ray absorption
             bioelectrical impedance analysis hydrostatic body fat measurement
             No reading can be 100% exact, but these estimations are near enough to be useful.
@@ -241,12 +240,12 @@
             weight.</p>
           <p>Those who are concerned about their weight or body composition should see a doctor or nutritionist who
             can recommend the best course of action for them.</p>
-          <h2 class="text-secondary">Assisting in the measurement of WHR</h2>
+          <h3 class="text-secondary">Assisting in the measurement of WHR</h3>
           <p>It is important to measure oneself at the narrowest area of their waistline, which is generally right
             above the belly button, in order to determine their WHR. Once this measurement has been taken, they may
             divide it by the hip width at its widest point.</p>
           <p>If a person has a 28-inch waist and 36-inch hips, the WHR is calculated as 0.77 by dividing 28 by 36.</p>
-          <h3 class="text-secondary">In addition, there are other metrics, such as</h3>
+          <h4 class="text-secondary">In addition, there are other metrics, such as</h4>
           <p>According to a World Health Organization analysis from 2008, optimal WHR varies by sex at birth and
             ethnicity (WHO).</p>
           <p>People with a high WHR may be at greater risk of cardiovascular disease (CVD) and other illnesses
@@ -259,7 +258,7 @@
             muscle-to-fat ratio, for example, cannot be reliably calculated using this method.</p>
           <p>The waist-to-height ratio (WtHR) may be a better predictor of heart disease, diabetes, and total
             mortality than BMI.</p>
-          <h3 class="text-secondary">WtHR Calculator</h3>
+          <h4 class="text-secondary">WtHR Calculator</h4>
           <p>WtHR may be calculated by taking the circumference of the waist and multiplying it by the height of the
             subject. A result of 0.5 or less indicates that a person is of average weight.</p>
           <p>A 2014 research found that those who had a WtHR of 0.52 or higher have a greater risk of heart disease. A
@@ -273,7 +272,7 @@
           <p>The fatty tissue in the chest and belly known as "storage fat" protects the body's internal organs from
             damage and may be used as a source of energy in emergency situations.</p>
           <p>Find out more about calculating body fat percentages.</p>
-          <h2 class="text-secondary">Recommendations</h2>
+          <h3 class="text-secondary">Recommendations</h3>
           <p>There are a number of factors that might influence a person's optimum total fat percentage, including
             their body type and amount of exercise.</p>
           <p>Find out how much fat you have on your body based on your gender and age.</p>
@@ -282,33 +281,33 @@
             In contrast to DMI, WHR, and WtHR, body fat % provides a more accurate representation of a person's body
             composition.
           </p>
-          <h3 class="text-secondary">Children's and teenagers' measurements</h3>
+          <h4 class="text-secondary">Children's and teenagers' measurements</h4>
           <p>Finding a healthy weight for children and teenagers is more difficult (up to age 20). Adults' BMI
             formulas vary from those of children. Weight/(height x height) x 703 is the conventional formula for
             calculating a child's BMI.</p>
           <p>The CDC's website has a calculator for this purpose. Results are compared to a percentage chart for each
-            age group. 5 Having a body mass index (BMI) between the 5th and 85th percentiles is considered normal.
+            age group. 5 Having a <a routerLink="/health/bmi-calculator/.">body mass index</a> (BMI) between the 5th and 85th percentiles is considered normal.
             Based on age, the CDC provides a weight for height chart (in kilograms).</p>
-          <h2 class="text-secondary">Why Do Appearances Differ?</h2>
+          <h3 class="text-secondary">Why Do Appearances Differ?</h3>
           <p>The optimal weight for your height does not ensure that you will appear the same as someone of the same
             weight and height. At the same weight and height, there are a variety of elements that influence how
             different persons seem.</p>
-          <h3 class="text-secondary">Muscle mass.</h3>
+          <h4 class="text-secondary">Muscle mass.</h4>
           <p>You will look different if you have a lot of lean body mass (muscles, not fat) instead of a lot of fat.
           </p>
-          <h3 class="text-secondary">Proportions</h3>
+          <h4 class="text-secondary">Proportions</h4>
           <p>The proportions of a person vary from person to person. Some individuals are taller in the torso and
             shorter in the legs, while others are the opposite. No matter how much you weigh, a short woman can never
             have an hourglass body or waist that is nipped in.</p>
-          <h3 class="text-secondary"><a routerLink="/health/body-shape-calculator/.">The shape of the Body</a></h3>
-          <p>Women's body shapes were examined in the SizeUSA research, which was released in 2004. Nearly half of the
+          <h4 class="text-secondary">The shape of the Body</h4>
+          <p>Women's <a routerLink="/health/body-shape-calculator/.">body shapes</a> were examined in the SizeUSA research, which was released in 2004. Nearly half of the
             women had waists that were less than 9 inches smaller than their hips or bust. 20% had a pear-shaped
             physique, and 14% had an inverted triangle figure, with the breast larger than the hips.</p>
           <p>Only 8% of women had what is known as an "hourglass figure," in which the hips and breast are the same
             size but the waist is thin. The fashion industry, on the other hand, tends to favor hourglass figures. 6
           </p>
           <p>Ectomorphs, endomorphs, and mesomorphs are the three most common male body types.</p>
-          <h3 class="text-secondary">In this case, we are referring to the age</h3>
+          <h4 class="text-secondary">In this case, we are referring to the age</h4>
           <p>As you get older, your body's makeup changes. Puberty brings about significant changes in body form due
             to the effects of male and female hormones. During menopause, the body's hormone balance shifts once
             again, and where fat is stored may shift as well. People have to work harder to retain muscle mass as they
@@ -316,7 +315,7 @@
           <p>As a result, when it comes to establishing weight and height goals, it may be useful to observe what
             other individuals look like at your current weight and height. MyBodyGallery.com is one of several
             internet galleries where readers may publish their photos.</p>
-          <h2 class="text-secondary">From the Mouths of Verywell</h2>
+          <h3 class="text-secondary">From the Mouths of Verywell</h3>
           <p>
             In order to have a healthy physique, you don't have to worry about meeting a set figure. If you're feeling
             disheartened because you're focusing too much on the scale, take positive measures instead. To keep your
