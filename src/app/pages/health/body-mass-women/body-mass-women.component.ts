@@ -15,11 +15,11 @@ export class BodyMassWomenComponent implements OnInit {
   constructor(private router: Router, private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService) { }
   ngOnInit(): void {
     this.href = this.router.url;
-    this.titleService.setTitle("Body-calculator - body mass index (BMI) calculator for women");
+    this.titleService.setTitle("Free online Body Mass Index BMI Calculator Women");
     this.metaService.addTags([
       { name: 'keywords', content: "bmi calculator women, bmi calculator by age, children's bmi calculator, bmi calculator for women, bmi calculator children, bmi calculator women age, bmi calculator kg, bmi calculator for women, womens bmi calculator, bmi calculator adults" },
-      { name: 'description', content: "Free tool allows you to use bmi calculator women and more (bmi calculator for women, body mass index for women)" },
-      { property: 'og:title', content: "Body-calculator - body mass index (BMI) calculator for women" },
+      { name: 'description', content: "Free tool allows you to use BMI calculator women (BMI calculator for women, Body Mass Index for Women)" },
+      { property: 'og:title', content: "Free online Body Mass Index BMI Calculator Women" },
       { property: 'og:description', content: "Free tool allows you to use bmi calculator women and more (bmi calculator for women, body mass index for women)" },
       {property: "og:url", content: "https://body-calculator.com/health/bmi-calculator-women/"}
     ]);

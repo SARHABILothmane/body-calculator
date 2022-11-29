@@ -40,6 +40,16 @@
                         "textInHref": "Healthy Weight Calculator",
                         "description": "This calculator computes your healthy body weight range based on your height. It is more accurate for adults aged from 18 to more older.",
                         "url": "/health/healthy-weight-calculator/."
+                    },
+                    {
+                        "name": "Body Mass Index Women",
+                        "textInHref": "Body Mass Index BMI Calculator for Women",
+                        "url": "/health/bmi-calculator-women/."
+                    },
+                    {
+                        "name": "Body Mass Index Men",
+                        "textInHref": "Body Mass Index Calculator for Men",
+                        "url": "/health/bmi-calculator-men/."
                     }
                 ]
             },
@@ -50,7 +60,7 @@
                     "urlAndDescriptions": [
                         {
                             "name": "Random Number Generator",
-                            "textInHref": "Random number generator",
+                            "textInHref": "Random Number Generator",
                             "description": "With this calculator you can  get a random, cryptographically safe number. It can generate random numbers which can be used for determining who will go first in a game",
                             "url": "/math/random-number-generator/."
                         },
@@ -94,8 +104,14 @@
                     {
                         "name": "Date Calculator",
                         "textInHref": "Date Calculator",
-                        "description": "With the date calculator you can compute the period Between Two Dates. You can Find years, months, and Even days between two dates. ",
+                        "description": "With the date calculator you can compute the period Between Two Dates. You can Find years, months, and Even days between two dates.",
                         "url": "/calculators/date-calculator/."
+                    },
+                    {
+                        "name": "Time Calculator",
+                        "textInHref": "Time Calculator",
+                        "description": "It calculates the amount of time between times on 2 different dates. Use the time calculator to add or subtract time, even days, hours, minutes, seconds from the starting time and date.",
+                        "url": "/calculators/time-calculator/."
                     }
                 ]
             }

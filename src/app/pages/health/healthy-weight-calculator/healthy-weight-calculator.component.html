@@ -12,8 +12,8 @@
         </div>
       </div>
       <div class="row mb-5">
-        <div class="col-md-4 offset-md-1 d-flex justify-content-center">
-          <img src="../../../../assets/images/undraw_pilates_gpdb.svg" width="100%" height="90%"
+        <div class="col-md-4 offset-md-1 d-flex justify-content-center align-items-center mb-3">
+          <img src="../../../../assets/images/undraw_pilates_gpdb.svg" width="300px" height="200px"
             alt="Healthy weight calculator">
         </div>
 
@@ -64,7 +64,7 @@
         </div>
         <div class="col-12">
           <app-banner *ngIf="envirement"></app-banner>
-          <!-- <span #target style="position: relative; top: -350px"></span> -->
+          <span #target style="position: relative; top: -350px"></span>
         </div>
 
         <div class="col-md-4 mt-3 mx-auto" *ngIf="height">
@@ -77,7 +77,7 @@
             </p>
           </div>
         </div>
-        <span #target></span>
+        <!-- <span #target></span> -->
         <div class="col-12 mt-3">
           <app-other-calcultor-health eleminateCalculator="hwc"></app-other-calcultor-health>
         </div>
@@ -86,8 +86,7 @@
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
         healthy weight calculator</p>
       <div class="row border shadow bg-white p-3 mb-4">
-        <h2 class="text-secondary mt-4"><a href="https://en.wikipedia.org/wiki/Human_body_weight" target="_blank"
-            rel="noopener noreferrer">Healthy Weight Calculator</a></h2>
+        <h2 class="text-secondary mt-4">Healthy Weight Calculator</h2>
         <p>
           BMI is used to define a good weight level. BMI-based weight categories are established by height, and the
           calculator employs common methods to estimate the range of probable body weights that fit inside each
@@ -111,7 +110,8 @@
           medical disorders that are related with being underweight.</p>
         <p>Underweight people have death rates that are equivalent to severely obese people. Even though these death
           rates are impacted by illness-related weight loss, being underweight may not have considerably higher
-          mortality rates than being of healthy weight in the absence of underlying disease.</p>
+          mortality rates than being of <a href="https://en.wikipedia.org/wiki/Human_body_weight" target="_blank"
+          rel="noopener noreferrer">healthy weight</a> in the absence of underlying disease.</p>
         <!-- <br> -->
         <p>Being underweight may create a host of additional problems, including a lack of energy or endurance,
           osteoporosis, and a weak immune system that makes a person more vulnerable to infection.</p>

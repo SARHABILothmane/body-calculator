@@ -43,12 +43,12 @@ export class BodyShapeCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online body shape calculator - what body shape calculator");
+    this.titleService.setTitle("Free online Body Shape Calculator - what Body Shape Calculator");
     this.metaService.addTags([
       { name: 'keywords', content: "body shape calculator, body figure, body type calculator, body shape calculator female,  hourglass figure measurements" },
-      { name: 'description', content: "Free online body shape calculator tool ( body shape calculator female, body type calculator, what body shape calculator )" },
-      { property: 'og:title', content: "Free online body shape calculator - what body shape calculator" },
-      { property: 'og:description', content: "Free online body shape calculator tool ( body shape calculator female, body type calculator, what body shape calculator )" },
+      { name: 'description', content: "Free online Body Shape Calculator tool ( Body Shape Calculator Female, Body Type Calculator, What Body Shape Calculator )" },
+      { property: 'og:title', content: "Free online Body Shape Calculator - what Body Shape Calculator" },
+      { property: 'og:description', content: "Free online Body Shape Calculator tool ( Body Shape Calculator Female, Body Type Calculator, What Body Shape Calculator )" },
       { property: "og:url", content: "https://body-calculator.com/health/body-shape-calculator/" }
     ]);
     this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/body-shape-calculator/");

@@ -2,11 +2,10 @@
   <h1>Date and time calculators</h1>
   <p>The following is a complete list of our date and time related calculators.</p>
   <div class="mb-5">
-    <a routerLink="/calculators/age-calculator/." class="d-block mb-2">Age Calculator</a>
-    <a routerLink="/calculators/date-calculator/." class="d-block mb-2">Date Calculator</a>
-    <!-- <a routerLink="/calculators/time-calculator/." class="d-block mb-2">Time Calculator</a> -->
-    <a routerLink="/calculators/pregnancy-date-calculator/." class="d-block mb-2">Pregnancy Date Calculator</a>
-
-    <!-- <a routerLink="/health/ideal-weight-calculator/." class="d-block mb-2">Ideal Body Weight Calculator</a> -->
+    <ul>
+      <li *ngFor="let item of urlDescription">
+        <a  routerLink="{{item.url}}" class="d-block mb-2">{{item.textInHref}}</a>
+      </li>
+    </ul>
   </div>
 </section>

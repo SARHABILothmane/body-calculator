@@ -15,7 +15,7 @@
               [ngClass]="{'active' : switchTabs==='Imperial' }">Imperial</button>
           </li>
         </ul>
-        <div class="metric" *ngIf="switchTabs==='Metric'">
+        <div class="metric" [ngClass]="{'inactiveTab' : switchTabs==='Imperial', 'activeTab' : switchTabs==='Metric' }">
           <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
             <span>
               {{error}}
@@ -54,7 +54,7 @@
             <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
           </form>
         </div>
-        <div class="imperial" *ngIf="switchTabs==='Imperial'">
+        <div class="imperial" [ngClass]="{'activeTab' : switchTabs==='Imperial', 'inactiveTab' : switchTabs==='Metric' }">
           <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
             <span>
               {{error}}
@@ -62,8 +62,8 @@
           </div>
           <form [formGroup]="calculeFormImperial" (ngSubmit)="claculteBmiImperiale(target)">
             <div class="mb-3">
-              <label for="Age">Age</label>
-              <input id="Age" class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
+              <label for="AgeImperial">Age</label>
+              <input id="AgeImperial" class="form-control" type="number" nbInput fullWidth formControlName="age" status="basic"
                 placeholder="Age" [(ngModel)]="modelsBmi.age">
               <small class="text-danger" *ngIf="submitted && formBmiImeprial['age'].errors?.['required']">Age is
                 required.
@@ -84,10 +84,10 @@
             <div class="mb-3 ">
               <div class="d-flex justify-content-between">
                 <div>
-                  <label for="Height">Height<em class=""> : Feet</em></label>
+                  <label for="HeightImperial">Height<em class=""> : Feet</em></label>
                   <!-- <input type="number" nbInput formControlName="hFeet" fullWidth status="basic" placeholder="feet"
                       [(ngModel)]="modelsBmi.heightImperial" (ngModelChange)="onChange($event)"> -->
-                  <input id="Height" class="form-control" type="number" nbInput formControlName="hFeet" fullWidth
+                  <input id="HeightImperial" class="form-control" type="number" nbInput formControlName="hFeet" fullWidth
                     status="basic" placeholder="feet" (value)="calculateHeightImperial(modelsBmi.heightImperial)">
 
                   <small class="text-danger" *ngIf="submitted && formBmiImeprial['hFeet'].errors?.['required']">Height
@@ -108,8 +108,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="Weight">Weight <em class="" *ngIf="modelsBmi.weightImperial"> : Pounds</em></label>
-              <input id="Weight" class="form-control" type="number" nbInput formControlName="weightImperial" fullWidth
+              <label for="WeightImperial">Weight <em class="" *ngIf="modelsBmi.weightImperial"> : Pounds</em></label>
+              <input id="WeightImperial" class="form-control" type="number" nbInput formControlName="weightImperial" fullWidth
                 status="basic" placeholder="Pounds" [(ngModel)]="modelsBmi.weightImperial">
               <small class="text-danger" *ngIf="submitted && formBmiImeprial['weightImperial'].errors?.['required']">
                 Weight is required !</small>
@@ -120,11 +120,12 @@
       </div>
     </div>
   </div>
+  
   <div class="col-12">
     <app-banner *ngIf="envirement"></app-banner>
-    <!-- <span #target style="position: relative; top: -350px"></span> -->
+    <span #target style="position: relative; top: -350px"></span>
   </div>
-  <!-- <span #target></span> -->
+
   <div *ngIf="bmi" class="col-md-6 col-11 bg-white">
     <!-- <div class="d-flex justify-content-center align-items-center" > -->
     <!-- <div class="my-2">
@@ -229,5 +230,5 @@
       </tbody>
     </table>
   </div>
-  <span #target style="position: relative; top: -100px"></span>
+  <!-- <span #target style="position: relative; top: -100px"></span> -->
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { InlineShareButtonsConfig } from 'sharethis-angular';
 
 const inlineShareButtonsConfig: InlineShareButtonsConfig = {
@@ -25,8 +26,7 @@ const inlineShareButtonsConfig: InlineShareButtonsConfig = {
 
 @Component({
   selector: 'app-other-calcultor-math',
-  templateUrl: './other-calculator-math.component.html',
-  styleUrls: ['./other-calculator-math.component.scss']
+  templateUrl: './other-calculator-math.component.html'
 })
 export class OtherCalcultorMathComponent implements OnInit {
   inlineShareButtonsConfig = inlineShareButtonsConfig;
@@ -34,7 +34,32 @@ export class OtherCalcultorMathComponent implements OnInit {
   @Input() eleminateCalculator: any;
   otherCalculators: string = "";
   goToOtherPage: any;
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe( params => 
+      {
+        setTimeout(() => {
+          const arrowTwo = document.getElementById('arrowTwo'); 
+          const arrow = document.getElementById('arrow'); 
+
+          arrow?.animate([
+            {left: '0'},
+            {left: '10px'},
+            {left: '0'}
+          ],{
+            duration: 700,
+            iterations: Infinity
+          });
+
+          arrowTwo?.animate([
+            {left: '0'},
+            {left: '10px'},
+            {left: '0'}
+          ],{
+            duration: 700,
+            iterations: Infinity
+          });
+        }, 2000);
+    });
   }
 
 
@@ -56,7 +81,7 @@ export class OtherCalcultorMathComponent implements OnInit {
     this.arrayOtherCalculators = [
       { 'title': 'Binary Calculator', 'url': '/math/binary-calculator/.', 'code': 'bc' },
       { 'title': 'Random Number Generator', 'url': '/math/random-number-generator/.', 'code': 'rng' },
-      { 'title': 'Hex Calculator', 'url': '/math/hex-calculator/.', 'code': 'hex' },
+      { 'title': 'Hex Calculator', 'url': '/math/hex-calculator/.', 'code': 'hc' },
       { 'title': 'Percentage Calculator', 'url': '/math/percentage-calculator/.', 'code': 'pc' },
       { 'title': 'Percentage Error Calculator', 'url': '/math/percent-error-calculator/.', 'code': 'pec' },
     ];
@@ -76,5 +101,13 @@ export class OtherCalcultorMathComponent implements OnInit {
       // this.otherCalculators +=    '</div>';
       this.otherCalculators += '</div>';
     });
+  }
+
+  ngOnDestroy() {
+    this.arrayOtherCalculators = [];
+    this.otherCalculators = "";
+    this.inlineShareButtonsConfig = {networks: []};
+    this.goToOtherPage = "";
+    this.eleminateCalculator = "";
   }
 }

@@ -6,7 +6,7 @@
           [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Fat Percentage Calculator', itemUrl: 'health/body-fat-percentage-calculator/.'}">
         </app-breadcrumbs>
         <div class="col-12">
-          <h1 class="text-secondary text-center">Body Fat Percentage BFP Calculator</h1>
+          <h1 class="text-secondary text-center">Body Fat Percentage Calculator</h1>
           <div class="flexMobile">
             <app-banner *ngIf="envirement"></app-banner>
           </div>
@@ -19,7 +19,7 @@
           <div class="col-md-6 mt-4">
             <div class="card">
               <div class="card-header">
-                <P class="text-white text-center font-weight-bold">Body Fat Percentage Calculator</P>
+                <h2 class="text-white text-center font-weight-bold">Body Fat Calculator</h2>
               </div>
               <div class="card-body example-items-col">
                 <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
@@ -125,9 +125,9 @@
             </div>
             <div class="col-12">
               <app-banner *ngIf="envirement"></app-banner>
-              <!-- <span #target style="position: relative; top: -350px"></span> -->
+              <span #target style="position: relative; top: -350px"></span>
             </div>
-            <div #target></div>
+            <!-- <div #target></div> -->
             <div class="mt-2" *ngIf="bmi">
               <div class="border p-4 bg-white">
                 <p class="text-center font-weight-bold" style="font-size: 30px;">Body Parameters</p>
@@ -228,9 +228,9 @@
           </div>
         </div>
 
-        <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
-          Body Fat
-          Percentage Calculator</p>
+        <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">
+          Learn more about Body Fat Percentage Calculator
+        </p>
 
         <div class="row border shadow bg-white my-4">
           <div class="col-md-12 mx-2 my-4">
@@ -250,12 +250,12 @@
             </p>
             <p>
               A lower percentage indicates a person is in better shape and has a lower risk of developing these health
-              problems. There are many ways to measure body fat percentage, including using a scale that measures
+              problems. There are many ways to measure good body fat percentage, including using a scale that measures
               electrical
               impedance, or by using calipers to measure the thickness of the skinfold at various points on the body.
             </p>
 
-            <h2 class="text-secondary">Body fat percentage female</h2>
+            <h3 class="text-secondary">Body fat percentage female</h3>
             <p>
               A healthy body fat percentage for women is considered to be between 21 and 24 percent. Anything above that
               is
@@ -273,7 +273,7 @@
               fat mass by your total body weight.
             </p>
 
-            <h2 class="text-secondary">Body fat percentage men</h2>
+            <h3 class="text-secondary">Body fat percentage men</h3>
 
             <p>
               According to the National Institutes of Health, the average body fat percentage for adult men is 18-24%.
@@ -300,20 +300,18 @@
             </p>
 
             <p>
-              There are many ways to measure body fat percentage, from simple methods like using a tape measure to more
+              There are many ways to measure <a href="https://en.wikipedia.org/wiki/Body_fat_percentage" target="_blank" rel="noopener noreferrer">body fat percentage</a>, from simple methods like using a tape measure to more
               sophisticated techniques such as underwater weighing or DEXA scanning.
             </p>
 
-            <h2 class="text-secondary">What do fats do to your body?</h2>
+            <h3 class="text-secondary">What do fats do to your body?</h3>
             <p>
               Fats are an integral part of our diet. They give us energy, are utilized in cells' growth and are
               transformed
               into vital hormones.</p>
             <p>Fat tissues safeguard organs from physical injury and provide the insulation we need. </p>
             <p> A large number of fatty tissues could create new pathways for developing diseases. </p>
-            <h2 class="text-secondary">How do you determine the <a
-                href="https://en.wikipedia.org/wiki/Body_fat_percentage" target="_blank" rel="noopener noreferrer">body
-                fat percentage</a>?</h2>
+            <h3 class="text-secondary">How do you determine the body fat percentage?</h3>
             <p>You can determine the body's composition by using our calculator for body fat percentage. Be aware that
               no
               calculator, no matter how complicated, will never substitute a visit to an office of a doctor.</p>
@@ -421,7 +419,7 @@
                 </tbody>
               </table>
             </div>
-            <h2 class="text-secondary">Body fat is the ideal percentage of body fat for males.</h2>
+            <h3 class="text-secondary">Body fat is the ideal percentage of body fat for males.</h3>
             <p>The general rule is that men have a lower body fat-to-ratio of lean tissues than females, which is the
               reason
               for the variations in the proportions.</p>
@@ -490,12 +488,12 @@
                 </tbody>
               </table>
             </div>
-            <h2 class="text-secondary">Problems with calculation</h2>
+            <h3 class="text-secondary">Problems with calculation</h3>
             <p>If you view BMI and body fat measurements as the only tools to keep track of your progress, you might not
               be
               obsessed with the results.</p>
             <p>Also, compelled by the desire to lower a specific number, you could be motivated to improve your overall
-              health by feeding your body healthy foods and incorporating some <a rel="noopener"
+              health by feeding your body healthy foods and incorporating some <a
                 href="https://en.wikipedia.org/wiki/Fitness" target="_blank" rel="noopener noreferrer">fitness</a> into
               your routine.</p>
             <p>This mentality can help to accept and understand the limitations and issues associated with BMI and body

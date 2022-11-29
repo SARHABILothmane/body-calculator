@@ -50,12 +50,12 @@ export class IdealWeightCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online ideal weight calculator (average weight calculator)");
+    this.titleService.setTitle("Free online Ideal Weight Calculator (Average Weight Calculator)");
     this.metaService.addTags([
       { name: 'keywords', content: "average weight calculator, ideal weight calculator, ideal body weight calculator, body weight ideal" },
-      { name: 'description', content: "Free online ideal weight calculator (ideal body weight calculator, body weight ideal, average weight calculator)" },
-      { property: 'og:title', content: "Free online ideal weight calculator (average weight calculator)" },
-      { property: 'og:description', content: "Free online ideal weight calculator (ideal body weight calculator, body weight ideal, average weight calculator)" },
+      { name: 'description', content: "Free online Ideal Weight Calculator (Ideal Body Weight Calculator, Body Weight Ideal, Average Weight Calculator)" },
+      { property: 'og:title', content: "Free online Ideal Weight Calculator (Average Weight Calculator)" },
+      { property: 'og:description', content: "Free online Ideal Weight Calculator (Ideal Body Weight Calculator, Body Weight Ideal, Average Weight Calculator)" },
       { property: "og:url", content: "https://body-calculator.com/health/ideal-weight-calculator/" }
     ]);
     this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/ideal-weight-calculator/");
