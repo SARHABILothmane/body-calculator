@@ -8,7 +8,7 @@
         <!-- <p class="text-uppercase mb-0 pres">Vous etes prêt à apprendre ?</p> -->
         <h1 class="text-secondary text-center">Hours Calculator</h1>
         <div class="flexMobile">
-          <app-banner *ngIf="envirement"></app-banner>
+          <!-- <app-banner *ngIf="envirement"></app-banner> -->
         </div>
       </div>
       <div class="row">
@@ -27,12 +27,8 @@
               <form [formGroup]="calculeHours" (ngSubmit)="CalculateHours(target)">
                 <div class="row my-2">
                   <label for="startTime">Start time</label>
-                  <!-- <input class="form-control" nbInput fullWidth [nbTimepicker]="timepicker" formControlName="startTime">
-                  <nb-timepicker #timepicker></nb-timepicker> -->
-                  <input [nbTimepicker]="timepicker" twelveHoursFormat>
+                  <input class="form-control" nbInput fullWidth [nbTimepicker]="timepicker" formControlName="startTime">
                   <nb-timepicker #timepicker></nb-timepicker>
-                  <!-- <input id="Hour" class="form-control" type="text" placeholder="startTime |  date:'mediumTime'"
-                    formControlName="startTime"> -->
                 </div>
                 <div class="row my-2">
                   <label for="startTime">End time</label>
@@ -103,27 +99,17 @@
         </div>
         <span #target style="position: relative; top: 200px;"></span>
 
-        <div class="row mt-4">
-          <div class="col-12">
-            <p>Or <em>{{hours}} hours</em></p>
-            <p>Or <em>{{minute}} minutes</em></p>
-            <p>Or <em>{{second}} seconds</em></p>
-          </div>
-        </div>
+
 
         <div class="d-flex align-items-center col-md-6 w-100 my-3 offset-md-3 px-3" *ngIf="resultTimeSecondCalculator">
           <div class="border shadow bg-white p-2 mx-auto" style="height:200px ;">
 
-            <div class="my-2">
-              <p class="text-secondary bolder d-block">The result after add
-                <em>{{this.calculeAddOrSubTime.value.rsltDay}}</em> day(s),
-                <em>{{this.calculeAddOrSubTime.value.rsltHour}}</em> hour(s),
-                <em>{{this.calculeAddOrSubTime.value.rsltMinute}}</em> minut(s) and
-                <em>{{this.calculeAddOrSubTime.value.rsltSecond}}</em> second(s):
-              </p>
-              <p class="font-weight-bold d-block">
-                <em>{{resultTimeSecondCalculator | date:'MMM d, y, HH:mm:ss'}}</em>
-              </p>
+            <div class=" mt-4">
+              <div class="col-12">
+                <p>Or <em>{{hours}} hours</em></p>
+                <p>Or <em>{{minute}} minutes</em></p>
+                <p>Or <em>{{second}} seconds</em></p>
+              </div>
             </div>
             <div class="col-md-6 mx-auto">
               <label for="rslt"></label>
@@ -150,82 +136,12 @@
               <h2 class="text-white">Time Calculator</h2>
             </div>
             <div class="card-body example-items-col">
-              <form [formGroup]="calculeTime" (ngSubmit)="CalculateTime()">
-                <div class="row my-2">
-                  <div class="col-3 pl-2 pr-2"><label for="days">Day</label>
-                    <input id="days" class="form-control" type="number" placeholder="Day" formControlName="day">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="hoursTime">Hour</label>
-                    <input id="hoursTime" class="form-control" type="number" placeholder="Hour" formControlName="hour">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="minuteTime">Minute</label>
-                    <input id="minuteTime" class="form-control" type="number" placeholder="Minute"
-                      formControlName="minute">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"> <label for="secondTime">Second</label>
-                    <input id="secondTime" class="form-control" type="number" placeholder="Second"
-                      formControlName="second">
-                  </div>
-                </div>
-                <div class="d-flex justify-content-center">
-                  <div class="mt-4"><label for="Date end">Add or Subtract :</label></div>
-                  <div class="col-3 mt-3  mb-3">
-                    <label for="addOrSub"></label>
-                    <nb-select id="addOrSub" placeholder="Select" status="basic" shape="semi-round"
-                      (selectedChange)="checkedTime($event)" selected="add" required>
-                      <nb-option value="add">+</nb-option>
-                      <nb-option value="substract">_</nb-option>
-                    </nb-select>
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col-3 pl-2 pr-2"><label for="dayT">Day</label>
-                    <input id="dayT" class="form-control" type="number" placeholder="Day" formControlName="dayAddSub">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="HourT">Hour</label>
-                    <input id="HourT" class="form-control" type="number" placeholder="Hour"
-                      formControlName="hourAddSub">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="MinuteT">Minute</label>
-                    <input id="MinuteT" class="form-control" type="number" placeholder="Minute"
-                      formControlName="minuteAddSub">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="SecondT">Second</label>
-                    <input id="SecondT" class="form-control" type="number" placeholder="Second"
-                      formControlName="secondAddSub">
-                  </div>
-                </div>
 
-                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
-                <p class="rslt text-center mt-4">Result</p>
-                <div class="row my-3">
-                  <div class="col-3 pl-2 pr-2">
-                    <label for="rsltDay"></label>
-                    <input id="rsltDay" class="form-control" type="number" placeholder="day" formControlName="rsltDay"
-                      [(ngModel)]="modelsTime.day">
-                  </div>
-                  <div class="col-3 pl-2 pr-2">
-                    <label for="rsltHour"></label>
-                    <input id="rsltHour" class="form-control" type="number" placeholder="hour"
-                      formControlName="rsltHour" [(ngModel)]="modelsTime.hour">
-                  </div>
-                  <div class="col-3 pl-2 pr-2">
-                    <label for="rsltMinute"></label>
-                    <input id="rsltMinute" class="form-control" type="number" placeholder="minute"
-                      formControlName="rsltMinute" [(ngModel)]="modelsTime.minute">
-                  </div>
-                  <div class="col-3 pl-2 pr-2">
-                    <label for="rsltSecond"></label>
-                    <input id="rsltSecond" class="form-control" type="number" placeholder="second"
-                      formControlName="rsltSecond" [(ngModel)]="modelsTime.second">
-                  </div>
-                </div>
-              </form>
             </div>
           </div>
         </div>
         <div class="col-12">
-          <app-banner *ngIf="envirement"></app-banner>
+          <!-- <app-banner *ngIf="envirement"></app-banner> -->
         </div>
         <!-- <div #target></div> -->
       </div>
