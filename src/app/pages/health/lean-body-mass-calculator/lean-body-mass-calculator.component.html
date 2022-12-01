@@ -11,14 +11,17 @@
             <!-- <app-banner *ngIf="envirement"></app-banner> -->
           </div>
           <p class="hero-subtitle col-md-9 col-12 mx-auto">
-            The Lean Body Mass Calculator computes a person's estimated lean body mass (LBM) based on body weight,
-            height, gender, and age. For comparison purposes, the calculator provides the results of multiple formulas.
+            Your total weight less your weight from body fat is your lean body mass. In essence, your lean body mass may
+            be calculated by deducting the weight that comes from fat (your body fat percentage) from your overall
+            weight.
           </p>
         </div>
         <div class="row d-flex justify-content-center">
           <div class="col-md-6 mt-4">
             <div class="card">
-              <div class="card-header text-white text-center font-weight-bold">Lean Body Mass Calculator</div>
+              <div class="card-header">
+                <h2 class="text-white text-center font-weight-bold">Lean Body Mass Calculator</h2>
+              </div>
               <div class="card-body example-items-col">
                 <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
                   <span>
@@ -178,17 +181,255 @@
 
         <div class="row border shadow bg-white my-4">
           <div class="col-md-12 mx-2 my-4">
-            <h2 class="text-secondary">Problems with calculation</h2>
-            <p>If you view BMI and body fat measurements as the only tools to keep track of your progress, you might not
-              be
-              obsessed with the results.</p>
-            <p>Also, compelled by the desire to lower a specific number, you could be motivated to improve your overall
-              health by feeding your body healthy foods and incorporating some <a rel="noopener"
-                href="https://en.wikipedia.org/wiki/Fitness" target="_blank" rel="noopener noreferrer">fitness</a> into
-              your routine.</p>
-            <p>This mentality can help to accept and understand the limitations and issues associated with BMI and body
-              fat
-              percentages.</p>
+            <p>Your total weight less your weight from body fat is your lean body mass. In essence, your lean body mass
+              may be calculated by deducting the weight that comes from fat <a rel="noopener"
+                href="https://body-calculator.com/health/body-fat-percentage-calculator/" target="_blank"
+                rel="noopener noreferrer">(your body fat percentage)</a> from your overall weight.</p>
+            <p>Those who want to reduce weight can sustain their fat-only weight reduction by being aware of this. If
+              you can reduce your total weight while maintaining your lean body mass, you'll know that you're simply
+              shedding fat and not, as is frequently the case, muscle or bone density.</p>
+            <p>As an alternative, those who desire to gain muscle mass should increase their lean mass at the same rate
+              as their overall weight. This will demonstrate to them that despite their overall weight rise, they are
+              not adding any additional body fat.</p>
+            <p>It's common to need to know your body fat % in order to calculate your lean body mass, but we'll go
+              through various techniques below where this isn't necessary. Although we will go through them all in a
+              moment, certain techniques of calculating lean body mass are more precise than others, while some are more
+              user-friendly.</p>
+            <h3 class="text-secondary">what model of lean body mass is used?</h3>
+            <p>Lean body mass can be determined in one of two methods. Accessibility and accuracy are frequently
+              trade-offs, with the most precise techniques being out of the reach of the majority of individuals.</p>
+            <h4>1. Using your weight and height</h4>
+            <p>This is conceivably the easiest and most basic method of calculating your lean body mass. You may use a
+              straightforward calculation that only requires your height and weight. Use the following equations with
+              all weights in kilograms and all heights in centimeters.</p>
+            <p>Lean body mass for males is equal to <strong>(0.33929 + 0.32810) W + 29.5336 H.</strong></p>
+            <p>Lean body mass for women is equal to <strong>(0.29569 W) + (0.41813 H) 43.2933.</strong></p>
+            <p>It should be emphasized that while this will be highly wrong, it could serve as a good starting point for
+              a rule of thumb or best guess.
+              You may always use an online lean body mass calculator like the one below for a simplified version of
+              this.
+            </p>
+            <h4>2. Using your body fat percentage</h4>
+            <p>As previously discussed, you may calculate your lean body mass using your body fat %. To convert your
+              percentage of body fat to a decimal, divide it by 100. After that, increase this figure by your overall
+              weight.</p>
+            <p>For instance, multiply 80 by 0.15 if you are 80 kg and you know your body fat percentage is 15%. This is
+              the weight of your fat (800 x 0.15 = 12kg). To get your lean body mass, just deduct this from your overall
+              weight. Lean body mass is 80 - 12 = 68kg in this case.</p>
+            <p>Identifying your body fat percentage is the most challenging aspect of this. All of the methods listed
+              below will help you achieve this, but they all include the trade-off noted earlier: typically, the more
+              precise an approach is, the less accessible it is to most individuals.
+              The following are some ways to calculate your body fat percentage:
+            </p>
+            <h5 class="text-secondary">Skinfold evaluation</h5>
+            <p>Apply skin-fold calipers to various parts of your body. You will pinch the skin to gauge its thickness,
+              then enter these figures into a calculator or conversion table to get the lean body mass.
+              Your neighborhood gym's personal trainers are likely well-versed in this method. Although it is not the
+              most precise approach, it is simple, largely consistent, and trustworthy.
+            </p>
+            <h5 class="text-secondary">Scale of bioelectrical impedance</h5>
+            <p>Once more, your neighborhood gym could have this feature. A set of weighs with electrodes that you step
+              on or hold in your hands to deliver a mild electrical current through your body is known as a
+              bioelectrical scale. They will tell you all you need to know since muscle and fat conduct electricity in
+              distinct ways. Although they are not always correct, they are secure (other factors, like hydration, can
+              sometimes skew readings).</p>
+            <h5 class="text-secondary">High-rate weighing</h5>
+            <p>Here, things start to get highly precise and quite difficult to reach. In hydrostatic weighing, the
+              difference between your weight on land and underwater is compared. The proportion of your body fat can
+              then be determined by a professional.
+              It's still very dependable, but it can be expensive, requires a lot of specialized equipment, and isn't
+              something you can do at your neighborhood gym.
+            </p>
+            <h3 class="text-secondary">Lean body mass reference standards</h3>
+            <p>Leanness guidelines have been developed as a result of research on certain demographics. The reference
+              man's minimum lean mass (61.7 kg) contains 3% of necessary body fat. Marathon runners are capable of
+              achieving 1% body fat. The lower limit for the reference lady is around 12% necessary fat for females.
+              Rarely do even the leanest women have body fat levels below 10-12%.</p>
+            <p>The most practical reference values in practise employ the lean mass index as a measure of lean body mass
+              scaled for height. The tables below offer a collection of these values. Remember that a body is slimmer if
+              the LMI is higher. Larger lean body mass naturally corresponds to both a lower body fat percentage and
+              greater muscle per unit of body weight. Additionally, utilising a more accurate version of these
+              statistics, our lean mass calculator automatically calculates and produces the reference percentile.</p>
+            <h6 class="text-secondary font-weight-bold">Lean body mass index reference values for Caucasian men :</h6>
+            <table class="col-10 mx-auto table bg-white msg">
+              <thead class="bg-secondary">
+                <tr>
+                  <th scope="col">Age group / LMI Percentile</th>
+                  <th scope="col">20-th percentile</th>
+                  <th scope="col">50-th percentile</th>
+                  <th scope="col">80-th percentile</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">
+                    20-39 years
+                  </td>
+                  <td>
+                    17.7
+                  </td>
+                  <td>
+                    19.4
+                  </td>
+                  <td>
+                    21.8
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">
+                    40-59 years
+                  </td>
+                  <td>
+                    17.3
+                  </td>
+                  <td>
+                    19.0
+                  </td>
+                  <td>
+                    21.8
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">
+                    60-79 years
+                  </td>
+                  <td>
+                    17.0
+                  </td>
+                  <td>
+                    18.0
+                  </td>
+                  <td>
+                    20.6
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h6 class="text-secondary font-weight-bold"> Lean body mass index reference values for Caucasian women :
+            </h6>
+            <table class="col-10 mx-auto table bg-white msg">
+              <thead class="bg-secondary">
+                <tr>
+                  <th scope="col">Age group / LMI Percentile</th>
+                  <th scope="col">20-th percentile</th>
+                  <th scope="col">50-th percentile</th>
+                  <th scope="col">80-th percentile</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">
+                    20-39 years
+                  </td>
+                  <td>
+                    14.0
+                  </td>
+                  <td>
+                    15.4
+                  </td>
+                  <td>
+                    17.2
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">
+                    40-59 years
+                  </td>
+                  <td>
+                    13.9
+                  </td>
+                  <td>
+                    15.4
+                  </td>
+                  <td>
+                    17.3
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">
+                    60-79 years
+                  </td>
+                  <td>
+                    13.9
+                  </td>
+                  <td>
+                    15.1
+                  </td>
+                  <td>
+                    16.9
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p>The values in the tables, which exclusively apply to Caucasians, were taken from Table 3 of "Reference
+              standards for lean mass measurements using GE dual energy x-ray absorptiometry in Caucasian adults".
+              Additionally, it should be noted that DXA estimations are more precise than estimates made using body
+              measurements, therefore the chart should only be used as a general reference.</p>
+            <h4>Lean body mass versus fat-free mass</h4>
+            <p>Although the phrases may occasionally be used interchangeably, lean body mass (LBM) and fat-free mass
+              (FFM) are distinct concepts. LBM is a hypothetical proportion that accounts for both non-fat tissue
+              (bones, muscles, ligaments, etc.) and a small amount of necessary fat that is non-sex-specific and makes
+              up to 3-4% of men's total body mass and up to 5-7% of women's. </p>
+            <p>The bone marrow, internal organs, and the brain are where much of that vital fat is found. Contrarily,
+              FFM is the body mass that has been completely depleted of all extractable fat, including vital fats. FFM
+              is the product of body mass and fat mass. Typically, 80–90% of total body mass is composed of fat-free
+              tissue, with some athletes reaching 95–%.</p>
+            <h3 class="text-secondary">How exactly is lean body mass determined?</h3>
+            <p>Lean body mass, or more simply, the weight of everything except fat, is measured as the difference
+              between total body weight and body fat weight. Around 70% to 90% of lean body mass is regarded as healthy,
+              with women falling closer to the lower end of this range than men. </p>
+            <p>The easiest approach to determining your lean body mass at home is to use a body composition monitor,
+              which can measure your body fat percentage correctly. If your body fat percentage is 27%, your lean body
+              mass will be 73%. By measuring your bone mass, muscle mass, and overall body water content and combining
+              these percentages together, you may further sense-check the computation.</p>
+            <p>You may, for instance, have the following ratings: 55% of one's body weight is water. Bone mass, 5.6% 15%
+              of muscle mass You would have a lean body mass percentage of 75.6% after doing this. Our bone mass is
+              beyond our control, but with the correct diet and activity, we can both increase our total body water and
+              muscle mass.</p>
+            <h4>How do you gauge the size of your neck, waist, and hips?</h4>
+            <p>Our lean body mass calculator, also known as a fat-free body mass calculator, calculates your body's mass
+              and percentage of fat using four body measurements: height, neck, waist, hips, age, and gender. In order
+              to determine the lean body mass (LBM) estimation, that is then subtracted from 100%. The following tips
+              can help you take these measurements using a soft measuring tape:</p>
+            <ul>
+              <li><strong>Height:</strong> Step perpendicular to a wall, column, or door frame on a flat surface. Look
+                directly forward. Ask a helper to position a ruler or similar straight item horizontally on top of your
+                head, then indicate where it contacts the wall, column, etc. Measure the height from there to the floor
+                by stepping outside.</li>
+              <li>Measure the neck immediately behind the larynx, with a small downward slope toward the front
+                (narrowest point).</li>
+              <li>Measure your waist at the level of your navel, at the broadest part of your abdomen (umbilicus).</li>
+              <li><strong>Hips:</strong> To acquire an exact measurement, stand with your feet together and measure your
+                hips where they are the broadest below your waist.</li>
+            </ul>
+            <p>Our LBM calculator supports both feet and inches and centimeters, so you may enter the measurements in
+              any format. The amount of muscle and other non-fat tissue in your body, as well as the proportion of
+              muscle to your total body weight, may be accurately estimated by measuring to the closest half inch or 1
+              cm.</p>
+            <h4>Why is lean body mass important?</h4>
+            <p>What is lean body mass so crucial?</p>
+            <p>A healthy percentage of lean body mass boosts metabolism and makes it simpler to maintain the healthy
+              weight you desire since your muscles and internal organs have greater metabolic rates than the comparable
+              weight of fat. Additionally, there is proof that having a lot of lean mass decreases inflammation because
+              tiny fat cells in lean persons support healthy function, whereas bigger fat cells in overweight or obese
+              people support inflammation and chronic illness.</p>
+            <h4>Is lean body mass percentage a better measure of health than weight or <a rel="noopener"
+                href="https://body-calculator.com/health/bmi-calculator/" target="_blank"
+                rel="noopener noreferrer">BMI</a>?</h4>
+            <p>It can be challenging to determine which metrics are most crucial while attempting to maintain or enhance
+              your health. Your weight does not reveal how much of it is a healthy muscle and how much is fat; it merely
+              gives you the overall. Similar to how your BMI (Body Mass Index) is computed based only on your height and
+              weight, it ignores the composition of your weight.</p>
+            <p>You may get a far better idea of how healthy you are by examining the components of lean body mass and
+              your total calculation of lean body mass. By monitoring this number over time, you can see how food and
+              exercise affect maintaining or increasing your lean body mass %.</p>
+            <h4>You can increase your lean body mass</h4>
+            <p>By building healthy muscle (see our earlier blog entry, "6 Tips to Improve Your Skeletal Muscle"),
+              staying hydrated, and, if required, striving to lose visceral and subcutaneous fat, you may aim to
+              increase your lean body mass. As oxygen and nutrients are transported to your muscles to aid in their
+              post-workout recovery and growth, obtaining a good night's rest can also help you build lean body mass!
+              Whatever your score, knowing your body and your level of fitness will give you a much better understanding
+              of how to maintain and improve your health, and we are here to assist you.</p>
           </div>
         </div>
 

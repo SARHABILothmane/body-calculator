@@ -6,10 +6,10 @@
       </div>
       <div class="row mb-3 d-flex flex-md-r ow-reverse">
         <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
-          <h6 class="text-secondary text-center">Result of Logarithm Calculator</h6>
+          <p class="text-secondary text-center font-weight-bold">Result of Logarithm Calculator</p>
           <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
           <div *ngIf="rsltLogarithm">
-            <h5 class="text-white text-center msg">Result : {{log | number}}</h5>
+            <p class="text-white text-center msg font-weight-bold">Result : {{log | number}}</p>
             <p class="font-weight-bold">steps :</p>
             <p class="text-center">The base {{value}} logarithm of {{logValue}} is {{log}}
               <p class="text-center">log <sub>{{value}}</sub> ({{logValue}})
@@ -22,7 +22,9 @@
         </div>
         <div class="col-md-6">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Exponent Calculator</div>
+            <div class="card-header">
+              <h2 class="text-white text-center font-weight-bold">Log Calculator (logarithm)</h2>
+            </div>
             <div class="card-body example-items-col">
               <form [formGroup]="calculeFormLogarithm" (ngSubmit)="CalculateLog()">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">

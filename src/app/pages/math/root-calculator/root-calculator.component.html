@@ -2,14 +2,14 @@
   <nb-layout-column>
     <div class="container">
       <div class="col-12">
-        <h1 class="text-secondary text-center pb-3">Log Calculator (Logarithm)</h1>
+        <h1 class="text-secondary text-center pb-3">Root Calculator</h1>
       </div>
       <div class="row mb-3 d-flex flex-md-r ow-reverse">
         <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
-          <h6 class="text-secondary text-center">Result of Logarithm Calculator</h6>
+          <p class="text-secondary text-center font-weight-bold">Result of Root Calculator</p>
           <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
           <div *ngIf="rsltRoot">
-            <h5 class="text-white text-center msg">Result : {{root | number}}</h5>
+            <p class="text-white text-center msg font-weight-bold">Result : {{root | number}}</p>
             <p class="font-weight-bold">steps :</p>
             <p class="text-center">The square root of {{rootValue}} is {{root}}</p>
             <p class="text-center">
@@ -19,7 +19,10 @@
         </div>
         <div class="col-md-6">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Exponent Calculator</div>
+            <div class="card-header">
+
+              <h2 class="text-white text-center font-weight-bold">Root Calculator</h2>
+            </div>
             <div class="card-body example-items-col">
               <form [formGroup]="calculeFormRoot" (ngSubmit)="CalculateRoot()">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
