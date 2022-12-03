@@ -74,6 +74,10 @@ export class OtherCalcultorMathComponent implements OnInit {
       this.goToOtherPage = { name: "Go to Binary Calculator", url: "/math/binary-calculator/." }
     }else if(this.eleminateCalculator == 'bc'){
        this.goToOtherPage = { name: "Go to Hex Calculator", url: "/math/hex-calculator/." }
+    }else if(this.eleminateCalculator == 'permutationc'){
+        this.goToOtherPage = { name: "Go to Combination Calculator", url: "/math/combination-calculator/." }
+    }else if(this.eleminateCalculator == 'combinationc'){
+        this.goToOtherPage = { name: "Go to Permutation Calculator", url: "/math/permutation-calculator/." }
     }else {
       this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
     }
@@ -84,6 +88,8 @@ export class OtherCalcultorMathComponent implements OnInit {
       { 'title': 'Hex Calculator', 'url': '/math/hex-calculator/.', 'code': 'hc' },
       { 'title': 'Percentage Calculator', 'url': '/math/percentage-calculator/.', 'code': 'pc' },
       { 'title': 'Percentage Error Calculator', 'url': '/math/percent-error-calculator/.', 'code': 'pec' },
+      { 'title': 'Permutation Calculator', 'url': '/math/permutation-calculator/.', 'code': 'permutationc' },
+      { 'title': 'Combination Calculator', 'url': '/math/combination-calculator/.', 'code': 'combinationc' },
     ];
 
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);

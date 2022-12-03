@@ -87,6 +87,18 @@
                             "textInHref": "Hex Calculator",
                             "description": "With the Hex Calculator  you can perform the addition, subtraction, multiplication and division also on 2 hexadecimal numbers.",
                             "url": "/math/hex-calculator/."
+                        },
+                        {
+                            "name": "Permutation calculator ",
+                            "textInHref": "Permutation Calculator",
+                            "description": "Permutation calculator finds the number of subsets which can be created including the subsets of the same items based on their different orders.",
+                            "url": "/math/permutation-calculator/."
+                        },
+                        {
+                            "name": "Combination Calculator",
+                            "textInHref": "Combination Calculator",
+                            "description": "It finds the number of possible combinations obtained by taking any sample of items from a greater set. It is used mainly to show how many different possible subsets will be made from the greater set.",
+                            "url": "/math/combination-calculator/."
                         }
                        
                     ]

@@ -1,11 +1,83 @@
 <nb-layout>
   <nb-layout-column>
     <div class="container">
+      <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Permutation Calculator', itemUrl: 'math/permutation-calculator/.'}">
+      </app-breadcrumbs>
       <div class="col-12">
         <h1 class="text-secondary text-center pb-3">Permutation Calculator</h1>
+        <div class="flexMobile">
+          <app-banner *ngIf="envirement"></app-banner>
+        </div>
       </div>
-      <div class="row mb-3 d-flex flex-md-r ow-reverse">
-        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
+      <div class="row mb-3 d-flex flex-md-row-reverse">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header ">
+              <h2 class="text-white text-center font-weight-bold">Permutation Calculator</h2>
+            </div>
+            <div class="card-body example-items-col">
+              <form [formGroup]="calculeFormPermutation" (ngSubmit)="CalculateRandomNumber(target)">
+                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <strong>
+                  <table cellpadding="0" cellspacing="0" style="padding: 10px 0px;" class="mx-auto mb-3">
+                    <tbody>
+                      <tr>
+                        <td class="bigtext">
+                          P(n, r) =&nbsp;
+                        </td>
+                        <td>
+                              <table cellpadding="0" cellspacing="0">
+                                <tbody>
+                                  <tr>
+                                    <td align="center">n!</td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor="#000000" height="1">
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                      <td>(n - r)!</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </strong>
+                <div class="mb-4">
+                  <label for="objects">Total Amount in a Set (n)</label>
+                  <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="objects(n)" formControlName="n">
+                  <small class="text-danger" *ngIf="submitted && formPermutation.n.errors?.required">
+                    n number is
+                    required.
+                    !</small>
+                </div>
+                <div class="my-4">
+                  <label for="sample">Amount in each Sub-Set (r)</label>
+                  <input id="sample" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="sample(r)" formControlName="r">
+                  <small class="text-danger" *ngIf="submitted && formPermutation.r.errors?.required">
+                    r number is
+                    required.
+                    !</small>
+                </div>
+                <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 d-md-none d-block">
+          <app-banner *ngIf="envirement"></app-banner>
+          <span #target style="position: relative; top: -350px"></span>
+        </div>
+        <div class="col-md-5 mx-auto mt-4 border-shadow bg-white" style="min-height: 300px;">
           <p class="text-secondary text-center font-weight-bold">Result of Permutation Calculator</p>
           <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
           <div *ngIf="rsltPermutation">
@@ -14,7 +86,7 @@
             <!-- <p>y = p x x / 100</p> -->
             <table align="center">
               <tr>
-                <td> <sub>n</sub>P<sub>r</sub> =&nbsp;</td>
+                <td> P(n, r) =&nbsp;</td>
                 <td>
                   <table>
                     <tr>
@@ -33,7 +105,7 @@
             <div class="my-3">
               <table align="center">
                 <tr>
-                  <td> <sub>n</sub>P<sub>r</sub> =&nbsp;</td>
+                  <td> P(n, r) =&nbsp;</td>
                   <td>
                     <table>
                       <tr>
@@ -49,63 +121,28 @@
                   </td>
                 </tr>
               </table>
-              <p class="text-center"><strong class="ml-5">p(n,r) = </strong>{{permutation}}</p>
+              <p class="text-center"><strong >p(n, r) = </strong>{{permutation}}</p>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header ">
-              <h2 class="text-white text-center font-weight-bold">Permutation Calculator</h2>
-            </div>
-            <div class="card-body example-items-col">
-              <form [formGroup]="calculeFormPermutation" (ngSubmit)="CalculateRandomNumber()">
-                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
-                  <span>
-                    {{error}}
-                  </span>
-                </div>
-                <div class="mb-4">
-                  <label for="objects">n (objects)</label>
-                  <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
-                    shape="semi-round" placeholder="objects(n)" formControlName="n">
-                  <small class="text-danger" *ngIf="submitted && formPermutation.n.errors?.required">Lower
-                    Limit is
-                    required.
-                    !</small>
-                </div>
-                <div class="my-4">
-                  <label for="sample">r (sample)</label>
-                  <input id="sample" class="form-control" type="number" nbInput fullWidth status="basic"
-                    shape="semi-round" placeholder="sample(r)" formControlName="r">
-                  <small class="text-danger" *ngIf="submitted && formPermutation.r.errors?.required">Upper
-                    Limit is
-                    required.
-                    !</small>
-                </div>
-                <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="col-md-6 mx-auto">
-            <p class="bmi text-center my-3">Your ideal weight based on popular formulas:</p>
-          </div>
-          <span #target></span> -->
       </div>
+      <div class="col-12">
+        <app-banner *ngIf="envirement"></app-banner>
+      </div>
+      <app-other-calcultor-math eleminateCalculator="permutationc"></app-other-calcultor-math>
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn About
-        Permutation calculator</p>
+        Permutation Calculator</p>
 
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
-          <p>You may use an online permutation calculator to determine the number of potential subsets, including
+          <p>You may use an online <a href="https://en.wikipedia.org/wiki/Permutation" target="_blank" rel="noopener noreferrer">permutation</a> calculator to determine the number of potential subsets, including
             subsets of the same items in various orders. This npr calculator figures out how many permutations there are
             when we select r items from a collection of n integers. </p>
           <p>The number of ways to extract r items from n objects in a dataset where the order of the elements matters
             is known as a permutation in mathematics. Continue reading to learn more about the npr formula, manual
             calculations, how to calculate permutations both manually and with this permutations calculator.</p>
           <p>With the aid of the graphic below, the meaning of the permutations can be better understood:
-            Additionally, you can use our online combination calculator to quickly determine how many potential
+            Additionally, you can use our online <a routerLink="/math/combination-calculator/.">Combination Calculator</a> to quickly determine how many potential
             combinations there are in any sizable dataset.
             Swipe away!
           </p>
@@ -165,7 +202,7 @@
             those letters. AB and BA are distinct permutations because order matters to a permutation. However, since
             the order is irrelevant to a combination, AB and BA only represent one combination.</p>
           <h4>What is E Notation?</h4>
-          <p>E notation is used in the Combinations and Permutations Calculator to represent extremely huge values. For
+          <p>E notation is used in the <a href="https://en.wikipedia.org/wiki/Combinations_and_permutations" target="_blank" rel="noopener noreferrer">Combinations and Permutations</a> Calculator to represent extremely huge values. For
             quantities that are either too big or too little to be expressed succinctly in decimal format, e notation is
             used.</p>
           <p>The letter E in E notation stands for "times 10 increased to the power of." Here is an illustration of a
@@ -174,8 +211,31 @@
           <h3 class="text-secondary">The Permutation Formula </h3>
           <p>The following formula may be used to calculate the number of permutations of n objects given r elements:
           </p>
-          <img loading="lazy" src="../../../../assets/images/permuation.png" width="180px" height="90px"
-            alt="Permutation Formula ">
+            <table cellpadding="0" cellspacing="0" style="padding: 10px 0px;" class="mx-auto mb-3">
+              <tbody>
+                <tr>
+                  <td class="bigtext">
+                     P(n, r) =&nbsp;
+                  </td>
+                  <td>
+                        <table cellpadding="0" cellspacing="0">
+                          <tbody>
+                            <tr>
+                              <td align="center">n!</td>
+                            </tr>
+                            <tr>
+                              <td bgcolor="#000000" height="1">
+                              </td>
+                            </tr>
+                            <tr>
+                                <td>(n - r)!</td>
+                            </tr>
+                          </tbody>
+                      </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           <p>Where, The dataset's total number is n.</p>
           <p>The number of permutations is nPr, and r is the number you choose from this dataset.</p>
           <p>This formula is taken into account by the permutation calculator for all computations involving small- and
@@ -183,8 +243,32 @@
           <h4>The formula for Permutation with Repetition:</h4>
           <p>Formula for Permutations with Repetition: The following is the formula for permutations of objects with
             repetition:</p>
-          <img loading="lazy" src="../../../../assets/images/permuation-repitation.png" width="180px" height="90px"
-            alt="Permutation Formula  with Repetition">
+
+              <table cellpadding="0" cellspacing="0" style="padding: 10px 0px;" class="mx-auto mb-3">
+                <tbody>
+                  <tr>
+                    <td class="bigtext">
+                      P(n, r) =&nbsp;
+                    </td>
+                    <td>
+                          <table cellpadding="0" cellspacing="0">
+                            <tbody>
+                              <tr>
+                                <td align="center">n!</td>
+                              </tr>
+                              <tr>
+                                <td bgcolor="#000000" height="1">
+                                </td>
+                              </tr>
+                              <tr>
+                                  <td>(n<sub>1</sub>!n<sub>2</sub>!n<sub>3</sub>!,,,n<sub>k</sub>!)</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
           <p>Here, identical elements of type 1 are denoted by n1, identical elements of type 2, etc., while identical
             elements of type k are denoted by nk.</p>
           <p>(!) This symbol represents the factorial of any desired integer. You must multiply all the numbers below by
@@ -195,8 +279,51 @@
           <p>There is a field to determine the r combinations out of the n elements in permutations and combinations.
             The order of the components in this combination is irrelevant. With the use of the following formula, you
             can quickly determine the combination if you know the permutation:</p>
-          <img loading="lazy" src="../../../../assets/images/nPr-permuation.png" width="180px" height="90px"
-            alt="Permutations & Combinations">
+
+            <table cellpadding="0" cellspacing="0" style="padding: 10px 0px;" class="mx-auto mb-3">
+              <tbody>
+                <tr>
+                  <td class="bigtext">
+                     C(n, r) =&nbsp;&nbsp;
+                  </td>
+                  <td>
+                        <table cellpadding="0" cellspacing="0">
+                          <tbody>
+                            <tr>
+                              <td align="center">P(n, r)</td>
+                            </tr>
+                            <tr>
+                              <td bgcolor="#000000" height="1">
+                              </td>
+                            </tr>
+                            <tr>
+                                <td>P(r, r)</td>
+                            </tr>
+                          </tbody>
+                      </table>
+                  </td>
+                  <td class="bigtext">
+                    &nbsp;&nbsp;=&nbsp;&nbsp;
+                 </td>
+                 <td>
+                       <table cellpadding="0" cellspacing="0">
+                         <tbody>
+                           <tr>
+                             <td align="center">P(n, r)</td>
+                           </tr>
+                           <tr>
+                             <td bgcolor="#000000" height="1">
+                             </td>
+                           </tr>
+                           <tr class="d-flex justify-content-center">
+                               <td>r!</td>
+                           </tr>
+                         </tbody>
+                     </table>
+                 </td>
+                </tr>
+              </tbody>
+            </table>
           <h4>How to Use the nPr Calculator to Determine the Number of Permutations</h4>
           <p>Take a look at the steps below to see how this number permutation calculator works to get quick results for
             the inputs you enter:
@@ -239,3 +366,4 @@
     </div>
   </nb-layout-column>
 </nb-layout>
+<ngx-json-ld [json]="schema"></ngx-json-ld>

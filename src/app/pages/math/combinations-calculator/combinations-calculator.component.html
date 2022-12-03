@@ -1,8 +1,18 @@
 <nb-layout>
   <nb-layout-column>
     <div class="container">
+      <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Combination Calculator', itemUrl: 'math/combination-calculator/.'}">
+      </app-breadcrumbs>
       <div class="col-12">
         <h1 class="text-secondary text-center pb-3">Combination Calculator</h1>
+        <div class="flexMobile">
+          <app-banner *ngIf="envirement"></app-banner>
+        </div>
+      </div>
+      <div class="col-12 d-md-none d-block">
+        <app-banner *ngIf="envirement"></app-banner>
+        <span #target style="position: relative; top: -350px"></span>
       </div>
       <div class="row mb-3 d-flex flex-md-r ow-reverse">
         <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
@@ -11,7 +21,6 @@
           <div *ngIf="rsltCombination">
             <h5 class="text-white text-center msg">Result : {{combination}}</h5>
             <p class="font-weight-bold">steps :</p>
-            <!-- <p>y = p x x / 100</p> -->
             <table align="center">
               <tr>
                 <td> <sub>n</sub>C<sub>r</sub> =&nbsp;</td>
@@ -49,7 +58,7 @@
                   </td>
                 </tr>
               </table>
-              <p class="text-center"><strong class="ml-5">p(n,r) = </strong>{{combination}}</p>
+              <p class="text-center"><strong class="ml-5">C(n,r) = </strong>{{combination}}</p>
             </div>
           </div>
         </div>
@@ -57,27 +66,47 @@
           <div class="card">
             <div class="card-header text-white text-center font-weight-bold">Combination Calculator</div>
             <div class="card-body example-items-col">
-              <form [formGroup]="calculeFormCombination" (ngSubmit)="CalculateRandomNumber()">
+              <strong>
+              <table align="center">
+                <tr>
+                  <td> C(n, r) =&nbsp;</td>
+                  <td>
+                    <table>
+                      <tr>
+                        <td align="center">n!</td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#000000" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td>r! * (n - r)!</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </strong>
+              <form [formGroup]="calculeFormCombination" (ngSubmit)="CalculateRandomNumber(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{error}}
                   </span>
                 </div>
                 <div class="mb-4">
-                  <label for="objects">n (objects)</label>
+                  <label for="objects">Total Amount in a Set (n)</label>
                   <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
                     shape="semi-round" placeholder="objects(n)" formControlName="n">
-                  <small class="text-danger" *ngIf="submitted && formCombination.n.errors?.required">Lower
-                    Limit is
+                  <small class="text-danger" *ngIf="submitted && formCombination.n.errors?.required">r
+                    n is
                     required.
                     !</small>
                 </div>
                 <div class="my-4">
-                  <label for="sample">r (sample)</label>
+                  <label for="sample">Amount in each Sub-Set (r)</label>
                   <input id="sample" class="form-control" type="number" nbInput fullWidth status="basic"
                     shape="semi-round" placeholder="sample(r)" formControlName="r">
-                  <small class="text-danger" *ngIf="submitted && formCombination.r.errors?.required">Upper
-                    Limit is
+                  <small class="text-danger" *ngIf="submitted && formCombination.r.errors?.required">r
+                    r is
                     required.
                     !</small>
                 </div>
@@ -86,13 +115,13 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-md-6 mx-auto">
-              <p class="bmi text-center my-3">Your ideal weight based on popular formulas:</p>
-            </div>
-            <span #target></span> -->
       </div>
-      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn About
-        Combination calculator</p>
+      <div class="col-12">
+        <app-banner *ngIf="envirement"></app-banner>
+      </div>
+      <app-other-calcultor-math eleminateCalculator="combinationc"></app-other-calcultor-math>
+      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
+        Combination Calculator</p>
 
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
@@ -100,7 +129,7 @@
             of combinations in a set (commonly denoted as nCr) as well as in displaying every single combination
             (permutation) of your set, up to the length of 20 elements.
           </p>
-          <p>Be cautious, though! Such lengthy phrases could take our combination generator several seconds to discover.
+          <p>Be cautious, though! Such lengthy phrases could take our <a href="https://en.wikipedia.org/wiki/Combination" target="_blank" rel="noopener noreferrer">combination</a> generator several seconds to discover.
             Try our combination calculator right away if you're curious about the range of possible combinations that
             may be created from a given set of components and sample size.</p>
           <h3 class="text-secondary">Compute combinations</h3>
@@ -137,7 +166,27 @@
           </p>
           <p>Fortunately, you don't have to list every potential set. Then, how do you calculate the combinations? You
             may quickly ascertain the number of combinations by using the combination formula shown below:</p>
-          <p><strong>Where: C(n,r) = n!/(r!(n-r)!),</strong></p>
+          <p><strong>Where:</strong></p>
+          <strong>
+            <table align="center">
+              <tr>
+                <td> C(n, r) =&nbsp;</td>
+                <td>
+                  <table>
+                    <tr>
+                      <td align="center">n!</td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#000000" height="1"></td>
+                    </tr>
+                    <tr>
+                      <td>(r!(n - r)!)</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </strong>
           <p>The number of combinations is given by the formula C(n,r), where n is the total number of items in the set
             and r is the number of components you select from it.</p>
           <p>A factorial is represented by the exclamation symbol! For additional details on this subject, see our
@@ -176,7 +225,7 @@
           <p>There are fewer always combinations than there are permutations. This time, it is six times smaller (84
             times 3! equals 6 for a result of 504). It results from the fact that, like in the preceding example with
             the three colored balls, each set of three cards can be rearranged in six distinct ways.</p>
-          <p>In many academic disciplines, combination and permutation are equally important. They appear in physics,
+          <p>In many academic disciplines, <a href="https://en.wikipedia.org/wiki/Combinations_and_permutations" target="_blank" rel="noopener noreferrer">combination and permutation</a> are equally important. They appear in physics,
             statistics, economics, and, of course, mathematics. We have more useful technologies that may be applied in
             similar circumstances. Try out the significant figures calculator, which explains the laws of significant
             figures and allows you to rapidly estimate a logarithm with whatever base you choose. It also explains what
@@ -193,7 +242,28 @@
             complicated as figuring out how much alcohol your homebrewed beer has (which, by the way, you can do with
             our ABV calculator). In fact, the equation becomes considerably simpler in the case of permutation.
             Combination with repetition follows the following formula:</p>
-          <p><strong>C'(n,r) = (r+n-1)! / (r! * (n-1)!</strong></p>
+          <p>
+            <strong>
+            <table align="center">
+              <tr>
+                <td> C(n, r) =&nbsp;</td>
+                <td>
+                  <table>
+                    <tr>
+                      <td align="center">(r + n-1)</td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#000000" height="1"></td>
+                    </tr>
+                    <tr>
+                      <td>(r! * (n-1)!)</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </strong>
+          </p>
           <p>And for repetition and permutation:</p>
           <p><strong>P'(n,r) = nr.</strong></p>
           <p>The summary of the distinctions between the four methods of selecting an object—combination, combination

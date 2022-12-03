@@ -23,6 +23,8 @@
 /math/percent-error-calculator/.
 /math/binary-calculator/.
 /math/hex-calculator/.
+/math/permutation-calculator/.
+/math/combination-calculator/.
 
 
 /contact/.
