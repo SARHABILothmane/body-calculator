@@ -1,8 +1,8 @@
-import { ExponentCalculatorModule } from './exponent-calculator/exponent-calculator.module';
 import { MathComponent } from './math.component';
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: ".", component: MathComponent },
@@ -22,7 +22,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [MathComponent],
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    CommonModule
   ]
 })
 export class MathModule { }

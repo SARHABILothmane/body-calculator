@@ -90,7 +90,7 @@ export class HexCalculatorComponent implements OnInit {
   get formHexDec() { return this.conveHexToDeci.controls; }
   get formDecHex() { return this.conveDeciToHex.controls; }
 
-  CalculateHex() {
+  CalculateHex(e: HTMLElement) {
     this.submitted = true;
     if (this.calculeHex.valid) {
       this.error = "";
@@ -109,26 +109,29 @@ export class HexCalculatorComponent implements OnInit {
       } if (this.addOrSubtractSymbole === '/') {
         this.rsltCalHex = this.hexOne / this.hexTwo;
       }
-      this.rsltCalDecimal = this.rsltCalHex.toString(16)
+      this.rsltCalDecimal = this.rsltCalHex.toString(16);
+      e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.error = "Please check the fields";
     }
   }
-  CalculateHexToDeci() {
+  CalculateHexToDeci(e: HTMLElement) {
     this.submittedFormTwo = true;
     if (this.conveHexToDeci.valid) {
       this.errorFormTwo = "";
       this.rsltHex = parseInt(this.conveHexToDeci.value.hex, 16);
+      e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.errorFormTwo = "Please check the fields";
     }
   }
-  CalculateDeciToHex() {
+  CalculateDeciToHex(e: HTMLElement) {
     this.submittedFormThree = true;
     if (this.conveDeciToHex.valid) {
       this.errorFormThree = "";
       this.rsltDecimal = this.conveDeciToHex.value.decimal;
-      this.rsltDecimal = this.rsltDecimal.toString(16)
+      this.rsltDecimal = this.rsltDecimal.toString(16);
+      e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.errorFormThree = "Please check the fields";
     }
