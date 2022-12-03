@@ -31,8 +31,10 @@
         </div> -->
         <div class="col-md-7 offset-md-3">
           <div class="card">
-            <div class="card-header"><h2 class="text-white text-center">Binary Addition Calculator, Subtract, Multiply,
-              or Divide</h2>
+            <div class="card-header">
+              <h2 class="text-white text-center">Binary Addition Calculator, Subtract, Multiply,
+                or Divide
+              </h2>
             </div>
             <div class="card-body my-4" #target>
               <div *ngIf="rsltCalBinary != null">
@@ -112,10 +114,12 @@
         <app-banner *ngIf="envirement"></app-banner>
       </div>
       <!--Convert Binary Value to Decimal Value -->
-      <div class="row mb-3" >
+      <div class="row mb-3">
         <div class="col-md-7 mt-3">
           <div class="card">
-            <div class="card-header"><h2 class=" text-white text-center">Binary to Decimal Calculator</h2></div>
+            <div class="card-header">
+              <h2 class=" text-white text-center">Binary to Decimal Calculator</h2>
+            </div>
             <div class="card-body" #target2>
               <div *ngIf="rsltBinary != null">
                 <!-- <p class="font-weight-bold">steps :</p>
@@ -172,7 +176,9 @@
       <div class="row mb-3 d-flex flex-md-row-reverse">
         <div class="col-md-7 mt-3">
           <div class="card">
-            <div class="card-header"><h2 class="text-white text-center">Decimal to Binary Calculator</h2></div>
+            <div class="card-header">
+              <h2 class="text-white text-center">Decimal to Binary Calculator</h2>
+            </div>
             <div class="card-body" #target3>
               <div *ngIf="rsltDecimal != null">
                 <p class="text-white text-center msg font-weight-bold">Result : {{rsltDecimal}}</p>
@@ -226,10 +232,15 @@
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
           <p>Our binary calculator is a useful tool for calculating binary numbers. It can effortlessly add, subtract,
-            multiply, and divide <a href="https://en.wikipedia.org/wiki/Binary_number" target="_blank" rel="noopener noreferrer">binary numbers</a>. There are 11 operations that may be performed on the provided integers,
-            including OR, AND, NOT, XOR, and others. It returns results in binary, decimal, and <a routerLink="/math/hex-calculator/.">hexadecimal</a> formats.</p>
+            multiply, and divide <a href="https://en.wikipedia.org/wiki/Binary_number" target="_blank"
+              rel="noopener noreferrer">binary numbers</a>. There are 11 operations that may be performed on the
+            provided integers,
+            including OR, AND, NOT, XOR, and others. It returns results in binary, decimal, and <a
+              routerLink="/math/hex-calculator/.">hexadecimal</a> formats.</p>
           <h3 class="text-secondary">The binary system</h3>
-          <p>The <a href="https://en.wikipedia.org/wiki/Category:Binary_arithmetic" target="_blank" rel="noopener noreferrer">binary</a> system is a numerical system that works almost identically to the decimal number system that
+          <p>The <a href="https://en.wikipedia.org/wiki/Category:Binary_arithmetic" target="_blank"
+              rel="noopener noreferrer">binary</a> system is a numerical system that works almost identically to the
+            decimal number system that
             most people are familiar with. While the decimal number system has 10 as its base, the binary number system
             has 2. Furthermore, while the decimal system employs digits 0 through 9, the binary system employs just
             digits 0 and 1, with each digit referred to as a bit. </p>
@@ -418,7 +429,8 @@
           <p>Converting numbers to and from binary has no effect on the number itself; it only alters its form. You can
             conduct both sorts of conversions fast and simply using our binary converter above, or you can learn how to
             do it manually below. </p>
-          <p>It is important to note that binary computation and binary conversion are distinct operations: you do not need to
+          <p>It is important to note that binary computation and binary conversion are distinct operations: you do not
+            need to
             do one to conduct the other.</p>
           <h4>Binary to Decimal Calculator</h4>
           <p>Each binary numeral place represents a power of two, just as each decimal number point represents a power
@@ -458,7 +470,8 @@
           <p> Subtraction operates the same as any other number system, with the exception that when borrowing a number,
             you must borrow a group of 210 rather than 1010 as you would with decimals.</p>
           <h4>Binary Addition Calculator</h4>
-          <p>Binary Addition Calculator follows the same concepts as decimal addition, but instead of adding a 1 when the applied
+          <p>Binary Addition Calculator follows the same concepts as decimal addition, but instead of adding a 1 when
+            the applied
             numbers exceed 10, it adds when the addition results are similar to 2.</p>
           <h4>Addition Rules in the Binary System</h4>
           <em>0 + 0 = 0</em><br>
@@ -471,7 +484,8 @@
             takes 1 from the preceding column to the right, you have made a frequent binary addition error. Instead of
             0, the value at the bottom of the transferred number should be 1.</p>
           <h4>Binary Subtraction Calculator</h4>
-          <p>Except for those resulting from the usage of just numbers 0 and 1, binary subtraction calculator is nearly identical
+          <p>Except for those resulting from the usage of just numbers 0 and 1, binary subtraction calculator is nearly
+            identical
             to binary addition. Lending a number occurs whenever the amount removed is larger than the number by which
             it was deducted.</p>
           <p>Borrowing is only suitable in binary subtraction when 1 is subtracted from 0. If this occurs, the 0 in the
@@ -484,11 +498,12 @@
           <em>1 - 0 = 1</em><br>
           <em>1 - 1 = 0</em><br>
           <h3>Binary Multiplication calculator</h3>
-          <p>Binary multiplication calculator is also not as difficult as it appears. Because the only values utilised are 0 and 1,
+          <p>Binary multiplication calculator is also not as difficult as it appears. Because the only values utilised
+            are 0 and 1,
             the numbers to be added are comparable to the first word or 0.</p>
           <p>As with decimal multiplication, placeholder0 must be entered in each consecutive section, and the value
             must be shifted to the left.
-            Binary multiplication  may appear complex to you due to the repetitive binary addition, but it is not.
+            Binary multiplication may appear complex to you due to the repetitive binary addition, but it is not.
           </p>
           <h4>Rules of Multiplication</h4>
           <em>0 x 0 = 0</em><br>
@@ -496,7 +511,8 @@
           <em>1 x 0 = 0</em><br>
           <em>1 x 1 = 1</em><br>
           <h4>Binary Division calculator</h4>
-          <p>The binary division calculator procedure is analogous to the long decimal number system division procedure. The
+          <p>The binary division calculator procedure is analogous to the long decimal number system division procedure.
+            The
             divider always divides the payout evenly, and the only significant change is that binary subtraction is used
             instead of decimal subtraction. Understanding binary subtraction is necessary for understanding binary
             division.</p>

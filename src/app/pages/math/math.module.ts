@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: "random-number-generator/.", loadChildren: () => import("src/app/pages/math/random-number/random-number.module").then(mod => mod.RandomNumberModule) },
   { path: "percentage-calculator/.", loadChildren: () => import("src/app/pages/math/percentage-calculator/percentage-calculator.module").then(mod => mod.PercentageCalculatorModule) },
   { path: "percent-error-calculator/.", loadChildren: () => import("src/app/pages/math/percentage-error-calculator/percentage-error-calculator.module").then(mod => mod.PercentageErrorCalculatorModule) },
+  { path: "percentage-increase-calculator/.", loadChildren: () => import("src/app/pages/math/percentage-increase-calculator/percentage-increase-calculator.module").then(mod => mod.PercentageIncreaseCalculatorModule) },
+  { path: "percentage-decrease-calculator/.", loadChildren: () => import("src/app/pages/math/percentage-decrease-calculator/percentage-decrease-calculator.module").then(mod => mod.PercentageDecreaseCalculatorModule) },
   { path: "binary-calculator/.", loadChildren: () => import("src/app/pages/math/binary-calculator/binary-calculator.module").then(mod => mod.BinaryCalculatorModule) },
   { path: "hex-calculator/.", loadChildren: () => import("src/app/pages/math/hex-calculator/hex-calculator.module").then(mod => mod.HexCalculatorModule) },
   { path: "permutations-calculator/.", loadChildren: () => import("src/app/pages/math/permutations-calculator/permutations-calculator.module").then(mod => mod.PermutationsCalculatorModule) },

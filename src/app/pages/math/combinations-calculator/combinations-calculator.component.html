@@ -6,7 +6,7 @@
       </div>
       <div class="row mb-3 d-flex flex-md-r ow-reverse">
         <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
-          <h6 class="text-secondary text-center">Result of Combination Calculator</h6>
+          <h2 class="text-secondary text-center">Result of Combination Calculator</h2>
           <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
           <div *ngIf="rsltCombination">
             <h5 class="text-white text-center msg">Result : {{combination}}</h5>
@@ -92,46 +92,192 @@
             <span #target></span> -->
       </div>
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn About
-        Permutation Calculator</p>
+        Combination calculator</p>
 
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
-          <h2>Random number generator</h2>
-          <p>Use our random number generator website to get a really unexpected and cryptographically secure number.
-            It creates random numbers that can be utilized in situations requiring impartial randomization, such as when
-            drawing numbers for a lottery, raffle, giveaway, or sweepstake.
-            An RNG draw may also be used to choose who goes first in a game, among other things.
+          <p>This combination calculator (n choose k calculator) is a tool that assists you in figuring out the number
+            of combinations in a set (commonly denoted as nCr) as well as in displaying every single combination
+            (permutation) of your set, up to the length of 20 elements.
           </p>
-          <h2>How to pick a random number between two numbers?</h2>
-          <p>
-            You may use this random number generator to get a number that is genuinely random between any two values.
-            To acquire a random number between 1 and 10, for example, put 1 in the first field and 10 in the second,
-            then click "Get Random Number." Our randomizer will select a number between 1 and 10 at random.
-            To produce a random number between 1 and 100, repeat the process, but enter 100 in the picker's second
-            field.
+          <p>Be cautious, though! Such lengthy phrases could take our combination generator several seconds to discover.
+            Try our combination calculator right away if you're curious about the range of possible combinations that
+            may be created from a given set of components and sample size.</p>
+          <h3 class="text-secondary">Compute combinations</h3>
+          <p>If you still need to figure out what a combo is, the following article will explain everything. Here,
+            you'll discover the combination formula and a definition for combinations (with and without repetitions).
           </p>
-          <p>
-            The range for a conventional six-sided dice should be 1 to 6 to imitate a dice roll.
-            Set the range between 1 and 2 to simulate a coin flip, and the random selector will choose a number between
-            1 and 2.
+          <p>You'll learn how to compute combinations as well as what the probability and linear combinations are.
+            Finally, we'll discuss how permutation and combination relate to one another. In a nutshell, permutation
+            considers the order of the components, whereas combination does not. More details are provided below.</p>
+          <p>Have you ever wondered how likely it is that you'll take home the lottery's top prize? How likely is it
+            that I'll take second place? You must utilize combinations to respond to both questions as well as
+            comparable ones. We have a unique tool only for issues of that nature. Our lottery calculator offers a
+            lottery formula in addition to estimating the combo probability of winning any lottery game. </p>
+          <p>Try it! In fact, you'll learn how large (or little) those figures are. You might also be interested in
+            scientific notation, a practical method for expressing really large numbers. For instance, you may write
+            145,000,000,000 as 1.45 1011 and 0.000000643 as 6.43 10-7. Isn't that easier? Check out the guidelines for a
+            scientific notation for further details.</p>
+          <h4>What is a combination? - combination definition</h4>
+          <p>According to the definition of a combination, it is the number of ways in which r items may be selected
+            from a collection of n different objects (thus, "n pick r" issues). Contrary to permutation, the order in
+            which you pick the components is not crucial (you can find an extensive explanation of that problem in the
+            permutation and combination section).</p>
+          <p>It is only possible to find all possible combinations of a collection of things using mathematics. You've
+            probably previously learned how to do things like discover the greatest common factor (GCF) or the least
+            common multiple (LCM). A combination, however, is a completely different matter. Let's examine its potential
+            complexity.</p>
+          <p>Consider a bag containing twelve coloured balls, each one in a distinct hue. Five balls are chosen at
+            random. How many different ball sets can you get? Or, to put it another way, how many possible combinations
+            are there?</p>
+          <h4>How to calculate combinations? - combination formula</h4>
+          <p>Combination formula: how to compute combinations
+            Mathematicians offer the precise solution to a wide range of issues, such as how to compute volume or square
+            footage. Is it possible to estimate the quantity of combinations using balls as in the previous example?
           </p>
-          <p>
-            To create many unique numbers (no duplicates), simply pick how many you require from the drop-down menu
-            below.
-            Selecting 6 numbers from a potential set of 1 to 49, for example, would be equal to replicating a lottery
-            draw for a game with these characteristics.
-          </p>
-          <h2>Where does a random number generator come in handy?</h2>
-          <p>
-            You may be holding a charity lottery, a giveaway, a raffle, sweepstakes, or another type of contest and need
-            to select a winner - this generator is for you! It is fully neutral and outside of your control, so you can
-            reassure your audience of the fairness of the draw, which may not be the case if you use traditional
-            techniques such as rolling a dice.
-          </p>
-          <p>
-            A period is the number of iterations a PRNG takes before it begins to replicate itself. All else being
-            equal, a PRNG with a long time will need more computer resources to forecast and crack.
-          </p>
+          <p>Fortunately, you don't have to list every potential set. Then, how do you calculate the combinations? You
+            may quickly ascertain the number of combinations by using the combination formula shown below:</p>
+          <p><strong>Where: C(n,r) = n!/(r!(n-r)!),</strong></p>
+          <p>The number of combinations is given by the formula C(n,r), where n is the total number of items in the set
+            and r is the number of components you select from it.</p>
+          <p>A factorial is represented by the exclamation symbol! For additional details on this subject, see our
+            factorial calculator. The binomial coefficient is another name for the expression on the right. It is also
+            used in our binomial distribution calculator, which is another statistical calculator. The calculations on
+            this website have certain similarities with others; for instance, the binomial calculator uses the nCr
+            calculator.</p>
+          <p>Let's use this equation to solve the issue we have with the colored balls. We need to count the number of
+            possible combinations:</p>
+          <p><strong>C(12,5) = 12!/(5! * (12-5)!) = 12!/(5! * 7!) = 792.</strong></p>
+          <p>Our NCR calculator allows you to confirm the outcome. The whole list of combinations will be included. Be
+            warned though, there are already quite a few choices to display (792 to be exact). We restricted our
+            combination generator to a certain, maximum amount of possibilities to prevent a situation where there are
+            too many created combinations (2000 by default). Anytime you wish, you may alter it in advanced mode.</p>
+          <h4>More about calculating combinations</h4>
+          <p>You might have noticed that the number of combinations for selecting only one element is n, as calculated
+            using the combinations formula. On the other hand, there is only one method to choose all of the components.
+            Let's use our example to test this combo characteristic. </p>
+          <p>You have a total of 12 things, which is equal to n. The NCR calculator shows each letter as a different
+            color of the ball, such as A being red, B being yellow, C being green, and so on. There are 12 distinct
+            balls, hence there are 12 options if you pick only one element from that set with r = 1 at once. But if you
+            select r = 12 items, only one combination that includes each ball will be available. Make your own attempt
+            with the n pick r calculator!</p>
+          <p>You have most likely learned everything there is to know about combinations and the combination formula by
+            this point. If that's not enough, we go into more detail in the following sections about the distinctions
+            between permutation and combination (which are frequently mistakenly thought of as the same thing),
+            combination probability, and linear combination.</p>
+          <h3 class="text-secondary">Permutation and combination</h3>
+          <p>You might be curious about when permutation is preferable to combination. It all depends on when to
+            consider ordering. For illustration, suppose you had a deck of nine playing cards with the numerals 1
+            through 9. You choose three cards at random, arrange them in a line on the table, and come up with a
+            three-digit number, such as 425 or 837. Can you make as many different numbers as possible?</p>
+          <p><strong>P(9,3) = 9!/(9-3)! = 9!/6! = 504</strong></p>
+          <p>Make sure of the outcome using our NCR calculator! How many different possible combinations exist?</p>
+          <p><strong>C(9,3) = 9!/(3! * (9-3)!) = 9!/(3! * 6!) = 84</strong></p>
+          <p>There are fewer always combinations than there are permutations. This time, it is six times smaller (84
+            times 3! equals 6 for a result of 504). It results from the fact that, like in the preceding example with
+            the three colored balls, each set of three cards can be rearranged in six distinct ways.</p>
+          <p>In many academic disciplines, combination and permutation are equally important. They appear in physics,
+            statistics, economics, and, of course, mathematics. We have more useful technologies that may be applied in
+            similar circumstances. Try out the significant figures calculator, which explains the laws of significant
+            figures and allows you to rapidly estimate a logarithm with whatever base you choose. It also explains what
+            "significant" numbers are.</p>
+          <h4>Permutation and combination with repetition. Combination Generator</h4>
+          <p>We must introduce a comparable selection with permitted repeats in order to round up our discussion of
+            permutation and combination. This means that after selecting an element from the set of n different objects,
+            you always return it to that set. </p>
+          <p>In the case of the example with the various colored balls, you pick one ball out of the bag, keep track of
+            which one you drew, and then place it back in the bag. Comparatively, in the second card example, you choose
+            one card, note the number on that card, and then reshuffle the deck. In this method, you may, for instance,
+            have a permutation of 228 or a combination of, say, two red balls.</p>
+          <p>You presumably predicted that both formulas would become rather difficult. Even still, it's not as
+            complicated as figuring out how much alcohol your homebrewed beer has (which, by the way, you can do with
+            our ABV calculator). In fact, the equation becomes considerably simpler in the case of permutation.
+            Combination with repetition follows the following formula:</p>
+          <p><strong>C'(n,r) = (r+n-1)! / (r! * (n-1)!</strong></p>
+          <p>And for repetition and permutation:</p>
+          <p><strong>P'(n,r) = nr.</strong></p>
+          <p>The summary of the distinctions between the four methods of selecting an object—combination, combination
+            with repetition, permutation, and permutation with repetition—is shown in the image below. You have four
+            balls of different colors, and you select three of them as an example. You can choose one of the balls more
+            than once in choices with repetition. Be cautious when experimenting with the permutations because there
+            will be a lot of different sets! However, you can still calculate how many of them there are in a secure
+            manner.</p>
+          <h3 class="text-secondary">Combination probability and linear combination</h3>
+          <p>Let's start with combination probability, which is a crucial component of many statistical puzzles (we have
+            a probability calculator that explains it everything). It should be clear from the example in the image
+            above: you choose three of the four coloured balls from the bag. </p>
+          <p> Let's imagine you want to know the likelihood (probability) that one of them will be red. The red ball
+            appears in three of the four distinct combinations. Therefore, the combined probability is:</p>
+          <p><strong>Pr = 3/4 = 75%.</strong></p>
+          <p>75% of the time, if you select three balls at random from the bag, you'll choose a red ball. The % symbol
+            is typically used to denote likelihood. If necessary, you may find out how to find percentages in our other
+            calculator.</p>
+          <p>Let's say you choose one ball, note the color you received, and then put it back in the bag. What is the
+            likelihood that at least one red ball will appear in the combination? This issue involves "combination with
+            repetition." Given that the red ball appears in 10 of the possible twenty combinations shown in the image
+            above:</p>
+          <p><strong>Pr = 10/20 = 50%.</strong></p>
+          <p>Are you surprised by that? It shouldn't be, after all. When you return the first ball, for example, the
+            blue ball, you can also draw a second and third ball. As a result, the chances of receiving a red ball are
+            reduced. Analogous considerations can be performed with permutation. Utilize the colored ball bag to attempt
+            to solve a puzzle.</p>
+          <h4>what is the probability that your first picked ball is red?</h4>
+          <p>Say you want to verify it for yourself since you don't believe us. You draw three of the four balls and
+            look to see if there is a red ball (like in the first example of this section). If you go through that
+            process three more times, only one out of every four times (or 25% of the time) will you acquire the red
+            ball. According to theory, you anticipated 75%. </p>
+          <p>What took place? This is how probability operates, then. The outcome of repeating an experiment several
+            times is described by the law of big numbers. If you sketch something 100 times, for example, you'll be a
+            lot closer to 75%.</p>
+          <p>Furthermore, the law of large numbers almost always produces the conventional normal distribution, which
+            can be used to describe things like a person's height or IQ with a p-value. We describe how to calculate the
+            p-value using the z-score table in the p-value calculator. Despite how difficult it may seem, this isn't
+            really that difficult.</p>
+          <p>Do you know what a linear combination is? In spite of the word combination, it doesn't actually have many
+            similarities with what we have learned so far. We'll nonetheless make an effort to do so succinctly. </p>
+          <p>A linear combination is created by multiplying a collection of terms by a constant, then adding the
+            results. Because of the de Broglie equation, it is extensively employed in wave physics to predict the
+            diffraction grating equation and even in quantum physics. Here are a few typical illustrations of a linear
+            combination:</p>
+          <h4>examples of linear combination</h4>
+          <ul>
+            <li>Vectors. Each 3D vector may be broken down into its three component unit vectors, e1 = (1,0,0), e2 =
+              (0,1,0), and e3 = (0,0,1). For instance, the linear combination v = (2,5,3) = 2e1 + 5e2 + 3e3 is given.
+            </li>
+            <li>Functions. Consider that you have two functions, f(x) = ex and g(x) = ex. You may construct linear
+              combinations that depict the hyperbolic sine sinh(x) = f(x)/2 - g(x)/2 or cosh(x) = f(x)/2 + g(x)/2 from
+              those two functions. With the standard sine and cosine, you may do the same task, but you must employ the
+              fictitious integer i. In the square root calculator's last section, we go into greater detail about it.
+            </li>
+            <li>Polynomials. Say you wish to represent the function q(x) = 2x2 + x + 3 as a linear combination of the
+              three polynomials p1(x) = 1, p2(x) = 3x + 3, and p3(x) = x2 - x + 1. Although it isn't always feasible, in
+              this instance, q(x) = -2p1(x) + p2(x) + 2p3 (x).</li>
+          </ul>
+          <h4>What distinguishes combination from permutation?</h4>
+          <p>If we care about the order of the components, then combinations and permutations vary fundamentally from
+            each other in math:</p>
+          <ul>
+            <li>We put the things in sequential order since the sequence is important in permutation.</li>
+            <li>We choose a group of things from a bigger collection since the order is irrelevant in combinations.</li>
+          </ul>
+          <h4>How can I compute combinations into permutations?</h4>
+          <p>If you already have a combination and want to create a permutation out of it, you must impose order on the
+            elements in your set by selecting one of the various orderings. The number of permutations of r items
+            selected from n items is therefore equal to r!, where r! is the number of orderings of these r things,
+            multiplied by the number of combinations of r items selected from n items.</p>
+          <h4>Using permutations, how can I compute combinations?</h4>
+          <p>You must eliminate order, or treat all potential reorderings as the same object, in order to convert a
+            permutation that already exists into a combination. The quantity of combinations of r things selected from n
+            items is therefore equal to the quantity of permutations of r items selected from n items divided by the
+            quantity of orderings of these r items, i.e., by r!</p>
+          <h4>What combinations are there for a seven-letter word?</h4>
+          <p>If a word includes seven letters, you can arrange them in 7! = 5040 different ways (simple permutations of
+            seven items). However, the number of arrangements decreases if some letters occur more than once! For
+            illustration:</p>
+          <p>The answer is 2520 if the word is "WITNESS," which has the letter "S" present twice.</p>
+          <p>If the word is "someone," we divide 7 by 2 because "O" and "E" occur twice. 1260 is the outcome when 2! *
+            2! Equals 4.</p>
+          <p>If the word is "unknown," we have "n" three times; thus, we divide 7 by 3 to get 6, which gives us 840.</p>
         </div>
       </div>
     </div>

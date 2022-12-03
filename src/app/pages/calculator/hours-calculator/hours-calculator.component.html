@@ -1,0 +1,239 @@
+<nb-layout>
+  <nb-layout-column style="display: flex;">
+    <div class="container d-fle align-items-center justify-content-center">
+      <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'calculators/.', nameCategorie: 'Hours &amp; Date', namePage:'Time Calculator', itemUrl: 'calculators/time-calculator/.'}">
+      </app-breadcrumbs>
+      <div class="text-center mb-2  mt-4 ">
+        <!-- <p class="text-uppercase mb-0 pres">Vous etes prêt à apprendre ?</p> -->
+        <h1 class="text-secondary text-center">Hours Calculator</h1>
+        <div class="flexMobile">
+          <!-- <app-banner *ngIf="envirement"></app-banner> -->
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">
+              <h2 class="text-white" style="font-size: 30px !important;">Add or Subtract Time from a Date</h2>
+            </div>
+            <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
+              <span>
+                {{error}}
+              </span>
+            </div>
+            <div class="card-body example-items-col">
+              <form [formGroup]="calculeHours" (ngSubmit)="CalculateHours(target)">
+                <div class="row my-2">
+                  <label for="startTime">Start time</label>
+                  <input class="form-control" nbInput fullWidth [nbTimepicker]="timepicker" formControlName="startTime">
+                  <nb-timepicker #timepicker></nb-timepicker>
+                </div>
+                <div class="row my-2">
+                  <label for="startTime">End time</label>
+                  <input class="form-control" nbInput fullWidth [nbTimepicker]="endTime" formControlName="endTime">
+                  <nb-timepicker #endTime></nb-timepicker>
+                </div>
+                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
+
+              </form>
+              <!-- <form [formGroup]="calculeAddOrSubTime" (ngSubmit)="AddOrSubTime(target)">
+                <div class="row my-2">
+                  <label for="startTime">Start time</label>
+                  <input id="Hour" class="form-control" type="number" placeholder="hour" formControlName="startTime">
+                </div>
+                <div class="row my-2">
+                  <label for="startTime">End time</label>
+                  <input id="Minute" class="form-control" type="number" placeholder="minute" formControlName="endTime">
+                </div>
+
+                <div class="row my-3" style="flex-direction: row-reverse;">
+                  <div class="col-3 pl-2 pr-2"> <label for="Second">Second</label>
+                    <input id="Second" class="form-control" type="number" placeholder="second" formControlName="second">
+                  </div>
+                  <div class="col-3 pl-2 pr-2"><label for="Minute">Minute</label>
+                    <input id="Minute" class="form-control" type="number" placeholder="minute" formControlName="minute">
+                  </div>
+                  <div class="col-3 pl-2 pr-2"><label for="Hour">Hour</label>
+                    <input id="Hour" class="form-control" type="number" placeholder="hour" formControlName="hour">
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <div class="mt-4"><label for="Date end">Add or Subtract :</label></div>
+                  <div class="col-3 mt-3  mb-3">
+                    <label for="addOrSub2"></label>
+                    <nb-select id="addOrSub2" placeholder="Select" status="basic" shape="semi-round"
+                      (selectedChange)="changeSelectedOption($event)" selected="add" required>
+                      <nb-option value="add">+</nb-option>
+                      <nb-option value="substract">_</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+
+                <div class="row my-3">
+                  <div class="col-3 pl-2 pr-2">
+                    <label for="Day">Day</label>
+                    <input id="Day" class="form-control" type="number" placeholder="Day" formControlName="rsltDay">
+                  </div>
+                  <div class="col-3 pl-2 pr-2">
+                    <label for="hour">Hour</label>
+                    <input id="hour" class="form-control" type="number" placeholder="Hour" formControlName="rsltHour">
+                  </div>
+                  <div class="col-3 pl-2 pr-2">
+                    <label for="minutes">Minute</label>
+                    <input id="minutes" class="form-control" type="number" placeholder="Minute"
+                      formControlName="rsltMinute">
+                  </div>
+                  <div class="col-3 pl-2 pr-2">
+                    <label for="seconds">Second</label>
+                    <input id="seconds" class="form-control" type="number" placeholder="Second"
+                      formControlName="rsltSecond">
+                  </div>
+                </div>
+                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
+              </form> -->
+            </div>
+          </div>
+        </div>
+        <span #target style="position: relative; top: 200px;"></span>
+
+
+
+        <div class="d-flex align-items-center col-md-6 w-100 my-3 offset-md-3 px-3" *ngIf="resultTimeSecondCalculator">
+          <div class="border shadow bg-white p-2 mx-auto" style="height:200px ;">
+
+            <div class=" mt-4">
+              <div class="col-12">
+                <p>Or <em>{{hours}} hours</em></p>
+                <p>Or <em>{{minute}} minutes</em></p>
+                <p>Or <em>{{second}} seconds</em></p>
+              </div>
+            </div>
+            <div class="col-md-6 mx-auto">
+              <label for="rslt"></label>
+              <input id="rslt" type="date" class="form-control inputTime my-3" name='result'
+                value="{{ resultTimeSecondCalculator | date: 'yyyy-MM-dd'}}" id="newdate">
+              <!-- style="border-color:var(--primary); border-radius: 5px; padding: 6px;" -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!--------------------------------------------------------------------------------
+          -------------------------------- second calculator------------------------------
+        --------------------------------------------------------------------------------->
+      <div class="row mt-5">
+        <div class="col-md-5 d-flex justify-content-center">
+          <img src="../../../../assets/images/time_management.svg" width="90%" height="80%" alt="time calculator">
+        </div>
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header text-white text-center font-weight-bold">
+              <h2 class="text-white">Time Calculator</h2>
+            </div>
+            <div class="card-body example-items-col">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <!-- <app-banner *ngIf="envirement"></app-banner> -->
+        </div>
+        <!-- <div #target></div> -->
+      </div>
+      <app-other-calcultor-time eleminateCalculator="ac"></app-other-calcultor-time>
+      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
+        Time
+        Calculator</p>
+      <div class="row border shadow bg-white my-4">
+        <div class="col-md-12 mx-2 my-4">
+
+          <p>You may subtract time (discover the time difference), multiply time, divide time, add time, and compute the
+            duration between dates using the time and date calculator. </p>
+          <p> It also has a timer (you can check time duration, e.g. how many days and hours passed from 2.03.2010 11:00
+            am to 3.04.2010 6:30 pm). The text contains instructions on how to use each component of the calculator as
+            well as how to manually compute time.</p>
+          <h2 class="text-secondary">How we measure time:</h2>
+          <p>To establish time, two separate types of measurement are commonly employed today: the calendar and the
+            clock. </p>
+          <p>These time measures are based on the sexagesimal numeral system, which has the number 60 as its foundation.
+            This system was developed in ancient Sumer about the third millennium BC and was adopted by the Babylonians.
+          </p>
+          <p>It is presently used to measure time, angles, and geographic coordinates in a modified form. Base 60 is
+            utilized because the number 60 is a better extremely composite number with 12 components. </p>
+          <p>A superior extremely composite number is a natural number with more divisors than any other number scaled
+            to some power of itself. </p>
+          <p>With so many variables, the number 60 simplifies many fractions using sexagesimal numbers, and its
+            mathematical benefit is one of the reasons it is still used today. 1 hour, or 60 minutes, for example, may
+            be equally split into 30, 20, 15, 12, 10, 6, 5, 4, 3, 2, and 1 minute, demonstrating part of the reasons for
+            the sexagesimal.</p>
+          <h2 class="text-secondary">Hours - Time Calculator</h2>
+          <p>Use this calculator to quickly and accurately determine the hour difference between any two times in a day.
+            If an hour computation is inconvenient for you, it will also provide the result in minutes. </p>
+          <p>This is the hours' calculator for you if you want to know how many hours you spend on specific activities
+            (for example, how many hours am I working?).</p>
+          <h3 class="">Add Time</h3>
+          <p>Do you want to add time? Have you ever yourself asked to calculate how much time you spend doing something?
+            Have you been having trouble calculating the total number of hours you've worked? Have you ever wondered how
+            much time you spent studying for your math exams? Manually calculating time might be difficult. Our time
+            adder is an online calculator that requires no download and is simple to use.</p>
+          <p>Enter the two units - hours and minutes - to use the time adder. Repeat the process in the following field
+            to add extra time. You can put times in up to ten lines and add more if necessary. The hours calculator
+            computes values automatically as you fill out each line.
+            When you're finished, you may "Clear" the lines and try again. Do you want to print or email the findings of
+            the time calculator? Simply click the correct box to initiate the action.
+          </p>
+          <h3 class="">How to calculate hours between times?</h3>
+          <p>This basic online calculator makes it simple to determine the time difference between two provided timings
+            in hours and minutes. To determine the hours and minutes included in a time period, you must first know when
+            it begins and when it ends. The time format used by the hours' calculator will be determined by your
+            browser's locale settings, such as US or UK.</p>
+          <p>After entering the start and end dates of the time period in question, just click the "Calculate
+            difference" button. The discrepancy is shown below in both full hours and minutes. If you input the first
+            hour later in the day than the second, the time difference is computed as if the first hour is today and the
+            second is tomorrow. </p>
+          <p>Entering a start time of 6 PM and an end time of 8 AM into the calculator, for example, will compute the
+            difference in hours, minutes, and seconds from 6 PM today to 8 AM tomorrow in hours, minutes, and seconds
+            (14 hours).</p>
+          <h3 class="">Example</h3>
+          <p>This calculator for calculating the number of hours between two times might be used to determine how long
+            you worked in order to fill out time sheets. How many hours are there between 9 a.m. and 5:30 p.m. (or 9:00
+            a.m. and 17:30 p.m.)? Simply insert the two times in any order and click "Calculate." </p>
+          <p>The total time will be 8 hours and 30 minutes (8:30 hours or 8.5 hours in decimal) or 510 minutes. There
+            are 8 hours between these two periods. It also permits deducting lunch breaks and other forms of pauses from
+            the total number of hours in between. See lunch breaks for further information.</p>
+          <h3 class="">How many hours?</h3>
+          <p>If you're using our calculator to figure out how many hours you've worked, you should utilize the
+            capability that allows you to remove a lunch break or other forms of shift breaks to get the working time. A
+            7:30 to 4:30 work day with a 30-minute lunch break, for example, represents an 8.5 hr shift day (9 hours in
+            between, minus 30 minutes or 0.5 hours equals 8.5). </p>
+          <p>If you work shifts, your breaks may not be a lunch breaks, and you may be permitted many breaks. In this
+            scenario, sum the amount of time off and enter it in the form (in minutes).</p>
+          <h2 class="text-secondary">American vs. European time</h2>
+          <h3 class="">European time</h3>
+          <p>The way Europeans and Americans tell time differs, both in terms of how it is pronounced and written.
+            Americans utilize the hours till 12 twice a day, but Europeans use the hours between 00:00 and 23:59. As a
+            result, in America, individuals would use pm and am to indicate which part of the day they were discussing.
+            Most Europeans, on the other hand, would probably suggest 15:00 o'clock (instead of 3 pm). To make matters
+            even more complex for visitors from other countries, many Europeans would also state 3 p.m.</p>
+          <p>If you're new to Europe and want to deal with "military time," all you have to do is utilize the hours
+            until 12 in the same way and then add or subtract 12 from the result, adding pm after the result. For
+            example, if you have a meeting at 17:30, the time is 17:30 - 12 = 5:30 pm. If you need to know what to write
+            to a colleague you want to meet at 2 p.m., 2 + 12 Equals 14 p.m.</p>
+          <h3 class="">American Time</h3>
+          <p>It should be emphasized for accuracy that, while similar, European time telling is not exactly military
+            time. In the military, 18:00 (6 p.m.) is 1800. It is "eighteen o'clock" in one example and "eighteen
+            hundred" in the other. 7:00 (7 a.m.) in the military would be "zero seven hundred" or "oh seven hundred"
+            (0700), whilst citizens in Europe would just say "seven." </p>
+          <p>The tougher military method of transmitting time is required because of the crucial situations under which
+            it is utilized. Miscalculating the hour or minute of activity might cost lives...</p>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>
+<ngx-json-ld [json]="schema"></ngx-json-ld>
