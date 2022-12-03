@@ -81,7 +81,7 @@
           <p class="text-secondary text-center font-weight-bold">Result of Permutation Calculator</p>
           <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
           <div *ngIf="rsltPermutation">
-            <h5 class="text-white text-center msg font-weight-bold">Result : {{permutation}}</h5>
+            <p class="text-white text-center msg font-weight-bold">Result : {{permutation | number}}</p>
             <p class="font-weight-bold">steps :</p>
             <!-- <p>y = p x x / 100</p> -->
             <table align="center">
@@ -121,7 +121,7 @@
                   </td>
                 </tr>
               </table>
-              <p class="text-center"><strong >p(n, r) = </strong>{{permutation}}</p>
+              <p class="text-center"><strong >p(n, r) = </strong>{{permutation | number}}</p>
             </div>
           </div>
         </div>

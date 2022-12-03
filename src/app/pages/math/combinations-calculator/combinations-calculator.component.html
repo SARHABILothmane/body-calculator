@@ -10,61 +10,11 @@
           <app-banner *ngIf="envirement"></app-banner>
         </div>
       </div>
-      <div class="col-12 d-md-none d-block">
-        <app-banner *ngIf="envirement"></app-banner>
-        <span #target style="position: relative; top: -350px"></span>
-      </div>
-      <div class="row mb-3 d-flex flex-md-r ow-reverse">
-        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
-          <h2 class="text-secondary text-center">Result of Combination Calculator</h2>
-          <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
-          <div *ngIf="rsltCombination">
-            <h5 class="text-white text-center msg">Result : {{combination | number}}</h5>
-            <p class="font-weight-bold">steps :</p>
-            <table align="center">
-              <tr>
-                <td> <sub>n</sub>C<sub>r</sub> =&nbsp;</td>
-                <td>
-                  <table>
-                    <tr>
-                      <td align="center">n!</td>
-                    </tr>
-                    <tr>
-                      <td bgcolor="#000000" height="1"></td>
-                    </tr>
-                    <tr>
-                      <td>r! * (n - r)!</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-            <div class="my-3">
-              <table align="center">
-                <tr>
-                  <td> <sub>n</sub>C<sub>r</sub> =&nbsp;</td>
-                  <td>
-                    <table>
-                      <tr>
-                        <td align="center">{{n}}!</td>
-                      </tr>
-                      <tr>
-                        <td bgcolor="#000000" height="1"></td>
-                      </tr>
-                      <tr>
-                        <td>{{r}}! x ({{n}} - {{r}})!</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-              <p class="text-center"><strong class="ml-5">C(n,r) = </strong>{{combination | number}}</p>
-            </div>
-          </div>
-        </div>
+  
+      <div class="row mb-3 d-flex flex-md-row-reverse">
         <div class="col-md-6">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Combination Calculator</div>
+            <div class="card-header"><h2 class="text-white text-center font-weight-bold">Combination Calculator</h2></div>
             <div class="card-body example-items-col">
               <strong>
                 <table align="center">
@@ -115,6 +65,59 @@
             </div>
           </div>
         </div>
+
+        <div class="col-12 d-md-none d-block">
+          <app-banner *ngIf="envirement"></app-banner>
+          <span #target style="position: relative; top: -350px"></span>
+        </div>
+
+        <div class="col-md-5 mx-auto mt-3 border-shadow bg-white" style="min-height: 300px;">
+          <p class="text-secondary text-center">Result of Combination Calculator</p>
+          <div *ngIf="rsltCombination">
+            <h5 class="text-white text-center msg">Result : {{combination | number}}</h5>
+            <p class="font-weight-bold">steps :</p>
+            <table align="center">
+              <tr>
+                <td> C(n, r) =&nbsp;</td>
+                <td>
+                  <table>
+                    <tr>
+                      <td align="center">n!</td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#000000" height="1"></td>
+                    </tr>
+                    <tr>
+                      <td>r! * (n - r)!</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <div class="my-3">
+              <table align="center">
+                <tr>
+                  <td> C(n, r) =&nbsp;</td>
+                  <td>
+                    <table>
+                      <tr>
+                        <td align="center">{{n}}!</td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#000000" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td>{{r}}! x ({{n}} - {{r}})!</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <p class="text-center"><strong >C(n, r) = </strong>{{combination | number}}</p>
+            </div>
+          </div>
+        </div>
+      
       </div>
       <div class="col-12">
         <app-banner *ngIf="envirement"></app-banner>
