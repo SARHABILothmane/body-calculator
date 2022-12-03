@@ -76,7 +76,7 @@ export class CombinationsCalculatorComponent implements OnInit {
   public CalculateRandomNumber(e: HTMLElement): void {
     this.submitted = true;
     if (this.calculeFormCombination.valid) {
-      if(this.calculeFormCombination.value.r > this.calculeFormCombination.value.n || this.calculeFormCombination.value.n == 0){
+      if (this.calculeFormCombination.value.r > this.calculeFormCombination.value.n || this.calculeFormCombination.value.n == 0) {
         this.error = "r needs to be smaller than n.";
         return
       }
@@ -84,7 +84,9 @@ export class CombinationsCalculatorComponent implements OnInit {
       this.rsltCombination = true;
       this.n = this.calculeFormCombination.value.n;
       this.r = this.calculeFormCombination.value.r;
-      this.combination = this.factorialize(this.n) / (this.r * this.factorialize(this.n - this.r));
+      let xx = this.factorialize(this.r) * this.factorialize(this.n - this.r)
+      this.combination = this.factorialize(this.n) / (xx);
+      // this.combination = this.factorialize(this.n) / (this.r * this.factorialize(this.n - this.r));
       e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.error = "Please check the fields";

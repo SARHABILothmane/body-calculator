@@ -19,7 +19,7 @@
           <h2 class="text-secondary text-center">Result of Combination Calculator</h2>
           <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
           <div *ngIf="rsltCombination">
-            <h5 class="text-white text-center msg">Result : {{combination}}</h5>
+            <h5 class="text-white text-center msg">Result : {{combination | number}}</h5>
             <p class="font-weight-bold">steps :</p>
             <table align="center">
               <tr>
@@ -58,7 +58,7 @@
                   </td>
                 </tr>
               </table>
-              <p class="text-center"><strong class="ml-5">C(n,r) = </strong>{{combination}}</p>
+              <p class="text-center"><strong class="ml-5">C(n,r) = </strong>{{combination | number}}</p>
             </div>
           </div>
         </div>
@@ -67,25 +67,25 @@
             <div class="card-header text-white text-center font-weight-bold">Combination Calculator</div>
             <div class="card-body example-items-col">
               <strong>
-              <table align="center">
-                <tr>
-                  <td> C(n, r) =&nbsp;</td>
-                  <td>
-                    <table>
-                      <tr>
-                        <td align="center">n!</td>
-                      </tr>
-                      <tr>
-                        <td bgcolor="#000000" height="1"></td>
-                      </tr>
-                      <tr>
-                        <td>r! * (n - r)!</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </strong>
+                <table align="center">
+                  <tr>
+                    <td> C(n, r) =&nbsp;</td>
+                    <td>
+                      <table>
+                        <tr>
+                          <td align="center">n!</td>
+                        </tr>
+                        <tr>
+                          <td bgcolor="#000000" height="1"></td>
+                        </tr>
+                        <tr>
+                          <td>r! * (n - r)!</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </strong>
               <form [formGroup]="calculeFormCombination" (ngSubmit)="CalculateRandomNumber(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
@@ -129,7 +129,9 @@
             of combinations in a set (commonly denoted as nCr) as well as in displaying every single combination
             (permutation) of your set, up to the length of 20 elements.
           </p>
-          <p>Be cautious, though! Such lengthy phrases could take our <a href="https://en.wikipedia.org/wiki/Combination" target="_blank" rel="noopener noreferrer">combination</a> generator several seconds to discover.
+          <p>Be cautious, though! Such lengthy phrases could take our <a
+              href="https://en.wikipedia.org/wiki/Combination" target="_blank" rel="noopener noreferrer">combination</a>
+            generator several seconds to discover.
             Try our combination calculator right away if you're curious about the range of possible combinations that
             may be created from a given set of components and sample size.</p>
           <h3 class="text-secondary">Compute combinations</h3>
@@ -225,7 +227,9 @@
           <p>There are fewer always combinations than there are permutations. This time, it is six times smaller (84
             times 3! equals 6 for a result of 504). It results from the fact that, like in the preceding example with
             the three colored balls, each set of three cards can be rearranged in six distinct ways.</p>
-          <p>In many academic disciplines, <a href="https://en.wikipedia.org/wiki/Combinations_and_permutations" target="_blank" rel="noopener noreferrer">combination and permutation</a> are equally important. They appear in physics,
+          <p>In many academic disciplines, <a href="https://en.wikipedia.org/wiki/Combinations_and_permutations"
+              target="_blank" rel="noopener noreferrer">combination and permutation</a> are equally important. They
+            appear in physics,
             statistics, economics, and, of course, mathematics. We have more useful technologies that may be applied in
             similar circumstances. Try out the significant figures calculator, which explains the laws of significant
             figures and allows you to rapidly estimate a logarithm with whatever base you choose. It also explains what
@@ -244,24 +248,24 @@
             Combination with repetition follows the following formula:</p>
           <p>
             <strong>
-            <table align="center">
-              <tr>
-                <td> C(n, r) =&nbsp;</td>
-                <td>
-                  <table>
-                    <tr>
-                      <td align="center">(r + n-1)</td>
-                    </tr>
-                    <tr>
-                      <td bgcolor="#000000" height="1"></td>
-                    </tr>
-                    <tr>
-                      <td>(r! * (n-1)!)</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
+              <table align="center">
+                <tr>
+                  <td> C(n, r) =&nbsp;</td>
+                  <td>
+                    <table>
+                      <tr>
+                        <td align="center">(r + n-1)</td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#000000" height="1"></td>
+                      </tr>
+                      <tr>
+                        <td>(r! * (n-1)!)</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
             </strong>
           </p>
           <p>And for repetition and permutation:</p>

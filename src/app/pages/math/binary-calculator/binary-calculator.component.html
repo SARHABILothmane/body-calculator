@@ -71,7 +71,7 @@
                 <div class="row">
                   <div class="col-md-5  px-1">
                     <label for="binary" hidden="hidden">Binary calculator</label>
-                    <input id="binary" class="form-control" type="number" nbInput fullWidth status="basic"
+                    <input id="binary" class="form-control" type="text" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="01100111 01101111" formControlName="binaryOne">
                     <small class="text-danger" *ngIf="submitted && formCalculeBinary.binaryOne.errors?.required">this
                       field
@@ -93,7 +93,7 @@
                   </div>
                   <div class="col-md-5  px-1">
                     <label for="binaryTwo" hidden="hidden">binary number calculator</label>
-                    <input id="binaryTwo" class="form-control" type="number" nbInput fullWidth status="basic"
+                    <input id="binaryTwo" class="form-control" type="text" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="01100111 01101111" formControlName="binaryTwo">
                     <small class="text-danger" *ngIf="submitted && formCalculeBinary.binaryTwo.errors?.required">this
                       field
@@ -126,7 +126,7 @@
                   <div class="border">
                     <p><strong class="ml-5">y =</strong> {{rsltBinary}}</p>
                   </div> -->
-                <p class="text-white text-center msg font-weight-bold">Result : {{rsltBinary}}</p>
+                <p class="text-white text-center msg font-weight-bold">Result : {{rsltBinary | number}}</p>
                 <app-banner *ngIf="envirement"></app-banner>
               </div>
               <form [formGroup]="conveBinaryToDeci" (ngSubmit)="CalculateBinaryToDeci(target2)">
@@ -138,7 +138,7 @@
                 <div class="row">
                   <div class="col-6">
                     <label for="BinaryV">Binary value</label>
-                    <input id="BinaryV" class="form-control" type="number" nbInput fullWidth status="basic"
+                    <input id="BinaryV" class="form-control" type="text" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="binary" formControlName="binary">
                     <small class="text-danger" *ngIf="submittedFormTwo && formBinaryDec.binary.errors?.required">this
                       field
