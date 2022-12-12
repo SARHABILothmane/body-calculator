@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "bmr-calculator/.", loadChildren: () => import("src/app/pages/health/basal-metabolic-rate-calculator/basal-metabolic-rate-calculator.module").then(mod => mod.BasalMetabolicRateCalculatorModule) },
   { path: "healthy-weight-calculator/.", loadChildren: () => import("src/app/pages/health/healthy-weight-calculator/healthy-weight-calculator.module").then(mod => mod.HealthyWeightCalculatorModule) },
   { path: "lean-body-mass-calculator/.", loadChildren: () => import("src/app/pages/health/lean-body-mass-calculator/lean-body-mass-calculator.module").then(mod => mod.LeanBodyMassCalculatorModule) },
-
+  { path: "bra-size-calculator/.", loadChildren: () => import("src/app/pages/health/bra-size-calculator/bra-size-calculator.module").then(mod => mod.BraSizeCalculatorModule) },
 ];
 
 @NgModule({

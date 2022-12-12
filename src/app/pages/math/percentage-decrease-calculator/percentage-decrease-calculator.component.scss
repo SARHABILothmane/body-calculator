@@ -1,0 +1,11 @@
+@import '../../../../variables.scss';
+.msg {
+    background-color: color(blue-primary);
+    font-family: font(font-family-regular);
+    // font-size: 18px;
+    -webkit-transition: background 2s;
+    transition: background 2s;
+  }
+h2{
+    font-size: 22px;
+}
