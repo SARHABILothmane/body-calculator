@@ -44,7 +44,7 @@
                   {{hexTwo}} = {{rsltCalHex}}</p>
                 <!-- </div> -->
                 <p class="text-white text-center msg font-weight-bold">Result : {{rsltCalHex | number}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculeHex" (ngSubmit)="CalculateHex(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
@@ -98,7 +98,7 @@
             <div class="card-body" #target2>
               <div *ngIf="rsltHex != null">
                 <p class="text-white text-center msg font-weight-bold">Result : {{rsltHex}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="conveHexToDeci" (ngSubmit)="CalculateHexToDeci(target2)">
                 <div *ngIf="errorFormTwo" class="alert alert-danger mx-auto text-center" role="alert">
@@ -137,7 +137,7 @@
               <div *ngIf="rsltDecimal != null">
                 <p class="text-white text-center msg font-weight-bold">Result : <strong class="text-uppercase">{{rsltDecimal}}</strong>
                 </p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="conveDeciToHex" (ngSubmit)="CalculateDeciToHex(target3)">
                 <div *ngIf="errorFormThree" class="alert alert-danger mx-auto text-center" role="alert">

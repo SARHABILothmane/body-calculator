@@ -60,7 +60,7 @@
                   {{binaryTwo}} = {{rsltCalBinary}}</p>
                 <!-- </div> -->
                 <p class="text-white text-center msg font-weight-bold">Result : {{rsltCalBinary | number}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculeBinary" (ngSubmit)="CalculateBinary(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
@@ -127,7 +127,7 @@
                     <p><strong class="ml-5">y =</strong> {{rsltBinary}}</p>
                   </div> -->
                 <p class="text-white text-center msg font-weight-bold">Result : {{rsltBinary | number}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="conveBinaryToDeci" (ngSubmit)="CalculateBinaryToDeci(target2)">
                 <div *ngIf="errorFormTwo" class="alert alert-danger mx-auto text-center" role="alert">
@@ -182,7 +182,7 @@
             <div class="card-body" #target3>
               <div *ngIf="rsltDecimal != null">
                 <p class="text-white text-center msg font-weight-bold">Result : {{rsltDecimal}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="conveDeciToBinary" (ngSubmit)="CalculateDeciToBinary(target3)">
                 <div *ngIf="errorFormThree" class="alert alert-danger mx-auto text-center" role="alert">

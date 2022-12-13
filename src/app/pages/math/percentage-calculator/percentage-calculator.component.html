@@ -44,7 +44,7 @@
                   <p><strong class="ml-5">R =</strong> {{y}}</p>
                 </div>
                 <p class="text-white text-center msg font-weight-bold">Result : {{y}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculePercentageY" (ngSubmit)="CalculatePercentageY(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
@@ -105,7 +105,7 @@
                   <p><strong class="ml-5">R =</strong> {{pOne}}</p>
                 </div>
                 <p class="text-white text-center msg font-weight-bold">Result : {{pOne}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculePercentageX" (ngSubmit)="CalculatePercentageX(target2)">
                 <div *ngIf="errorFormTwo" class="alert alert-danger mx-auto text-center" role="alert">
@@ -168,7 +168,7 @@
                   <p><strong class="ml-5">y =</strong> {{yTwo}}</p>
                 </div>
                 <p class="text-white text-center msg font-weight-bold">Result : {{yTwo}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculePercentageP" (ngSubmit)="CalculatePercentageP(target3)">
                 <div *ngIf="errorFormThree" class="alert alert-danger mx-auto text-center" role="alert">
@@ -244,7 +244,7 @@
                   <p><strong class="ml-5">R =</strong> {{yTree}}</p>
                 </div>
                 <p class="text-white text-center msg font-weight-bold">Result : {{yTree}}</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculePercentageIncDec" (ngSubmit)="CalculatePercentageIncDec(target4)">
                 <div *ngIf="errorFormFor" class="alert alert-danger mx-auto text-center" role="alert">

@@ -76,7 +76,7 @@
                 </div>
                 <p class="text-white text-center msg font-weight-bold">Result : {{convertToPositiveNumber(rsltError)}}%
                   error</p>
-                <app-banner *ngIf="envirement"></app-banner>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculePercentageError" (ngSubmit)="CalculatePercentageError(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">

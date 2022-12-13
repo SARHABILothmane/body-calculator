@@ -1,5 +1,6 @@
 import { UntypedFormGroup, Validators, UntypedFormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-exponent-calculator',
@@ -15,6 +16,7 @@ export class ExponentCalculatorComponent implements OnInit {
   error!: string;
   // errorSecondGnerator!: string;
   submitted: boolean = false;
+  envirement: boolean = environment.production;
   constructor() {
     this.calculeFormExponent = new UntypedFormGroup({
       value: new UntypedFormControl("2", [Validators.required]),

@@ -74,7 +74,7 @@
         <div class="col-md-5 mx-auto mt-3 border-shadow bg-white" style="min-height: 300px;">
           <p class="text-secondary text-center">Result of Combination Calculator</p>
           <div *ngIf="rsltCombination">
-            <h5 class="text-white text-center msg">Result : {{combination | number}}</h5>
+            <p class="text-white text-center msg font-weight-bold">Result : {{combination | number}}</p>
             <p class="font-weight-bold">steps :</p>
             <table align="center">
               <tr>
@@ -360,3 +360,4 @@
     </div>
   </nb-layout-column>
 </nb-layout>
+<ngx-json-ld [json]="schema"></ngx-json-ld>
