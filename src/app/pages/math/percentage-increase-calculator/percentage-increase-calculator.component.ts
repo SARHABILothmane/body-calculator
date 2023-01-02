@@ -39,27 +39,27 @@ export class PercentageIncreaseCalculatorComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online Percentage Calculator - Percent Change Calculator");
+    this.titleService.setTitle("Free online Percentage Increase Calculator - Percentage Growth Calculator");
     this.metaService.addTags([
-      { name: 'keywords', content: "Percentage Increase Calculator, percent change calculator, percentage formula , what percentage of, percentage change calculator, percentage difference calculator, percentage increase formula, percentage decrease calculator, how to calculate percentage, how to find percentage, how to calculate percentages, how to calculate percentage increase, how to calculate percentage of a number" },
-      { name: 'description', content: "Online Percentage Calculator that allow you to calculate percentage in different situation like Percentage Increase Calculator, Percent Change Calculator" },
-      { property: 'og:title', content: "Free online Percentage Calculator - Percent Change Calculator" },
-      { property: 'og:description', content: "Online Percentage Calculator that allow you to calculate percentage in different situation like Percentage Increase Calculator, Percentage Decrease Calculator" },
-      { property: "og:url", content: "https://body-calculator.com/math/percentage-calculator/" }
+      { name: 'keywords', content: "Percentage Increase Calculator, percent change calculator, percentage formula , Percentage Growth Calculator, what percentage of, percentage change calculator, percentage difference calculator, percentage increase formula, percentage decrease calculator, how to calculate percentage, how to find percentage, how to calculate percentages, how to calculate percentage increase, how to calculate percentage of a number" },
+      { name: 'description', content: "Free online Percentage Increase Calculator - Percentage Growth Calculator also you can find Percentage Increase Formula" },
+      { property: 'og:title', content: "Free online Percentage Increase Calculator - Percentage Growth Calculator" },
+      { property: 'og:description', content: "Free online Percentage Increase Calculator - Percentage Growth Calculator also you can find Percentage Increase Formula" },
+      { property: "og:url", content: "https://body-calculator.com/math/percentage-increase-calculator/" }
     ]);
-    this.canonical.createCanonicalLink("https://body-calculator.com/math/percentage-calculator/");
+    this.canonical.createCanonicalLink("https://body-calculator.com/math/percentage-increase-calculator/");
 
     this.schema = {
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
-      "name": "percentage calculator",
+      "name": "Percentage Increase Calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/math/percentage-calculator/",
+      "url": "https://body-calculator.com/math/percentage-increase-calculator/",
       "author": {
         "@type": "Person",
         "name": "SARHABIL"
       },
-      "datePublished": "2022-11-13",
+      "datePublished": "2023-01-02",
       "publisher": {
         "@type": "Organization",
         "name": "body-calculator"

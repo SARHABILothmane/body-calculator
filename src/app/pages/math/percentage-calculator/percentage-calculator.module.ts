@@ -1,4 +1,4 @@
-import { BannerModule } from './../../../shared/banner-amp/banner.module';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PercentageCalculatorComponent } from './percentage-calculator.component';
@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { BreadcrumbsModule } from 'src/app/shared/breadcrumbs/breadcrumbs.module';
+import { BannerModule } from 'src/app/shared/banner/banner.module';
 
 
 const routes: Routes = [

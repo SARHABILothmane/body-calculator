@@ -78,6 +78,8 @@ export class OtherCalcultorMathComponent implements OnInit {
         this.goToOtherPage = { name: "Go to Combination Calculator", url: "/math/combination-calculator/." }
     }else if(this.eleminateCalculator == 'combinationc'){
         this.goToOtherPage = { name: "Go to Permutation Calculator", url: "/math/permutation-calculator/." }
+    }else if(this.eleminateCalculator == 'pic'){
+          this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
     }else {
       this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
     }

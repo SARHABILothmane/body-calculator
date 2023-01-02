@@ -27,13 +27,13 @@ export class HomeComponent implements OnInit {
       { property: 'og:description', content: "Free online calculators for different types fitness, time and more" },
       {property: "og:url", content: "https://body-calculator.com/"}
     ]);
-    this.canonical.createCanonicalLink("https://body-calculator.com");
+    this.canonical.createCanonicalLink("https://body-calculator.com/");
     this.schema = {
                       "@context": "http://schema.org",
                       "@type": "SoftwareApplication",
                       "name": "free online calculators",
                       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-                      "url": "https://body-calculator.com",
+                      "url": "https://body-calculator.com/",
                       "author": {
                         "@type": "Person",
                         "name": "SARHABIL"

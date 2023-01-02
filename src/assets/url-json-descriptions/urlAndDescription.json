@@ -99,6 +99,11 @@
                             "textInHref": "Combination Calculator",
                             "description": "It finds the number of possible combinations obtained by taking any sample of items from a greater set. It is used mainly to show how many different possible subsets will be made from the greater set.",
                             "url": "/math/combination-calculator/."
+                        },
+                        {
+                            "name": "Percentage Increase Calculator",
+                            "textInHref": "Percentage Increase Calculator",
+                            "url": "/math/percentage-increase-calculator/."
                         }
                        
                     ]

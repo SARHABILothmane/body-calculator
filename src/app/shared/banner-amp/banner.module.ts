@@ -14,4 +14,4 @@ import { BannerComponent } from './banner.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [BannerComponent]
 })
-export class BannerModule { }
+export class BannerAMPModule { }
