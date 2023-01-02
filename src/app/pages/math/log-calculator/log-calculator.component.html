@@ -11,11 +11,11 @@
           <div *ngIf="rsltLogarithm">
             <p class="text-white text-center msg font-weight-bold">Result : {{log | number}}</p>
             <p class="font-weight-bold">steps :</p>
-            <p class="text-center">The base {{value}} logarithm of {{logValue}} is {{log}}
+            <p class="text-center">The base {{value}} logarithm of {{logValue}} is {{log | number}}
               <p class="text-center">log <sub>{{value}}</sub> ({{logValue}})
                 = {{log | number}}
               </p>
-              <p class="text-center">Exponent : {{value}} <sup>{{log }}</sup> = <strong
+              <p class="text-center">Exponent : {{value}} <sup>{{log | number}}</sup> = <strong
                   class="ml-1"></strong>{{logValue | number}}
               </p>
           </div>
@@ -63,46 +63,118 @@
                 <span #target></span> -->
       </div>
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn About
-        Permutation Calculator</p>
+        log calculator</p>
 
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
-          <h2>Random number generator</h2>
-          <p>Use our random number generator website to get a really unexpected and cryptographically secure number.
-            It creates random numbers that can be utilized in situations requiring impartial randomization, such as when
-            drawing numbers for a lottery, raffle, giveaway, or sweepstake.
-            An RNG draw may also be used to choose who goes first in a game, among other things.
+          <p>You may use this log calculator to get the logarithm of a (positive real) integer with a specified base
+            (positive, not equal to 1). This tool will resolve your issue whether you're seeking for a natural
+            logarithm, a log base 2 log, or a log base 10 log.</p>
+          <p>Continue reading to learn more about the logarithm formula and the guidelines you must adhere to.
+            Additionally, you could discover some intriguing knowledge, such as why and how logarithms are used in our
+            daily lives.</p>
+          <p>Consider checking out our cube root calculator if you're looking for another useful math calculator that
+            allows you to calculate not only the cube root but also roots of any degree.</p>
+          <h3 class="text-secondary">What is a logarithm?</h3>
+          <p>The opposite of an exponential function is a logarithmic function. In essence, the logarithm of x with base
+            an is equivalent to y if a raised to power yields x. aʸ = x is the mathematical equivalent of logₐ(x) = y.
           </p>
-          <h2>How to pick a random number between two numbers?</h2>
-          <p>
-            You may use this random number generator to get a number that is genuinely random between any two values.
-            To acquire a random number between 1 and 10, for example, put 1 in the first field and 10 in the second,
-            then click "Get Random Number." Our randomizer will select a number between 1 and 10 at random.
-            To produce a random number between 1 and 100, repeat the process, but enter 100 in the picker's second
-            field.
+          <p>In other words, the logarithm of x, or logₐ(x), indicates what power we need to increase a to in order to
+            generate the number x (or, if x is more than 1, how many times a should be multiplied by itself). From this
+            perspective, we may also describe the logarithm as follows:</p>
+          <p><strong>aloga(x) = x</strong></p>
+          <p>Hopefully, you now know what a logarithm is, and you may learn about its two most common versions in the
+            section that follows.</p>
+          <h4>the common and natural logarithms</h4>
+          <p>There are many possible bases for logarithms, but two in particular are used so frequently that
+            mathematicians have given them their own names: the natural logarithm and the common logarithm.</p>
+          <h4>Natural logarithm</h4>
+          <p>If you wish to calculate the natural logarithm of a number, you must use a base that is roughly equivalent
+            to 2.718281. The sign for this number is often the letter e, which honours Leonard Euler, who established
+            its meaning in 1731. As a result, the logarithm can be shown as logex, however it is often represented by
+            the sign ln (x). In particular in banking and economics, you could also find log(x), which also refers to
+            the same function. </p>
+          <p> Consequently,<br> <strong>y = logₑx = ln(x) ,</strong> <br> where <strong>x = eʸ = exp(y)</strong></p>
+          <p>Compound interest is a useful example of how to grasp how the natural logarithm works in real life. This
+            interest is computed on the principal as well as the total interest.
+            The following is the formula for yearly compound interest: <br>
+            <strong>A = P(1 + r/m)ᵐᵗ</strong> <br>
+            where:
           </p>
-          <p>
-            The range for a conventional six-sided dice should be 1 to 6 to imitate a dice roll.
-            Set the range between 1 and 2 to simulate a coin flip, and the random selector will choose a number between
-            1 and 2.
+          <ul>
+            <li>A is the investment</li>
+            <li>P initial value;</li>
+            <li>r is the interest rate</li>
+            <li>m times the interest</li>
+            <li>t is years.</li>
+          </ul>
+          <p>Assuming you make a one-year deposit at a bank where interest is regularly compounded, m will be a huge
+            amount. If you contrast frequencies with yearly (m=1), monthly (m=12), daily (m=365), or hourly (m=8,760)
+            frequencies, it is simple to notice how rapidly the value of m is rising. The m would have increased
+            significantly if your money were recalculated every minute or second.</p>
+          <h4>Common logarithm</h4>
+          <p>The common logarithm with a base of 10 is known as log₁₀x and is the other widely used type of logarithm
+            (x). The Briggsian logarithm, which was created by the English mathematician Henry Briggs, is another name
+            for it. Other names include the decimal logarithm, decadic logarithm, standard logarithm, and the logarithm.
           </p>
-          <p>
-            To create many unique numbers (no duplicates), simply pick how many you require from the drop-down menu
-            below.
-            Selecting 6 numbers from a potential set of 1 to 49, for example, would be equal to replicating a lottery
-            draw for a game with these characteristics.
+          <p>It is the most popular type of logarithm, as its name implies. For instance, our decibel calculator makes
+            use of it. In the past, common logarithms were also frequently included in logarithm tables that were
+            intended to make computation easier.</p>
+          <h4>How can I calculate a logarithm using any base?</h4>
+          <p>The following guidelines must be followed if you only have access to a natural logarithm or a log 10 base
+            calculator and you need to compute a logarithm with any base:</p>
+          <ul>
+            <li><strong>logₐ(x) = ln(x) / ln(a)</strong> </li>
+            <li><strong>logₐ(x) = lg(x) / lg(a)</strong> </li>
+          </ul>
+          <h5 class="text-secondary">An example using log base 2</h5>
+          <p>Assume for the moment that you want to employ this device as a log base 2 calculators. Any number's
+            logarithm may be calculated by simply following these easy steps:</p>
+          <ol>
+            <li>Choose the number whose logarithm you wish to determine. Suppose it is 100.</li>
+            <li>Choose your base; in this example, it is 2.</li>
+            <li>Find the base-10 logarithm of the number lg(100) = 2.</li>
+            <li>Find the base-10 logarithm of the number 2 lg(2) = 0.30103.</li>
+            <li>Divide these numbers by one another to get the result 6.644: lg(100)/lg(2) = 2 / 0.30103</li>
+            <li>You may simply enter the number and base directly into the log calculator by skipping steps 3-5.</li>
+          </ol>
+          <h4>Logarithms are used in arithmetic calculations.</h4>
+          <p>Prior to the public's widespread availability to pocket calculators around the end of the 1970s, doing
+            computations, particularly those involving fractions, required a significant amount of manual labor. The use
+            of logarithms provided a useful purpose by relieving this tiresome effort.
+            We must be familiar with the logarithm's fundamental features in order to take use of its technical benefit.
+            These requirements should already be met, but just in case, the table below lists them.
           </p>
-          <h2>Where does a random number generator come in handy?</h2>
-          <p>
-            You may be holding a charity lottery, a giveaway, a raffle, sweepstakes, or another type of contest and need
-            to select a winner - this generator is for you! It is fully neutral and outside of your control, so you can
-            reassure your audience of the fairness of the draw, which may not be the case if you use traditional
-            techniques such as rolling a dice.
-          </p>
-          <p>
-            A period is the number of iterations a PRNG takes before it begins to replicate itself. All else being
-            equal, a PRNG with a long time will need more computer resources to forecast and crack.
-          </p>
+          <h4>Slide regulations</h4>
+          <p>Further research was sparked by the new mathematical tool's rising appeal. The calculating line of the
+            logarithm, a practical tool for division and multiplication, was invented by Edmund Gunter in 1620.</p>
+          <p>William Oughtred invented the first iteration of the gadget, which needed two compasses for measurement.
+            This occurred in 1622. He created the traditional slide rule, which consists of two rulers that slide next
+            to one another.</p>
+          <p>He developed a fresh method for further simplifying the computation of the law of logarithm in this way.
+            Slide rules have become a common tool for calculation in fields requiring math. Up until the start of the
+            Digital Revolution, scientists, engineers, architects, and even astronauts relied on their calculative aid.
+            Slide rules were used by Albert Einstein, and the Apollo mission crews also brought them into space. </p>
+          <h4>Real-world applications of logarithms</h4>
+          <p>Current computers and scientific calculators have taken the role of antiquated methods in the modern day.
+            Nevertheless, comprehending the ideas behind logarithms might improve your mathematical abilities. In
+            several disciplines, logarithms are still useful in many practical ways</p>
+          <p>Logarithms connect arithmetic progression to geometric progression, which raises the possibility that some
+            events in the actual world might follow a logarithmic pattern. There are many instances of the magical
+            logarithm in both nature and everyday life, therefore this is true.</p>
+          <h3 class="text-secondary">FAQ</h3>
+          <h4>What is log1?</h4>
+          <p>No matter the basis of the logarithm, the logarithm of one is always zero: For any a, loga 1 equals 0.</p>
+          <h4>Can a negative log exist?</h4>
+          <p>Depending on what you mean when you say "negative log," you may or may not be able to have one:</p>
+          <ul>
+            <li>We can calculate a log's opposite: -logₐ(x) = logₐ(1/x)).</li>
+            <li>The log of a negative number, however, cannot be calculated.</li>
+          </ul>
+          <h4>Is log the same as ln?</h4>
+          <p>No, log and ln are often not interchangeable. The symbols used in conventional mathematics are:</p>
+          <p>Sometimes lg stands for the logarithm with base 2, especially in publications discussing the binary system.
+            ln stands for the natural log (thus with base e); log for the logarithm with base 10; </p>
         </div>
       </div>
     </div>

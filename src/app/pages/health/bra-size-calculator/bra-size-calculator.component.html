@@ -30,7 +30,7 @@
                   {{error}}
                 </span>
               </div>
-              <form [formGroup]="calculeBsc" (ngSubmit)="CalculateBsc(target)">
+              <form [formGroup]="calculteBraSize" (ngSubmit)="calculeBraSize(target)">
                 <label for="Bust">Bust Size :</label>
                 <div class="row">
                   <div class="col-6">
@@ -68,43 +68,131 @@
           </div>
 
         </div>
-
-        <div class="col-12">
-          <app-banner *ngIf="envirement"></app-banner>
-          <span #target style="position: relative; top: -350px"></span>
-        </div>
-
-        <div class="col-md-5 offset-md-5 border shadow bg-white p-4 my-3" *ngIf="message">
-          <p class="text-center font-weight-bold" style="font-size: 24px;">The result of your calculator is</p>
+      </div>
+      <div class="row mx-auto my-3">
+        <div class="col-md-6 border shadow bg-white" *ngIf="message">
+          <p class="text-center font-weight-bold mt-5" style="font-size: 24px;">The result of your calculator is</p>
           <div class="my-3">
             <p class="text-center my-3 font-weight-bold">Body shape: <span class="bmi">{{message}}</span> </p>
             <p class="text-center font-weight-bold">Waist-hip ratio (WHR): <span class="bmi">{{barSizeRslt}}</span></p>
+            <p>{{bust}} - {{band}} = {{difference}}</p>
           </div>
         </div>
-        <div class="col-md-4 col-12 mx-auto">
+        <div class="col-md-6 " *ngIf="message">
           <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">Location</th>
-                <th scope="col">Size</th>
-                <th scope="col">Cup</th>
+                <th scope="col">Country</th>
+                <th scope="col">Band/Cup</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td scope="row">US/CA</td>
-                <td>{{band}}</td>
-                <td>{{cup}}</td>
+                <td scope="row">US/UK</td>
+                <td>{{usa}}</td>
               </tr>
               <tr>
-                <td scope="row">US/CA</td>
-                <td>{{band}}</td>
-                <td>{{cup}}</td>
+                <td scope="row">FR</td>
+                <td>{{fr}}</td>
+              </tr>
+              <tr>
+                <td scope="row">ES</td>
+                <td>{{es}}</td>
+              </tr>
+              <tr>
+                <td scope="row">BE</td>
+                <td>{{be}}</td>
+              </tr>
+              <tr>
+                <td scope="row">EU</td>
+                <td>{{eu}}</td>
+              </tr>
+              <tr>
+                <td scope="row">IT</td>
+                <td>{{it}}</td>
+              </tr>
+              <tr>
+                <td scope="row">JP</td>
+                <td>{{jp}}</td>
+              </tr>
+              <tr>
+                <td scope="row">AUS/NEZ</td>
+                <td>{{aust}}</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <span #target style="position: relative; top: -350px"></span>
+      </div>
+      <div class="row mb-3 d-flex flex-md-row-reverse">
+        <div class="col-md-7 mt-3">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="text-white text-center">Decimal to Binary Calculator</h2>
+            </div>
+            <div class="card-body">
+              <div>
+                <p class="text-white text-center msg font-weight-bold">Result : </p>
+              </div>
+              <form [formGroup]="converteBraSize" (ngSubmit)="converterBraSize()">
+                <div class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{errorConverter}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <label for="decimal">Decimal value</label>
+                    <input id="decimal" class="form-control" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="decimal" formControlName="decimal">
+                  </div>
+                  <div class="col-6 mt-4">
+                    <button type="submit" class="btn btnBgPrimary w-100">Converte</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 mx-auto  border-shadow bg-white mt-3">
+          <p class="text-secondary text-center font-weight-bold mt-2">Methode of convertion</p>
+          <div class=" d-flex">
+            <img src="../../../../assets/images/binary-numbers-.svg" width="70px" height="100px"
+              alt="Decimal to Binary Calculator">
+            <p class="ml-2">Example: Convert the decimal number 12 :<br>
+              12 &divide; 2 = 6 remainder <strong>0</strong> =>
+              6 &divide; 2 = 3 remainder <strong>0</strong><br>
+              3 &divide; 2 = 1 remainder <strong>1</strong> =>
+              1 &divide; 2 = 0 remainder <strong>1</strong><br>
+              Binray of 12 = <strong>1100</strong>
+            </p>
+            <!-- <p class="ml-2">Example decimal : 120 is 2 x 10<sup>1</sup> + 0 x 10<sup>0</sup> <br>
+              = 20.</p> -->
+          </div>
+        </div>
+      </div>
 
+      <div class="col-md-4 col-12 mx-auto">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Location</th>
+              <th scope="col">USA/UK Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">US/CA {{internation}}</td>
+              <td>{{band}}</td>
+              <td>{{cup}}</td>
+            </tr>
+            <tr>
+              <td scope="row">US/CA</td>
+              <td>{{band}}</td>
+              <td>{{cup}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <!-- <span #target style="position: relative; top: -300px"></span> -->
       <app-other-calcultor-health eleminateCalculator="bsc"></app-other-calcultor-health>
