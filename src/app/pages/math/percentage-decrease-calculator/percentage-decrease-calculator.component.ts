@@ -41,27 +41,27 @@ export class PercentageDecreaseCalculatorComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online Percentage Calculator - Percent Change Calculator");
+    this.titleService.setTitle("Percentage Decrease Calculator, Reduce Percentage Calculator");
     this.metaService.addTags([
-      { name: 'keywords', content: "Percentage Increase Calculator, percent change calculator, percentage formula , what percentage of, percentage change calculator, percentage difference calculator, percentage increase formula, percentage decrease calculator, how to calculate percentage, how to find percentage, how to calculate percentages, how to calculate percentage increase, how to calculate percentage of a number" },
-      { name: 'description', content: "Online Percentage Calculator that allow you to calculate percentage in different situation like Percentage Increase Calculator, Percent Change Calculator" },
-      { property: 'og:title', content: "Free online Percentage Calculator - Percent Change Calculator" },
-      { property: 'og:description', content: "Online Percentage Calculator that allow you to calculate percentage in different situation like Percentage Increase Calculator, Percentage Decrease Calculator" },
-      { property: "og:url", content: "https://body-calculator.com/math/percentage-calculator/" }
+      { name: 'keywords', content: "Percentage Decrease Calculator, Reduce Percentage Calculator, percentage decrease formula, how to calculate percentage decrease, how to work out percentage decrease, how to find percentage decrease" },
+      { name: 'description', content: "Free online Percentage Decrease Calculator - how to find percentage decrease?" },
+      { property: 'og:title', content: "Percentage Decrease Calculator, Reduce Percentage Calculator" },
+      { property: 'og:description', content: "Free online Percentage Decrease Calculator - how to find percentage decrease?" },
+      { property: "og:url", content: "https://body-calculator.com/math/percentage-decrease-calculator/" }
     ]);
-    this.canonical.createCanonicalLink("https://body-calculator.com/math/percentage-calculator/");
+    this.canonical.createCanonicalLink("https://body-calculator.com/math/percentage-decrease-calculator/");
 
     this.schema = {
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
-      "name": "percentage calculator",
+      "name": "percentage decrease calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/math/percentage-calculator/",
+      "url": "https://body-calculator.com/math/percentage-decrease-calculator/",
       "author": {
         "@type": "Person",
         "name": "SARHABIL"
       },
-      "datePublished": "2022-11-13",
+      "datePublished": "2023-01-04",
       "publisher": {
         "@type": "Organization",
         "name": "body-calculator"

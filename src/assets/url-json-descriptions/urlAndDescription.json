@@ -104,6 +104,11 @@
                             "name": "Percentage Increase Calculator",
                             "textInHref": "Percentage Increase Calculator",
                             "url": "/math/percentage-increase-calculator/."
+                        },
+                        {
+                            "name": "Percentage Decrease Calculator",
+                            "textInHref": "Percentage Decrease Calculator",
+                            "url": "/math/percentage-decrease-calculator/."
                         }
                        
                     ]

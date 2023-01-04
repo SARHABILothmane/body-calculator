@@ -39,11 +39,11 @@ export class PercentageIncreaseCalculatorComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online Percentage Increase Calculator - Percentage Growth Calculator");
+    this.titleService.setTitle("Percentage Increase Calculator, Percentage Growth Calculator");
     this.metaService.addTags([
       { name: 'keywords', content: "Percentage Increase Calculator, percent change calculator, percentage formula , Percentage Growth Calculator, what percentage of, percentage change calculator, percentage difference calculator, percentage increase formula, percentage decrease calculator, how to calculate percentage, how to find percentage, how to calculate percentages, how to calculate percentage increase, how to calculate percentage of a number" },
       { name: 'description', content: "Free online Percentage Increase Calculator - Percentage Growth Calculator also you can find Percentage Increase Formula" },
-      { property: 'og:title', content: "Free online Percentage Increase Calculator - Percentage Growth Calculator" },
+      { property: 'og:title', content: "Percentage Increase Calculator, Percentage Growth Calculator" },
       { property: 'og:description', content: "Free online Percentage Increase Calculator - Percentage Growth Calculator also you can find Percentage Increase Formula" },
       { property: "og:url", content: "https://body-calculator.com/math/percentage-increase-calculator/" }
     ]);

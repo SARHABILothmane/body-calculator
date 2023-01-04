@@ -25,7 +25,8 @@
 /math/hex-calculator/.
 /math/permutation-calculator/.
 /math/combination-calculator/.
-
+/math/percentage-increase-calculator/.
+/math/percentage-decrease-calculator/.
 
 /contact/.
 /private-policy/.

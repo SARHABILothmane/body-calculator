@@ -79,7 +79,9 @@ export class OtherCalcultorMathComponent implements OnInit {
     }else if(this.eleminateCalculator == 'combinationc'){
         this.goToOtherPage = { name: "Go to Permutation Calculator", url: "/math/permutation-calculator/." }
     }else if(this.eleminateCalculator == 'pic'){
-          this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
+          this.goToOtherPage = { name: "Go to Percentage Decrease Calculator", url: "/math/percentage-decrease-calculator/." }
+    }else if(this.eleminateCalculator == 'pdc'){
+          this.goToOtherPage = { name: "Go to Percentage Increase Calculator", url: "/math/percentage-increase-calculator/." }
     }else {
       this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
     }
