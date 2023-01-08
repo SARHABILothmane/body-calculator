@@ -65,7 +65,7 @@ export class OtherCalcultorMathComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.eleminateCalculator == 'pc') {
-      this.goToOtherPage = { name: "Go to Percent Error Calculator", url: "/math/percent-error-calculator/." }
+      this.goToOtherPage = { name: "Go to Percentage Increase Calculator", url: "/math/percentage-increase-calculator/." }
     }else if(this.eleminateCalculator == 'pec'){
       this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
     }else if(this.eleminateCalculator == 'rng'){
@@ -82,6 +82,10 @@ export class OtherCalcultorMathComponent implements OnInit {
           this.goToOtherPage = { name: "Go to Percentage Decrease Calculator", url: "/math/percentage-decrease-calculator/." }
     }else if(this.eleminateCalculator == 'pdc'){
           this.goToOtherPage = { name: "Go to Percentage Increase Calculator", url: "/math/percentage-increase-calculator/." }
+    }else if(this.eleminateCalculator == 'exponentC'){
+      this.goToOtherPage = { name: "Go to Root Calculator", url: "/math/root-calculator/." }
+    }else if(this.eleminateCalculator == 'rootC'){
+      this.goToOtherPage = { name: "Go to Exponent Calculator", url: "/math/exponent-calculator/." }
     }else {
       this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
     }
@@ -94,6 +98,8 @@ export class OtherCalcultorMathComponent implements OnInit {
       { 'title': 'Percentage Error Calculator', 'url': '/math/percent-error-calculator/.', 'code': 'pec' },
       { 'title': 'Permutation Calculator', 'url': '/math/permutation-calculator/.', 'code': 'permutationc' },
       { 'title': 'Combination Calculator', 'url': '/math/combination-calculator/.', 'code': 'combinationc' },
+      { 'title': 'Exponent Calculator', 'url': '/math/exponent-calculator/.', 'code': 'exponentC' },
+      { 'title': 'Root Calculator', 'url': '/math/root-calculator/.', 'code': 'rootC' },
     ];
 
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);

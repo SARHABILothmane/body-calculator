@@ -71,11 +71,11 @@ export class DateCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Free online date calculator - body-calculator");
+    this.titleService.setTitle("Free online date calculator - days between dates");
     this.metaService.addTags([
       { name: 'keywords', content: "date calculator, days calculator, days between dates, time and date calculator" },
       { name: 'description', content: "Free online date calculator (days calculator, days between dates, time and date calculator)" },
-      { property: 'og:title', content: "Free online date calculator - body-calculator" },
+      { property: 'og:title', content: "Free online date calculator - days between dates" },
       { property: 'og:description', content: "Free online date calculator (days calculator, days between dates, time and date calculator)" },
       { property: "og:url", content: "https://body-calculator.com/calculators/date-calculator/" }
     ]);

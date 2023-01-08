@@ -96,6 +96,7 @@
   }
 
   window.onload = function(){
+    showSaveToll();
     hideButtonGoToWhenFocus();
     let cookie = localStorage.getItem('cookie');
     if(!cookie){
@@ -130,5 +131,21 @@
         document.getElementsByClassName("dropdown-content")[i].style.removeProperty("display"); ;
       }
     }, 30);
+  }
+
+
+  function showSaveToll(){
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+            
+    }else{
+        var getTime = localStorage.getItem("saveTool");
+        if (new Date().getTime() > getTime){
+            var time = 1000 * 60 * 60 * 400;
+            setTimeout(function() {
+                localStorage.setItem("saveTool", new Date().getTime()+time);
+                alert('You can save this tool in your browser by clicking Ctrl + D')
+            }, 15000);
+        }
+    }  
   }
  

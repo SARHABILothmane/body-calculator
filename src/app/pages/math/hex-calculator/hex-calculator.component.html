@@ -33,17 +33,17 @@
                   &divide;
                   {{hexTwoCal}} = <strong class="text-uppercase">{{rsltCalDecimal}}</strong></p>
 
-                <p *ngIf="addOrSubtractSymbole === '+'"><strong class="ml-5">Value decimal : </strong> {{hexOne}} +
+                <p *ngIf="addOrSubtractSymbole === '+'"><strong class="ml-5">Value Decimal : </strong> {{hexOne}} +
                   {{hexTwo}} = {{rsltCalHex}}</p>
-                <p *ngIf="addOrSubtractSymbole === '-'"><strong class="ml-5">Value decimal : </strong> {{hexOne}} -
+                <p *ngIf="addOrSubtractSymbole === '-'"><strong class="ml-5">Value Decimal : </strong> {{hexOne}} -
                   {{hexTwo}} = {{rsltCalHex}}</p>
-                <p *ngIf="addOrSubtractSymbole === 'x'"><strong class="ml-5">Value decimal : </strong> {{hexOne}} x
+                <p *ngIf="addOrSubtractSymbole === 'x'"><strong class="ml-5">Value Decimal : </strong> {{hexOne}} x
                   {{hexTwo}} = {{rsltCalHex}}</p>
-                <p *ngIf="addOrSubtractSymbole === '/'"><strong class="ml-5">Value decimal : </strong> {{hexOne}}
+                <p *ngIf="addOrSubtractSymbole === '/'"><strong class="ml-5">Value Decimal : </strong> {{hexOne}}
                   &divide;
                   {{hexTwo}} = {{rsltCalHex}}</p>
                 <!-- </div> -->
-                <p class="text-white text-center msg font-weight-bold">Result : {{rsltCalHex | number}}</p>
+                <p class="text-white text-center msg font-weight-bold">Result : <span class="text-uppercase">{{rsltCalDecimal}}</span></p>
                 <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculeHex" (ngSubmit)="CalculateHex(target)">

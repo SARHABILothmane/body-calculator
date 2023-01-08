@@ -71,7 +71,7 @@ export class OtherCalcultorTimeComponent implements OnInit {
     }else if(this.eleminateCalculator == 'tc'){
       this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
     }else if(this.eleminateCalculator == 'dc'){
-      this.goToOtherPage =  {name: "Age Calculator", url:"/calculators/age-calculator/."}
+      this.goToOtherPage =  {name: "Time Calculator", url:"/calculators/time-calculator/."}
     }else{
       this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
     }

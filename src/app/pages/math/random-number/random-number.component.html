@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="col-12">
-          <app-banner></app-banner>
+          <app-banner *ngIf="envirement"></app-banner>
           <span #target style="position: relative; top: -350px"></span>
         </div>
         <div class="col-md-6 offset-md-3 my-auto  my-3 py-2 border-shadow bg-white" *ngIf="generatedNumber">
@@ -151,7 +151,7 @@
         </div>
 
         <div class="col-12">
-          <app-banner></app-banner>
+          <app-banner *ngIf="envirement"></app-banner>
           <span #target2 style="position: relative; top: -350px"></span>
         </div>
         <div class="col-md-6 offset-md-3 my-auto  my-3 py-2 border-shadow bg-white" *ngIf="generateNumbers.length">

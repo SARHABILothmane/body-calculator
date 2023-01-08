@@ -48,7 +48,7 @@
                     },
                     {
                         "name": "Body Mass Index Men",
-                        "textInHref": "Body Mass Index Calculator for Men",
+                        "textInHref": "Body Mass Index BMI Calculator for Men",
                         "url": "/health/bmi-calculator-men/."
                     }
                 ]
@@ -99,6 +99,16 @@
                             "textInHref": "Combination Calculator",
                             "description": "It finds the number of possible combinations obtained by taking any sample of items from a greater set. It is used mainly to show how many different possible subsets will be made from the greater set.",
                             "url": "/math/combination-calculator/."
+                        },
+                        {
+                            "name": "Root Calculator",
+                            "textInHref": "Root Calculator",
+                            "url": "/math/root-calculator/."
+                        },
+                        {
+                            "name": "Exponent Calculator",
+                            "textInHref": "Exponent Calculator",
+                            "url": "/math/exponent-calculator/."
                         },
                         {
                             "name": "Percentage Increase Calculator",

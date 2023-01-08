@@ -2,21 +2,13 @@
   <nb-layout-column>
     <div class="container">
       <div class="col-12">
-        <h1 class="text-secondary text-center pb-3">Square Root Calculator</h1>
+        <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Root Calculator', itemUrl: 'math/root-calculator/.'}">
+      </app-breadcrumbs>
+        <h1 class="text-secondary text-center pb-3">Root Calculator</h1>
+        <app-banner *ngIf="envirement"></app-banner>
       </div>
-      <div class="row mb-3 d-flex flex-md-r ow-reverse">
-        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
-          <p class="text-secondary text-center font-weight-bold">Result of Square Root Calculator</p>
-          <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
-          <div *ngIf="rsltRoot">
-            <p class="text-white text-center msg font-weight-bold">Result : {{root | number}}</p>
-            <p class="font-weight-bold">steps :</p>
-            <p class="text-center">The square root of {{rootValue}} is {{root}}</p>
-            <p class="text-center">
-              <strong class="square">&radic;<span class="line"> {{rootValue}} </span> = {{root | number}}</strong>
-            </p>
-          </div>
-        </div>
+      <div class="row mb-3 d-flex flex-md-row-reverse">
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
@@ -29,20 +21,18 @@
                     {{error}}
                   </span>
                 </div>
-                <div class="row mx-auto">
-                  <div class="my-4 col-8">
+                <div class="row d-flex justify-content-center ">
+                  <div class="my-4 col-4">
                     <hr class="ml-3">
                     <div class="d-flex">
                       <div id="radical2">
                         <strong>&radic;</strong>
                       </div>
-                      <label for="objects"></label>
-                      <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
-                        shape="semi-round" placeholder="2" formControlName="root">
+                      <input id="objects" aria-label="Square Root calculator" class="form-control" type="number" nbInput fullWidth status="basic"
+                        shape="semi-round"  formControlName="root">
                     </div>
-                    <small class="text-danger" *ngIf="submitted && formRoot.root.errors?.required">Lower
-                      Limit is
-                      required.
+                    <small class="text-danger" *ngIf="submitted && formRoot.root.errors?.required">
+                      This number is required.
                       !</small>
                   </div>
                 </div>
@@ -51,40 +41,53 @@
             </div>
           </div>
         </div>
+        <div class="col-md-5 mx-auto  border-shadow bg-white mt-3" style="min-height: 200px;">
+          <p class="text-secondary text-center font-weight-bold">Result of Square Root Calculator</p>
+          <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
+          <div *ngIf="rsltRoot">
+            <p class="text-white text-center msg font-weight-bold">Result : {{root}}</p>
+            <p class="font-weight-bold">steps :</p>
+            <p class="text-center">
+              <strong class="square">&radic;<span class="line"> {{rootValue}} </span> = {{root}}</strong>
+            </p>
+            <p class="text-center">{{root}} <sup>2</sup> = {{rootValue}} </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12" *ngIf="envirement">
+        <app-banner></app-banner>
       </div>
       <div class="row mb-3">
         <div class="col-md-6">
           <div class="card">
-            <div class="card-header text-white text-center font-weight-bold">Exponent Calculator</div>
+            <h2 class="card-header text-white text-center font-weight-bold">Nth Root Calculator</h2>
             <div class="card-body example-items-col">
               <form [formGroup]="calculeFormRootGeneral" (ngSubmit)="CalculateRootGenral()">
-                <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
+                <div *ngIf="errorNTH" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
-                    {{error}}
+                    {{errorNTH}}
                   </span>
                 </div>
-                <div class="row mx-auto">
-                  <div class="col-5">
-                    <label for="sample"></label>
-                    <input id="sample" class="form-control hr" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="3" formControlName="n">
-                    <small class="text-danger" *ngIf="submitted && formRootGenerl.n.errors?.required">Upper
-                      Limit is
+                <div class="row d-flex justify-content-center">
+                  <div class="col-3 pr-0">
+                    <input id="sample" aria-label="Root calculator" class="form-control hr" type="number" nbInput fullWidth status="basic"
+                      shape="semi-round" placeholder="n" formControlName="n">
+                    <small class="text-danger" *ngIf="submitted && formRootGenerl.n.errors?.required">
+                      n number is
                       required.
                       !</small>
                   </div>
-                  <div class="col-6 mt-4 my-4">
+                  <div class="col-3 mt-4 my-4 pl-0">
                     <hr class="ml-3">
                     <div class="d-flex">
                       <div id="radical">
                         <strong>&radic;</strong>
                       </div>
-                      <label for="objects"></label>
-                      <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
-                        shape="semi-round" placeholder="2" formControlName="x">
+                      <input id="objectsx" aria-label="Square Root calculator" class="form-control" type="number" nbInput fullWidth status="basic"
+                        shape="semi-round" placeholder="x" formControlName="x">
                     </div>
-                    <small class="text-danger" *ngIf="submitted && formRootGenerl.x.errors?.required">Lower
-                      Limit is
+                    <small class="text-danger" *ngIf="submitted && formRootGenerl.x.errors?.required">
+                      x number is
                       required.
                       !</small>
                     <small class="text-danger" *ngIf="submitted && formRootGenerl['x'].errors?.['min']">Please
@@ -96,31 +99,34 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
-          <h6 class="text-secondary text-center">Result of Square Root Calculator</h6>
+        <div class="col-md-5 mx-auto mt-3 border-shadow bg-white">
+          <p class="text-secondary text-center font-weight-bold">Result of Nth Root Calculator</p>
           <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
           <div *ngIf="rsltRootGenreral">
-            <h5 class="text-white text-center msg">Result : {{rootGeneral | number}}</h5>
+            <p class="text-white text-center msg font-weight-bold">Result : {{rootGeneral}}</p>
             <p class="font-weight-bold">steps :</p>
-            <p class="text-center">The root of {{n}} is {{x}}
+            
               <p class="text-center">
-                <strong class="square">{{n}}&radic;<span class="line"> {{x}} </span> = {{rootGeneral | number}}</strong>
+                <strong class="square"><sup>{{n}}</sup>&radic;<span class="line"> {{x}} </span> = {{rootGeneral}}</strong>
               </p>
           </div>
           <div *ngIf="!rsltRootGenreral">
-            <p class="font-weight-bold text-center">nth root calculator</p>
-            <p class="text-center">The nth root of x is given by the formula:</p>
+            <p class="text-center">The Nth root of x is given by the formula:</p>
             <p class="text-center">
-              <strong class="square">nth root = n&radic;<span class="line">x</span></strong>
+              <strong class="square">Nth root = <sup>n</sup>&radic;<span class="line">x</span></strong>
             </p>
           </div>
         </div>
+        <div class="col-12" *ngIf="envirement">
+          <app-banner></app-banner>
+        </div>
       </div>
-      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn About
-        Square Root Calculator</p>
+      <app-other-calcultor-math eleminateCalculator="rootC"></app-other-calcultor-math>
+      <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
+        Root Calculator</p>
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
-          <p>Using our square root estimator, you may get the square root of any positive number. Simply type in the
+          <p>Using our <a href="https://en.wikipedia.org/wiki/Square_root" target="_blank" rel="noopener noreferrer">square root</a> estimator, you may get the square root of any positive number. Simply type in the
             selected number to view the results. Quick and automated calculations are used throughout! This tool also
             allows you to estimate the square of any desired number; all you need to do is type the desired number into
             the second box. This feature might be very useful when using the square root technique to locate perfect
@@ -129,7 +135,7 @@
             or dividing square roots? Never again! You may find a thorough description of numerous square root
             properties, such as how to simplify square roots, in the text that follows, along with a wide range of
             examples.</p>
-          <h3 class="text-secondary">how to find square roots!</h3>
+          <h3 class="text-secondary">How to find square roots!</h3>
           <p>Have you ever wondered where the square root symbol came from? We can guarantee you that this history is
             not as straightforward as it initially appears to be. Like the percent sign, the root symbol has a long
             history that dates back to antiquity.</p>
@@ -138,7 +144,7 @@
             exponents and fractions. We also discuss what the derivative of a square root is. You will eventually
             realize that it is feasible to find the square root of a negative integer if you are tenacious enough. In
             this way, we introduce complex numbers, which have numerous uses in both mathematics and science.</p>
-          <h4>Square root symbol √</h4>
+          <h3>Square root symbol √</h3>
           <p>It was previously known how to calculate a number's square root in antiquity. Babylonia produced the first
             clay tablet with the accurate value of 2 = 1.41421 to the fifth decimal place (1800 BC - 1600 BC). Square
             roots were also employed by the ancient Egyptians, Indians, Greeks, and Chinese, according to several
@@ -154,7 +160,7 @@
             use an alternative manner to state the equation x = ⁿ√a , the reasoning should be clearer: xⁿ = a. Because
             it is a's secret basis, x is known as a root or radical. Thus, the term "radical" does not refer to anything
             far-reaching or excessive, but rather to something fundamental, getting to the bottom of a problem.</p>
-          <h4>Square root definition</h4>
+          <h3>Square root definition</h3>
           <p>The standard operations on numbers in mathematics include addition, subtraction, multiplication, and
             division. However, we occasionally include some more, more complex operations and manipulations on this
             list, such as square roots, exponentiation, logarithmic functions, and even trigonometric functions (e.g.,
@@ -176,18 +182,26 @@
             edges may be determined by taking the cube root of its volume. Cube roots are used to estimate parameters
             that relate to the volume, such as density, while square roots are employed when evaluating surface areas.
           </p>
-          <h5 class="text-secondary">How do you calculate the square root?</h5>
+          <h4 class="text-secondary">How do you calculate the square root?</h4>
           <p>We may not be the most modest people, but we believe that the simplest solution to the problem of how to
             determine the square root is to use the square root calculator. It allows you to easily calculate the square
             root of a given integer on a computer or smartphone. Unfortunately, there are instances when you have to
             rely only on yourself. What do you do in those cases? You need have in mind a few fundamental perfect square
             roots in order to be ready for this:</p>
-          <img src="../../../../assets/images/square-root.png" width="350px" height="300px"
-            alt="square root calculatro">
+            <ul>
+              <li>Square root of 1:<span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">√1 = 1</span>, since <span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">1 * 1 = 1</span></li>
+              <li>Square root of 4:<span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">√4 = 2</span>, since <span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">2 * 2 = 4</span></li>
+              <li>Square root of 9:<span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">√9 = 3</span>, since <span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">3 * 3 = 9</span></li>
+              <li>Square root of 16:<span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">√16 = 4</span>, since <span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">4 * 4 = 16</span></li>
+              <li>Square root of 25:<span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">√25 = 5</span>, since <span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">5 * 5 = 25</span></li>
+              <li>Square root of 36:<span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">√36 = 6</span>, since <span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">6 * 6 = 36</span></li>
+              <li>Square root of 49:<span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">√49 = 7</span>, since <span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">7 * 7 = 49</span></li>
+              <li>Square root of 64:<span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">√64 = 8</span>, since <span style="background-color: #eff0f1;padding: 3px;border-radius: 5px;">8 * 8 = 64</span></li>
+            </ul>
           <p>The square roots of the values above are the easiest since you always get an integer. Try to keep these in
             mind! But what can you do if a given integer doesn't have a very attractive square root? There are several
             answers. First, you might attempt to forecast the outcome by trial and error. </p>
-          <h4>Square root calculator</h4>
+          <h3>Square root calculator</h3>
           <p>You may not always need to know the precise square root outcome. If so, using our square root calculator to
             estimate the value of each square root you require is your best option. Say, for instance, that you want to
             determine if 4√5 is larger than 9. You know that √5 ≈ 2.23607 thanks to the calculator, thus4√5 ≈ 4 *
@@ -195,11 +209,11 @@
           <p>The final answer is provided by the square root calculator with a respectable level of accuracy (to five
             digits in above example). You can calculate this result to as many significant figures as you like using the
             significant figure calculator.</p>
-          <h4>A number may have several square roots.</h4>
+          <h3>A number may have several square roots.</h3>
           <p>In actuality, every positive integer has two square roots—one that is positive and the other that is
             equivalent to the first but negative. This is so that the result is positive if two negative numbers are
             multiplied together. </p>
-          <h4>Without a calculator, how can the square root be determined?</h4>
+          <h3>Without a calculator, how can the square root be determined?</h3>
           <ul>
             <li>Calculate the square root approximation. If you're stumped, use the closest square number.</li>
             <li>Subtract the estimate from the number you wish to get the square root of.</li>
@@ -208,7 +222,7 @@
             <li>Use your new estimate as you repeat steps 2-4. The result is more accurate the more times this is done.
             </li>
           </ul>
-          <h4>How do I determine the square roots?</h4>
+          <h3>How do I determine the square roots?</h3>
           <ul>
             <li>Find the square number that is closest to the thought-of number above and below.</li>
             <li>Between the square roots of these integers will be the square root.</li>
@@ -216,23 +230,23 @@
               root will be very close to 5, since 26 is very close to 25.</li>
             <li>To get the hang of it, give it a few tries.</li>
           </ul>
-          <h4>Is 2 divided by its square root a rational number?</h4>
+          <h3>Is 2 divided by its square root a rational number?</h3>
           <p>The square root of 2 is not a logical number. This is due to the fact that 2 can never have only even
             exponents when represented as a fraction, 2/1, and that a rational number cannot have been squared to get
             it.</p>
-          <h4>How may a square root be eliminated?</h4>
+          <h3>How may a square root be eliminated?</h3>
           <p>Any square roots in an algebraic equation are eliminated by squaring both sides of the equation. The
             outcome of this operation is that the square roots will be swapped out for the original number that their
             square roots were being found for.</p>
-          <h4>Do square roots make sense?</h4>
+          <h3>Do square roots make sense?</h3>
           <p>Certain square roots make sense, whereas others don't. If the number you are square rooting can be stated
             using only even exponents (for example, 4 = 22 / 1 2), you may determine if the square root is rational or
             not. If it can, it's reasonable at its core.</p>
-          <h4>Is 5 divided by its square root a rational number?</h4>
+          <h3>Is 5 divided by its square root a rational number?</h3>
           <p>Five does not have a reasonable square root. This is due to the fact that 5 cannot be written as a fraction
             where the exponents in both the numerator and denominator are even. Therefore, it is impossible for a
             rational number to have been squared to get 5.</p>
-          <h4>Is seven squared a logical number?</h4>
+          <h3>Is seven squared a logical number?</h3>
           <p>Seven is square-rooted to produce an irrational number. Since 7 cannot be stated as a fraction of integers,
             it cannot be written as a fraction with only even exponents, proving that it is not rational.</p>
         </div>
@@ -240,3 +254,4 @@
     </div>
   </nb-layout-column>
 </nb-layout>
+<ngx-json-ld [json]="schema"></ngx-json-ld>

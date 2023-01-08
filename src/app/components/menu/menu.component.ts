@@ -34,6 +34,20 @@ export class MenuComponent implements OnInit {
     elementMenu.checked  = false;
     // element.checked  = false;
   }
+
+  disableScroll(){
+    // const elementMenu = document.getElementsByTagName("menu-toggle") as HTMLInputElement ;
+    // const elementMenu = document.getElementsByTagName("menu-toggle") as HTMLInputElement ;
+    const elementMenu = document.getElementsByTagName("body") as unknown as HTMLInputElement  ;
+    elementMenu[0].classList.add("stop-scrolling");
+    // elementMenu[0].style.overflow = 'hidden';
+    // elementMenu[0].style.margin = '0';
+    // document.body.style.overflow = 'hidden';
+    // document.body.style.margin = '0';
+    // document.body.classList.add("stop-scrolling");
+    // document.scrollingElement?.add("s")
+    // app-root
+  }
   
   ngOnDestroy() {
     this.urlDescription = [];
