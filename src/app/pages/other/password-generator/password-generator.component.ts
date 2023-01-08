@@ -117,7 +117,7 @@ export class PasswordGeneratorComponent implements OnInit {
       this.setValue(50);
       return
     }
-    if (this.obj.answer > 4) {
+    if (this.obj.answer > 5) {
       this.setValue(25);
       return
     }

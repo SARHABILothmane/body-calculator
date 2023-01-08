@@ -16,6 +16,8 @@ const routes: Routes = [
   { path: "healthy-weight-calculator/.", loadChildren: () => import("src/app/pages/health/healthy-weight-calculator/healthy-weight-calculator.module").then(mod => mod.HealthyWeightCalculatorModule) },
   { path: "lean-body-mass-calculator/.", loadChildren: () => import("src/app/pages/health/lean-body-mass-calculator/lean-body-mass-calculator.module").then(mod => mod.LeanBodyMassCalculatorModule) },
   { path: "bra-size-calculator/.", loadChildren: () => import("src/app/pages/health/bra-size-calculator/bra-size-calculator.module").then(mod => mod.BraSizeCalculatorModule) },
+  { path: "absi-calculator/.", loadChildren: () => import("src/app/pages/health/absi-calculator/absi-calculator.module").then(mod => mod.AbsiCalculatorModule) },
+
 ];
 
 @NgModule({

@@ -221,12 +221,12 @@ export class FormBmiComponent implements OnInit {
   //   }
 
   // }
-  public onChange(event: any): void {
-    console.log(event);
-    // if (this.tabTitle === "Metric") {
-    //   this.modelsBmi.heightImperial = 10;
-    // }
-  }
+  // public onChange(event: any): void {
+  //   console.log(event);
+  //   // if (this.tabTitle === "Metric") {
+  //   //   this.modelsBmi.heightImperial = 10;
+  //   // }
+  // }
   calculateHeightImperial(heightImperial: number) {
     return heightImperial;
   }

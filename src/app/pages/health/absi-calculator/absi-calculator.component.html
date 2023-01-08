@@ -1,0 +1,454 @@
+<nb-layout>
+  <nb-layout-column>
+    <section>
+      <div class="container">
+        <app-breadcrumbs
+          [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Fat Percentage Calculator', itemUrl: 'health/body-fat-percentage-calculator/.'}">
+        </app-breadcrumbs>
+        <div class="col-12">
+          <h1 class="text-secondary text-center">Body Fat Percentage Calculator</h1>
+          <div class="flexMobile">
+            <app-banner *ngIf="envirement"></app-banner>
+          </div>
+          <p class="hero-subtitle col-md-9 col-12 mx-auto">
+            Body fat percentage is the percentage of your body weight that is made up of fat. Knowing your body fat
+            percentage can help you determine if you need to lose weight or gain muscle.
+          </p>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6 mt-4">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="text-white text-center font-weight-bold">Body Fat Calculator</h2>
+              </div>
+              <div class="card-body example-items-col">
+                <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <form [formGroup]="calculeAbsi" (ngSubmit)="claculteAbsi(target)">
+                  <div class="mb-3">
+                    <label for="gender">Gender</label>
+                    <nb-select id="gender" formControlName="gender" placeholder="gender" selected="female"
+                      status="basic" shape="semi-round" fullWidth (selectedChange)="checkedGender($event)" required>
+                      <nb-option value="male">Male</nb-option>
+                      <nb-option value="female">Female</nb-option>
+                    </nb-select>
+                    <small class="error mt-1" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+                      Gender is required !
+                    </small>
+                  </div>
+                  <!-- nb-form-field -->
+                  <label for="age">Age</label>
+                  <div class="pb-3">
+                    <input id="age" type="number" placeholder="Age" formControlName="age" class="form-control">
+                    <!-- <small class="error mt-1" *ngIf="age.invalid && (age.dirty || age.touched)">
+                          Age is required !
+                        </small> -->
+                    <small class="text-danger" *ngIf="submitted && formabsi.age.errors?.required">Age is required.
+                      !</small>
+                    <small class="text-danger" *ngIf="submitted && formabsi.age.errors?.min">Please provide an age
+                      between 5
+                      and
+                      100.
+                      !</small>
+                    <small class="text-danger" *ngIf="submitted && formabsi.age.errors?.max">Please provide an age
+                      between 5
+                      and
+                      100.
+                      !</small>
+                  </div>
+
+                  <div class="mb-3 nb-form-field-max-width">
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="height">Height :</label>
+                        <strong *ngIf="selectedHeight == 'cm'"> cm</strong>
+                        <strong *ngIf="selectedHeight == 'm'"> Metres</strong>
+                        <strong *ngIf="selectedHeight == 'in'"> Inches</strong>
+                        <strong *ngIf="selectedHeight == 'ft'"> Feet</strong>
+                        <input id="height" class="form-control" type="number" formControlName="height" placeholder="cm"
+                          [(ngModel)]="modelsBmi.height" IsDecimal>
+                      </div>
+                      <div class="col-6 pl-0">
+                        <label for="heightSelcet">Unit</label>
+                        <nb-select id="heightSelcet" class="nb-select-min-width" placeholder="cm" selected="cm"
+                          status="basic" shape="semi-round" fullWidth (selectedChange)="heightSelect($event)" required>
+                          <nb-option value="cm">cm</nb-option>
+                          <nb-option value="m">Metres (m)</nb-option>
+                          <nb-option value="in">Inches (in)</nb-option>
+                          <nb-option value="ft">Feet (ft)</nb-option>
+                        </nb-select>
+                      </div>
+                    </div>
+                    <small class="error mt-1" *ngIf="height.invalid && (height.dirty || height.touched)">
+                      Height is required !
+                    </small>
+                  </div>
+                  <div class="mb-3">
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="weightSelcet">Weight :</label>
+                        <strong *ngIf="selectedWeight == 'kg'"> kg</strong>
+                        <strong *ngIf="selectedWeight == 'dag'"> Decagrams</strong>
+                        <strong *ngIf="selectedWeight == 'lb'"> Pounds</strong>
+                        <strong *ngIf="selectedWeight == 'oz'"> Ounces</strong>
+                        <input id="weightSelcet" type="number" class="form-control" formControlName="weight"
+                          placeholder="kg" [(ngModel)]="modelsBmi.weight" IsDecimal>
+                      </div>
+                      <div class="col-6 pl-0">
+                        <label for="UnitKg">Unit</label>
+                        <nb-select id="UnitKg" class="nb-select-min-width" placeholder="kg" selected="kg" status="basic"
+                          shape="semi-round" fullWidth (selectedChange)="weightSelect($event)" required>
+                          <nb-option value="kg">kg</nb-option>
+                          <nb-option value="dag">Decagrams (dag)</nb-option>
+                          <nb-option value="lb">Pounds (lb)</nb-option>
+                          <nb-option value="oz">Ounces (oz)</nb-option>
+                        </nb-select>
+                      </div>
+                    </div>
+                    <small class="error mt-1" *ngIf="weight.invalid && (weight.dirty || weight.touched)">
+                      Weight is required !
+                    </small>
+                  </div>
+                  <div class="mb-3 nb-form-field-max-width">
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="height">waist circumference</label>
+                        <strong *ngIf="selectedHeight == 'cm'"> cm</strong>
+                        <strong *ngIf="selectedHeight == 'm'"> Metres</strong>
+                        <strong *ngIf="selectedHeight == 'in'"> Inches</strong>
+                        <strong *ngIf="selectedHeight == 'ft'"> Feet</strong>
+                        <input id="height" class="form-control" type="number" formControlName="waistCircumference"
+                          placeholder="cm" [(ngModel)]="modelsBmi.waistCircumference" IsDecimal>
+                      </div>
+                      <div class="col-6 pl-0">
+                        <label for="heightSelcet">Unit</label>
+                        <nb-select id="heightSelcet" class="nb-select-min-width" placeholder="cm" selected="cm"
+                          status="basic" shape="semi-round" fullWidth
+                          (selectedChange)="waistCircumferenceSelect($event)" required>
+                          <nb-option value="cm">cm</nb-option>
+                          <nb-option value="m">Metres (m)</nb-option>
+                          <nb-option value="in">Inches (in)</nb-option>
+                          <nb-option value="ft">Feet (ft)</nb-option>
+                        </nb-select>
+                      </div>
+                    </div>
+                    <small class="error mt-1"
+                      *ngIf="waistCircumference.invalid && (waistCircumference.dirty || waistCircumference.touched)">
+                      Height is required !
+                    </small>
+                  </div>
+                  <!-- <label for="wc">waist circumference</label>
+                    <div class="pb-3">
+                      <input id="wc" type="number" placeholder="Waist circumference" formControlName="waistCircumference"
+                        class="form-control">
+                      <small class="text-danger" *ngIf="submitted && formBfp.waistCircumference.errors?.required">Waist
+                        circumference is required.
+                        !</small>
+                    </div> -->
+
+                  <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-12">
+              <app-banner *ngIf="envirement"></app-banner>
+              <span #target style="position: relative; top: -350px"></span>
+            </div>
+            <!-- <div #target></div> -->
+            <div class="mt-2" *ngIf="bmi">
+              <div class="border p-4 bg-white">
+                <p class="text-center font-weight-bold" style="font-size: 30px;">Body Parameters</p>
+                <p class="text-center">Your body fat category is: <span class="bmi">{{message}}</span></p>
+                <div class="row mt-4">
+                  <div class="col-md-6 col-sm-12 pl-0">
+                    <p>-Age: <em>{{calculeAbsi.value.age}} Year</em></p>
+                    <p>-Height: <em>{{calculeAbsi.value.height}} Cm</em></p>
+                    <p>-Weight: <em>{{calculeAbsi.value.weight}} Kg</em></p>
+                    <p>-Gender: <em>{{calculeAbsi.value.gender}}</em></p>
+                    <p>-Body mass index: <em>{{bmi | number}} kg/m<sup>2</sup></em></p>
+                  </div>
+                  <div class="col-md-6 col-sm-12 p-0">
+                    <!-- https://www.mytecbits.com/tools/medical/absi-calculator -->
+                    <!-- National Early Warning Score (NEWS) -->
+                    <p>-Body Shape Index: <em>{{absi | number}}</em></p>
+                    <p>-ABSIzscore: <em>{{ABSIzscore | number}}</em></p>
+                    <p *ngIf="addCataloge && checked === 'male'">-ABSI<sub>mean</sub> for {{calculeAbsi.value.age}}
+                      years old Male:
+                      <em>{{meanABSIMale}} </em></p>
+                    <p *ngIf="addCataloge && checked === 'male'">-ABSI<sub>SD</sub> for {{calculeAbsi.value.age}} years
+                      old Male:
+                      <em>{{sdABSIMale}}</em></p>
+                    <p *ngIf="addCataloge && checked === 'female'">-ABSI<sub>mean</sub> for {{calculeAbsi.value.age}}
+                      years old Female:
+                      <em>{{meanABSIFemale}} </em></p>
+                    <p *ngIf="addCataloge && checked === 'female'">-ABSI<sub>SD</sub> for {{calculeAbsi.value.age}}
+                      years old Female:
+                      <em>{{sdABSIFemale}}</em></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table bg-white" *ngIf="addCataloge && checked === 'female'">
+              <p>ABSI Mortality Hazard Levels</p>
+              <p>The ABSI z score is classified into five premature mortality risk levels.</p>
+              <thead class="bg-secondary">
+                <tr>
+                  <th scope="col">ABSI<sub>z score</sub></th>
+                  <th scope="col">Mortality risk</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr [class.msg]="message === 'Very low'">
+                  <!-- <td scope="row" [class.msg]="message === 'Severe thinness'">Severe thinness</td> -->
+                  <td>−0.868 </td>
+                  <td scope="row">Very low</td>
+                </tr>
+                <tr [class.msg]="message === 'Low'">
+                  <td>−0.868 | -0.272 </td>
+                  <td scope="row">Low</td>
+                </tr>
+                <tr [class.msg]="message === 'Average'">
+                  <td>−0.272 | +0.229</td>
+                  <td scope="row">Average</td>
+                </tr>
+                <tr [class.msg]="message === 'High'">
+                  <td>+0.229 | 0.798</td>
+                  <td scope="row">High</td>
+                </tr>
+                <tr [class.msg]="message === 'Very high'">
+                  <td>>0.798</td>
+                  <td scope="row">Very high</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table bg-white" *ngIf="addCataloge && checked === 'male'">
+              <thead class="bg-secondary">
+                <tr>
+                  <th scope="col">ABSI<sub>z score</sub></th>
+                  <th scope="col">Mortality risk</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr [class.msg]="message === 'Very low'">
+                  <!-- <td scope="row" [class.msg]="message === 'Severe thinness'">Severe thinness</td> -->
+                  <td>−0.868 </td>
+                  <td scope="row">Very low</td>
+                </tr>
+                <tr [class.msg]="message === 'Low'">
+                  <td>−0.868 | -0.272 </td>
+                  <td scope="row">Low</td>
+                </tr>
+                <tr [class.msg]="message === 'Average'">
+                  <td>−0.272 | +0.229</td>
+                  <td scope="row">Average</td>
+                </tr>
+                <tr [class.msg]="message === 'High'">
+                  <td>+0.229 | 0.798</td>
+                  <td scope="row">High</td>
+                </tr>
+                <tr [class.msg]="message === 'Very high'">
+                  <td>>0.798</td>
+                  <td scope="row">Very high</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-12 mt-3">
+            <app-other-calcultor-health eleminateCalculator="bfp"></app-other-calcultor-health>
+          </div>
+        </div>
+
+        <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">
+          Learn more about Body Shape Index Calculator
+        </p>
+
+        <div class="row border shadow bg-white my-4">
+          <div class="col-md-12 mx-2 my-4">
+            <p>A Body Shape Index (ABSI) is a measure of body size and shape that takes into account an individual's
+              height, weight, and waist circumference. It is similar to the Body Mass Index (BMI) in that it is a tool
+              used to estimate an individual's overall health and risk for obesity-related health problems. However,
+              ABSI is believed to be a more accurate measure of an individual's risk for obesity-related health problems
+              because it takes into account the distribution of an individual's body fat, which may be more important
+              for determining health risks than overall weight or BMI. Some research suggests that ABSI may be more
+              predictive of morbidity and mortality than BMI, although more research is needed to confirm this.</p>
+
+
+            <h3 class="text-secondary">The ABSI formula is a mathematical equation used to calculate an individual's
+              Body Shape Index. The formula is:</h3>
+
+            <p><strong>ABSI = (waist circumference / height^(1.5)) * (weight / height^2)</strong></p>
+
+            <p> where waist circumference is measured in centimeters, height is measured in meters, and weight is
+              measured
+              in kilograms.</p>
+            <p>
+              The ABSI z score is a measure of how an individual's ABSI compares to the general population. It is
+              calculated by subtracting the mean ABSI of the population from an individual's ABSI and dividing the
+              result by the standard deviation of the population's ABSI.</p>
+            <p>The ABSI z score is expressed in standard deviation units and can be used to assess an individual's risk
+              for obesity-related health problems. A positive ABSI z score indicates that an individual's ABSI is higher
+              than the average for the population, while a negative ABSI z score indicates that it is lower.</p>
+
+            <h3 class="text-secondary">What do fats do to your body?</h3>
+
+
+
+
+            <p>Because the <a routerLink="/health/bmi-calculator/.">BMI calculation</a> is based only on your weight and
+              height, and gender, whether you're male or
+              female isn't a factor determining the number.</p>
+            <p>However, there is a difference between women and men regarding the range of body fat percentages.</p>
+            <div class="col-md-4 col-12 mx-auto">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Body fat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">Essential fat</td>
+                    <td>
+                      10-13 %
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Athletes</td>
+                    <td>14-20 %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Fitness</td>
+                    <td>21-24 %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Acceptable</td>
+                    <td>25-31 %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Obesity</td>
+                    <td>
+                      >32 %
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>The age of the person determines ideal body fat percentages.</p>
+            <div class="col-md-4 col-12  mx-auto">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Age</th>
+                    <th scope="col">Percentage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">20-39</td>
+                    <td>
+                      21-32 %
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">40-59</td>
+                    <td>23-33 %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">60-79</td>
+                    <td>24-35 %</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 class="text-secondary">Body fat is the ideal percentage of body fat for males.</h3>
+            <p>The general rule is that men have a lower body fat-to-ratio of lean tissues than females, which is the
+              reason
+              for the variations in the proportions.</p>
+            <p>Reproduction is one factor that contributes to the higher percentages of body fat for females.</p>
+            <p>In this regard In that context, the ACE chart shows the following ranges of men's age:</p>
+            <div class="col-md-4 col-12  mx-auto">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Body fat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">Essential fat</td>
+                    <td>
+                      2-5 %
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Athletes</td>
+                    <td>6-13 %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Fitness</td>
+                    <td>14-17 %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Acceptable</td>
+                    <td>18-24 %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Obesity</td>
+                    <td>
+                      >25 %
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>To get the ideal percentage of body fat determined by age, males:</p>
+            <div class="col-md-4 col-12  mx-auto">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Age</th>
+                    <th scope="col">Percentage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">20-39</td>
+                    <td>
+                      8-19 %
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">40-59</td>
+                    <td>11-21 %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">60-79</td>
+                    <td>13-24 %</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 class="text-secondary">Problems with calculation</h3>
+            <p>If you view BMI and body fat measurements as the only tools to keep track of your progress, you might not
+              be
+              obsessed with the results.</p>
+            <p>Also, compelled by the desire to lower a specific number, you could be motivated to improve your overall
+              health by feeding your body healthy foods and incorporating some <a
+                href="https://en.wikipedia.org/wiki/Fitness" target="_blank" rel="noopener noreferrer">fitness</a> into
+              your routine.</p>
+            <p>This mentality can help to accept and understand the limitations and issues associated with BMI and body
+              fat
+              percentages.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </nb-layout-column>
+</nb-layout>
+<ngx-json-ld [json]="schema"></ngx-json-ld>
