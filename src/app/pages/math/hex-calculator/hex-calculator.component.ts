@@ -94,6 +94,10 @@ export class HexCalculatorComponent implements OnInit {
     this.submitted = true;
     if (this.calculeHex.valid) {
       this.error = "";
+      this.calculeHex.patchValue({
+        hexOne: this.calculeHex.value.hexOne.replace(/\s/g,''),
+        hexTwo: this.calculeHex.value.hexTwo.replace(/\s/g,'')
+      });
       this.hexOne = parseInt(this.calculeHex.value.hexOne, 16);
       this.hexTwo = parseInt(this.calculeHex.value.hexTwo, 16);
       //  
@@ -119,6 +123,9 @@ export class HexCalculatorComponent implements OnInit {
     this.submittedFormTwo = true;
     if (this.conveHexToDeci.valid) {
       this.errorFormTwo = "";
+      this.conveHexToDeci.patchValue({
+        hex: this.conveHexToDeci.value.hex.replace(/\s/g,''),
+      });
       this.rsltHex = parseInt(this.conveHexToDeci.value.hex, 16);
       e.scrollIntoView({ behavior: "smooth" });
     } else {

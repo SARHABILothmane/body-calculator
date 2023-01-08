@@ -2,57 +2,45 @@
   <nb-layout-column>
     <div class="container">
       <div class="col-12">
+        <app-breadcrumbs
+        [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Exponent Calculator', itemUrl: 'math/exponent-calculator/.'}">
+      </app-breadcrumbs>
         <h1 class="text-secondary text-center pb-3">Exponent Calculator</h1>
         <div class="flexMobile">
           <app-banner *ngIf="envirement"></app-banner>
         </div>
       </div>
-      <div class="row mb-3 d-flex flex-md-r ow-reverse">
-        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white">
-          <p class="text-secondary text-center font-weight-bold">Result of Exponent Calculator</p>
-          <!-- <h4 class="text-secondary text-center" *ngIf="permutation != null">{{permutation}} </h4> -->
-          <div *ngIf="rsltExponent">
-            <p class="text-white text-center msg font-weight-bold">Result : {{exponent | number}}</p>
-            <p class="font-weight-bold">steps :</p>
-            <p class="text-center">{{value}} <sup>{{exponentValue }}</sup> = <strong
-                class="ml-1"></strong>{{exponent | number}}
-            </p>
-            <p class="text-center">{{value}} <sup>{{exponentValue }}</sup> = {{exponentValue }} x {{exponentValue }} x
-              ... x {{exponentValue }}
-            </p>
-            <p class="text-center">= {{exponent | number}}
-            </p>
-          </div>
-        </div>
+      <div class="row mb-3 d-flex flex-md-row-reverse">
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
               <h2 class="text-white text-center font-weight-bold">Exponent Calculator</h2>
             </div>
             <div class="card-body example-items-col">
-              <form [formGroup]="calculeFormExponent" (ngSubmit)="CalculateExponent()">
+              <p class="text-center font-weight-bold">x<sup>n</sup> = ?</p>
+              <form [formGroup]="calculeFormExponent" (ngSubmit)="CalculateExponent(target)">
                 <div *ngIf="error" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{error}}
                   </span>
                 </div>
-                <div class="row mx-auto">
-                  <div class="mt-4 my-4  col-5">
-                    <label for="objects"></label>
+                <div class="row mx-auto d-flex justify-content-center">
+                  <div class="mt-4 my-4  col-3">
+                    <label for="objects">x</label>
                     <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="2" formControlName="value">
-                    <small class="text-danger" *ngIf="submitted && formExponent.value.errors?.required">Lower
-                      Limit is
+                      shape="semi-round" placeholder="x" formControlName="value">
+                    <small class="text-danger" *ngIf="submitted && formExponent.value.errors?.required">
+                      x is
                       required.
                       !</small>
                   </div>
                   <div class="col-1 mt-4"><strong class="font-weight" style="font-size: 20px;">^</strong></div>
-                  <div class="col-5">
-                    <label for="sample"></label>
+                  <div class="col-3">
+                    <label for="sample">n</label>
                     <input id="sample" class="form-control" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="3" formControlName="exponent">
-                    <small class="text-danger" *ngIf="submitted && formExponent.exponent.errors?.required">Upper
-                      Limit is
+                      shape="semi-round" placeholder="n" formControlName="exponent">
+                    <small class="text-danger" *ngIf="submitted && formExponent.exponent.errors?.required">
+                      n is
                       required.
                       !</small>
                   </div>
@@ -62,11 +50,32 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-md-6 mx-auto">
-                <p class="bmi text-center my-3">Your ideal weight based on popular formulas:</p>
-              </div>
-              <span #target></span> -->
+        <span #target style="position: relative; top: -50px"></span>
+        <div class="col-md-5 mx-auto mb-5 border-shadow bg-white mt-3" style="min-height: 200px;" >
+          <p class="text-secondary text-center font-weight-bold">Result of Exponent Calculator</p>
+          <div *ngIf="rsltExponent">
+            <p class="text-white text-center msg font-weight-bold">Result : {{exponent | number}}</p>
+            <p class="font-weight-bold">steps :</p>
+            <p class="text-center">{{value}} <sup>{{exponentValue }}</sup> = <strong
+                class="ml-1"></strong>{{exponent | number}}
+            </p>
+
+            <p class="text-center">{{value}} <sup>{{exponentValue }}</sup> = {{value }}  
+              <ng-container *ngFor="let _ of [].constructor(exponentValue - 1 ) ;let i=index">
+                <span *ngIf="i < 10"> * {{value }}</span>
+                <span *ngIf="i > 10"> * ... {{value }}</span>
+              </ng-container>
+              
+            </p>
+            <p class="text-center">= {{exponent | number}}
+            </p>
+          </div>
+        </div>
+        <div class="col-12" *ngIf="envirement">
+          <app-banner></app-banner>
+        </div>
       </div>
+      <app-other-calcultor-math eleminateCalculator="exponentC"></app-other-calcultor-math>
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn About
         Exponent calculator</p>
       <div class="row border shadow bg-white my-4">
@@ -86,7 +95,8 @@
           <h4>Which guidelines apply to operating exponents?</h4>
           <p>These are the major exponent principles that will help you simplify equations; we might make a list
             shorter.</p>
-          <img src="../../../../assets/images/exponent.png" width="350px" height="300px" alt="exponents calculatro">
+
+          <img src="../../../../assets/images/exponent.png" width="350px" height="300px" alt="Exponent Calculator">
           <p>There are some rules in that list that are redundant, and we could derive them from a smaller set of rules,
             but that is not our primary objective at this time.</p>
           <h3 class="text-secondary">How does the exponent calculator work?</h3>
@@ -176,3 +186,4 @@
     </div>
   </nb-layout-column>
 </nb-layout>
+<ngx-json-ld [json]="schema"></ngx-json-ld>

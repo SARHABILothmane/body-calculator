@@ -27,6 +27,8 @@
 /math/combination-calculator/.
 /math/percentage-increase-calculator/.
 /math/percentage-decrease-calculator/.
+/math/root-calculator/.
+/math/exponent-calculator/.
 
 /contact/.
 /private-policy/.

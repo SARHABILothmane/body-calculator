@@ -65,7 +65,7 @@
               </svg> 
             </label>      
             <ul class="menu-sidebar">
-              <svg style="width: 35px; float:right;" viewBox="0 0 100 100">
+              <svg (click)="closeNavBarMobile()" style="width: 35px; float:right;" viewBox="0 0 100 100">
                 <path style="fill:var(--grayDark);" d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z"/>
               </svg> 
               <li class="nav-item d-flex align-items-center" (click)="closeNavBarMobile()">
@@ -84,7 +84,7 @@
                   </span>
                 </label>
                 <div class="arrow right">&#8250;</div>           
-                <ul class="menu-sub" style="z-index: 1556;">
+                <ul class="menu-sub" style="z-index: 1556; overflow-y: scroll !important;">
                   <li class="menu-sub-title">
                     <label class="submenu-label d-flex align-items-center" for="{{details.categorieName}}">Back</label>
                     <div class="arrow left">&#8249;</div>              
