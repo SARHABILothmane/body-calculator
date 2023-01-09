@@ -35,12 +35,14 @@
                 <div class="row mx-auto">
                   <div class="my-4  col-4">
                     <label for="objects"></label>
-                    <input id="objects" class="form-control" type="number" nbInput fullWidth status="basic"
+                    <input id="objects" class="form-control" type="text" nbInput fullWidth status="basic"
                       shape="semi-round" placeholder="2" formControlName="value">
                     <small class="text-danger" *ngIf="submitted && formLogarithm.value.errors?.required">Lower
                       Limit is
                       required.
                       !</small>
+                    <small class="text-danger" *ngIf="submitted && formLogarithm['value'].errors?.['pattern']">Please
+                      provide a numerical base value.!</small>
                   </div>
                   <div class="mb-4 col-8">
                     <label for="sample"></label>

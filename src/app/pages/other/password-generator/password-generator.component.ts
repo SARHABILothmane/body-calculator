@@ -1,5 +1,5 @@
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Meta, Title } from '@angular/platform-browser';
 import { CanonicalService } from 'src/app/services/canonical.service';
@@ -14,12 +14,9 @@ export class PasswordGeneratorComponent implements OnInit {
   calculeFormRandomPass!: UntypedFormGroup;
   generatedNumber!: number;
   error!: string;
+  isCopie!: string;
   submitted: boolean = false;
-  // lowercase: string = "abcdefghijklmnopqrstuvwxyz";
-  // uppercase: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  // numbers: string = "0123456789";
-  // symbols: string = "^!$%&|[](){}:;.,*+-#@<>~";
-  lowercaseValue: boolean = false;
+  lowercaseValue: boolean = true;
   uppercaseValue: boolean = false;
   numbersValue: boolean = false;
   symbolsValue: boolean = false;
@@ -29,7 +26,7 @@ export class PasswordGeneratorComponent implements OnInit {
   schema: any;
   obj = {
     id: 1,
-    answer: 1,
+    answer: 10,
     step: 1,
     minValue: 1,
     maxValue: 40
@@ -37,7 +34,7 @@ export class PasswordGeneratorComponent implements OnInit {
   passwordObj = {
     password: "",
   }
-  value = 25;
+  value = 50;
 
   constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculeFormRandomPass = new UntypedFormGroup({
@@ -97,7 +94,7 @@ export class PasswordGeneratorComponent implements OnInit {
     this.submitted = true;
     this.error = '';
     if (!this.lowercaseValue && !this.uppercaseValue && !this.numbersValue && !this.symbolsValue) {
-      this.error = '3amer wahda';
+      this.error = 'Please include at least one characters set for the password to be based on.';
       this.passwordObj.password = "";
       // this.calculeFormRandomPass.reset()
       return
@@ -105,38 +102,38 @@ export class PasswordGeneratorComponent implements OnInit {
     this.passwordObj.password = this.generatePassword(this.lowercaseValue, this.uppercaseValue, this.numbersValue, this.symbolsValue, this.calculeFormRandomPass.value.lengthSlider);
     // e.scrollIntoView({ behavior: "smooth" });
 
-    if (this.obj.answer > 30) {
-      this.setValue(100);
-      return
-    }
-    if (this.obj.answer > 20) {
-      this.setValue(75);
-      return
-    }
-    if (this.obj.answer > 9) {
-      this.setValue(50);
-      return
-    }
-    if (this.obj.answer > 5) {
-      this.setValue(25);
-      return
-    }
-    // if (this.lowercaseValue || this.uppercaseValue || this.numbersValue || this.symbolsValue && this.obj.answer > 30) {
+    // if (this.obj.answer > 30) {
     //   this.setValue(100);
     //   return
     // }
-    // if (this.lowercaseValue || this.uppercaseValue || this.numbersValue || this.symbolsValue && this.obj.answer > 20) {
+    // if (this.obj.answer > 20) {
     //   this.setValue(75);
     //   return
     // }
-    // if (this.lowercaseValue || this.uppercaseValue || this.numbersValue || this.symbolsValue && this.obj.answer > 9) {
+    // if (this.obj.answer > 9) {
     //   this.setValue(50);
     //   return
     // }
-    // if (this.lowercaseValue || this.uppercaseValue || this.numbersValue || this.symbolsValue && this.obj.answer > 4) {
+    // if (this.obj.answer > 5) {
     //   this.setValue(25);
     //   return
     // }
+    if (this.obj.answer > 30 && this.lowercaseValue && this.uppercaseValue && this.numbersValue && this.symbolsValue) {
+      this.setValue(100);
+      return
+    }
+    if (this.obj.answer > 20 && this.lowercaseValue && this.uppercaseValue && this.numbersValue || this.symbolsValue) {
+      this.setValue(75);
+      return
+    }
+    if (this.obj.answer > 9 && this.lowercaseValue && this.uppercaseValue || this.numbersValue || this.symbolsValue) {
+      this.setValue(50);
+      return
+    }
+    if (this.obj.answer <= 5) {
+      this.setValue(25);
+      return
+    }
   }
 
   getRandomLower() {
@@ -217,6 +214,15 @@ export class PasswordGeneratorComponent implements OnInit {
     inputElement.select();
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
+    // setTimeout(() => {
+    //   if (this.isCopie) {  this.isCopie = "Clipboard is copie"; }
+    // }, 3000);
+    this.isCopie = "Clipboard is copie"
+  }
+  regenerate() {
+    this.calculeFormRandomPass.reset();
+    this.isCopie = "";
+    this.obj.answer = 12;
   }
 
 
