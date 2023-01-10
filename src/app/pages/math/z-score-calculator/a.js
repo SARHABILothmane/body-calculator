@@ -119,3 +119,74 @@ console.log('Using zScoreToProbability. You are 95 confident that the population
 
 console.log('Using table lookup You are 95 confident that the population is in the interval between ', p_hat - Etable, p_hat + Etable ) 
 // -> 0.3811528922313877 0.49741853634004085
+
+
+var BraCalculator = {
+  
+    unknownString: "Unknown",
+    
+    cupSizes: ["A", "B", "C", "D", "DD", "E", "EE", "F", "FF", "G", "GG", "H", "HH", 
+               "J", "JJ", "K", "KK", "L", "LL", "M", "MM", "N", "NN"],
+    calculateSize: function(underBust, overBust) {
+      var bandSize = this.calculateBandSize(underBust);
+      var cupSize  = this.calculateCupSize(bandSize, overBust);
+      
+      if (bandSize && cupSize) {
+        return bandSize + cupSize;
+      } else {
+        return this.unknownString;
+      };
+    },
+    
+    /**
+     * Calculates the correct band size for a given under bust measurement
+     * @param {Number} underBust The measurement under the bust
+     * @return {Number} The correct band size
+     */
+    calculateBandSize: function(underBust) {
+      var underBust = parseInt(underBust, 10);
+      return underBust + (underBust % 2) + 2;
+    },
+    
+    /**
+     * Calculates the Cup size required given the band size and the over bust measurement
+     * @param {Number} bandSize The measured band size (should be an even number)
+     * @param {Number} overBust The measurement taken over the bust
+     * @return {String} The appropriate alphabetical cup size
+     */
+    calculateCupSize: function(bandSize, overBust) {
+      var bandSize = parseInt(bandSize, 10);
+      var overBust = parseInt(overBust, 10);
+      var diff     = overBust - bandSize;
+      
+      var result   = this.cupSizes[diff];
+      
+      //return false if we couldn't lookup a cup size
+      return result ? result : false;
+    }
+     ///////////////////
+  calculateSize(underBust: any, overBust: any) {
+    let bandSize = this.calculateBandSize(underBust);
+    let cupSize = this.calculateCupSize(bandSize, overBust);
+
+    if (bandSize && cupSize) {
+      return bandSize + cupSize;
+    } else {
+      return this.unknownString;
+    };
+  }
+  calculateBandSize(underBust: any) {
+    underBust = parseInt(underBust, 10);
+    return underBust + (underBust % 2);
+  }
+  calculateCupSize(bandSize: any, overBust: any) {
+    let band = parseInt(bandSize, 10);
+    let Bust = parseInt(overBust, 10);
+    let diff = (Bust - band) - 1;
+
+    let result = this.cup_sizes[diff];
+    //return false if we couldn't lookup a cup size
+    return result ? result : false;
+  }
+  };
+  
