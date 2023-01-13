@@ -5,25 +5,37 @@
         <app-breadcrumbs
           [infoAndUrl]="{categorieUrl: 'math/.', nameCategorie: 'Math', namePage:'Percent Error Calculator', itemUrl: 'math/percent-error-calculator/.'}">
         </app-breadcrumbs>
-        <h1 class="text-secondary text-center pb-3">Percent Error Calculator</h1>
+        <h1 class="text-secondary text-center pb-3">Z-score Calculator</h1>
         <div class="flexMobile">
           <app-banner *ngIf="envirement"></app-banner>
         </div>
       </div>
       <!-- z score -->
       <div class="row mb-3">
-        <div class="col-md-6">
+        <div class="col-md-6 mx-auto">
           <div class="card">
             <div class="card-header">
               <h2 class="text-white text-center">
-                Percent Error Calculator
+                Z-score Calculator
               </h2>
             </div>
             <div class="card-body" #target>
               <div *ngIf="rsltZScore != null">
-                <p class="font-weight-bold">steps :</p>
+                <p class="font-weight-bold">steps:</p>
                 <div class="border">
                   <table align="center">
+                    <!-- <tr>
+                      <td>Probability of x&lt;5: 0.84134 =</td>
+                      <td>
+                        <div style="width:60px; height:38px;position: relative;top: 0;left: 0;">
+                          <div
+                            style="display: inline-block;position: relative;top: 0;left: 0; height: 38px; width:34px; background-color: #ff0000;">
+                          </div>
+                          <div style="position: absolute; top: -1px; left: -1px;"><img
+                              src="../../../../assets/images/normal.png" width="60" height="38"></div>
+                        </div>
+                      </td>
+                    </tr> -->
                     <tr>
                       <td>z-score = </td>
                       <td>
@@ -59,10 +71,19 @@
                       </td>
                     </tr>
                   </table>
-                  <p><strong class="ml-5">z-score =</strong> {{rsltZScore}}</p>
+                  <p><strong class="ml-5">z-score = {{rsltZScore | number}}</strong> </p>
+                  <p><strong class="ml-5">P-value from Z-Table:</strong></p>
+                  <div class="text-center">
+                    <p>P(x &lt; {{rawScore | number}})= <strong>{{ZTable | number:'0.0-5' }}</strong></p>
+                    <p>P(x > {{rawScore | number}})= 1 - P(x &lt; {{rawScore | number}})=
+                      <strong>{{Px | number:'0.0-5'}}</strong></p>
+                    <p>P({{population}} &lt; x
+                      &lt; {{rawScore | number}})=P(x &lt; {{rawScore | number}}) - 0.5=
+                      <strong>{{Pu | number:'0.0-5'}}</strong></p>
+                    <p class="text-white text-center msg font-weight-bold">Result : {{rsltZScore}}
+                    </p>
+                  </div>
                 </div>
-                <p class="text-white text-center msg font-weight-bold">Result : {{rsltZScore}}
-                </p>
                 <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
               <form [formGroup]="calculeZscore" (ngSubmit)="CalculateZscore(target)">
@@ -104,74 +125,29 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 mx-auto d-md-block d-none">
-          <img src="../../../../assets/images/percentage-error-calculator.svg" width="350px" height="300px"
-            alt="Percent Error Calculator">
-        </div>
-        <div class="col-12">
-          <app-banner *ngIf="envirement"></app-banner>
-        </div>
-      </div>
-      <!-- Probability between Two Z-scores -->
-      <div class="row mb-3">
-        <div class="col-md-5 mx-auto d-md-block d-none">
-          <img src="../../../../assets/images/percentage-error-calculator.svg" width="350px" height="300px"
-            alt="Percent Error Calculator">
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mx-auto">
           <div class="card">
             <div class="card-header">
               <h2 class="text-white text-center">
                 Probability between Two Z-scores
               </h2>
             </div>
-            <div class="card-body" #target>
+            <div class="card-body" #targ>
               <div *ngIf="rsltProbabilityZScore != null">
                 <p class="font-weight-bold">steps :</p>
                 <div class="border">
-                  <table align="center">
-                    <tr>
-                      <td>z-score = </td>
-                      <td>
-                        <table>
-                          <tr align="center">
-                            <td> x - μ</td>
-                          </tr>
-                          <tr>
-                            <td bgcolor="#000000" height="1"></td>
-                          </tr>
-                          <tr align="center">
-                            <td>σ</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                  <table align="center">
-                    <tr>
-                      <td>z-score = </td>
-                      <td>
-                        <table>
-                          <tr align="center">
-                            <td>{{rawScore}} - {{population}}</td>
-                          </tr>
-                          <tr>
-                            <td bgcolor="#000000" height="1"></td>
-                          </tr>
-                          <tr align="center">
-                            <td>{{deviation}}</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                  <p><strong class="ml-5">z-score =</strong> {{rsltProbabilityZScore}}</p>
+                  <p><strong class="ml-5">P({{z1}} &lt; x &lt; {{z2}}) =</strong>
+                    {{rsltProbabilityZScore | number:'0.0-5'}}</p>
+                  <p><strong class="ml-5">P({{z1}} &lt; Or x > {{z2}}) =</strong> {{probaBetween | number:'0.0-5'}}</p>
+                  <p><strong class="ml-5">P(x &lt; {{z1}}) =</strong> {{ztable1 | number:'0.0-5'}}</p>
+                  <p><strong class="ml-5">P(x > {{z2}}) =</strong> {{px2 | number:'0.0-5'}}</p>
                 </div>
-                <p class="text-white text-center msg font-weight-bold">Result : {{rsltProbabilityZScore}}
+                <p class="text-white text-center msg font-weight-bold">Result :
+                  {{rsltProbabilityZScore | number:'0.0-5'}}
                 </p>
                 <!-- <app-banner *ngIf="envirement"></app-banner> -->
               </div>
-              <form [formGroup]="calculeProbabilityZscore" (ngSubmit)="CalculateProbabilityZscore(target)">
+              <form [formGroup]="calculeProbabilityZscore" (ngSubmit)="CalculateProbabilityZscore(targ)">
                 <div *ngIf="errorProbability" class="alert alert-danger mx-auto text-center" role="alert">
                   <span>
                     {{errorProbability}}
@@ -202,6 +178,108 @@
             </div>
           </div>
         </div>
+        <div class="col-12">
+          <app-banner *ngIf="envirement"></app-banner>
+        </div>
+      </div>
+      <!-- Probability between Two Z-scores -->
+      <div class="row mb-3">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="text-white text-center">
+                Z-score and Probability Converter
+              </h2>
+            </div>
+            <div class="card-body" #tar>
+              <div *ngIf="z != null">
+                <p class="font-weight-bold">steps :</p>
+                <div class="border">
+                  <p>Given Z = {{z | number:'0.0-5'}}</p>
+                  <p><strong class="ml-5">P(x&lt;Z) =</strong> {{ztableConverter | number:'0.0-5'}}</p>
+                  <p><strong class="ml-5">P(x>Z) = </strong> {{pinferieur | number:'0.0-5'}}</p>
+                  <p><strong class="ml-5">P(0&lt;x&lt;Z) =</strong> {{psuperieur | number:'0.0-5'}}</p>
+                  <p><strong class="ml-5">P(-Z&lt;x&lt;Z) =</strong> {{pbetweenInSup | number:'0.0-5'}}</p>
+                  <p><strong class="ml-5">P(-Z&lt; or x>Z) =</strong> {{pbetweenZero | number:'0.0-5'}}</p>
+                </div>
+                <p class="text-white text-center msg font-weight-bold">Result :
+                  {{rsltProbabilityZScore | number:'0.0-5'}}
+                </p>
+                <!-- <app-banner *ngIf="envirement"></app-banner> -->
+              </div>
+              <form [formGroup]="converterProbabilityZscore" (ngSubmit)="ZscoreProbabilityConverter(tar)">
+                <div *ngIf="errorProbabilityZscore" class="alert alert-danger mx-auto text-center" role="alert">
+                  <span>
+                    {{errorProbabilityZscore}}
+                  </span>
+                </div>
+                <div class="mt-2">
+                  <label for="zScore">Z-score</label>
+                  <input id="zScore" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="Z-Score" formControlName="zScore">
+                  <small class="text-danger"
+                    *ngIf="submitted && formConverterProbabilityZscore.zScore.errors?.required">this
+                    field
+                    required.
+                    !</small>
+                </div>
+                <div class="mt-2">
+                  <label for="pinferieur">Probability, P(x&lt;Z)</label>
+                  <input id="pinferieur" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="" formControlName="pinferieur">
+                  <small class="text-danger"
+                    *ngIf="submitted && formConverterProbabilityZscore.pinferieur.errors?.required">this
+                    field
+                    required.
+                    !</small>
+                </div>
+                <div class="mt-2">
+                  <label for="psuperieur">Probability, P(x>Z)</label>
+                  <input id="psuperieur" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="" formControlName="psuperieur">
+                  <small class="text-danger"
+                    *ngIf="submitted && formConverterProbabilityZscore.psuperieur.errors?.required">this
+                    field
+                    required.
+                    !</small>
+                </div>
+                <div class="mt-2">
+                  <label for="pbetweenZero">Probability, P(0 to Z or Z to 0)</label>
+                  <input id="pbetweenZero" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="" formControlName="pbetweenZero">
+                  <small class="text-danger"
+                    *ngIf="submitted && formConverterProbabilityZscore.pbetweenZero.errors?.required">this
+                    field
+                    required.
+                    !</small>
+                </div>
+                <div class="mt-2">
+                  <label for="pbetweenInSup">Probability, P(-Z&lt;x&lt;Z)</label>
+                  <input id="pbetweenInSup" class="form-control" type="number" nbInput fullWidth status="basic"
+                    shape="semi-round" placeholder="" formControlName="pbetweenInSup">
+                  <small class="text-danger"
+                    *ngIf="submitted && formConverterProbabilityZscore.pbetweenInSup.errors?.required">this
+                    field
+                    required.
+                    !</small>
+                </div>
+                <div class="mt-3">
+                  <label for="pOr">Probability, P(x&lt;-Z or x>Z)</label>
+                  <input id="pOr" class="form-control" type="number" nbInput fullWidth status="basic" shape="semi-round"
+                    placeholder="" formControlName="pOr">
+                  <small class="text-danger"
+                    *ngIf="submitted && formConverterProbabilityZscore.pOr.errors?.required">this
+                    field
+                    required.
+                    !</small>
+                </div>
+                <div class="mt-3">
+                  <button type="submit" class="btn btnBgPrimary w-100">Calculate</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
       <app-other-calcultor-math eleminateCalculator="pec"></app-other-calcultor-math>
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
@@ -214,28 +292,35 @@
             mistake calculator for you, and it will enhance your calculations and estimations. When you've previously
             utilized the projected value in complex computations, this % error calculator comes in useful.</p>
           <h3 class="text-secondary">What is the percent error?</h3>
-          <p>Percent error, also known as percentage error, is a measure of a measurement's accuracy relative to a real
+          <p>Percent error, also known as percentage error, is a measure of a measurement's accuracy relative to a
+            real
             or estimated value, also known as a "theoretical" value. Unlike absolute error, which is reported in
-            whatever units are used to measure it, percent error is expressed in percentages, which makes it much easier
+            whatever units are used to measure it, percent error is expressed in percentages, which makes it much
+            easier
             to discuss and grasp the magnitude of the error without knowing anything else. Using only the relative
             mistake, such as 1/100, is less handy than mentioning the 1% error. Our % error calculator can help you
             easily calculate it.</p>
           <h4>Percent error</h4>
-          <p>For example, if I advise you that the absolute measurement error is 500 grammes, you are unsure if this is
+          <p>For example, if I advise you that the absolute measurement error is 500 grammes, you are unsure if this
+            is
             a significant or little change in relation to what you are measuring. If you were measuring weights in a
             market, say, selling potatoes, a 500 gramme (0.5 kilogramme or around 1 pound) inaccuracy would be fairly
             substantial, since the percentage error from a 2kg (4 pounds) bag of potatoes would be 25%, and you would
             not be permitted to sell scales with such a large potential error.</p>
           <p>However, 500 grammes is a common inaccuracy in many home scales designed to measure your body weight,
-            because 0.5kg is just 1% for a 50kg man (110lbs) and 0.5% for a 100kg (220lbs) man - enough for the purpose.
+            because 0.5kg is just 1% for a 50kg man (110lbs) and 0.5% for a 100kg (220lbs) man - enough for the
+            purpose.
             As a result, the same absolute error produces radically different % errors, illustrating its utility.</p>
-          <p>Percent error should not be confused with standard deviation (of the sample), standard error (of the mean),
+          <p>Percent error should not be confused with standard deviation (of the sample), standard error (of the
+            mean),
             or <a href="https://en.wikipedia.org/wiki/Margin_of_error" target="_blank" rel="noopener noreferrer">margin
               of error</a>, as these are more sophisticated statistical concepts.</p>
           <h4>Using the percent error calculator</h4>
           <p>Simply enter the observed value from any particular measurement or observation into our calculator, and
-            then supply the correct value, if known. If it is unknown, put the best approximation you have. The relative
-            error calculator will then calculate the mistake as a percentage, either positive or negative, based on the
+            then supply the correct value, if known. If it is unknown, put the best approximation you have. The
+            relative
+            error calculator will then calculate the mistake as a percentage, either positive or negative, based on
+            the
             direction of the observed deviation from the real number.</p>
           <h4>Percentage Error Calculator:</h4>
           <p>This explains how to manually compute % inaccuracy. You'll be glad to hear that you have access to a
@@ -248,16 +333,19 @@
             be shown on the screen.</p>
           <h4>What are percent of Error, standard error and margin of error?</h4>
           <p>In layman's terms, a percentage mistake is also known as a relative error. It is the difference between a
-            true and observed value. The true value is the one evaluated without any observation. The observed value, on
+            true and observed value. The true value is the one evaluated without any observation. The observed value,
+            on
             the other hand, is one that is determined following an practical observation.</p>
-          <p>If you think it takes 30 minutes to walk one kilometre, that is the real value. Similarly, if you walk 1km
+          <p>If you think it takes 30 minutes to walk one kilometre, that is the real value. Similarly, if you walk
+            1km
             and determine that a time period of 25 minutes is required, it is the observed value. The relative error
             will be determined by dividing the difference between the true and observed values by the true value. The
             result will then be multiplied by 100.</p>
           <h4>Standard of Error</h4>
           <p>The <a
               href="https://en.wikipedia.org/wiki/Standard_error#:~:text=The%20standard%20error%20(SE)%20of,of%20the%20mean%20(SEM)."
-              target="_blank" rel="noopener noreferrer">standard of error</a> is calculated for the entire sample rather
+              target="_blank" rel="noopener noreferrer">standard of error</a> is calculated for the entire sample
+            rather
             than for a single number. The standard of
             error value reflects how correctly a fixed sample represents the entire population.</p>
           <h4>Margin of Error</h4>
@@ -271,10 +359,13 @@
           <p><strong>Percentage error = (Vobserverd - Vtrue) / Vtrue x 100</strong></p>
           <p>When computed, as shown above, the percentage error will be positive when the observed value is greater
             than the true, and negative otherwise, therefore knowing the sign of the error will help you determine the
-            direction of the error. It is important to note that in chemistry and most disciplines, the direction of the
-            mistake is important. Negative mistakes will be displayed with a minus sign in front of the percentage.</p>
+            direction of the error. It is important to note that in chemistry and most disciplines, the direction of
+            the
+            mistake is important. Negative mistakes will be displayed with a minus sign in front of the percentage.
+          </p>
           <p>The formula is expressed in some places as (Vtrue - Vobserverd), which is inaccurate or at least awkward
-            because it flips the sign. If you don't care about the error's direction, just use the absolute: |Vobserverd
+            because it flips the sign. If you don't care about the error's direction, just use the absolute:
+            |Vobserverd
             - Vtrue| in the numerator.
             If you used the formula below to compute the absolute error:
           </p>
@@ -292,22 +383,27 @@
             used to check all of them.</p>
           <h4>Example 1: Percentage error from observed and true value</h4>
           <p>Consider an example from ordinary life. Assume you're buying wooden laths to build a treehouse. You order
-            laths that are 10 feet (304.8 cm) long, but when they arrive, they are 10 feet 1 inch (307.34 cm) long. What
+            laths that are 10 feet (304.8 cm) long, but when they arrive, they are 10 feet 1 inch (307.34 cm) long.
+            What
             is the percentage error?</p>
           <p>You must use the following formula:</p>
-          <p><strong>(10 feet 1 inch - 10 feet) / 10 feet x 100 = (121 inches - 120 inches) / 120 inches x 100 = 1 / 120
+          <p><strong>(10 feet 1 inch - 10 feet) / 10 feet x 100 = (121 inches - 120 inches) / 120 inches x 100 = 1 /
+              120
             </strong></p>
           <p><strong>inches x 100 = 0.0083 inches x 100 = 0.83% mistake</strong></p>
           <h4>Example 2: Converting absolute inaccuracy to percent error</h4>
-          <p>Return to our scales example from paragraph one. If we know our home scale's allowable absolute mistake is
+          <p>Return to our scales example from paragraph one. If we know our home scale's allowable absolute mistake
+            is
             0.5kg (1.1 pound), how do we compute the percent inaccuracy if we estimate our accurate weight to be 100kg
             (220 lbs)?</p>
-          <p>In kg, divide 0.5 by 100 to obtain the relative error, then multiply by 100 to get the percent. In pounds,
+          <p>In kg, divide 0.5 by 100 to obtain the relative error, then multiply by 100 to get the percent. In
+            pounds,
             divide 1.1 by 220 to obtain the relative error, then multiply by 100 to get the percent.</p>
           <p><strong>In kg: (0.5 / 100) × 100 = 0.005 * 100 = 0.5% mistake</strong></p>
           <p><strong>In lbs: (1.1 / 220) × 100 = 0.005 * 100 = 0.5% mistake</strong></p>
           <h4>Example 3: Absolute to percentage error</h4>
-          <p>Let's return to the treehouse scenario, but with a twist. Now, when you purchase, the manufacturer informs
+          <p>Let's return to the treehouse scenario, but with a twist. Now, when you purchase, the manufacturer
+            informs
             you that a variance of up to 0.5 inches (12.7 mm) from your specification is to be expected owing to the
             manufacturing process. What is the percentage error?</p>
           <p>To do so, you must first determine the needed route length, such as 10 feet (304.8 cm). Then, use the
@@ -319,7 +415,8 @@
           <p>The fundamental assumption for calculating Percent error is that the subject is given correct values. In
             order to advance, he must be informed of the accepted or actual worth. However, there are some instances
             where the real value is unknown. </p>
-          <p>In those circumstances, you need not be concerned. You still have the option of calculating the percentage
+          <p>In those circumstances, you need not be concerned. You still have the option of calculating the
+            percentage
             of mistake. So, how do you determine the percentage error?</p>
           <p>In such cases, when real data are unavailable, the standard deviation might be useful. It makes it easier
             for the mathematician to represent the inaccuracy.</p>

@@ -122,12 +122,22 @@ export class BraSizeCalculatorComponent implements OnInit {
         if (this.band % 2 != 0) {
           this.band = this.band + (this.band % 2);
           this.difference = (this.bust - this.band);
-          this.barSizeRslt = this.band + this.cup_sizes[this.difference];
+          this.barSizeRslt = this.band + '/' + this.cup_sizes[this.difference];
+          this.usa = this.band + '/' + this.cup_sizes[this.difference];
+          this.uk = this.band + '/' + this.cup_sizesUK[this.difference];
+          this.aust = this.band + '/' + this.cup_sizesAUNZ[this.difference];
+          this.jp = this.band + '/' + this.cup_sizesJPKO[this.difference];
+          this.eur = this.band + '/' + this.cup_sizesiNt[this.difference];
         }
         this.band = this.band + (this.band % 2);
         this.difference = (this.bust - this.band) - 1;
-        this.barSizeRslt = this.band + this.cup_sizes[this.difference];
-        this.cup = this.cup_sizes[this.difference];
+        this.barSizeRslt = this.band + '/' + this.cup_sizes[this.difference];
+        // this.cup = this.cup_sizes[this.difference];
+        this.usa = this.band + '/' + this.cup_sizes[this.difference];
+        this.uk = this.band + '/' + this.cup_sizesUK[this.difference];
+        this.aust = this.band + '/' + this.cup_sizesAUNZ[this.difference];
+        this.jp = this.band + '/' + this.cup_sizesJPKO[this.difference];
+        this.eur = this.band + '/' + this.cup_sizesiNt[this.difference];
         if (this.cup_sizes[this.difference] === null) {
           this.error = 'Your size is out-of-range! Please try again.';
         }
@@ -138,16 +148,21 @@ export class BraSizeCalculatorComponent implements OnInit {
         if (this.band % 2 != 0) {
           this.band = this.band + (this.band % 2);
           this.difference = (this.bust - this.band);
-          this.barSizeRslt = this.band + this.cup_sizes[this.difference];
+          this.barSizeRslt = this.band + '/' + this.cup_sizes[this.difference];
+          this.usa = this.band + '/' + this.cup_sizes[this.difference];
+          this.uk = this.band + '/' + this.cup_sizesUK[this.difference];
+          this.aust = this.band + '/' + this.cup_sizesAUNZ[this.difference];
+          this.jp = this.band + '/' + this.cup_sizesJPKO[this.difference];
+          this.eur = this.band + '/' + this.cup_sizesiNt[this.difference];
         } else {
           this.band = this.band + (this.band % 2);
           this.difference = (this.bust - this.band) - 1;
-          this.barSizeRslt = this.band + this.cup_sizes[this.difference];
-          this.usa = this.band + this.cup_sizes[this.difference];
-          this.uk = this.band + this.cup_sizesUK[this.difference];
-          this.aust = this.band + this.cup_sizesAUNZ[this.difference];
-          this.jp = this.band + this.cup_sizesJPKO[this.difference];
-          this.eur = this.band + this.cup_sizesiNt[this.difference];
+          this.barSizeRslt = this.band + '/' + this.cup_sizes[this.difference];
+          this.usa = this.band + '/' + this.cup_sizes[this.difference];
+          this.uk = this.band + '/' + this.cup_sizesUK[this.difference];
+          this.aust = this.band + '/' + this.cup_sizesAUNZ[this.difference];
+          this.jp = this.band + '/' + this.cup_sizesJPKO[this.difference];
+          this.eur = this.band + '/' + this.cup_sizesiNt[this.difference];
         }
 
         if (this.cup_sizes[this.difference] === null) {

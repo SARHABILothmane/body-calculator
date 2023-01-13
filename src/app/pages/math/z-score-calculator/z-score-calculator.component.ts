@@ -12,28 +12,52 @@ import { CanonicalService } from 'src/app/services/canonical.service';
 export class ZScoreCalculatorComponent implements OnInit {
   calculeZscore!: UntypedFormGroup;
   calculeProbabilityZscore!: UntypedFormGroup;
+  converterProbabilityZscore!: UntypedFormGroup;
   schema: any;
   envirement: boolean = environment.production;
   error!: string;
   errorProbability!: string;
+  errorProbabilityZscore!: string;
   submitted: boolean = false;
   rsltZScore!: number;
   rawScore!: number;
   population!: number;
   deviation!: number;
-  rsltProbabilityZScore!: number;
+  ZTable!: number;
+  Px!: number;
+  Pu!: number;
   z1!: number;
   z2!: number;
+  ztable1!: number;
+  ztable2!: number;
+  px2!: number;
+  rsltProbabilityZScore!: number;
+  probaBetween!: number;
+  //
+  ztableConverter!: number;
+  pinferieur!: number;
+  psuperieur!: number;
+  pbetweenZero!: number;
+  pbetweenInSup!: number;
+  z!: number;
 
   constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculeZscore = new UntypedFormGroup({
-      rawScore: new UntypedFormControl("", [Validators.required]),
-      population: new UntypedFormControl("", [Validators.required]),
-      deviation: new UntypedFormControl("", [Validators.required]),
+      rawScore: new UntypedFormControl(10, [Validators.required]),
+      population: new UntypedFormControl(6, [Validators.required]),
+      deviation: new UntypedFormControl(4, [Validators.required]),
     });
     this.calculeProbabilityZscore = new UntypedFormGroup({
-      z1: new UntypedFormControl("", [Validators.required]),
-      z2: new UntypedFormControl("", [Validators.required]),
+      z1: new UntypedFormControl(-1, [Validators.required]),
+      z2: new UntypedFormControl(0, [Validators.required]),
+    });
+    this.converterProbabilityZscore = new UntypedFormGroup({
+      zScore: new UntypedFormControl(2, [Validators.required]),
+      pinferieur: new UntypedFormControl(0, [Validators.required]),
+      psuperieur: new UntypedFormControl(0, [Validators.required]),
+      pbetweenZero: new UntypedFormControl(0, [Validators.required]),
+      pbetweenInSup: new UntypedFormControl(0, [Validators.required]),
+      pOr: new UntypedFormControl(0, [Validators.required]),
     });
   }
 
@@ -81,6 +105,7 @@ export class ZScoreCalculatorComponent implements OnInit {
   }
   get formZscore() { return this.calculeZscore.controls; }
   get formProbabilityZscore() { return this.calculeProbabilityZscore.controls; }
+  get formConverterProbabilityZscore() { return this.converterProbabilityZscore.controls; }
 
   CalculateZscore(e: HTMLElement) {
     this.submitted = true;
@@ -91,27 +116,55 @@ export class ZScoreCalculatorComponent implements OnInit {
       this.deviation = this.calculeZscore.value.deviation
       let rslt = this.rawScore - this.population
       this.rsltZScore = rslt / this.deviation;
-      this.GetZPercent(this.rsltZScore);
-      this.poz(this.rsltZScore);
-      this.critz(this.rsltZScore);
-      console.log(this.GetZPercent(this.rsltZScore));
-      console.log(this.GetZPercent(this.rsltZScore));
-      console.log(this.GetZPercent(this.rsltZScore));
+      this.ZTable = this.GetZPercent(this.rsltZScore);
+      this.Px = 1 - this.ZTable;
+      this.Pu = this.ZTable - 0.5;
 
       e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.error = "Please check the fields";
     }
   }
+  ZscoreProbabilityConverter(e: HTMLElement) {
+    // let z = 2;
+    // let ztableConverter = this.GetZPercent(z);
+    // let px = 1 - ztableConverter pinfer
+    // let pu = ztableConverter - 0.5 psup
+    // let pn = ztableConverter - px
+    // let pb = 1 - pn
+    this.submitted = true;
+    if (this.converterProbabilityZscore.valid) {
+      this.errorProbabilityZscore = "";
+      this.z = this.converterProbabilityZscore.value.zScore;
+      this.ztableConverter = this.GetZPercent(this.z);
+      this.pinferieur = 1 - this.ztableConverter;
+      this.psuperieur = this.ztableConverter - 0.5;
+      this.pbetweenInSup = this.ztableConverter - this.pinferieur;
+      this.pbetweenZero = 1 - this.pbetweenInSup;
+
+      e.scrollIntoView({ behavior: "smooth" });
+    } else {
+      this.errorProbability = "Please check the fields";
+    }
+
+
+  }
   CalculateProbabilityZscore(e: HTMLElement) {
     this.submitted = true;
-    if (this.calculeZscore.valid) {
+    if (this.calculeProbabilityZscore.valid) {
       // const normdist = require('normdist');
       this.errorProbability = "";
       this.z1 = this.calculeProbabilityZscore.value.z1
       this.z2 = this.calculeProbabilityZscore.value.z2
-      // this.rsltProbabilityZScore = normdist.pnorm(this.z1) - normdist.pnorm(this.z2);
-      // const probability = normdist.pnorm(1.96) - normdist.pnorm(-1.96);
+      // if (this.z1 > this.z2) {
+      //   this.z1 = this.calculeProbabilityZscore.value.z2
+      //   this.z2 = this.calculeProbabilityZscore.value.z1
+      // }
+      this.ztable1 = this.GetZPercent(this.z1); //P(x<Z1) = 0.84134 =>
+      this.ztable2 = this.GetZPercent(this.z2); //P(x>Z2) = 0.02275 => let px2 = 1 - ztable2;
+      this.px2 = 1 - this.ztable2;
+      this.probaBetween = this.ztable1 + this.px2 //P(x<1 or x>2) = 0.86409
+      this.rsltProbabilityZScore = this.ztable2 - this.ztable1//P(1<x<2) = 0.13591
       e.scrollIntoView({ behavior: "smooth" });
     } else {
       this.errorProbability = "Please check the fields";
@@ -148,68 +201,6 @@ export class ZScoreCalculatorComponent implements OnInit {
     sum += 0.5;
 
     return sum;
-  }
-
-  poz(z: any) {
-
-    var Z_MAX = 6;
-    var y, x, w;
-
-    if (z == 0.0) {
-      x = 0.0;
-    } else {
-      y = 0.5 * Math.abs(z);
-      if (y > (Z_MAX * 0.5)) {
-        x = 1.0;
-      } else if (y < 1.0) {
-        w = y * y;
-        x = ((((((((0.000124818987 * w
-          - 0.001075204047) * w + 0.005198775019) * w
-          - 0.019198292004) * w + 0.059054035642) * w
-          - 0.151968751364) * w + 0.319152932694) * w
-          - 0.531923007300) * w + 0.797884560593) * y * 2.0;
-      } else {
-        y -= 2.0;
-        x = (((((((((((((-0.000045255659 * y
-          + 0.000152529290) * y - 0.000019538132) * y
-          - 0.000676904986) * y + 0.001390604284) * y
-          - 0.000794620820) * y - 0.002034254874) * y
-          + 0.006549791214) * y - 0.010557625006) * y
-          + 0.011630447319) * y - 0.009279453341) * y
-          + 0.005353579108) * y - 0.002141268741) * y
-          + 0.000535310849) * y + 0.999936657524;
-      }
-    }
-    return z > 0.0 ? ((x + 1.0) * 0.5) : ((1.0 - x) * 0.5);
-  }
-
-
-  /*  CRITZ  --  Compute critical normal z value to
-                 produce given p.  We just do a bisection
-                 search for a value within CHI_EPSILON,
-                 relying on the monotonicity of pochisq().  */
-
-  critz(p: any) {
-
-    var Z_MAX = 6;
-    var Z_EPSILON = 0.000001;     /* Accuracy of z approximation */
-    var minz = -Z_MAX;
-    var maxz = Z_MAX;
-    var zval = 0.0;
-    var pval;
-    if (p < 0.0) p = 0.0;
-    if (p > 1.0) p = 1.0;
-
-    while ((maxz - minz) > Z_EPSILON) {
-      pval = this.poz(zval);
-      if (pval > p) {
-        maxz = zval;
-      } else {
-        minz = zval;
-      }
-      zval = (maxz + minz) * 0.5;
-    }
-    return (zval);
   }
 
 }
