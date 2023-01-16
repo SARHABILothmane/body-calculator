@@ -3,24 +3,17 @@
     <section>
       <div class="container">
         <app-breadcrumbs
-          [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Fat Percentage Calculator'}">
+          [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Lean Body Mass Calculator', itemUrl: 'health/lean-body-mass-calculator/.'}">
         </app-breadcrumbs>
         <div class="col-12">
           <h1 class="text-secondary text-center">Lean Body Mass Calculator</h1>
-          <div class="flexMobile">
-            <!-- <app-banner *ngIf="envirement"></app-banner> -->
-          </div>
-          <p class="hero-subtitle col-md-9 col-12 mx-auto">
-            Your total weight less your weight from body fat is your lean body mass. In essence, your lean body mass may
-            be calculated by deducting the weight that comes from fat (your body fat percentage) from your overall
-            weight.
-          </p>
+          <app-banner *ngIf="envirement"></app-banner>
         </div>
         <div class="row d-flex justify-content-center">
           <div class="col-md-6 mt-4">
             <div class="card">
               <div class="card-header">
-                <h2 class="text-white text-center font-weight-bold">Lean Body Mass Calculator</h2>
+                <h2 class="text-white text-center font-weight-bold">Lean Body Mass LMB Calculator</h2>
               </div>
               <div class="card-body example-items-col">
                 <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
@@ -117,62 +110,66 @@
               </div>
             </div>
             <div class="col-12">
-              <!-- <app-banner *ngIf="envirement"></app-banner> -->
+              <app-banner *ngIf="envirement"></app-banner>
+              <span #target style="position: relative; top: -350px"></span>
             </div>
-            <div #target></div>
-            <table class="table bg-white msg" *ngIf="switchAdulte">
-              <thead class="bg-secondary">
-                <tr>
-                  <th scope="col">Formula</th>
-                  <th scope="col">Lean Body Mass</th>
-                  <th scope="col">Body fat</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="row">Boer</td>
-                  <td>
-                    {{boerLbm | number}} kg ({{boerBfPer | number}}%)
-                  </td>
-                  <td>
-                    {{boerBf | number}} %
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="row">James</td>
-                  <td>{{jamesLbm | number}} kg ({{jamesBfPer | number}}%)</td>
-                  <td>{{jamesBf| number}} %</td>
-                </tr>
-                <tr>
-                  <td scope="row">Hume</td>
-                  <td>{{humeLbm | number}} kg ({{humeBfPer | number}}%)</td>
-                  <td>{{humeBf| number}} %</td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="table bg-white msg" *ngIf="switchChild">
-              <thead class="bg-secondary">
-                <tr>
-                  <th scope="col">Formula</th>
-                  <th scope="col">Lean Body Mass</th>
-                  <th scope="col">Body fat</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="row">Peters (for Children)</td>
-                  <td>
-                    {{ childLbm | number}} kg ({{childBfPer | number}}%)
-                  </td>
-                  <td>
-                    {{childBf | number}} %
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="bg-white" *ngIf="switchAdulte || switchChild">
+              <p class="text-center">Your Lean Body Mass based on popular formulas:</p>
+              <table class="table bg-white msg" *ngIf="switchAdulte">
+                <thead class="bg-secondary">
+                  <tr>
+                    <th scope="col">Formula</th>
+                    <th scope="col">Lean Body Mass</th>
+                    <th scope="col">Body fat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">Boer</td>
+                    <td>
+                      {{boerLbm | number}} kg ({{boerBfPer | number}}%)
+                    </td>
+                    <td>
+                      {{boerBf | number}} %
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">James</td>
+                    <td>{{jamesLbm | number}} kg ({{jamesBfPer | number}}%)</td>
+                    <td>{{jamesBf| number}} %</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Hume</td>
+                    <td>{{humeLbm | number}} kg ({{humeBfPer | number}}%)</td>
+                    <td>{{humeBf| number}} %</td>
+                  </tr>
+                </tbody>
+              </table>
+            
+              <table class="table bg-white msg" *ngIf="switchChild">
+                <thead class="bg-secondary">
+                  <tr>
+                    <th scope="col">Formula</th>
+                    <th scope="col">Lean Body Mass</th>
+                    <th scope="col">Body fat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">Peters (for Children)</td>
+                    <td>
+                      {{ childLbm | number}} kg ({{childBfPer | number}}%)
+                    </td>
+                    <td>
+                      {{childBf | number}} %
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div class="col-12 mt-3">
-            <app-other-calcultor-health eleminateCalculator="bfp"></app-other-calcultor-health>
+            <app-other-calcultor-health eleminateCalculator="lbm"></app-other-calcultor-health>
           </div>
         </div>
 
@@ -182,16 +179,15 @@
         <div class="row border shadow bg-white my-4">
           <div class="col-md-12 mx-2 my-4">
             <p>Your total weight less your weight from body fat is your lean body mass. In essence, your lean body mass
-              may be calculated by deducting the weight that comes from fat <a rel="noopener"
-                href="https://body-calculator.com/health/body-fat-percentage-calculator/" target="_blank"
-                rel="noopener noreferrer">(your body fat percentage)</a> from your overall weight.</p>
+              may be calculated by deducting the weight that comes from fat (your <a
+              href="https://body-calculator.com/health/body-fat-percentage-calculator/">body fat percentage</a>) from your overall weight.</p>
             <p>Those who want to reduce weight can sustain their fat-only weight reduction by being aware of this. If
               you can reduce your total weight while maintaining your lean body mass, you'll know that you're simply
               shedding fat and not, as is frequently the case, muscle or bone density.</p>
             <p>As an alternative, those who desire to gain muscle mass should increase their lean mass at the same rate
               as their overall weight. This will demonstrate to them that despite their overall weight rise, they are
               not adding any additional body fat.</p>
-            <p>It's common to need to know your body fat % in order to calculate your lean body mass, but we'll go
+            <p>It's common to need to know your body fat % in order to calculate your <a href="https://en.wikipedia.org/wiki/Lean_body_mass" target="_blank" rel="noopener noreferrer">lean body mass</a>, but we'll go
               through various techniques below where this isn't necessary. Although we will go through them all in a
               moment, certain techniques of calculating lean body mass are more precise than others, while some are more
               user-friendly.</p>
@@ -305,7 +301,7 @@
                 </tr>
               </tbody>
             </table>
-            <h6 class="text-secondary font-weight-bold"> Lean body mass index reference values for Caucasian women :
+            <h6 class="text-secondary font-weight-bold">Lean body mass index reference values for Caucasian women :
             </h6>
             <table class="col-10 mx-auto table bg-white msg">
               <thead class="bg-secondary">
@@ -413,12 +409,11 @@
               weight of fat. Additionally, there is proof that having a lot of lean mass decreases inflammation because
               tiny fat cells in lean persons support healthy function, whereas bigger fat cells in overweight or obese
               people support inflammation and chronic illness.</p>
-            <h4>Is lean body mass percentage a better measure of health than weight or <a rel="noopener"
-                href="https://body-calculator.com/health/bmi-calculator/" target="_blank"
-                rel="noopener noreferrer">BMI</a>?</h4>
+            <h4>Is lean body mass percentage a better measure of health than weight or <a
+                href="https://body-calculator.com/health/bmi-calculator/">BMI</a>?</h4>
             <p>It can be challenging to determine which metrics are most crucial while attempting to maintain or enhance
               your health. Your weight does not reveal how much of it is a healthy muscle and how much is fat; it merely
-              gives you the overall. Similar to how your BMI (Body Mass Index) is computed based only on your height and
+              gives you the overall. Similar to how your BMI (<a href="https://body-calculator.com/health/bmi-calculator/">Body Mass Index</a>) is computed based only on your height and
               weight, it ignores the composition of your weight.</p>
             <p>You may get a far better idea of how healthy you are by examining the components of lean body mass and
               your total calculation of lean body mass. By monitoring this number over time, you can see how food and

@@ -69,7 +69,7 @@ export class OtherCalcultorHealthComponent implements OnInit {
  
 
     if (this.eleminateCalculator == 'bmi') {
-      this.goToOtherPage = { name: "Go to Body Fat Percentage Calculator", url: "/health/body-fat-percentage-calculator/." }
+      this.goToOtherPage = { name: "Go to Ideal Body Weight Calculator", url: "/health/ideal-weight-calculator/." }
     } else {
       this.goToOtherPage = { name: "Body Mass Index BMI Calculator", url: "/health/bmi-calculator/." }
     }
@@ -88,6 +88,7 @@ export class OtherCalcultorHealthComponent implements OnInit {
       { 'title': 'Body Shape Calculator', 'url': '/health/body-shape-calculator/.', 'code': 'bsc' },
       { 'title': 'Basal Metabolic Rate BMR Calculator', 'url': '/health/bmr-calculator/.', 'code': 'bmr' },
       { 'title': 'Healthy Weight Calculator', 'url': '/health/healthy-weight-calculator/.', 'code': 'hwc' },
+      { 'title': 'Lean Body Mass Calculator', 'url': '/health/lean-body-mass-calculator/.', 'code': 'lbm' },
     ];
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);
     this.arrayOtherCalculators.forEach((element: { url: string; title: string; }) => {

@@ -91,6 +91,10 @@ export class BinaryCalculatorComponent implements OnInit {
   get formDecBinary() { return this.conveDeciToBinary.controls; }
 
   CalculateBinary(e: HTMLElement) {
+    this.calculeBinary.patchValue({
+      binaryOne: this.calculeBinary.value.binaryOne.replace(/\s/g,''),
+      binaryTwo: this.calculeBinary.value.binaryTwo.replace(/\s/g,'')
+    });
     this.submitted = true;
     if (this.calculeBinary.valid) {
       this.error = "";
@@ -118,6 +122,9 @@ export class BinaryCalculatorComponent implements OnInit {
     }
   }
   CalculateBinaryToDeci(e: HTMLElement) {
+    this.conveBinaryToDeci.patchValue({
+      binary: this.conveBinaryToDeci.value.binary.replace(/\s/g,''),
+    });
     this.submittedFormTwo = true;
     if (this.conveBinaryToDeci.valid) {
       this.errorFormTwo = "";

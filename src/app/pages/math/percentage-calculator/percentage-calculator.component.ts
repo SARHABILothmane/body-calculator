@@ -115,6 +115,7 @@ export class PercentageCalculatorComponent implements OnInit {
   CalculatePercentageY(e: HTMLElement) {
     this.submitted = true;
     if (this.calculePercentageY.valid) {
+      this.error = "";
       this.rsltY = true;
       this.p = this.calculePercentageY.value.p;
       this.x = this.calculePercentageY.value.x;

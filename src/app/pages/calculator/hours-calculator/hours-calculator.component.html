@@ -18,82 +18,39 @@
             <div class="card-header text-white text-center font-weight-bold">
               <h2 class="text-white" style="font-size: 30px !important;">Add or Subtract Time from a Date</h2>
             </div>
-            <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
+            <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center mt-3" role="alert">
               <span>
                 {{error}}
               </span>
             </div>
             <div class="card-body example-items-col">
               <form [formGroup]="calculeHours" (ngSubmit)="CalculateHours(target)">
-                <div class="row my-2">
-                  <label for="startTime">Start time</label>
-                  <input class="form-control" nbInput fullWidth [nbTimepicker]="timepicker" formControlName="startTime">
-                  <nb-timepicker #timepicker></nb-timepicker>
+                <div class="row my-2 d-flex justify-content-center">
+                  <div class="col-8 col-md-4">
+                      <label for="startTime">Start time</label>
+                      <input class="form-control" id="startTime" nbInput fullWidth [nbTimepicker]="timepicker" formControlName="startTime">
+                      <nb-timepicker #timepicker></nb-timepicker>
+                  </div>
+                  <div class="col-4 col-md-3">
+                    <button type="button" (click)="setTimeNow('startTime')" class="btn w-100 text-white mt-4" style="background-color: green;">Now</button>
+                  </div>
                 </div>
-                <div class="row my-2">
-                  <label for="startTime">End time</label>
-                  <input class="form-control" nbInput fullWidth [nbTimepicker]="endTime" formControlName="endTime">
-                  <nb-timepicker #endTime></nb-timepicker>
+                <div class="row my-2 d-flex justify-content-center">
+                    <div class="col-8 col-md-4">
+                      <label for="endTime">End time</label>
+                      <input id="endTime" class="form-control" nbInput fullWidth [nbTimepicker]="endTime" formControlName="endTime">
+                      <nb-timepicker #endTime></nb-timepicker>
+                    </div>
+                    <div class="col-4 col-md-3">
+                      <button type="button" (click)="setTimeNow('endTime')" class="btn w-100 text-white mt-4" style="background-color: green;">Now</button>
+                    </div>
+                    <div class="col-12 text-center">
+                      <button type="submit" class="btn btnBgPrimary px-3 mt-4">Calculate</button>
+                    </div>
+                      
                 </div>
-                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
 
               </form>
-              <!-- <form [formGroup]="calculeAddOrSubTime" (ngSubmit)="AddOrSubTime(target)">
-                <div class="row my-2">
-                  <label for="startTime">Start time</label>
-                  <input id="Hour" class="form-control" type="number" placeholder="hour" formControlName="startTime">
-                </div>
-                <div class="row my-2">
-                  <label for="startTime">End time</label>
-                  <input id="Minute" class="form-control" type="number" placeholder="minute" formControlName="endTime">
-                </div>
-
-                <div class="row my-3" style="flex-direction: row-reverse;">
-                  <div class="col-3 pl-2 pr-2"> <label for="Second">Second</label>
-                    <input id="Second" class="form-control" type="number" placeholder="second" formControlName="second">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="Minute">Minute</label>
-                    <input id="Minute" class="form-control" type="number" placeholder="minute" formControlName="minute">
-                  </div>
-                  <div class="col-3 pl-2 pr-2"><label for="Hour">Hour</label>
-                    <input id="Hour" class="form-control" type="number" placeholder="hour" formControlName="hour">
-                  </div>
-                </div>
-
-                <div class="d-flex justify-content-center">
-                  <div class="mt-4"><label for="Date end">Add or Subtract :</label></div>
-                  <div class="col-3 mt-3  mb-3">
-                    <label for="addOrSub2"></label>
-                    <nb-select id="addOrSub2" placeholder="Select" status="basic" shape="semi-round"
-                      (selectedChange)="changeSelectedOption($event)" selected="add" required>
-                      <nb-option value="add">+</nb-option>
-                      <nb-option value="substract">_</nb-option>
-                    </nb-select>
-                  </div>
-                </div>
-
-                <div class="row my-3">
-                  <div class="col-3 pl-2 pr-2">
-                    <label for="Day">Day</label>
-                    <input id="Day" class="form-control" type="number" placeholder="Day" formControlName="rsltDay">
-                  </div>
-                  <div class="col-3 pl-2 pr-2">
-                    <label for="hour">Hour</label>
-                    <input id="hour" class="form-control" type="number" placeholder="Hour" formControlName="rsltHour">
-                  </div>
-                  <div class="col-3 pl-2 pr-2">
-                    <label for="minutes">Minute</label>
-                    <input id="minutes" class="form-control" type="number" placeholder="Minute"
-                      formControlName="rsltMinute">
-                  </div>
-                  <div class="col-3 pl-2 pr-2">
-                    <label for="seconds">Second</label>
-                    <input id="seconds" class="form-control" type="number" placeholder="Second"
-                      formControlName="rsltSecond">
-                  </div>
-                </div>
-                <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
-              </form> -->
             </div>
           </div>
         </div>
@@ -135,8 +92,46 @@
             <div class="card-header text-white text-center font-weight-bold">
               <h2 class="text-white">Time Calculator</h2>
             </div>
-            <div class="card-body example-items-col">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="text-white text-center font-weight-bold">Count days between dates calculator</h2>
+              </div>
+              <div class="card-body example-items-col">
+                <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
+                  <span>
+                    {{error}}
+                  </span>
+                </div>
+                <form [formGroup]="calculeDate" (ngSubmit)="calcuHoursDeferentTwoDates(target)">
+                  <div>
+                    <label for="Start-date">Start date</label>
+                    <input id="Start-date" placeholder="Start date" class="form-control" formControlName="startDate"
+                      [nbDatepicker]="birthdayTimePicker" readonly>
+                    <small class="text-danger" *ngIf="submitted && formDate.startDate.errors?.required">Start date is
+                      required.
+                      !</small>
+                    <nb-datepicker [startView]="'year'" #birthdayTimePicker></nb-datepicker>
 
+                    <label for="startTime">Start time</label>
+                    <input class="form-control" id="startTime" nbInput fullWidth [nbTimepicker]="timepicker" formControlName="startTime">
+                    <nb-timepicker #timepicker></nb-timepicker>
+                  </div>
+                  <div>
+                    <label class="mt-3" for="Date-end">End date</label>
+                    <input id="Date-end" class="form-control" placeholder="End date" formControlName="dateEnd"
+                      [nbDatepicker]="todayTimePicker" readonly>
+                    <small class="text-danger" *ngIf="submitted && formDate.dateEnd.errors?.required"> End date is
+                      required.
+                      !</small>
+                    <nb-datepicker [startView]="'year'" #todayTimePicker></nb-datepicker>
+                    
+                    <label for="endTime">End time</label>
+                    <input id="endTime" class="form-control" nbInput fullWidth [nbTimepicker]="endTime" formControlName="endTime">
+                    <nb-timepicker #endTime></nb-timepicker>
+                  </div>
+                  <button type="submit" class="btn btnBgPrimary w-100 mt-4">Calculate</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
