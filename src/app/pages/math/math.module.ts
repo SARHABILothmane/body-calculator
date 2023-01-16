@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: "exponent-calculator/.", loadChildren: () => import("src/app/pages/math/exponent-calculator/exponent-calculator.module").then(mod => mod.ExponentCalculatorModule) },
   { path: "log-calculator/.", loadChildren: () => import("src/app/pages/math/log-calculator/log-calculator.module").then(mod => mod.LogCalculatorModule) },
   { path: "root-calculator/.", loadChildren: () => import("src/app/pages/math/root-calculator/root-calculator.module").then(mod => mod.RootCalculatorModule) },
-
+  { path: "z-score-calculator/.", loadChildren: () => import("src/app/pages/math/z-score-calculator/z-score-calculator.module").then(mod => mod.ZScoreCalculatorModule) },
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogCalculatorComponent implements OnInit {
   calculeFormLogarithm!: UntypedFormGroup;
-  value!: number;
+  value!: string;
   logValue!: number;
   log!: number;
   rsltLogarithm: boolean = false;
@@ -17,7 +17,7 @@ export class LogCalculatorComponent implements OnInit {
   submitted: boolean = false;
   constructor() {
     this.calculeFormLogarithm = new UntypedFormGroup({
-      value: new UntypedFormControl("2", [Validators.required]),
+      value: new UntypedFormControl("2", [Validators.required, Validators.pattern("^[eE0-9]*$"),]),
       log: new UntypedFormControl("3", [Validators.required]),
     });
   }
@@ -32,13 +32,20 @@ export class LogCalculatorComponent implements OnInit {
 
   public CalculateLog(): void {
     this.submitted = true;
+    this.value = this.calculeFormLogarithm.value.value;
+    this.logValue = this.calculeFormLogarithm.value.log;
     if (this.calculeFormLogarithm.valid) {
       this.error = "";
       this.rsltLogarithm = true;
-      this.value = this.calculeFormLogarithm.value.value;
-      this.logValue = this.calculeFormLogarithm.value.log;
-      this.log = this.getBaseLog(this.logValue, this.value)
+      if (this.value === "e" || this.value === "E") {
+        // let e = 2.718281828459045 
+        this.log = this.getBaseLog(this.logValue, 2.718281828459045)
+      } else {
+        this.log = this.getBaseLog(this.logValue, Number(this.value))
+        // Infinity
+        // console.log(this.log);
 
+      }
     } else {
       this.error = "Please check the fields";
     }
