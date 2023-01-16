@@ -3,23 +3,27 @@
     <section>
       <div class="container">
         <app-breadcrumbs
-          [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Fat Percentage Calculator', itemUrl: 'health/body-fat-percentage-calculator/.'}">
+          [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'ABSI Calculator', itemUrl: 'health/body-fat-percentage-calculator/.'}">
         </app-breadcrumbs>
         <div class="col-12">
-          <h1 class="text-secondary text-center">Body Fat Percentage Calculator</h1>
+          <h1 class="text-secondary text-center">ABSI Calculator</h1>
           <div class="flexMobile">
             <app-banner *ngIf="envirement"></app-banner>
           </div>
           <p class="hero-subtitle col-md-9 col-12 mx-auto">
-            Body fat percentage is the percentage of your body weight that is made up of fat. Knowing your body fat
-            percentage can help you determine if you need to lose weight or gain muscle.
+            Our Body Shape Index Calculator is an innovative tool that uses a combination of your height and weight to
+            give you an accurate measurement of your body shape. Unlike other calculators that only rely on your weight
+            or BMI, this calculator takes into account the distribution of your body fat to give you a more accurate
+            picture of your body shape. It's simple to use, user-friendly and provides quick results. With this
+            calculator, you can track your progress and make changes to your lifestyle to achieve your ideal body shape.
+            Try it today and take the first step towards a healthier and happier you!
           </p>
         </div>
         <div class="row d-flex justify-content-center">
           <div class="col-md-6 mt-4">
             <div class="card">
               <div class="card-header">
-                <h2 class="text-white text-center font-weight-bold">Body Fat Calculator</h2>
+                <h2 class="text-white text-center font-weight-bold">ABSI Calculator</h2>
               </div>
               <div class="card-body example-items-col">
                 <div *ngIf="error" class="alert alert-danger w-75 mx-auto text-center" role="alert">
@@ -268,22 +272,106 @@
         <div class="row border shadow bg-white my-4">
           <div class="col-md-12 mx-2 my-4">
             <p>A Body Shape Index (ABSI) is a measure of body size and shape that takes into account an individual's
-              height, weight, and waist circumference. It is similar to the Body Mass Index (BMI) in that it is a tool
-              used to estimate an individual's overall health and risk for obesity-related health problems. However,
-              ABSI is believed to be a more accurate measure of an individual's risk for obesity-related health problems
+              height, weight, and waist circumference. </p>
+            <p> It is similar to the <a href="https://body-calculator.com/health/bmi-calculator/">Body Mass Index
+                (BMI)</a> in that it is a tool
+              used to estimate an individual's overall health and risk for obesity-related health problems. </p>
+            <p>However, ABSI is believed to be a more accurate measure of an individual's risk for obesity-related
+              health
+              problems
               because it takes into account the distribution of an individual's body fat, which may be more important
               for determining health risks than overall weight or BMI. Some research suggests that ABSI may be more
               predictive of morbidity and mortality than BMI, although more research is needed to confirm this.</p>
+            <h3 class="text-secondary">The ABSI formula :</h3>
+            <p>The Body Shape Index (ABSI) is a formula that takes into account the distribution of body fat and not
+              just weight or Body Mass Index (BMI) to determine body shape. The formula is:</p>
+            <!-- <p><strong>ABSI = (Waist Circumference / Height) * BMI^(2/3)</strong></p> -->
+            <p style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">
+              <strong>ABSI =</strong> WC / BMI<sup>2/3</sup> x Height<sup>1/2</sup></p>
+            <p>Where:</p>
+            <!-- <p><strong>ABSI = (waist circumference / height^(1.5)) * (weight / height^2)</strong></p> -->
+            <ul>
+              <li class="mt-3"><strong> Waist Circumference :</strong> is measured in centimeters
+                Height is measured in meters</li>
+              <li class="mt-3"><strong>Height :</strong> is measured in meters</li>
+              <li class="mt-3"><strong>BMI :</strong> is calculated as weight (in kilograms) divided by height (in
+                meters) squared
+                (kg/m<sup>2</sup>)</li>
+              <p class="mt-3" style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">
+                <strong>BMI =</strong> Weight / Height<sup>2</sup></p>
+            </ul>
+            <p>The ABSI is a dimensionless number and it's not affected by changes in weight or height. The ABSI values
+              are compared to a reference population and can be used to determine the risk of obesity-related diseases.
+            </p>
+            <p>It's important to note that this formula is a research-based tool and not a diagnostic tool. It's best to
+              consult a healthcare professional to determine if you're at risk for any obesity-related diseases.</p>
+            <h3 class="text-secondary">The ABSI z-score formula :</h3>
+            <p>The ABSI z-score is a way to interpret the Body Shape Index (ABSI) values in relation to a reference
+              population. The formula to calculate the ABSI z-score is:</p>
+            <p style="background: #eff0f1;border: 1px solid #bbb; padding: 10px;margin-left: 30px;">
+              <strong> ABSI<sub>z score</sub> =</strong> ABSI - ABSI<sub>mean</sub> / ABSI<sub>SD</sub> </p>
+            <p>Where:</p>
+            <ul>
+              <li class="mt-3"><strong> ABSI :</strong> is the Body Shape Index calculated using the formula provided
+                earlier.</li>
+              <li class="mt-3"><strong>Mean ABSI :</strong> is the average ABSI value for the reference population.</li>
+              <li class="mt-3"><strong>Standard Deviation ABSI :</strong> is the measure of how much the ABSI values
+                vary
+                from the mean in the reference population.</li>
+            </ul>
+            <p>The z-score represents how many standard deviations away from the mean an individual's ABSI value is. A
+              positive z-score indicates that the individual's ABSI value is higher than the mean and a negative z-score
+              indicates that the individual's ABSI value is lower than the mean.</p>
+            <p>ABSI z-score can be used to determine if an individual is at risk of obesity-related diseases, with
+              higher values indicating a greater risk. It's important to note that this formula is a research-based tool
+              and not a diagnostic tool. It's best to consult a healthcare professional to determine if you're at risk
+              for any obesity-related diseases.</p>
 
-
-            <h3 class="text-secondary">The ABSI formula is a mathematical equation used to calculate an individual's
-              Body Shape Index. The formula is:</h3>
-
-            <p><strong>ABSI = (waist circumference / height^(1.5)) * (weight / height^2)</strong></p>
-
-            <p> where waist circumference is measured in centimeters, height is measured in meters, and weight is
-              measured
-              in kilograms.</p>
+            <h3 class="text-secondary">How to Measure Waist Circumference</h3>
+            <p>Measuring your waist circumference is a simple and easy way to track your progress and monitor your
+              health. Here are the steps to measure your waist circumference:</p>
+            <ol>
+              <li class="mt-3">Find your natural waistline. This is typically located above your belly button and below
+                your ribcage.
+              </li>
+              <li class="mt-3">Place a measuring tape around your waist at this point, making sure the tape is level and
+                not too
+                tight or too loose.</li>
+              <li class="mt-3">Take the measurement in inches or centimeters, and make sure to breathe normally while
+                measuring.</li>
+              <li class="mt-3">Record the measurement and repeat the process at least twice to ensure accuracy.</li>
+            </ol>
+            <p>It's important to note that men's waist circumference should be measured at the level of the navel and
+              women's at the level of the natural waistline, which is at the narrowest point of the torso.</p>
+            <p>It's also recommended to measure your waist circumference at the same time of the day, in the same
+              clothing and in the same position to get the most accurate measurement.</p>
+            <h3 class="text-secondary">Pros and downsides of a Body Shape Index </h3>
+            <p>Body Shape Index (ABSI) has some pros and cons that are worth considering:</p>
+            <p>Pros:</p>
+            <ul>
+              <li class="mt-3">ABSI takes into account the distribution of body fat, rather than just weight or BMI, to
+                determine body shape.</li>
+              <li class="mt-3">ABSI values are compared to a reference population and can be used to determine the risk
+                of obesity-related diseases.</li>
+              <li class="mt-3">ABSI is a dimensionless number and is not affected by changes in weight or height.</li>
+            </ul>
+            <p>Downsides:</p>
+            <ul>
+              <li class="mt-3">ABSI is a relatively new measurement and is not yet widely used or understood by
+                healthcare professionals.</li>
+              <li class="mt-3">ABSI is a research-based tool and not a diagnostic tool, so it should be used in
+                conjunction with other clinical parameters and lifestyle information to determine risk.</li>
+              <li class="mt-3">ABSI z-score can be affected by factors such as age, sex and ethnicity, so it's
+                recommended to use the z-score within the same population.</li>
+            </ul>
+            <p>It's important to note that ABSI is a research-based tool and not a diagnostic tool. It's best to consult
+              a healthcare professional to determine if you're at risk for any obesity-related diseases and to use it in
+              conjunction with other clinical parameters, as well as lifestyle and clinical examination. Additionally,
+              ABSI should be used as an additional tool to other measurements such as <a
+                href="https://body-calculator.com/health/bmi-calculator/">BMI</a>, waist circumference and <a
+                href="https://body-calculator.com/health/body-fat-percentage-calculator/">body fat percentage</a>, to
+              obtain a more comprehensive view of body composition.</p>
+            <p>//////////////////////</p>
             <p>
               The ABSI z score is a measure of how an individual's ABSI compares to the general population. It is
               calculated by subtracting the mean ABSI of the population from an individual's ABSI and dividing the
@@ -291,159 +379,6 @@
             <p>The ABSI z score is expressed in standard deviation units and can be used to assess an individual's risk
               for obesity-related health problems. A positive ABSI z score indicates that an individual's ABSI is higher
               than the average for the population, while a negative ABSI z score indicates that it is lower.</p>
-
-            <h3 class="text-secondary">What do fats do to your body?</h3>
-
-
-
-
-            <p>Because the <a routerLink="/health/bmi-calculator/.">BMI calculation</a> is based only on your weight and
-              height, and gender, whether you're male or
-              female isn't a factor determining the number.</p>
-            <p>However, there is a difference between women and men regarding the range of body fat percentages.</p>
-            <div class="col-md-4 col-12 mx-auto">
-              <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Category</th>
-                    <th scope="col">Body fat</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row">Essential fat</td>
-                    <td>
-                      10-13 %
-                    </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Athletes</td>
-                    <td>14-20 %</td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Fitness</td>
-                    <td>21-24 %</td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Acceptable</td>
-                    <td>25-31 %</td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Obesity</td>
-                    <td>
-                      >32 %
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p>The age of the person determines ideal body fat percentages.</p>
-            <div class="col-md-4 col-12  mx-auto">
-              <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Age</th>
-                    <th scope="col">Percentage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row">20-39</td>
-                    <td>
-                      21-32 %
-                    </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">40-59</td>
-                    <td>23-33 %</td>
-                  </tr>
-                  <tr>
-                    <td scope="row">60-79</td>
-                    <td>24-35 %</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <h3 class="text-secondary">Body fat is the ideal percentage of body fat for males.</h3>
-            <p>The general rule is that men have a lower body fat-to-ratio of lean tissues than females, which is the
-              reason
-              for the variations in the proportions.</p>
-            <p>Reproduction is one factor that contributes to the higher percentages of body fat for females.</p>
-            <p>In this regard In that context, the ACE chart shows the following ranges of men's age:</p>
-            <div class="col-md-4 col-12  mx-auto">
-              <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Category</th>
-                    <th scope="col">Body fat</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row">Essential fat</td>
-                    <td>
-                      2-5 %
-                    </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Athletes</td>
-                    <td>6-13 %</td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Fitness</td>
-                    <td>14-17 %</td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Acceptable</td>
-                    <td>18-24 %</td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Obesity</td>
-                    <td>
-                      >25 %
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p>To get the ideal percentage of body fat determined by age, males:</p>
-            <div class="col-md-4 col-12  mx-auto">
-              <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Age</th>
-                    <th scope="col">Percentage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row">20-39</td>
-                    <td>
-                      8-19 %
-                    </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">40-59</td>
-                    <td>11-21 %</td>
-                  </tr>
-                  <tr>
-                    <td scope="row">60-79</td>
-                    <td>13-24 %</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <h3 class="text-secondary">Problems with calculation</h3>
-            <p>If you view BMI and body fat measurements as the only tools to keep track of your progress, you might not
-              be
-              obsessed with the results.</p>
-            <p>Also, compelled by the desire to lower a specific number, you could be motivated to improve your overall
-              health by feeding your body healthy foods and incorporating some <a
-                href="https://en.wikipedia.org/wiki/Fitness" target="_blank" rel="noopener noreferrer">fitness</a> into
-              your routine.</p>
-            <p>This mentality can help to accept and understand the limitations and issues associated with BMI and body
-              fat
-              percentages.</p>
           </div>
         </div>
 
