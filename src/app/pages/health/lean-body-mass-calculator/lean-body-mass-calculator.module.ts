@@ -6,6 +6,8 @@ import { LeanBodyMassCalculatorComponent } from './lean-body-mass-calculator.com
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OtherCalcultorModule } from '../../other-calcultor/other-calculator.module';
+import { BannerModule } from 'src/app/shared/banner/banner.module';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 const routes: Routes = [
   { path: "", component: LeanBodyMassCalculatorComponent },
@@ -23,6 +25,8 @@ const routes: Routes = [
     OtherCalcultorModule,
     BreadcrumbsModule,
     RouterModule.forChild(routes),
+    BannerModule,
+    NgxJsonLdModule
   ]
 })
 export class LeanBodyMassCalculatorModule { }

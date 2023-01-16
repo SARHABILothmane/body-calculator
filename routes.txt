@@ -13,6 +13,7 @@
 /health/body-shape-calculator/.
 /health/bmr-calculator/.
 /health/healthy-weight-calculator/.
+/health/lean-body-mass-calculator/.
 
 
 /math/.

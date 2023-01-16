@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
+import { CanonicalService } from 'src/app/services/canonical.service';
 import { Bmr } from 'src/app/models/bmr';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-lean-body-mass-calculator',
@@ -42,7 +45,10 @@ export class LeanBodyMassCalculatorComponent implements OnInit {
     weight: 0,
   };
 
-  constructor() {
+  envirement: boolean = environment.production;
+  schema!: any;
+
+  constructor(private titleService: Title, private metaService: Meta, private CanonicalService: CanonicalService) {
     this.calculeLbm = new UntypedFormGroup({
       age: new UntypedFormControl("", [Validators.required, Validators.min(5), Validators.max(100)]),
       height: new UntypedFormControl("", [Validators.required]),
@@ -52,6 +58,46 @@ export class LeanBodyMassCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Free online Lean Body Mass Calculator - LMB calculator");
+    this.metaService.addTags([
+      { name: 'keywords', content: "Lean Body Mass Calculator, LBM calculator, lean mass calculator" },
+      { name: 'description', content: "Free online Lean Body Mass Calculator (LMB calculator, Lean Mass Calculator)" },
+      { property: 'og:title', content: "Free online Lean Body Mass Calculator - LMB Calculator" },
+      { property: 'og:description', content: "Free online Lean Body Mass Calculator (LMB calculator, Lean Mass Calculator)" },
+      {property: "og:url", content: "https://body-calculator.com/health/lean-body-mass-calculato/"}
+    ]);
+    this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/lean-body-mass-calculato/");
+  
+    this.schema ={
+      "@context": "http://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Lean Body Mass Calculator",
+      "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
+      "url": "https://body-calculator.com/health/lean-body-mass-calculato/",
+      "author": {
+        "@type": "Person",
+        "name": "SARHABIL"
+      },
+      "datePublished": "2023-01-09",
+      "publisher": {
+        "@type": "Organization",
+        "name": "body-calculator"
+      },
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Linux",
+      "screenshot": "https://body-calculator.com/assets/images/logo/Screenshot-body-calculator.png",
+      "softwareVersion": "1",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "8864"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "1.00",
+        "priceCurrency": "USD"
+      }
+    };
   }
   square(firstNumber: number, secondNumber: number): number {
     return firstNumber ** secondNumber

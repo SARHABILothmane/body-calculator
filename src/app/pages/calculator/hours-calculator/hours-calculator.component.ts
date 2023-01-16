@@ -25,6 +25,10 @@ export class HoursCalculatorComponent implements OnInit {
   resultTimeSecondCalculator: Date | undefined;
 
 
+  submitted = false;
+  calculeDate!: UntypedFormGroup;
+
+
   // calculeAddOrSubTime!: UntypedFormGroup;
   // schema: any;
   // envirement: boolean = environment.production;
@@ -48,7 +52,12 @@ export class HoursCalculatorComponent implements OnInit {
   constructor(private titleService: Title, private metaService: Meta, private canonical: CanonicalService) {
     this.calculeHours = new UntypedFormGroup({
       startTime: new UntypedFormControl('', [Validators.required]),
-      endTime: new UntypedFormControl(new Date(), [Validators.required]),
+      endTime: new UntypedFormControl('', [Validators.required]),
+    });
+
+    this.calculeDate = new UntypedFormGroup({
+      startDate: new UntypedFormControl("", [Validators.required]),
+      dateEnd: new UntypedFormControl("", [Validators.required]),
     });
   }
 
@@ -95,42 +104,25 @@ export class HoursCalculatorComponent implements OnInit {
     };
   }
 
+  get formDate() { return this.calculeDate.controls; }
 
   public CalculateHours(e: HTMLElement) {
     this.error = "";
     if (this.calculeHours.valid) {
       if (this.calculeHours.value.startTime > this.calculeHours.value.endTime) {
-        this.error = "Date of birth needs to be earlier than the age at date.";
+        this.error = "Start time needs to be earlier than end date.";
         return;
       }
 
-      let startTime = this.calculeHours.value.startTime;
-      let endTime = this.calculeHours.value.endTime;
-      console.log(startTime.toString());
-      console.log(endTime.toString());
 
-      startTime = new Date(Date.UTC(
-        startTime.getFullYear(),
-        startTime.getMonth(),
-        startTime.getDate(),
-        startTime.getHours(),
-        startTime.getMinutes(),
-        startTime.getSeconds()
-      )).toISOString();
+      let minutResult = this.calculeHours.value.endTime.getMinutes() - this.calculeHours.value.startTime.getMinutes();
+      let hoursResult = this.calculeHours.value.endTime.getHours() - this.calculeHours.value.startTime.getHours();
+      
 
-      endTime = new Date(Date.UTC(
-        endTime.getFullYear(),
-        endTime.getMonth(),
-        endTime.getDate(),
-        endTime.getHours(),
-        endTime.getMinutes(),
-        endTime.getSeconds()
-      )).toISOString();
-
-      this.hoursDiff(startTime, endTime);
-      this.secondsDiff(startTime, endTime);
-      this.minutesDiff(startTime, endTime);
-
+      if(this.calculeHours.value.startTime.getMinutes() > this.calculeHours.value.endTime.getMinutes()){
+        minutResult = 60 + minutResult;
+        hoursResult -= 1;
+      }
 
       // this.checkForm = true;
       e.scrollIntoView({ behavior: "smooth" });
@@ -143,22 +135,47 @@ export class HoursCalculatorComponent implements OnInit {
   }
 
 
+  calcuHoursDeferentTwoDates(e: HTMLElement) {
+    // this.submitted = true;
+    if (this.calculeDate.valid) {
+      this.error = "";
+      let dateEnd = this.calculeDate.value.dateEnd;
+      let dateStart = this.calculeDate.value.startDate;
+      dateStart = new Date(Date.UTC(
+        dateStart.getFullYear(),
+        dateStart.getMonth(),
+        dateStart.getDate(),
+        dateStart.getHours(),
+        dateStart.getMinutes(),
+        dateStart.getSeconds()
+      )).toISOString();
 
-  hoursDiff(d1: Date, d2: Date) {
-    let minutes = this.minutesDiff(d1, d2);
-    let hoursDiff = Math.floor(minutes / 60);
-    this.hours = hoursDiff.toLocaleString().split(/\s/).join(',');
+      dateEnd = new Date(Date.UTC(
+        dateEnd.getFullYear(),
+        dateEnd.getMonth(),
+        dateEnd.getDate(),
+        dateEnd.getHours(),
+        dateEnd.getMinutes(),
+        dateEnd.getSeconds()
+      )).toISOString();
 
-    return hoursDiff;
-  }
 
+      if (dateStart > dateEnd) {
+        this.error = "The start date needs to be earlier than the end date";
+        return;
+      }
 
-  minutesDiff(d1: Date, d2: Date) {
-    let seconds = this.secondsDiff(d1, d2);
-    let minutesDiff = Math.floor(seconds / 60);
-    this.minute = minutesDiff.toLocaleString().split(/\s/).join(',');
-
-    return minutesDiff;
+      this.hoursDiff(dateStart, dateEnd)
+      // this.daysDiff(dateStart, dateEnd);
+      // this.monthsDiff(dateStart, dateEnd);
+      // this.fullDateDiff(dateStart, dateEnd);
+      // this.weeksDiff(dateStart, dateEnd)
+      // this.checkForm = true;
+      e.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // this.checkForm = false;
+      this.error = "Please check the fileds";
+    }
   }
 
   secondsDiff(d1: any, d2: any) {
@@ -169,6 +186,44 @@ export class HoursCalculatorComponent implements OnInit {
     this.second = secDiff.toLocaleString().split(/\s/).join(',');
 
     return secDiff;
+  }
+
+  minutesDiff(d1: Date, d2: Date) {
+    let seconds = this.secondsDiff(d1, d2);
+    let minutesDiff = Math.floor(seconds / 60);
+    this.minute = minutesDiff.toLocaleString().split(/\s/).join(',');
+
+    return minutesDiff;
+  }
+
+  hoursDiff(d1: Date, d2: Date) {
+    let minutes = this.minutesDiff(d1, d2);
+    let hoursDiff = Math.floor(minutes / 60);
+    this.hours = hoursDiff.toLocaleString().split(/\s/).join(',');
+console.log(hoursDiff);
+
+    return hoursDiff;
+  }
+
+  setTimeNow(whichTime: string){
+   let timeNow = new Date();
+    if(whichTime == "startTime")
+    {
+      console.log(new Date());
+      
+      // this.calculeHours.patchValue({
+      //   startTime: new Date() 
+      // })
+      this.calculeHours.value.startTime = new Date();
+      console.log(this.calculeHours.value.startTime );
+      
+    }else
+    {
+      this.calculeHours.patchValue({
+        endTime: new Date() 
+      })
+    }
+   
   }
 
 }

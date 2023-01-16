@@ -42,6 +42,11 @@
                         "url": "/health/healthy-weight-calculator/."
                     },
                     {
+                        "name": "Lean Body Mass Calculator",
+                        "textInHref": "Lean Body Mass Calculator",
+                        "url": "/health/lean-body-mass-calculator/."
+                    },
+                    {
                         "name": "Body Mass Index Women",
                         "textInHref": "Body Mass Index BMI Calculator for Women",
                         "url": "/health/bmi-calculator-women/."
@@ -144,7 +149,14 @@
                         "textInHref": "Time Calculator",
                         "description": "It calculates the amount of time between times on 2 different dates. Use the time calculator to add or subtract time, even days, hours, minutes, seconds from the starting time and date.",
                         "url": "/calculators/time-calculator/."
+                    },
+                    {
+                        "name": "Hours Calculator",
+                        "textInHref": "Hours Calculator",
+                        "description": "An hours calculator is a tool that can be used to calculate the number of hours between two given times.",
+                        "url": "/calculators/hours-calculator/."
                     }
+                    
                 ]
             }
             

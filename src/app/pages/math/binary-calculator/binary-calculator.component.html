@@ -78,8 +78,7 @@
                       required.
                       !</small>
                     <small class="text-danger"
-                      *ngIf="submitted && formCalculeBinary['binaryOne'].errors?.['pattern']">Please
-                      provide an binary 0 and 1.!</small>
+                      *ngIf="submitted && formCalculeBinary['binaryOne'].errors?.['pattern']">Please provide an binary 0 and 1 and max length 100 numbers!</small>
                   </div>
                   <div class="col-md-2 col-3 mx-auto margin px-1">
                     <label hidden="hidden">binary division calculator</label>
@@ -100,8 +99,7 @@
                       required.
                       !</small>
                     <small class="text-danger"
-                      *ngIf="submitted && formCalculeBinary['binaryTwo'].errors?.['pattern']">Please
-                      provide an binary 0 and 1.!</small>
+                      *ngIf="submitted && formCalculeBinary['binaryTwo'].errors?.['pattern']">Please provide an binary 0 and 1 and max length 100 numbers!</small>
                   </div>
                   <button type="submit" class="btn btnBgPrimary w-75 mt-4 mx-auto">Calculate</button>
                 </div>
@@ -145,8 +143,7 @@
                       required.
                       !</small>
                     <small class="text-danger"
-                      *ngIf="submittedFormTwo && formBinaryDec['binary'].errors?.['pattern']">Please
-                      provide an binary 0 and 1.!</small>
+                      *ngIf="submittedFormTwo && formBinaryDec['binary'].errors?.['pattern']">Please provide an binary 0 and 1 and max length 100 numbers!</small>
                     <!-- <small class="text-danger" *ngIf="submitted && formBinaryDec['binary'].errors?.['max']">Please
                       provide an binary 0 and 1.!</small> -->
                   </div>
