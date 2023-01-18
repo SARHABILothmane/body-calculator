@@ -4,26 +4,21 @@
       <app-breadcrumbs
         [infoAndUrl]="{categorieUrl: 'health/.', nameCategorie: 'Fitness &amp; Health', namePage:'Body Shape Calculator', itemUrl: 'health/body-shape-calculator/.'}">
       </app-breadcrumbs>
-
       <div class="col-12">
-        <h1 class="text-secondary text-center pb-3 px-3">Body Shape Calculator</h1>
+        <h1 class="text-secondary text-center pb-3 px-3">Bra Size Calculator</h1>
         <div class="flexMobile">
           <app-banner *ngIf="envirement"></app-banner>
         </div>
       </div>
       <div class="row mb-3">
-        <div class="col-md-5 d-flex justify-content-center align-items-center">
-          <img class="mb-3" src="../../../../assets/images/undraw_yoga_-248-n.svg" width="300px" height="400px"
-            alt="body shape calculator">
-        </div>
-        <div class="col-md-5">
+        <div class="col-md-6 mx-auto">
           <div class="card">
             <div class="card-header">
-              <h2 class="text-white text-center font-weight-bold">Body Type Calculator</h2>
+              <h2 class="text-white text-center font-weight-bold">Bra Size Calculator</h2>
             </div>
             <div class="card-body example-items-col">
               <div class="d-flex justify-content-center img-shape">
-                <img height="94px" width="110px" src="assets/images/body-shape-size.png" alt="body-shape-calculator">
+                <img height="240px" width="260px" src="assets/images/Underband.png" alt="body-shape-calculator">
               </div>
               <div *ngIf="error" class="alert alert-danger mx-auto mt-2 text-center" role="alert">
                 <span>
@@ -75,10 +70,10 @@
               class="bmi">{{message}}</span> is :</p>
           <div class="my-3">
             <!-- <p class="text-center my-3 font-weight-bold">Body shape: <span class="bmi">{{message}}</span> </p> -->
-            <p class="text-center font-weight-bold">Bra and Cup Size (US/UK) : <span class="bmi">{{barSizeRslt}}</span>
+            <p class="text-center font-weight-bold">Bra and Cup Size (US/Ca) : <span class="bmi">{{barSizeRslt}}</span>
             </p>
-            <p>{{band}} and {{cup}}</p>
-            <p>{{bust}} - {{band}} = {{difference}}</p>
+            <!-- <p>{{band}} and {{cup}}</p>
+            <p>{{bust}} - {{band}} = {{difference}}</p> -->
             <table class="table mt-3">
               <thead class="thead-dark">
                 <tr>
@@ -200,51 +195,6 @@
         </div> -->
         <span #target style="position: relative; top: -350px"></span>
       </div>
-      <div class="row mb-3 d-flex flex-md-row-reverse">
-        <!-- <div class="col-md-7 mt-3">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="text-white text-center">Decimal to Binary Calculator</h2>
-            </div>
-            <div class="card-body">
-              <div>
-                <p class="text-white text-center msg font-weight-bold">Result : </p>
-              </div>
-              <form [formGroup]="converteBraSize" (ngSubmit)="converterBraSize()">
-                <div class="alert alert-danger mx-auto text-center" role="alert">
-                  <span>
-                    {{errorConverter}}
-                  </span>
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    <label for="decimal">Decimal value</label>
-                    <input id="decimal" class="form-control" type="number" nbInput fullWidth status="basic"
-                      shape="semi-round" placeholder="decimal" formControlName="decimal">
-                  </div>
-                  <div class="col-6 mt-4">
-                    <button type="submit" class="btn btnBgPrimary w-100">Converte</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div> -->
-        <!-- <div class="col-md-5 mx-auto  border-shadow bg-white mt-3">
-          <p class="text-secondary text-center font-weight-bold mt-2">Methode of convertion</p>
-          <div class=" d-flex">
-            <img src="../../../../assets/images/binary-numbers-.svg" width="70px" height="100px"
-              alt="Decimal to Binary Calculator">
-            <p class="ml-2">Example: Convert the decimal number 12 :<br>
-              12 &divide; 2 = 6 remainder <strong>0</strong> =>
-              6 &divide; 2 = 3 remainder <strong>0</strong><br>
-              3 &divide; 2 = 1 remainder <strong>1</strong> =>
-              1 &divide; 2 = 0 remainder <strong>1</strong><br>
-              Binray of 12 = <strong>1100</strong>
-            </p>
-          </div>
-        </div> -->
-      </div>
 
       <!-- <div class="col-md-4 col-12 mx-auto">
         <table class="table">
@@ -271,234 +221,133 @@
       <!-- <span #target style="position: relative; top: -300px"></span> -->
       <app-other-calcultor-health eleminateCalculator="bsc"></app-other-calcultor-health>
       <p class="text-secondary text-center my-5 font-weight-bold" style="font-size: 30px !important;">Learn more about
-        Body shape calculator</p>
+        Bra Size Calculator</p>
       <div class="row border shadow bg-white my-4">
         <div class="col-md-12 mx-2 my-4">
-          <p>Using measures of the chest, hip, high hip, and waist, you can calculate your body shape and waist-to-hip
-            ratio.</p>
-          <p>Varied body types have different body measures, and it is possible to determine a woman's body type using
-            these measurements. To have a better grasp of this female and male body type calculator, let's go over the
-            fundamentals first. Continue reading!</p>
-          <h3 class="text-secondary">
-            What body shape calculator :
-          </h3>
-          <p><a href="https://en.wikipedia.org/wiki/Body_shape" target="_blank">Body shape</a> calculator is concerned
-            with the assessment of various aspects of one's own physique. A person's
-            size may be determined by taking measurements of their chest, waist, and hip circumferences. Experts use
-            measures to reflect a person's body type, therefore it's important to have an exact reading when analyzing
-            fitness or drawing patterns. </p>
-          <p>Furthermore, body measurements are the sole way to identify a woman's ideal physique and various body
-            forms.
-            It's as simple as entering your measurements into a female body calculator to discover your body type!</p>
-          <h3 class="text-secondary">What is The Most Common Female Body Types?</h3>
-          <p>Women's bodies come in a variety of shapes and sizes. To have a perfectly proportioned female physique,
-            some
-            women need to work out. If you're not sure what my body type is, here is the place to find out! Identify
-            your
-            own body type by examining the most prevalent female body types:</p>
-          <div class="d-flex justify-content-center">
-            <img loading="lazy" src="assets/images/body-shape.png" class="widthMobile" height="250px"
-              alt="body-shape-calculator">
-          </div>
-          <h4 class="my-0">- Hourglass:</h4>
-          <p>The breast and hip measurements of an hourglass figure are equal. The waistline of women with this body
-            type
-            is very small. The curving figure is another term for it. The name "hourglass" refers to the shape's
-            resemblance to a glass. </p>
-          <p>A broad-narrow-wide body pattern is maintained by wide upper and lower halves and a low circumference in
-            the
-            center. The female body figure calculator may help you discover your body type.</p>
+          <h3 class="text-secondary"></h3>
+          <p>Using the breast and band sizes, this bra size calculator calculates the appropriate bra size (frame size).
+            Measure to the nearest 14 inch or 12 cm to guarantee precision. Results from this calculator are given for
+            the US, the UK, the EU, France, Belgium, Spain, Australia, and New Zealand.</p>
+          <p>The bust size is determined by taking a loose chest measurement over the fullest area of the breasts while
+            wearing a well fitting bra and standing upright with arms at the sides.</p>
+          <p>The firm, but overly-tight, circumference measured right beneath the breasts is known as the band or frame
+            size.</p>
+          <h4>Taking Measurements - Bra Size Calculator</h4>
+          <p>bra size calculator, There should be two measurements taken. For the most accurate results, take them
+            without a bra or with a non-padded bra on.</p>
           <ul>
-            <li> The hourglass figure's range is defined as follows: (bust – hips) 1 inch; (hips – bust) 3.6 inches;
-              and
-              (bust – waist) 9 inches; or (hips – waist) 10 inches.
-              The top hourglass figure features a narrow waist and a breast that is much bigger than the hips.
-            </li>
-
+            <li>Measure the size of your bust at its fullest point using a delicate measuring tape. Breathe in and out
+              to make sure the tape is not too tight. Make a note of the measurement (if you decide to round it,
+              remember to round the number up).</li>
+            <li>Measure the width of your frame around the band's base, just below your bust. Verify that the measuring
+              tape is not too tight and is level. Once more, avoid rounding measurements or increasing them to the next
+              whole number.</li>
           </ul>
-          <p>If your bust-to-waist ratio is more than 1 inch and less than 10 inches, you're in the upper hourglass
-            range.</p>
-          <ul>
-            <li>The breast is smaller than the hips in a bottom hourglass, and the waist is well defined.
-              3.6′′ between the hips and the bust; 10′′ between the hips and the bust; 9′′ between the hips and the
-              waist;
-              and 1.193′′ between the high hip and the low hip.
-            </li>
-          </ul>
-          <p>Using the same parameters, our hourglass figure calculator may also determine a woman's body type.</p>
-          <h3 class="my-0">- Pear/Triangle/Spoon:</h3>
-          <p>Hips and buttocks tend to be larger, while the breast and shoulders are narrower. The waist is well-defined
-            and glides outward to the hips in a graceful manner. There are no bulges in the arms or shoulders, and the
-            weight is evenly distributed in each leg.</p>
-          <ul>
-            <li> A Pear/Triangle/Spoon figure has (hips – bust) > 2 inches, (hips – waist) 7 inches, and (high
-              hip/waist) 1.193.
-            </li>
-          </ul>
-          <h4 class="my-0">- Inverted Triangle/Lollipop:</h4>
-          <p>The pear form is the exact opposite of this one. They have large shoulders and busts. In addition, the
-            waist does not seem to be sufficiently defined.</p>
-          <ul>
-            <li> If (bust – hips) 3.6′′ AND (bust – waist) 9′′, you have this body form.</li>
-          </ul>
-          <h4 class="my-0 text-break">- Athletic/Rectangle/ Banana:</h4>
-          <p>The proportions of the shoulders, waist, hips, and busts are all the same size on people with a banana body
-            shape. The waist has a rectangular form and is not strongly defined.</p>
-          <ul>
-            <li> (hips – bust) 3.6′′ AND (bust – hips) 3.6′′ AND (bust – waist) 9′′ AND (hips – waist) 10′′ are the
-              ranges
-              for this body shape.
-            </li>
-          </ul>
-          <h4 class="my-0">- Apple/Round body:</h4>
-          <p>People with apple or round body shapes are more likely to put on weight around their midsections. The
-            breast is larger than the rest of the woman's frame. To top it all off, the thighs and hips are also slim.
-          </p>
-          <ul>
-            <li>If you fall into this category, your hips should measure at least 3.6 inches from the top of your bust,
-              and your waist should measure at least 9 inches.</li>
-          </ul>
-          <p>If you're unsure about your body type, you may use our body shape calculator to find out. 6000 women were
-            surveyed at North Carolina State University in 2005 in an effort to determine the prevalence of various body
-            types. </p>
-          <p>Only 20 percent of women were pear-shaped and 14 percent were apple-shaped, according to the findings. Only
-            8 percent of people have the body type known as hourglass.</p>
-
-          <h3 class="text-secondary">Male Body Shape Calculator:</h3>
-          <p>The male body form calculator is the quickest online tool for determining your body's shape. An appropriate
-            body form classification is easier to come up with using this method rather than a guess. </p>
-          <p>Based on the measurements of the chest, waist, and hip, you may calculate the waist to hip ratio. Also, it
-            allows for a variety of body shapes to be shown for both men and women of any age. </p>
-          <p>Keep in mind that if you're interested in the fashion sector, this body types calculator for female and
-            male will allow you to track your body shape online every day. So, using this figure form calculator, you
-            may determine your body type based on your own measurements of body shape.</p>
-
-          <h3 class="text-secondary">What Body Type Am I?</h3>
-          <p>There are a wide variety of body kinds. Body types may be broken down into three broad groups at the most
-            fundamental level. You may determine your body type by taking the following short quiz.</p>
-          <h4 class="my-0">- How do your shoulders look like?</h4>
-          <ul>
-            <li> The hips are smaller than the shoulders.</li>
-            <li> In comparison to the hips, shoulders are smaller in size.</li>
-            <li> Hips and shoulders are one and the same.</li>
-          </ul>
-          <h4 class="my-0">- Well-fitting pants with the accurate waist size:</h4>
-          <ul>
-            <li> Thighs get saggy and sagging</li>
-            <li> Tightens around your hips and thighs.</li>
-            <li> Your thighs will look like they've been Photoshopped.</li>
-          </ul>
-          <h4 class="my-0">- How Your forearms are?</h4>
-          <ul>
-            <li> They're a little bigger than normal.</li>
-            <li> Normal or Average would be a better word to describe them.</li>
-          </ul>
-          <h4 class="my-0">- You tend to:</h4>
-          <ul>
-            <li> I have a little more weight on myself.</li>
-            <li> I'm constantly thin, but I'm also strong and fit.</li>
-          </ul>
-          <h4 class="my-0">- How Your body looks like mostly?</h4>
-          <ul>
-            <li> Pear-shaped object</li>
-            <li> It seems to be a square.</li>
-            <li> In many ways, it's similar to an Hourglass.</li>
-          </ul>
-          <h4 class="my-0">- Now wrap your fingers and thumb around your wrist:</h4>
-          <ul>
-            <li> My fingers are not intertwined.</li>
-            <li> My fingers intertwine.</li>
-            <li> This is a perfect circle.</li>
-          </ul>
-          <h4 class="my-0">- How you gain weight?</h4>
+          <p>In search of a bikini bra size? Use our bikini calculator to determine which bikini style will elongate
+            your figure the most.</p>
+          <h5>How Can Bra Size Be Determined?</h5>
           <ol>
-            <li>I put on weight quickly, but it takes a lot of effort to get rid of that weight.</li>
-            <li>My weight growth and maintenance is challenging for me.</li>
-            <li>I have no trouble gaining or losing weight.</li>
+            <li>Take your measurements initially in accordance with the aforementioned guidelines.</li>
+            <li>Take the breast measurement and subtract your frame size. Your cup size will be determined by this
+              discrepancy.</li>
+            <li>Compare your findings to tables of bra size. Alternately, you may use our bra size calculator.</li>
           </ol>
+          <h5>Sibling Sizes</h5>
+          <p>In the lingerie industry, the phrase "sister size" is relatively new yet incredibly important. Sister size
+            refers to a bra size that is different from our own but has exactly the same cup size. Would you mind
+            explaining how that is possible?</p>
+          <p>Manufacturers don't produce separate cups for every potential combination of frame & cup since they aren't
+            that kind. Instead, they create a few cups, match them with different bands, and assign sizes to bras.
+            Contrary to popular belief, they prefer to go one frame size down and one cup size up instead of labelling
+            identical cups with the same letter (or the other way around).</p>
+          <p>You can try our bra size calculator for good results.</p>
+          <h5>Ensuring The Fit Of Your Bra</h5>
+          <p>It is not a guarantee that every bra will fit, even if you used our calculator to choose the right size.
+            Don't ever purchase a subpar bra again by using bra size calculator!</p>
           <ul>
-            <li> Ectomorph: If you're slender and tall, yet you find it difficult to build the correct amount of muscle,
-              you may be an ectomorph.</li>
-            <li> Being an endomorph is defined as having a very tough time slimming down.</li>
-            <li> A mesomorph physique is one in which gaining muscle mass and shedding pounds isn't a difficulty. The
-              hourglass figure may be easily achieved by women in this group.</li>
+            <li>Put your bra on properly to start. Put on the bra and hook it while bending forward at the waist.</li>
+            <li>Make sure the band is adjusted so that the back and front of the bra are equal.</li>
+            <li>One finger should be the only thing that can be slipped beneath the band. You should try on a smaller
+              size if it is looser.</li>
+            <li>Shorten the straps once you've tightened the band.</li>
+            <li>To do one last inspection, put on a form-fitting shirt over the bra and see how it appears to be hidden
+              by clothing.</li>
+            <li>When you tie the final hook, select a bra that is the perfect size. Your bra will eventually become
+              looser, so you may use the inside hooks to adjust it later so that it fits properly.</li>
           </ul>
-          <p>It's important to keep in mind that women come in a variety of shapes and sizes and that these three groups
-            operate as a triangle.</p>
-          <p>More than that, using a body measurement calculator may save time and effort by helping you find your ideal
-            body measurement quickly. It's important to know your body type before deciding what sort of clothing to
-            wear</p>
-          <h3 class="text-secondary">The Waist-Hip Ratio (WHR) – body shape calculator :</h3>
-          <p>The waist-hip ratio is described as the relationship between the waist and hips.. The waist-hip ratio is
-            computed by dividing the waist circumference by the hip circumference. Waist-to-hip ratio for the ideal
-            female physique varies based on the body type of a woman. The waist-hip ratio for a woman with a 24" waist
-            and a 30" hip is 0.85. </p>
-          <p>It is also possible to utilize the waist-hip ratio to determine one's body form. According to the body
-            measuring calculator, the body form in this situation is a triangle.</p>
-          <h3 class="text-secondary">How to Take Body Measurements Yourself?</h3>
-          <p>The connection between the waist and the hips is what is meant by the waist-hip ratio. To get the waist-hip
-            ratio, divide the waist diameter by the hip circumference. Body type affects a woman's preferred ratio
-            between her waist and hip circumference. </p>
-          <p> A lady with a 24" waist and a 30" hip has a waist-hip ratio of 0.85. The waist-hip ratio may also be used
-            to identify a person's physical structure. In this case, the body shape is a triangle, according to the
-            body-measurement calculator.</p>
-          <ul>
-            <li> The circumference of the breast is measured using a measuring tape, which should not be too tight while
-              taking the measurement. It should be easy to inhale and exhale via the nose and mouth without discomfort.
-            </li>
-            <li> When it comes to determining one's waist, the lower part of one's upper body is measured. The ideal
-              spot to take this measurement is immediately above the navel.</li>
-            <li>The widest region of the lower leg is known as the hip. Keep your feet together as you take
-              precautionary precautions</li>
-            <li> Another hip measurement, the high hip is distinct from the preceding one in that it is higher in the
-              thigh. The narrower section of the hip curvature will be omitted when taking measurements with this
-              device.</li>
-          </ul>
-          <p>Measurements are critical in determining a person's body type. As a result, people with various body types
-            tend to have varying dimensions. What is my body type? is no longer an issue since our precise body shape
-            calculator solely takes into consideration the above-mentioned dimensions to accurately determine your body
-            type.</p>
-          <h3 class="text-secondary">FAQ’s (Body Shape or Female Figure):</h3>
-          <h4 class="my-0">- Does the contour of a woman's body alter as she gets older?</h4>
-          <p>As far as I know, yeah. Her physical form will vary as a result of hormonal changes as she ages. In
-            adolescence, the most significant changes take place. The hip-to-waist ratio of young males and women is
-            approximately same, but estrogen causes the hips and breasts of a female to get larger with time</p>
-          <p>Fat accumulates in one's thighs and hips as one ages due to estrogen. In women who are pregnant, estrogen
-            levels climb even higher, resulting in more weight gain</p>
-          <h4 class="my-0">- What is the most appealing female body type?</h4>
-          <p>With the narrowest waist to hip ratio, the hourglass body form is regarded the most appealing. An inverted
-            pyramid with broad shoulders and a smaller waist is the ideal masculine body type.</p>
-          <h4 class="my-0">- Is it possible to alter your body?</h4>
-          <p>Changing your physique after puberty is really tough. Keep in mind that there are just a few things you can
-            do. The size of your thighs and hips will fluctuate as you gain or lose weight. Change your body form by
-            gaining extra weight. Weight gain may be used to emphasize certain muscles, such as your shoulders</p>
-          <h4 class="my-0">- What does the 36 24 36 number mean?</h4>
-          <p>A 36 24 36 figure is characterized as an hourglass form. The three figures indicate the ideal body's
-            measurements in three different locations. The breast is at the top of the list, followed by the abdomen and
-            finally the waist. Using inches, the 36 24 36 number may be approximated as 36 24 36, or in centimeters, as
-            90 60 90.</p>
-          <h4 class="my-0">- When you lose weight, does your body form change?</h4>
-          <p>After reducing weight, your body's form does alter. The estrogen in females causes the body to accumulate
-            weight around the hips and thighs. These areas will lose weight if they become more physically fit. For men,
-            fat tends to accumulate around the abdomen, and if you're more physically active, you'll be better able to
-            get rid of it.</p>
-          <h4 class="my-0">- What is the meaning of zero?</h4>
-          <p>In the US sizing system, a zero figure, or a size zero, is a women' dress size. Between 30 22 32 (76 56 81
-            cm) and 36 28 36 (90 71.5 90 cm) in bust/abdomen/hips measurements, depending on the style.</p>
-          <h4 class="my-0">- What's a good size for a woman's waist?</h4>
-          <p>For women, the ideal waist measurement is 32 12 inches (82.5 cm); for men, the ideal measurement is 35
-            inches (89.1 cm) (88.9 cm). In this location, the hips and ribs are separated by a thin strip of skin. WHO
-            states that A <a routerLink="/health/bmi-calculator/."> body mass index </a> (BMI) of 40 inches or more for
-            males and 35 inches or more for women indicates
-            that the wearer is obese.</p>
-          <h4 class="my-0">- Which body type is the most prevalent?</h4>
-          <p>Rectangles are the most often seen body shapes. It's a woman with a waist that's less than nine inches wide
-            and smaller than her hips. The hourglass is the most unusual body type. Using the body measuring chart, you
-            can readily compare various body types.
-            What is the curving unit of measure?
-            Waist-to-hip ratio is off. 75. A lady is considered curvaceous if she has a 27-inch waist and a 36-inch hip
-            circumference.
+          <h5>Indices That Your Bra Size Is Wrong</h5>
+          <p>It's typical for many women to remove their bras as soon as they enter their home. Yet why? They shouldn't
+            have a bra that hurts so much, right? Unfortunately, the answer is yes in far too many instances!</p>
+          <p>In actuality, a lot of women are wearing the incorrect bra size. According to studies, up to 80% of women
+            are wearing the incorrect bra size. What? It seems sense that they would want to remove their bra as soon as
+            possible. It's interesting to note that 70% of the 80% of women who wear poorly fitted bras do so.</p>
+          <p>No matter how wonderfully crafted your bra is, it will never feel comfortable if you are wearing the wrong
+            size. So what are the telltale indicators of a bad bra fit? I've developed a list of ten warning flags. So
+            put on a bra, face the mirror, and go over my list while standing there.
+            You can avoid this by using bra size calculator.
           </p>
+          <h5>Your bust protrudes outward</h5>
+          <p>according to bra size calculator, A little cleavage, as they say, "never harmed anyone." Whether you agree
+            or disagree, having your bra fall out is uncomfortable and bad for your breasts. Unsupported, this
+            additional "bulge" of upper breast tissue has the potential to "jiggle" when exercising. If you have a bit
+            more on top, this can be more of a problem.</p>
+          <p>Solution: size up a cup! Simply increasing your cup size will provide your girls with additional protection
+            and support, as you want all of your breasts to be supported. When there is a seamless transition from bra
+            to skin without any "bulge," you've done it correctly.</p>
+          <h5>Your Cups Are Getting Bulky, Rough, or Baggy</h5>
+          <p>according to bra size calculator, If you discover a bra you adore, you're probably guilty of wearing it
+            repeatedly. But unlike your favourite pair of jeans, bras do not get any more comfortable with use. Your
+            favorite bra might start to lose its shape as a result of all the wear. in particular bras with moulded
+            cups. Consider switching out your closest buddy with a new breast pal to maintain your silhouette as smooth
+            as possible (see what I did there?).</p>
+          <h5>Among the cup and the breast, there is a chafe</h5>
+          <p>The entire point of a bra is to keep your chin higher than your knees. This cannot be done if your breasts
+            are peeking out from behind your cups. A well-fitting bra will guarantee that your breasts never slip out
+            from under your clothing.</p>
+          <p>There may be two issues here. Your breasts may be pushed out of the cup in all directions if it is
+            excessively tight. Out the top and sides are the most frequent exits, but infrequently out the bottom. If
+            so, you might want to go up one cup.
+            You can read more signs according to bra size calculator.
+          </p>
+          <h5>Your Breast Doesn't Touch the Cup's Bottom.</h5>
+          <p>When your breasts do not completely fill up the bottom of your cups, this is the exact opposite of Sign 3.
+            Your cups shouldn't have any empty space at the bottom. If there is nothing right above it to support, the
+            band won't help you!</p>
+          <p>The bottom border of the cup must allow the breast to rest and get support, regardless of its size and
+            shape. If this is how your bra fits, you might want to look at a bra with a lower cup size.
+            You can avoid this using bra size calculator
+          </p>
+          <h5>Your Band Rides up to the Back</h5>
+          <p>according to bra size calculator, For many women, this is a very frequent event. How then do we verify?
+            Check your bra band as it wraps over your back while standing side on to your mirror. It ought to result in
+            a straight line. The band shouldn't be higher than the underside of your breasts and should be level all the
+            way around.</p>
+          <p>If it's not, there's a problem. It may be as easy as having shoulder straps that are too tight, which
+            causes your bra to "lift." To check if it helps, try to make them looser. Also, make sure your band isn't
+            too large.</p>
+          <h5>Fearful Back Bulge</h5>
+          <p>Women seeking bras that "conceal back fat" frequently contact me via Live Chat. Most likely, the issue here
+            is with size rather than bra type. Bulging over your bra strap is a very common issue that has a simple fix.
+          </p>
+          <p>Your band is probably too tight for your physique. As was previously said, your band must be snug but not
+            too tight to provide the support you require. Generally speaking, there should be room for two fingers to
+            glide between the band and your torso. If your current bra doesn't do this, change the band size to fit.</p>
+          <h5>Your straps keep slipping down, a warning sign</h5>
+          <p>Bras include straps to help support you, so when they go down, your breasts follow suit. Straps that slide
+            are generally always under-tightened (is that a word?) or have stretched out or lost their flexibility.
+            Every time you put your bra on, check and adjust the straps. After adjusting, if they still feel too loose,
+            it's time for a new bra.</p>
+          <p>Tight straps may indicate that your cup is too large. Adjust the tension on your straps so that two fingers
+            may easily fit there. This is especially important for bra straps. If your cup doesn't feel "full," you
+            might want to try sizing down.</p>
+          <h5>Back of Your Straps Gap</h5>
+          <p>While we're on the subject of straps, your bra strap should fit snugly and comfortably across your back.
+            You're not getting the support you need if there are holes or it just "feels" too loose.</p>
+          <p>
+            Simply tightening the band to a different clasp setting might solve the issue. If it doesn't work, think
+            about sizing down to a tighter fit. Additionally, keep in mind the sister size rule: down a band, up a cup!
+          </p>
+
         </div>
       </div>
       <!-- <app-info></app-info> -->
