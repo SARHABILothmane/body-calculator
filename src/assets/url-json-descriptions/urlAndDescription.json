@@ -158,7 +158,18 @@
                     }
                     
                 ]
-            }
+            },
+            {
+                "categorieName": "Other",
+                "categorieUrl": "/other/.",
+                    "urlAndDescriptions": [
+                        {
+                            "name": "Password Generator",
+                            "textInHref": "Password Generator",
+                            "url": "/other/password-generator/."
+                        }                     
+                    ]
+                }
             
         ]
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: "", loadChildren: () => import("./layouts/site-layout/site-layout.module").then((mod) => mod.SiteLayoutModule), },
+  { path: "feeds", loadChildren: () => import("./components/feeds/feeds.module").then((mod) => mod.FeedsModule)},
 ];
 
 @NgModule({
