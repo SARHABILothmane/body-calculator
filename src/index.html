@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <base href="/">
@@ -17,7 +18,7 @@
   <meta property="og:type" content="website">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2374538044388820"
     crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript">
+  <!-- <script type="text/javascript">
       //<![CDATA[
       var la=!1;window.addEventListener("scroll",function(){(0!=document.documentElement.scrollTop&&!1===la||0!=document.body.scrollTop&&!1===la)&& (!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2374538044388820";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)}(),la=!0)},!0);//]]>
       </script> -->
@@ -37,23 +38,26 @@
     // end  old analytics tage 
 
     // Lazy Load analytics start
-   
-    function loadAnalitycs(){
-        setTimeout(function(){  
-          // var myAnalytics = document.createElement('script');
-          // myAnalytics.setAttribute('src','https://www.googletagmanager.com/gtag/js?id=G-FKP2SJHWY4');
-          // document.head.appendChild(myAnalytics);
 
-          window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    function loadAnalitycs() {
+      setTimeout(function () {
+        var myAnalytics = document.createElement('script');
+        myAnalytics.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-FKP2SJHWY4');
+        document.head.appendChild(myAnalytics);
 
-            gtag('config', 'G-FKP2SJHWY4');
-        },5000);
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FKP2SJHWY4');
+      }, 5000);
     }
     window.onload = loadAnalitycs();
 
-// Lazy Load analytics end
+    // Lazy Load analytics end
 
   </script>
   <meta name="theme-color" content="#3C7DB7">

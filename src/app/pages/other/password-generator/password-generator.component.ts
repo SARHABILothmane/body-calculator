@@ -220,9 +220,11 @@ export class PasswordGeneratorComponent implements OnInit {
     this.isCopie = "Clipboard is copie"
   }
   regenerate() {
-    this.calculeFormRandomPass.reset();
+    // this.calculeFormRandomPass.reset();
     this.isCopie = "";
-    this.obj.answer = 12;
+    // this.obj.answer = 12;
+    this.passwordObj.password = this.generatePassword(this.lowercaseValue, this.uppercaseValue, this.numbersValue, this.symbolsValue, this.obj.answer);
+    // this.passwordObj.password = this.generatePassword(true, true, true, true, this.obj.answer);
   }
 
 
