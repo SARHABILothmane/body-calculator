@@ -164,9 +164,9 @@
                 "categorieUrl": "/other/.",
                     "urlAndDescriptions": [
                         {
-                            "name": "Password Generator",
-                            "textInHref": "Password Generator",
-                            "url": "/other/password-generator/."
+                            "name": "Random Password Generator",
+                            "textInHref": "Random Password Generator",
+                            "url": "/other/random-password-generator/."
                         }                     
                     ]
                 }

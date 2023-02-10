@@ -5,7 +5,7 @@ import { OtherComponent } from './other.component';
 
 const routes: Routes = [
   { path: ".", component: OtherComponent },
-  { path: "password-generator/.", loadChildren: () => import("src/app/pages/other/password-generator/password-generator.module").then(mod => mod.PasswordGeneratorModule) },
+  { path: "random-password-generator/.", loadChildren: () => import("src/app/pages/other/password-generator/password-generator.module").then(mod => mod.PasswordGeneratorModule) },
 
 ];
 

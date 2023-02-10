@@ -1,1 +1,12 @@
-<p>other works!</p>
+<section class="container">
+    <h1>Other</h1>
+    <p>The following is a complete list of our other pages.</p>
+    <div class="mb-5">
+      <ul>
+        <li *ngFor="let item of urlDescription">
+          <a  routerLink="{{item.url}}" class="d-block mb-2">{{item.textInHref}}</a>
+        </li>
+      </ul>
+    </div>
+</section>
+  

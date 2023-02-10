@@ -31,6 +31,9 @@
 /math/root-calculator/.
 /math/exponent-calculator/.
 
+/other/.
+/other/random-password-generator/.
+
 /contact/.
 /private-policy/.
 /terms/.

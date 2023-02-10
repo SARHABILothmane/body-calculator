@@ -16,7 +16,7 @@
         </span>
       </p>
       <section class="row px-0" *ngFor="let details of urlDescription.arrayDetails">
-        <div class="col-12">
+        <div class="col-12" *ngIf="details.categorieName != 'Other'">
           <p class="categorieSize">{{details.categorieName}}</p>
         </div>
         <ng-template ngFor let-detailAndUrl [ngForOf]="details.urlAndDescriptions" let-i="index" >

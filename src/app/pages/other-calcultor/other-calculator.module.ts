@@ -8,8 +8,9 @@ import { RouterModule } from '@angular/router';
 import { OtherCalcultorTimeComponent } from './other-calculator-time/other-calculator-time.component';
 import { SharethisAngularModule } from 'sharethis-angular';
 import { SearchBoxModule } from 'src/app/shared/search-box/search-box.module';
+import { OtherCalcultorComponent } from './other-calculator/other-calculator.component';
 @NgModule({
-  declarations: [OtherCalcultorHealthComponent, OtherCalcultorTimeComponent, OtherCalcultorMathComponent],
+  declarations: [OtherCalcultorHealthComponent, OtherCalcultorTimeComponent, OtherCalcultorMathComponent, OtherCalcultorComponent],
   imports: [
     // CommonModule,
     // NbIconModule,
@@ -17,6 +18,6 @@ import { SearchBoxModule } from 'src/app/shared/search-box/search-box.module';
     SharethisAngularModule,
     SearchBoxModule
   ],
-  exports: [OtherCalcultorHealthComponent, OtherCalcultorTimeComponent, OtherCalcultorMathComponent]
+  exports: [OtherCalcultorHealthComponent, OtherCalcultorTimeComponent, OtherCalcultorMathComponent, OtherCalcultorComponent]
 })
 export class OtherCalcultorModule { }

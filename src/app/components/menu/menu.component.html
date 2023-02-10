@@ -85,9 +85,12 @@
                 </label>
                 <div class="arrow right">&#8250;</div>           
                 <ul class="menu-sub" style="z-index: 1556; overflow-y: scroll !important;">
-                  <li class="menu-sub-title">
-                    <label class="submenu-label d-flex align-items-center" for="{{details.categorieName}}">Back</label>
-                    <div class="arrow left">&#8249;</div>              
+                  <li class="menu-sub-title" style="padding-left: 0 !important;">
+                    <label class="submenu-label d-flex align-items-center" style="padding-left: 40px;" for="{{details.categorieName}}">
+                      <span class="arrow left">&#8249;</span>
+                      Back
+                    </label>
+                                  
                   </li>  
                   
                   <li class="d-flex align-items-center" (click)="closeNavBarMobile()" *ngFor="let detailAndUrl of details.urlAndDescriptions">
