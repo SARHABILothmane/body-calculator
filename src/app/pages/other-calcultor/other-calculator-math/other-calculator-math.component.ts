@@ -65,41 +65,41 @@ export class OtherCalcultorMathComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.eleminateCalculator == 'pc') {
-      this.goToOtherPage = { name: "Go to Percentage Increase Calculator", url: "/math/percentage-increase-calculator/." }
+      this.goToOtherPage = { name: "Go to Percentage Increase Calculator", url: "/math/percentage-increase-calculator/" }
     }else if(this.eleminateCalculator == 'pec'){
-      this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
+      this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/" }
     }else if(this.eleminateCalculator == 'rng'){
-      this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
+      this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/" }
     }else if(this.eleminateCalculator == 'hc'){
-      this.goToOtherPage = { name: "Go to Binary Calculator", url: "/math/binary-calculator/." }
+      this.goToOtherPage = { name: "Go to Binary Calculator", url: "/math/binary-calculator/" }
     }else if(this.eleminateCalculator == 'bc'){
-       this.goToOtherPage = { name: "Go to Hex Calculator", url: "/math/hex-calculator/." }
+       this.goToOtherPage = { name: "Go to Hex Calculator", url: "/math/hex-calculator/" }
     }else if(this.eleminateCalculator == 'permutationc'){
-        this.goToOtherPage = { name: "Go to Combination Calculator", url: "/math/combination-calculator/." }
+        this.goToOtherPage = { name: "Go to Combination Calculator", url: "/math/combination-calculator/" }
     }else if(this.eleminateCalculator == 'combinationc'){
-        this.goToOtherPage = { name: "Go to Permutation Calculator", url: "/math/permutation-calculator/." }
+        this.goToOtherPage = { name: "Go to Permutation Calculator", url: "/math/permutation-calculator/" }
     }else if(this.eleminateCalculator == 'pic'){
-          this.goToOtherPage = { name: "Go to Percentage Decrease Calculator", url: "/math/percentage-decrease-calculator/." }
+          this.goToOtherPage = { name: "Go to Percentage Decrease Calculator", url: "/math/percentage-decrease-calculator/" }
     }else if(this.eleminateCalculator == 'pdc'){
-          this.goToOtherPage = { name: "Go to Percentage Increase Calculator", url: "/math/percentage-increase-calculator/." }
+          this.goToOtherPage = { name: "Go to Percentage Increase Calculator", url: "/math/percentage-increase-calculator/" }
     }else if(this.eleminateCalculator == 'exponentC'){
-      this.goToOtherPage = { name: "Go to Root Calculator", url: "/math/root-calculator/." }
+      this.goToOtherPage = { name: "Go to Root Calculator", url: "/math/root-calculator/" }
     }else if(this.eleminateCalculator == 'rootC'){
-      this.goToOtherPage = { name: "Go to Exponent Calculator", url: "/math/exponent-calculator/." }
+      this.goToOtherPage = { name: "Go to Exponent Calculator", url: "/math/exponent-calculator/" }
     }else {
-      this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/." }
+      this.goToOtherPage = { name: "Go to Percentage Calculator", url: "/math/percentage-calculator/" }
     }
 
     this.arrayOtherCalculators = [
-      { 'title': 'Binary Calculator', 'url': '/math/binary-calculator/.', 'code': 'bc' },
-      { 'title': 'Random Number Generator', 'url': '/math/random-number-generator/.', 'code': 'rng' },
-      { 'title': 'Hex Calculator', 'url': '/math/hex-calculator/.', 'code': 'hc' },
-      { 'title': 'Percentage Calculator', 'url': '/math/percentage-calculator/.', 'code': 'pc' },
-      { 'title': 'Percentage Error Calculator', 'url': '/math/percent-error-calculator/.', 'code': 'pec' },
-      { 'title': 'Permutation Calculator', 'url': '/math/permutation-calculator/.', 'code': 'permutationc' },
-      { 'title': 'Combination Calculator', 'url': '/math/combination-calculator/.', 'code': 'combinationc' },
-      { 'title': 'Exponent Calculator', 'url': '/math/exponent-calculator/.', 'code': 'exponentC' },
-      { 'title': 'Root Calculator', 'url': '/math/root-calculator/.', 'code': 'rootC' },
+      { 'title': 'Binary Calculator', 'url': '/math/binary-calculator/', 'code': 'bc' },
+      { 'title': 'Random Number Generator', 'url': '/math/random-number-generator/', 'code': 'rng' },
+      { 'title': 'Hex Calculator', 'url': '/math/hex-calculator/', 'code': 'hc' },
+      { 'title': 'Percentage Calculator', 'url': '/math/percentage-calculator/', 'code': 'pc' },
+      { 'title': 'Percentage Error Calculator', 'url': '/math/percent-error-calculator/', 'code': 'pec' },
+      { 'title': 'Permutation Calculator', 'url': '/math/permutation-calculator/', 'code': 'permutationc' },
+      { 'title': 'Combination Calculator', 'url': '/math/combination-calculator/', 'code': 'combinationc' },
+      { 'title': 'Exponent Calculator', 'url': '/math/exponent-calculator/', 'code': 'exponentC' },
+      { 'title': 'Root Calculator', 'url': '/math/root-calculator/', 'code': 'rootC' },
     ];
 
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);

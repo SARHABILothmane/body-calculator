@@ -4,12 +4,12 @@
   </span>
   <menu class="menu" style="padding-inline-start: 0px !important;">
     <div class="container d-flex justify-content-between align-items-center web-header">
-      <a class="d-block logo" routerLink="/"><img width="40px" height="60px"
+      <a class="d-block logo" href="/"><img width="40px" height="60px"
           src="../../../assets/images/logo/calculator.svg" alt="body-calculator"></a>
       <ul class="d-flex list pl-2 pl-xl-5 mr-5">
         <li class="list-item">
           <a routerLinkActive="active" class="linkBar" [routerLinkActiveOptions]="{ exact: true }"
-            routerLink="/">Home</a>
+          href="/">Home</a>
         </li>
 
         <li class="dropdown list-item" *ngFor="let details of urlDescription.arrayDetails;">
@@ -17,12 +17,12 @@
           <div class="dropdown-content">
             <div class="d-flex flex-column">
               <ng-template ngFor let-detailAndUrl [ngForOf]="details.urlAndDescriptions" let-i="index">
-                <a onclick="hideDropDownMenu()" class="pb-2 colorBlack mb-2 dropDownLink" routerLink="{{detailAndUrl.url}}"
+                <a onclick="hideDropDownMenu()" class="pb-2 colorBlack mb-2 dropDownLink" href="{{detailAndUrl.url}}"
                   routerLinkActive="linkActiveDropDown" *ngIf="i < 10">
                   {{detailAndUrl.textInHref}}
                 </a>
               </ng-template>
-              <a onclick="hideDropDownMenu()" class="pb-2 colorBlack" routerLink="{{details.categorieUrl}}"
+              <a onclick="hideDropDownMenu()" class="pb-2 colorBlack" href="{{details.categorieUrl}}"
                 routerLinkActive="linkActiveDropDown" *ngIf="details.urlAndDescriptions.length > 10">
                 More {{details.categorieName}} calculators 
               </a>
@@ -38,7 +38,7 @@
         </li>
         <li class="list-item">
           <a routerLinkActive="active" class="colorBlack linkBar" [routerLinkActiveOptions]="{ exact: true }"
-            routerLink="/contact/.">Contact
+          href="/contact/">Contact
             us</a>
         </li>
 
@@ -50,7 +50,7 @@
         <ul class="nav-mobile">
           <!-- <li style="width: 45px;"></li>         -->
           <li >
-            <a class=" logo" routerLink="/"><img width="40px" height="60px"
+            <a class=" logo" href="/"><img width="40px" height="60px"
               src="../../../assets/images/logo/calculator.svg" alt="body-calcultor">
             </a>
           </li>
@@ -69,7 +69,7 @@
                 <path style="fill:var(--grayDark);" d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z"/>
               </svg> 
               <li class="nav-item d-flex align-items-center" (click)="closeNavBarMobile()">
-                <a routerLink="/" style="width:90%; left: 20px;">
+                <a href="/" style="width:90%; left: 20px;">
                   <span routerLinkActive="linkActiveDropDown" [routerLinkActiveOptions]="{ exact: true }">
                     Home
                   </span>
@@ -94,7 +94,7 @@
                   </li>  
                   
                   <li class="d-flex align-items-center" (click)="closeNavBarMobile()" *ngFor="let detailAndUrl of details.urlAndDescriptions">
-                    <a routerLink="{{detailAndUrl.url}}"
+                    <a href="{{detailAndUrl.url}}"
                       routerLinkActive="linkActiveDropDown">
                       {{detailAndUrl.textInHref}}
                     </a>
@@ -111,7 +111,7 @@
               </li>
 
               <li class="nav-item d-flex align-items-center" (click)="closeNavBarMobile()">
-                <a routerLink="/contact/." style="width:90%; left: 20px;">
+                <a href="/contact/" style="width:90%; left: 20px;">
                   <span routerLinkActive="linkActiveDropDown">
                     Contact us
                   </span>

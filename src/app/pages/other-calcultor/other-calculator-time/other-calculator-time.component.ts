@@ -67,19 +67,19 @@ export class OtherCalcultorTimeComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.eleminateCalculator == 'ac'){
-      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
+      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/"}
     }else if(this.eleminateCalculator == 'tc'){
-      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
+      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/"}
     }else if(this.eleminateCalculator == 'dc'){
-      this.goToOtherPage =  {name: "Time Calculator", url:"/calculators/time-calculator/."}
+      this.goToOtherPage =  {name: "Time Calculator", url:"/calculators/time-calculator/"}
     }else{
-      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/."}
+      this.goToOtherPage =  {name: "Date Calculator", url:"/calculators/date-calculator/"}
     }
 
     this.arrayOtherCalculators = [
-      { 'title': 'Age Calculator', 'url': '/calculators/age-calculator/.', 'code': 'ac' },
-      { 'title': 'Date Calculator', 'url': '/calculators/date-calculator/.', 'code': 'dc' },
-      { 'title': 'Time Calculator', 'url': '/calculators/time-calculator/.', 'code': 'tc' },
+      { 'title': 'Age Calculator', 'url': '/calculators/age-calculator/', 'code': 'ac' },
+      { 'title': 'Date Calculator', 'url': '/calculators/date-calculator/', 'code': 'dc' },
+      { 'title': 'Time Calculator', 'url': '/calculators/time-calculator/', 'code': 'tc' },
     ];
     this.arrayOtherCalculators = this.arrayOtherCalculators.filter((x: any) => x.code != this.eleminateCalculator);
 

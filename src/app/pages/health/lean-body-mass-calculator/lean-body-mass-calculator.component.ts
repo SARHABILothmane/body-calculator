@@ -64,16 +64,16 @@ export class LeanBodyMassCalculatorComponent implements OnInit {
       { name: 'description', content: "Free online Lean Body Mass Calculator (LMB calculator, Lean Mass Calculator)" },
       { property: 'og:title', content: "Free online Lean Body Mass Calculator - LMB Calculator" },
       { property: 'og:description', content: "Free online Lean Body Mass Calculator (LMB calculator, Lean Mass Calculator)" },
-      {property: "og:url", content: "https://body-calculator.com/health/lean-body-mass-calculato/"}
+      {property: "og:url", content: "https://body-calculator.com/health/lean-body-mass-calculator/"}
     ]);
-    this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/lean-body-mass-calculato/");
+    this.CanonicalService.createCanonicalLink("https://body-calculator.com/health/lean-body-mass-calculator/");
   
     this.schema ={
       "@context": "http://schema.org",
       "@type": "SoftwareApplication",
       "name": "Lean Body Mass Calculator",
       "image": "https://body-calculator.com/assets/images/logo/calculator.svg",
-      "url": "https://body-calculator.com/health/lean-body-mass-calculato/",
+      "url": "https://body-calculator.com/health/lean-body-mass-calculator/",
       "author": {
         "@type": "Person",
         "name": "SARHABIL"

@@ -29,6 +29,7 @@
               "src/favicon.ico",
               "src/robots.txt",
               "src/sitemap.xml",
+              "src/feeds.xml",
               "src/ads.txt",
               "src/OneSignalSDKWorker.js",
               "src/assets",

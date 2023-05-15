@@ -26,7 +26,7 @@
                       <h3 style="font-size: 20px; min-height:40px; line-height: 1.5rem">{{detailAndUrl.name}}</h3>
                       <p >{{detailAndUrl.description}}</p>
                     </div>
-                    <a style="color:var(--primary) ;" routerLink="{{detailAndUrl.url}}" class="pr-2 font-weight-bold d-flex justify-content-between align-items-center" >
+                    <a style="color:var(--primary) ;" href="{{detailAndUrl.url}}" class="pr-2 font-weight-bold d-flex justify-content-between align-items-center" >
                       {{detailAndUrl.textInHref}}
                       <span class="font-weight-bold" style="color:var(--primary) ;">&raquo;</span>
                     </a>
@@ -69,7 +69,7 @@
         </p>
       </article>
     </div>
-    <a rel="noopener" routerLink="/health/bmi-calculator/." id="buttonGoTo">
+    <a rel="noopener" href="/health/bmi-calculator/" id="buttonGoTo">
       <button style="position: fixed; bottom: 0px;width: 300px;height: 40px;margin: 0 auto;left: 0;right: 0;
         bottom:10px;background-color: #0051BD; color:white; z-index: 1; font-weight:bold;font-size:15px;opacity: 0.9;"
         class="btn">

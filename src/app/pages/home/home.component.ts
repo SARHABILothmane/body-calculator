@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToPage(url: string){
-    this.router.navigateByUrl(url);
+    this.router.navigateByUrl(url + '.');
   }
 
   ngOnDestroy() {

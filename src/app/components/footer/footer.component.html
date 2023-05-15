@@ -28,7 +28,7 @@
             <strong class="footer-title">Contact</strong>
             <div class="footer-text mt-4">
               Email : support@body-calculator.com
-              <a routerLink="/contact/." class="d-block mt-4 text-decoration-none footer-text">
+              <a href="/contact/" class="d-block mt-4 text-decoration-none footer-text">
                 Contact us
               </a>
             </div>
@@ -40,11 +40,11 @@
             <div class="footer-text mt-3 col-md-6 " *ngFor="let details of urlDescription.arrayDetails;">
               <p class="footer-title text-dark">{{details.categorieName}}</p>
               <ng-template  ngFor let-detailAndUrl [ngForOf]="details.urlAndDescriptions" let-i="index" >
-                <a routerLink="{{detailAndUrl.url}}" class="d-block mb-2 text-decoration-none footer-text" *ngIf="i<6">
+                <a href="{{detailAndUrl.url}}" class="d-block mb-2 text-decoration-none footer-text" *ngIf="i<6">
                   {{detailAndUrl.textInHref }}
                 </a>
               </ng-template>
-              <a onclick="hideDropDownMenu()" class="pb-2 colorBlack" routerLink="{{details.categorieUrl}}"
+              <a onclick="hideDropDownMenu()" class="pb-2 colorBlack" href="{{details.categorieUrl}}"
                 routerLinkActive="linkActiveDropDown" *ngIf="details.urlAndDescriptions.length > 6">
                 More {{details.categorieName}} calculators
               </a>
@@ -61,8 +61,8 @@
             </div>
             <div class="ml-lg-auto my-2">
               <div class="d-flex footer-text">
-                <a class="d-block text-decoration-none mr-4" routerLink="/terms/.">Terms of Use</a>
-                <a class="d-block text-decoration-none" routerLink="/private-policy/.">Privacy Policy</a>
+                <a class="d-block text-decoration-none mr-4" href="/terms/">Terms of Use</a>
+                <a class="d-block text-decoration-none" href="/private-policy/">Privacy Policy</a>
               </div>
             </div>
           </div>

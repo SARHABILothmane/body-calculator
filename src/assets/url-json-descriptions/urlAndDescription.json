@@ -3,170 +3,164 @@
         [
             {
             "categorieName": "Health",
-            "categorieUrl": "/health/.",
+            "categorieUrl": "/health/",
                 "urlAndDescriptions": [
                     {
                         "name": "Body Mass Index",
                         "textInHref": "Body Mass Index BMI Calculator",
                         "description": "It is a general indicator to tell you whether you have a healthy body weight for their height or not. BMI measures the person's leanness or corpulence based on his height and weight.",
-                        "url": "/health/bmi-calculator/."
+                        "url": "/health/bmi-calculator/"
                     },
                     {
                         "name": "Body Fat Percentage",
                         "textInHref": "Body Fat Percentage BFP Calculator",
                         "description": "With the BFP calculator, you will know the amount of fat in your body, your body health condition through fat percentage and the ideal fat percentage you should have.",
-                        "url": "/health/body-fat-percentage-calculator/."
+                        "url": "/health/body-fat-percentage-calculator/"
                     },
                     {
                         "name": "Body Shape",
                         "textInHref": "Body Shape Calculator",
                         "description": "Body shape calculator helps you to determine your body type based on your body measurements.",
-                        "url": "/health/body-shape-calculator/."
+                        "url": "/health/body-shape-calculator/"
                     },
                     {
                         "name": "Ideal Weight",
                         "textInHref": "Ideal Weight IBW Calculator",
                         "description": "Ideal weight helps you to determine your ideal body weight (IBW). It computes the ideal weight based on height, age and gender.",
-                        "url": "/health/ideal-weight-calculator/."
+                        "url": "/health/ideal-weight-calculator/"
                     },
                     {
                         "name": "Basal Metabolic Rate",
                         "textInHref": "Basal Metabolic Rate BMR Calculator",
                         "description": "It estimates the basal metabolic rate which is the amount of energy the body expended while at rest. Use this calculator to find out your BMR and determine your caloric needs.",
-                        "url": "/health/bmr-calculator/."
+                        "url": "/health/bmr-calculator/"
                     },
                     {
                         "name": "Healthy Weight",
                         "textInHref": "Healthy Weight Calculator",
                         "description": "This calculator computes your healthy body weight range based on your height. It is more accurate for adults aged from 18 to more older.",
-                        "url": "/health/healthy-weight-calculator/."
+                        "url": "/health/healthy-weight-calculator/"
                     },
                     {
                         "name": "Lean Body Mass Calculator",
                         "textInHref": "Lean Body Mass Calculator",
-                        "url": "/health/lean-body-mass-calculator/."
+                        "url": "/health/lean-body-mass-calculator/"
                     },
                     {
                         "name": "Body Mass Index Women",
                         "textInHref": "Body Mass Index BMI Calculator for Women",
-                        "url": "/health/bmi-calculator-women/."
+                        "url": "/health/bmi-calculator-women/"
                     },
                     {
                         "name": "Body Mass Index Men",
                         "textInHref": "Body Mass Index BMI Calculator for Men",
-                        "url": "/health/bmi-calculator-men/."
+                        "url": "/health/bmi-calculator-men/"
                     }
                 ]
             },
             {
                 "categorieName": "Math",
-                "categorieUrl": "/math/.",
+                "categorieUrl": "/math/",
 
                     "urlAndDescriptions": [
                         {
                             "name": "Random Number Generator",
                             "textInHref": "Random Number Generator",
                             "description": "With this calculator you can  get a random, cryptographically safe number. It can generate random numbers which can be used for determining who will go first in a game",
-                            "url": "/math/random-number-generator/."
+                            "url": "/math/random-number-generator/"
                         },
                         {
                             "name": "Percentage Calculator",
                             "textInHref": "Percentage Calculator",
                             "description": "It is a free online calculator to facilitate calculating percentages. It can find a percentage and work out the percentage given numbers and also percent values.",
-                            "url": "/math/percentage-calculator/."
+                            "url": "/math/percentage-calculator/"
                         },
                         {
                             "name": "Percent Error Calculator",
                             "textInHref": "Percent Error Calculator",
                             "description": "With the Percent Error Calculator you can calculate the percentage error between an observed and a true, or experimental value.",
-                            "url": "/math/percent-error-calculator/."
+                            "url": "/math/percent-error-calculator/"
                         },
                         {
                             "name": "Binary Calculator",
                             "textInHref": "Binary Calculator",
                             "description": "It can perform the many tasks as addition, subtraction, multiplication, and division of two binary values, it also converts binary values to decimal values, and also vice versa.",
-                            "url": "/math/binary-calculator/."
+                            "url": "/math/binary-calculator/"
                         },
                         {
                             "name": "Hex Calculator",
                             "textInHref": "Hex Calculator",
                             "description": "With the Hex Calculator  you can perform the addition, subtraction, multiplication and division also on 2 hexadecimal numbers.",
-                            "url": "/math/hex-calculator/."
+                            "url": "/math/hex-calculator/"
                         },
                         {
                             "name": "Permutation calculator ",
                             "textInHref": "Permutation Calculator",
                             "description": "Permutation calculator finds the number of subsets which can be created including the subsets of the same items based on their different orders.",
-                            "url": "/math/permutation-calculator/."
+                            "url": "/math/permutation-calculator/"
                         },
                         {
                             "name": "Combination Calculator",
                             "textInHref": "Combination Calculator",
                             "description": "It finds the number of possible combinations obtained by taking any sample of items from a greater set. It is used mainly to show how many different possible subsets will be made from the greater set.",
-                            "url": "/math/combination-calculator/."
+                            "url": "/math/combination-calculator/"
                         },
                         {
                             "name": "Root Calculator",
                             "textInHref": "Root Calculator",
-                            "url": "/math/root-calculator/."
+                            "url": "/math/root-calculator/"
                         },
                         {
                             "name": "Exponent Calculator",
                             "textInHref": "Exponent Calculator",
-                            "url": "/math/exponent-calculator/."
+                            "url": "/math/exponent-calculator/"
                         },
                         {
                             "name": "Percentage Increase Calculator",
                             "textInHref": "Percentage Increase Calculator",
-                            "url": "/math/percentage-increase-calculator/."
+                            "url": "/math/percentage-increase-calculator/"
                         },
                         {
                             "name": "Percentage Decrease Calculator",
                             "textInHref": "Percentage Decrease Calculator",
-                            "url": "/math/percentage-decrease-calculator/."
+                            "url": "/math/percentage-decrease-calculator/"
                         }
                        
                     ]
             },
             {
             "categorieName": "Time & Date",
-            "categorieUrl": "/calculators/.",
+            "categorieUrl": "/calculators/",
                 "urlAndDescriptions": [
                     {
                         "name": "Age Calculator",
                         "textInHref": "Age Calculator",
                         "description": "With Age Calculator you can determine your age or the interval between two dates. It displayed age in years, months, weeks, days, also hours, minutes, and seconds.",
-                        "url": "/calculators/age-calculator/."
+                        "url": "/calculators/age-calculator/"
                     },
                     {
                         "name": "Date Calculator",
                         "textInHref": "Date Calculator",
                         "description": "With the date calculator you can compute the period Between Two Dates. You can Find years, months, and Even days between two dates.",
-                        "url": "/calculators/date-calculator/."
+                        "url": "/calculators/date-calculator/"
                     },
                     {
                         "name": "Time Calculator",
                         "textInHref": "Time Calculator",
                         "description": "It calculates the amount of time between times on 2 different dates. Use the time calculator to add or subtract time, even days, hours, minutes, seconds from the starting time and date.",
-                        "url": "/calculators/time-calculator/."
-                    },
-                    {
-                        "name": "Hours Calculator",
-                        "textInHref": "Hours Calculator",
-                        "description": "An hours calculator is a tool that can be used to calculate the number of hours between two given times.",
-                        "url": "/calculators/hours-calculator/."
+                        "url": "/calculators/time-calculator/"
                     }
                     
                 ]
             },
             {
                 "categorieName": "Other",
-                "categorieUrl": "/other/.",
+                "categorieUrl": "/other/",
                     "urlAndDescriptions": [
                         {
                             "name": "Random Password Generator",
                             "textInHref": "Random Password Generator",
-                            "url": "/other/random-password-generator/."
+                            "url": "/other/random-password-generator/"
                         }                     
                     ]
                 }

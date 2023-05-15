@@ -65,9 +65,9 @@ export class OtherCalcultorComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.eleminateCalculator == 'rpg') {
-      this.goToOtherPage = { name: "Go to Random Number Generator", url: "/math/random-number-generator/." }
+      this.goToOtherPage = { name: "Go to Random Number Generator", url: "/math/random-number-generator/" }
     }else {
-      this.goToOtherPage = { name: "Go to Random Password Generator", url: "/other/random-password-generator/." }
+      this.goToOtherPage = { name: "Go to Random Password Generator", url: "/other/random-password-generator/" }
     }
 
     // this.arrayOtherCalculators = [
